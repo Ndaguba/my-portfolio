@@ -17,6 +17,7 @@ export default function Header({ onChatToggle, isChatOpen }) {
           <a href="/">WORK</a>
           <a href="/#projects">ABOUT</a>
           <a href="/#contact">RESUME</a>
+          <a href="/#stories">STARTUP STORIES</a>
         </nav>
         <div className="actions">
           <p className='chat-trigger' onClick={onChatToggle}>
