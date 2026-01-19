@@ -19,28 +19,28 @@ export default function Home() {
               <div className="portfolio-item-wrapper">
                 <div className="portfolio-item" />
                 <div className="portfolio-label">
-                  <p className="portfolio-project">AI PERSONAL ASSISTANT IN YOUR POCKET</p>
+                  <p className="portfolio-project">AI personal assistant in your pocket</p>
                   <p className="portfolio-company">FORELLA AI</p>
                 </div>
               </div>
               <div className="portfolio-item-wrapper">
                 <div className="portfolio-item" />
                 <div className="portfolio-label">
-                  <p className="portfolio-project">CHILDCARE PAEDIATRIC ASSISTANT</p>
+                  <p className="portfolio-project">Childcare paediatric assistant</p>
                   <p className="portfolio-company">BOBO APP</p>
                 </div>
               </div>
               <div className="portfolio-item-wrapper">
                 <div className="portfolio-item" />
                 <div className="portfolio-label">
-                  <p className="portfolio-project">AI AGENTS FOR HR</p>
+                  <p className="portfolio-project">AI agents for HR</p>
                   <p className="portfolio-company">OPHIR LABS</p>
                 </div>
               </div>
               <div className="portfolio-item-wrapper">
                 <div className="portfolio-item" />
                 <div className="portfolio-label">
-                  <p className="portfolio-project">STRATEGIC PARTNERSHIPS</p>
+                  <p className="portfolio-project">Strategic partnerships</p>
                   <p className="portfolio-company">SKIPTHEDISHES</p>
                 </div>
               </div>

@@ -87,7 +87,7 @@ h1 {
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  gap: 18px;
 }
 
 .portfolio-item-wrapper {
@@ -99,7 +99,7 @@ h1 {
 .portfolio-item {
   background: #f3f4f6; /* light grey */
   min-height: 500px;
-  border-radius: 0px;
+  border-radius: 16px;
 }
 
 .portfolio-label {
