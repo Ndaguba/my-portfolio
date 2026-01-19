@@ -13,7 +13,7 @@
   min-width: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  transition: flex 500ms ease, width 500ms ease;
+  transition: margin-right 500ms ease;
   box-sizing: border-box;
 }
 
@@ -21,7 +21,6 @@
    by adding a right margin equal to the panel width. */
 .main-content.panel-open {
   margin-right: 400px;
-  transition: margin-right 500ms ease;
 }
 
 .home-page {

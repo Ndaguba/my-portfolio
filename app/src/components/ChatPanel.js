@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import './ChatPanel.css';
 import { LuPanelLeftOpen } from 'react-icons/lu';
 import { BsArrowUp } from 'react-icons/bs';
-import { PiSparkleBold } from 'react-icons/pi';
+import { PiSparkleBold, PiMicrophoneBold } from 'react-icons/pi';
+import { LiaRedoAltSolid } from 'react-icons/lia';
 
 export default function ChatPanel({ isOpen, onClose }) {
   const [message, setMessage] = useState('');
@@ -37,9 +38,17 @@ export default function ChatPanel({ isOpen, onClose }) {
     <div className={`chat-panel ${isOpen ? 'open' : ''}`}>
       <div className="chat-header">
         <h3>EMEKALLM</h3>
-        <button className="close-btn" onClick={onClose} aria-label="Close chat">
-          <LuPanelLeftOpen />
-        </button>
+        <div className="chat-header-actions">
+          <button className="action-btn" aria-label="Redo">
+            <LiaRedoAltSolid />
+          </button>
+          <button className="action-btn" aria-label="Microphone">
+            <PiMicrophoneBold />
+          </button>
+          <button className="close-btn" onClick={onClose} aria-label="Close chat">
+            <LuPanelLeftOpen />
+          </button>
+        </div>
       </div>
       
       <div className="chat-messages">
