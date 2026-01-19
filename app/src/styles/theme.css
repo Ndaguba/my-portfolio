@@ -4,16 +4,18 @@
   --muted: #6b7280;
   --primary: #0070f3;
   --header-bg: #ffffff;
-  --header-border: #e6e6e6;
+  --panel-bg: #fafafa;
+  --divider-default: #e6e6e6;
 }
 
 .theme-dark {
-  --bg: #0b0f15;
+  --bg: #161718;
   --text: #e6eef6;
   --muted: #9aa6b2;
   --primary: #7dd3fc;
-  --header-bg: #071022;
-  --header-border: #12212b;
+  --header-bg: #161718;
+  --panel-bg: #161718;
+  --divider-default: #262728;
 }
 
 html, body, #root {

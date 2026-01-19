@@ -1,7 +1,31 @@
+.home-container {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.main-content {
+  flex: 1;
+  min-width: 0;
+  transition: flex 300ms ease;
+}
+
 .home-page {
   padding: 20px;
 }
 
 h1 {
   font-size: 2rem;
+}
+
+.intro-message{
+    font-size: 1.675rem;
+    color: var(--text);
+}
+
+@media (max-width: 768px) {
+  .main-content.panel-open {
+    margin-right: 0;
+  }
 }
