@@ -1,0 +1,30 @@
+.site-header {
+  background: #ffffff;
+  border-bottom: 1px solid #eee;
+}
+.site-header .container {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 19px 32px;
+}
+.brand {
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  gap: 12px;
+}
+.nav a {
+  margin-left: 16px;
+  color: #333;
+  text-decoration: none;
+}
+.nav a:hover {
+  color: #0070f3;
+}
+.brand-name{
+    font-weight: 700;
+    
+}
