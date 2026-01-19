@@ -1,0 +1,37 @@
+:root {
+  --bg: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --primary: #0070f3;
+  --header-bg: #ffffff;
+  --header-border: #e6e6e6;
+}
+
+.theme-dark {
+  --bg: #0b0f15;
+  --text: #e6eef6;
+  --muted: #9aa6b2;
+  --primary: #7dd3fc;
+  --header-bg: #071022;
+  --header-border: #12212b;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+/* Utility classes */
+.theme-toggle-button {
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.08);
+  color: var(--text);
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}

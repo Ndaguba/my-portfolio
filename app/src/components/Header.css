@@ -1,6 +1,6 @@
 .site-header {
-  background: #ffffff;
-  border-bottom: 1px solid #eee;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--header-border);
 }
 .site-header .container {
   margin: 0 auto;
@@ -22,7 +22,19 @@
   text-decoration: none;
 }
 .nav a:hover {
-  color: #0070f3;
+  color: var(--primary);
+}
+
+.actions {
+  margin-left: 12px;
+}
+
+.theme-toggle-button {
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.08);
+  padding: 6px 8px;
+  border-radius: 6px;
+  cursor: pointer;
 }
 .brand-name{
     font-weight: 700;

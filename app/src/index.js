@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import './styles/theme.css';
+import { ThemeProvider } from './context/ThemeContext';
 import Home from './pages/home';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Home />
+    <ThemeProvider>
+      <Home />
+    </ThemeProvider>
   </React.StrictMode>
 );
 
