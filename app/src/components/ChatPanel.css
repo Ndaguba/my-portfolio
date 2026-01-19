@@ -1,12 +1,17 @@
 .chat-panel {
+  /* Fixed to viewport so it does not scroll with the page */
+  position: fixed;
+  top: 0;
+  right: 0;
   width: 0;
-  min-height: 100vh;
+  height: 100vh;
   background: var(--panel-bg);
   border-left: 1px solid var(--divider-default);
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  transition: width 300ms ease;
+  transition: width 500ms ease;
+  z-index: 1000;
 }
 
 .chat-panel.open {
@@ -14,7 +19,7 @@
 }
 
 .chat-header {
-  padding: 14px 20px;
+  padding: 17px 20px;
   border-bottom: 1px solid var(--divider-default);
   display: flex;
   align-items: center;
@@ -22,12 +27,14 @@
 }
 
 .intro-message{
-    padding-top: 6rem;
+    padding-top: 12rem;
+    padding-bottom: 0rem;
+    margin-bottom: 0px;
 }
 
 .chat-header h3 {
   margin: 0;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 600;
 }
 
@@ -53,6 +60,83 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  position: relative;
+  min-height: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.empty-state {
+  position: absolute;
+  bottom: 1.35rem;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  opacity: 0;
+  transition: opacity 0ms ease;
+}
+
+.empty-state.fade-in {
+  opacity: 1;
+  transition: opacity 600ms ease 200ms;
+}
+
+.empty-state-title {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0;
+  color: var(--text);
+}
+
+.suggested-prompts {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.prompt-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 4px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  text-align: left;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 13px;
+  font-family: inherit;
+  transition: all 150ms ease;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.empty-state.fade-in .prompt-button {
+  animation: slideUp 600ms ease forwards;
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.prompt-icon {
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.prompt-button:hover {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: var(--primary);
+}
+
+.theme-dark .prompt-button:hover {
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .message {

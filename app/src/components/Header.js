@@ -3,7 +3,7 @@ import './Header.css';
 import { useTheme } from '../context/ThemeContext';
 import { LuSparkles } from "react-icons/lu";
 
-export default function Header({ onChatToggle }) {
+export default function Header({ onChatToggle, isChatOpen }) {
   const { theme, toggle } = useTheme();
 
   return (
@@ -14,14 +14,15 @@ export default function Header({ onChatToggle }) {
           <span className="brand-role">PRODUCT DESIGNER + ENGINEER</span>
         </div>
         <nav className="nav">
-          <a href="/">Home</a>
-          <a href="/#projects">Projects</a>
-          <a href="/#contact">Contact</a>
+          <a href="/">WORK</a>
+          <a href="/#projects">ABOUT</a>
+          <a href="/#contact">RESUME</a>
         </nav>
         <div className="actions">
-            <p className='chat-trigger' onClick={onChatToggle}>
-              <LuSparkles className="emekaLLM-icon" />EMEKALLM
-            </p>
+          <p className='chat-trigger' onClick={onChatToggle}>
+            <LuSparkles className="emekaLLM-icon" />
+            {!isChatOpen && <span className="chat-trigger-text">EMEKALLM</span>}
+          </p>
         </div>
       </div>
     </header>
