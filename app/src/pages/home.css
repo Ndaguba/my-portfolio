@@ -24,9 +24,48 @@
 }
 
 .home-page {
-  padding: 32px;
+  
   transition: padding 300ms ease;
   padding-top: 20px;
+  width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 4rem;
+}
+
+/* Profile info banner (working at / position / location) */
+.profile-info {
+  display: flex;
+  gap: 74px;
+  align-items: center;
+  margin-bottom: 45px;
+  margin-top: 38px;
+}
+
+.profile-column {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profile-label {
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: var(--muted);
+  margin: 0 0 8px 0;
+}
+
+.profile-value {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .profile-info {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
 }
 
 .main-content.panel-open .home-page {
@@ -84,8 +123,8 @@ h1 {
 }
 
 .portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+ flex-direction: column;
   gap: 18px;
 }
 
@@ -97,8 +136,8 @@ h1 {
 
 .portfolio-item {
   background: #f3f4f6; /* light grey */
-  min-height: 600px;
-  border-radius: 16px;
+  min-height: 680px;
+  border-radius: 4px;
 }
 
 /* BOBO image */
@@ -111,15 +150,15 @@ h1 {
 
 /* Forella image */
 .forella-image {
-  height: 550px;
+  height: 610px;
   width: auto;
   display: block;
-  margin: 32px auto 0 auto;
+  margin: 45px auto 0 auto;
 }
 
 /* Ophir Labs image */
 .ophir-image {
-  height: 375px;
+  height: 475px;
   width: auto;
   display: block;
   margin: 120px auto 0 auto;
@@ -133,10 +172,28 @@ h1 {
 
 /* Skip x WestJet image */
 .skip-image {
-  height: 550px;
+  height: 500px;
   width: auto;
   display: block;
   margin: 32px auto 0 auto;
+}
+
+/* Mossy AI image */
+.mossy-image {
+  height: 475px;
+  width: auto;
+  display: block;
+  margin: 120px auto 0 auto;
+  transition: height 300ms ease;
+}
+
+/* Shrink Mossy image slightly when right panel is open */
+.mossy-image {
+  transition: height 300ms ease;
+}
+
+.main-content.panel-open .mossy-image {
+  height: 300px;
 }
 
 .portfolio-label {

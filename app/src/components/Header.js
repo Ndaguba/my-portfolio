@@ -11,7 +11,6 @@ export default function Header({ onChatToggle, isChatOpen }) {
       <div className="container">
         <div className="brand">
           <span className="brand-name">EMEKA NDAGUBA</span>
-          <span className="brand-role">PRODUCT DESIGNER + ENGINEER</span>
         </div>
         <nav className="nav">
           <a href="/">WORK</a>
