@@ -125,7 +125,7 @@ h1 {
 .portfolio-grid {
   display: flex;
  flex-direction: column;
-  gap: 18px;
+  gap: 56px;
 }
 
 .portfolio-item-wrapper {
@@ -142,10 +142,10 @@ h1 {
 
 /* BOBO image */
 .bobo-image {
-  height: 550px;
+  height: 610px;
   width: auto;
   display: block;
-  margin: 32px auto 0 auto;
+  margin: 45px auto 0 auto;
 }
 
 /* Forella image */
@@ -172,10 +172,10 @@ h1 {
 
 /* Skip x WestJet image */
 .skip-image {
-  height: 500px;
+  height: 610px;
   width: auto;
   display: block;
-  margin: 32px auto 0 auto;
+  margin: 45px auto 0 auto;
 }
 
 /* Mossy AI image */
