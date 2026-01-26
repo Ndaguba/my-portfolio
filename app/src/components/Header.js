@@ -1,10 +1,8 @@
 import React from 'react';
 import './Header.css';
-import { useTheme } from '../context/ThemeContext';
 import { LuSparkles } from "react-icons/lu";
 
 export default function Header({ onChatToggle, isChatOpen }) {
-  const { theme, toggle } = useTheme();
 
   return (
     <header className="site-header">
