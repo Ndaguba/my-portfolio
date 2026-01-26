@@ -17,30 +17,38 @@ export default function Home() {
           <section className="portfolio-section">
             <div className="portfolio-grid">
               <div className="portfolio-item-wrapper">
-                <div className="portfolio-item" />
+                <div className="portfolio-item">
+                  <img className="forella-image" src={require('../assets/profile/forella.png')} alt="Forella" />
+                </div>
                 <div className="portfolio-label">
                   <p className="portfolio-project">AI personal assistant in your pocket</p>
                   <p className="portfolio-company">FORELLA AI</p>
                 </div>
               </div>
               <div className="portfolio-item-wrapper">
-                <div className="portfolio-item" />
+                <div className="portfolio-item">
+                  <img className="bobo-image" src={require('../assets/profile/bobo-poppy.png')} alt="Bobo Poppy" />
+                </div>
                 <div className="portfolio-label">
                   <p className="portfolio-project">Childcare paediatric assistant</p>
                   <p className="portfolio-company">BOBO APP</p>
                 </div>
               </div>
               <div className="portfolio-item-wrapper">
-                <div className="portfolio-item" />
+                <div className="portfolio-item">
+                  <img className="ophir-image" src={require('../assets/profile/OPhirlabs.png')} alt="OPhir Labs" />
+                </div>
                 <div className="portfolio-label">
                   <p className="portfolio-project">AI agents for HR</p>
                   <p className="portfolio-company">OPHIR LABS</p>
                 </div>
               </div>
               <div className="portfolio-item-wrapper">
-                <div className="portfolio-item" />
+                <div className="portfolio-item">
+                  <img className="skip-image" src={require('../assets/profile/Skip.png')} alt="SKIP x WESTJET" />
+                </div>
                 <div className="portfolio-label">
-                  <p className="portfolio-project">Strategic partnerships</p>
+                  <p className="portfolio-project">SKIP x WESTJET</p>
                   <p className="portfolio-company">SKIPTHEDISHES</p>
                 </div>
               </div>

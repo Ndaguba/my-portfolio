@@ -97,8 +97,46 @@ h1 {
 
 .portfolio-item {
   background: #f3f4f6; /* light grey */
-  min-height: 500px;
+  min-height: 600px;
   border-radius: 16px;
+}
+
+/* BOBO image */
+.bobo-image {
+  height: 550px;
+  width: auto;
+  display: block;
+  margin: 32px auto 0 auto;
+}
+
+/* Forella image */
+.forella-image {
+  height: 550px;
+  width: auto;
+  display: block;
+  margin: 32px auto 0 auto;
+}
+
+/* Ophir Labs image */
+.ophir-image {
+  height: 375px;
+  width: auto;
+  display: block;
+  margin: 120px auto 0 auto;
+  transition: height 300ms ease;
+}
+
+/* Shrink Ophir image slightly when right panel is open */
+.main-content.panel-open .ophir-image {
+  height: 300px;
+}
+
+/* Skip x WestJet image */
+.skip-image {
+  height: 550px;
+  width: auto;
+  display: block;
+  margin: 32px auto 0 auto;
 }
 
 .portfolio-label {
