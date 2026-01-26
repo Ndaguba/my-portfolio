@@ -21,7 +21,7 @@ export default function Home() {
             </div>
             <div className="profile-column">
               <p className="profile-label">POSITION</p>
-              <p className="profile-value">Senior Product Designer</p>
+              <p className="profile-value">Founding Product Designer</p>
             </div>
             <div className="profile-column">
               <p className="profile-label">LOCATION</p>
