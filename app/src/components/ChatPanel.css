@@ -200,7 +200,7 @@
 
 .message.user .message-content {
   background: var(--primary);
-  color: white;
+  color: var(--text);
 }
 
 .message.assistant .message-content {

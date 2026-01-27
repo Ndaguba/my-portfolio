@@ -43,24 +43,6 @@ export default function Home() {
             <div className="portfolio-grid">
               <div className="portfolio-item-wrapper">
                 <div className="portfolio-item">
-                  <img className="forella-image" src={require('../assets/profile/forella.png')} alt="Forella" />
-                </div>
-                <div className="portfolio-label">
-                  <p className="portfolio-project">Forella AI</p>
-                  <p className="portfolio-company">AI personal assistant in your pocket</p>
-                </div>
-              </div>
-              <div className="portfolio-item-wrapper">
-                <div className="portfolio-item">
-                  <img className="ophir-image" src={require('../assets/profile/OPhirlabs.png')} alt="OPhir Labs" />
-                </div>
-                <div className="portfolio-label">
-                  <p className="portfolio-project">Ophir Labs AI</p>
-                  <p className="portfolio-company">AI agents for HR</p>
-                </div>
-              </div>
-              <div className="portfolio-item-wrapper">
-                <div className="portfolio-item">
                   <img className="bobo-image" src={require('../assets/profile/bobo-poppy.png')} alt="Bobo Poppy" />
                 </div>
                 <div className="portfolio-label">
@@ -75,6 +57,24 @@ export default function Home() {
                 <div className="portfolio-label">
                   <p className="portfolio-project">SKIP x WESTJET</p>
                   <p className="portfolio-company">SKIPTHEDISHES</p>
+                </div>
+              </div>
+              <div className="portfolio-item-wrapper">
+                <div className="portfolio-item">
+                  <img className="forella-image" src={require('../assets/profile/forella.png')} alt="Forella" />
+                </div>
+                <div className="portfolio-label">
+                  <p className="portfolio-project">Forella AI</p>
+                  <p className="portfolio-company">AI personal assistant in your pocket</p>
+                </div>
+              </div>
+              <div className="portfolio-item-wrapper">
+                <div className="portfolio-item">
+                  <img className="ophir-image" src={require('../assets/profile/OPhirlabs.png')} alt="OPhir Labs" />
+                </div>
+                <div className="portfolio-label">
+                  <p className="portfolio-project">Ophir Labs AI</p>
+                  <p className="portfolio-company">AI agents for HR</p>
                 </div>
               </div>
               <div className="portfolio-item-wrapper">
