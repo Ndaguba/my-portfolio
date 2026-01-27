@@ -186,7 +186,6 @@ h1 {
   margin: 120px auto 0 auto;
   transition: height 300ms ease;
 }
-
 /* Shrink Mossy image slightly when right panel is open */
 .mossy-image {
   transition: height 300ms ease;
