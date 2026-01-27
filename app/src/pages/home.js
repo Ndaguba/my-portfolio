@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './home.css';
 import Header from '../components/Header';
 import ChatPanel from '../components/ChatPanel';
 import Footer from '../components/Footer';
+import Loading from '../components/Loading';
 
 export default function Home() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Wait for 3s, then hide loader
+    const t = setTimeout(() => setLoading(false), 3000);
+    return () => clearTimeout(t);
+  }, []);
+
+  if (loading) return <Loading />;
 
   return (
     <div className="home-container">
