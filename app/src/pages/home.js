@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { PiBriefcase } from "react-icons/pi";
 import './home.css';
 import Header from '../components/Header';
 import ChatPanel from '../components/ChatPanel';
+import { IoLocationOutline } from "react-icons/io5";
 import Footer from '../components/Footer';
 import Loading from '../components/Loading';
 
@@ -23,33 +26,28 @@ export default function Home() {
         <Header onChatToggle={() => setIsPanelOpen(!isPanelOpen)} isChatOpen={isPanelOpen} />
         <main className="home-page">
           <p className='intro-message'>I'm Emeka, a pr<span className="o-image"><img src={require('../assets/Emeka.png')} alt="o" /></span> duct<br></br> designer that <i>writes code.</i></p>
-
           <section className="profile-info">
             <div className="profile-column">
-              <p className="profile-label">WORKING AT</p>
-              <p className="profile-value">BOBO APP</p>
+              <PiBriefcase className='profile-icon' />
+              <p className="profile-value">Senior product designer @ bobo app, Prevoisly at SKIP</p>
             </div>
             <div className="profile-column">
-              <p className="profile-label">POSITION</p>
-              <p className="profile-value">Product Designer</p>
-            </div>
-            <div className="profile-column">
-              <p className="profile-label">LOCATION</p>
-              <p className="profile-value">Canada</p>
+              <IoLocationOutline className='profile-icon' />
+              <p className="profile-value">Winnipeg, Manitoba, Canada</p>
             </div>
           </section>
 
           <section className="portfolio-section">
             <div className="portfolio-grid">
-              <div className="portfolio-item-wrapper">
+              <Link to="/development-pathways" className="portfolio-item-wrapper link-wrapper">
                 <div className="portfolio-item">
-                  <img className="bobo-image" src={require('../assets/profile/bobo-poppy.png')} alt="Bobo Poppy" />
+                  <img className="dp-image" src={require('../assets/profile/developmentPathways.png')} alt="Development Pathways" />
                 </div>
                 <div className="portfolio-label">
-                  <p className="portfolio-project">bobo</p>
-                  <p className="portfolio-company">Childcare paediatric assistant</p>
+                  <p className="portfolio-project">Development Pathways</p>
+                  <p className="portfolio-company">Professional growth and learning platform</p>
                 </div>
-              </div>
+              </Link>
               <div className="portfolio-item-wrapper">
                 <div className="portfolio-item">
                   <img className="skip-image" src={require('../assets/profile/Skip.png')} alt="SKIP x WESTJET" />

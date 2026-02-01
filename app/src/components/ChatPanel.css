@@ -15,7 +15,7 @@
 }
 
 .chat-panel.open {
-  width: 400px;
+  width: 475px;
 }
 
 .chat-header {
@@ -26,10 +26,10 @@
   justify-content: space-between;
 }
 
-.intro-message{
-    padding-top: 5rem;
-    padding-bottom: 0rem;
-    margin-bottom: 0px;
+.intro-message {
+  padding-top: 5rem;
+  padding-bottom: 0rem;
+  margin-bottom: 0px;
 }
 
 .chat-header h3 {

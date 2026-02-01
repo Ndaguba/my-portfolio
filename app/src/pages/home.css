@@ -24,7 +24,7 @@
 }
 
 .home-page {
-  
+
   transition: padding 300ms ease;
   padding-top: 20px;
   width: 1200px;
@@ -35,8 +35,9 @@
 /* Profile info banner (working at / position / location) */
 .profile-info {
   display: flex;
-  gap: 74px;
-  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
   margin-bottom: 45px;
   margin-top: 38px;
 }
@@ -44,7 +45,8 @@
 .profile-column {
   text-align: left;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
   gap: 4px;
 }
 
@@ -52,7 +54,12 @@
   font-size: 0.8rem;
   letter-spacing: 2px;
   color: var(--muted);
-  margin: 0 0 8px 0;
+  margin: 0;
+  padding: 0;
+}
+
+.profile-icon {
+  font-size: 1.2rem;
 }
 
 .profile-value {
@@ -81,30 +88,30 @@ h1 {
   font-size: 1.4rem;
 }
 
-.intro-message{
-    font-size: 3rem;
-    color: var(--text);
-    transition: font-size 300ms ease;
+.intro-message {
+  font-size: 3rem;
+  color: var(--text);
+  transition: font-size 300ms ease;
 }
 
 .intro-message .o-image {
-    display: inline-block;
-    vertical-align: middle;
-    width: 0.7em;
-    height: 0.7em;
-    margin: 0 -0.02em;
-    position: relative;
-    top: -0.05em;
+  display: inline-block;
+  vertical-align: middle;
+  width: 0.7em;
+  height: 0.7em;
+  margin: 0 -0.02em;
+  position: relative;
+  top: -0.05em;
 }
 
 .intro-message .o-image img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 11px;
-    margin-left: 5px;
-    margin-right: 0.5px;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 11px;
+  margin-left: 5px;
+  margin-right: 0.5px;
 }
 
 .main-content.panel-open .intro-message {
@@ -124,7 +131,7 @@ h1 {
 
 .portfolio-grid {
   display: flex;
- flex-direction: column;
+  flex-direction: column;
   gap: 56px;
 }
 
@@ -134,14 +141,33 @@ h1 {
   gap: 12px;
 }
 
+.link-wrapper {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 300ms ease;
+}
+
+.link-wrapper:hover {
+  opacity: 0.9;
+}
+
 .portfolio-item {
-  background: #f3f4f6; /* light grey */
+  background: #f3f4f6;
+  /* light grey */
   min-height: 680px;
   border-radius: 4px;
 }
 
 /* BOBO image */
 .bobo-image {
+  height: 610px;
+  width: auto;
+  display: block;
+  margin: 45px auto 0 auto;
+}
+
+/* Development Pathways image */
+.dp-image {
   height: 610px;
   width: auto;
   display: block;
@@ -167,7 +193,7 @@ h1 {
 
 /* Shrink Ophir image slightly when right panel is open */
 .main-content.panel-open .ophir-image {
-  height: 300px;
+  height: 450px;
 }
 
 /* Skip x WestJet image */
@@ -186,13 +212,14 @@ h1 {
   margin: 120px auto 0 auto;
   transition: height 300ms ease;
 }
+
 /* Shrink Mossy image slightly when right panel is open */
 .mossy-image {
   transition: height 300ms ease;
 }
 
 .main-content.panel-open .mossy-image {
-  height: 300px;
+  height: 450px;
 }
 
 .portfolio-label {
@@ -218,13 +245,14 @@ h1 {
 }
 
 .theme-dark .portfolio-item {
-  background: rgba(255,255,255,0.03);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 @media (max-width: 768px) {
   .main-content.panel-open {
     margin-right: 0;
   }
+
   /* On small screens make the chat take full width and don't push */
   .chat-panel.open {
     width: 100% !important;

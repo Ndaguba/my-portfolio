@@ -3,14 +3,21 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import './styles/theme.css';
 import { ThemeProvider } from './context/ThemeContext';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/home';
+import DevelopmentPathways from './pages/DevelopmentPathways';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ThemeProvider>
-      <Home />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/development-pathways" element={<DevelopmentPathways />} />
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>
 );

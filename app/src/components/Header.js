@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Header.css';
 import { LuSparkles } from "react-icons/lu";
 
@@ -8,20 +9,20 @@ export default function Header({ onChatToggle, isChatOpen }) {
     <header className="site-header">
       <div className="container">
         <div className="brand">
-          <span className="brand-name">EMEKA NDAGUBA</span>
+          <Link to="/" className="brand-link">
+            <span className="brand-name">EMEKA NDAGUBA</span>
+          </Link>
         </div>
         <nav className="nav">
-          <a href="/">WORK</a>
+          <Link to="/">WORK</Link>
           <a href="/#projects">ABOUT</a>
           <a href="/#contact">RESUME</a>
-          <a href="/#stories">STARTUP STORIES</a>
-        </nav>
-        <div className="actions">
           <p className='chat-trigger' onClick={onChatToggle}>
             <LuSparkles className="emekaLLM-icon" />
-            {!isChatOpen && <span className="chat-trigger-text">EMEKALLM</span>}
+            {!isChatOpen && <span className="chat-trigger-text"></span>}
           </p>
-        </div>
+        </nav>
+        <div className="actions"></div>
       </div>
     </header>
   );
