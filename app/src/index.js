@@ -6,17 +6,38 @@ import { ThemeProvider } from './context/ThemeContext';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/home';
 import DevelopmentPathways from './pages/DevelopmentPathways';
+import EchoDesignSystem from './pages/EchoDesignSystem';
+import DesignSystems from './pages/DesignSystems';
+import Loading from './components/Loading';
 import reportWebVitals from './reportWebVitals';
+
+const App = () => {
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    // Shared one-time loader for the entire app session
+    const t = setTimeout(() => setLoading(false), 3000);
+    return () => clearTimeout(t);
+  }, []);
+
+  if (loading) return <Loading />;
+
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/development-pathways" element={<DevelopmentPathways />} />
+      <Route path="/echo-design-system" element={<EchoDesignSystem />} />
+      <Route path="/design-systems" element={<DesignSystems />} />
+    </Routes>
+  );
+};
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ThemeProvider>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/development-pathways" element={<DevelopmentPathways />} />
-        </Routes>
+        <App />
       </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>

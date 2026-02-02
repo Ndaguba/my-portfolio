@@ -10,32 +10,21 @@ import Loading from '../components/Loading';
 
 export default function Home() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Wait for 3s, then hide loader
-    const t = setTimeout(() => setLoading(false), 3000);
-    return () => clearTimeout(t);
-  }, []);
-
-  if (loading) return <Loading />;
 
   return (
     <div className="home-container">
       <div className={`main-content ${isPanelOpen ? 'panel-open' : ''}`}>
         <Header onChatToggle={() => setIsPanelOpen(!isPanelOpen)} isChatOpen={isPanelOpen} />
         <main className="home-page">
-          <p className='intro-message'>I'm Emeka, a pr<span className="o-image"><img src={require('../assets/Emeka.png')} alt="o" /></span> duct<br></br> designer that <i>writes code.</i></p>
-          <section className="profile-info">
-            <div className="profile-column">
-              <PiBriefcase className='profile-icon' />
-              <p className="profile-value">Senior product designer @ bobo app, Prevoisly at SKIP</p>
+          <div className="hero-section">
+            <div className="intro-group">
+              <span className="intro-primary">Emeka Ndaguba — Senior Product Designer</span>
+              <h1 className='intro-secondary'>
+                I design, build, and ship 0 → 1 products for startups and scale-ups. Currently at Bobo App (previously at SkipTheDishes). I focus on turning messy ideas into simple, scalable experiences.
+              </h1>
             </div>
-            <div className="profile-column">
-              <IoLocationOutline className='profile-icon' />
-              <p className="profile-value">Winnipeg, Manitoba, Canada</p>
-            </div>
-          </section>
+
+          </div>
 
           <section className="portfolio-section">
             <div className="portfolio-grid">
@@ -46,6 +35,15 @@ export default function Home() {
                 <div className="portfolio-label">
                   <p className="portfolio-project">Development Pathways</p>
                   <p className="portfolio-company">Professional growth and learning platform</p>
+                </div>
+              </Link>
+              <Link to="/echo-design-system" className="portfolio-item-wrapper link-wrapper">
+                <div className="portfolio-item">
+                  <img className="echo-image" src={require('../assets/profile/echo.png')} alt="echo Design System" />
+                </div>
+                <div className="portfolio-label">
+                  <p className="portfolio-project">echo Design System</p>
+                  <p className="portfolio-company">Internal design system for Bobo App</p>
                 </div>
               </Link>
               <div className="portfolio-item-wrapper">
@@ -73,15 +71,6 @@ export default function Home() {
                 <div className="portfolio-label">
                   <p className="portfolio-project">Ophir Labs AI</p>
                   <p className="portfolio-company">AI agents for HR</p>
-                </div>
-              </div>
-              <div className="portfolio-item-wrapper">
-                <div className="portfolio-item">
-                  <img className="mossy-image" src={require('../assets/profile/mossyAI.png')} alt="Mossy AI" />
-                </div>
-                <div className="portfolio-label">
-                  <p className="portfolio-project">Mossy AI bookkeeping</p>
-                  <p className="portfolio-company">MOSSY AI</p>
                 </div>
               </div>
             </div>

@@ -10,11 +10,12 @@ export default function Header({ onChatToggle, isChatOpen }) {
       <div className="container">
         <div className="brand">
           <Link to="/" className="brand-link">
-            <span className="brand-name">EMEKA NDAGUBA</span>
+            <span className="brand-name">Emeka Ndaguba</span>
           </Link>
         </div>
         <nav className="nav">
           <Link to="/">WORK</Link>
+          <Link to="/design-systems">DESIGN SYSTEMS</Link>
           <a href="/#projects">ABOUT</a>
           <a href="/#contact">RESUME</a>
           <p className='chat-trigger' onClick={onChatToggle}>
@@ -22,7 +23,7 @@ export default function Header({ onChatToggle, isChatOpen }) {
             {!isChatOpen && <span className="chat-trigger-text"></span>}
           </p>
         </nav>
-        <div className="actions"></div>
+
       </div>
     </header>
   );

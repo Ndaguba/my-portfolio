@@ -158,6 +158,63 @@
     color: var(--muted);
 }
 
+.foundation-column {
+    margin-bottom: 80px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid var(--divider-default);
+}
+
+.foundation-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+
+.foundation-header h3 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.tech-badge {
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--primary);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.foundation-column ul {
+    margin-top: 24px;
+    list-style: none;
+    padding: 0;
+}
+
+.foundation-column li {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+    color: var(--text);
+}
+
+.foundation-column li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.foundation-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
 /* Metric Cards */
 .metrics-grid {
     display: grid;

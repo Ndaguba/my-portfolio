@@ -1,7 +1,7 @@
 .home-container {
   display: flex;
   flex-direction: row;
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   overflow: hidden;
   box-sizing: border-box;
@@ -9,27 +9,28 @@
 
 .main-content {
   flex: 1;
-  flex-shrink: 1;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;
-  transition: margin-right 500ms ease;
   box-sizing: border-box;
 }
 
-/* When the (fixed) chat panel is open we push the main content left
-   by adding a right margin equal to the panel width. */
-.main-content.panel-open {
-  margin-right: 400px;
-}
+/* Panel now pushes content naturally via flex layout in home-container */
 
 .home-page {
-
   transition: padding 300ms ease;
   padding-top: 20px;
-  width: 1200px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 1350px;
+  margin-left: auto;
+  margin-right: auto;
   padding-bottom: 4rem;
+  padding-left: 24px;
+  padding-right: 24px;
+  box-sizing: border-box;
+  flex: 1;
 }
 
 /* Profile info banner (working at / position / location) */
@@ -40,6 +41,25 @@
   align-items: flex-start;
   margin-bottom: 45px;
   margin-top: 38px;
+}
+
+.page-header {
+  margin-bottom: 48px;
+  margin-top: 32px;
+}
+
+.page-title {
+  font-size: 3rem;
+  margin: 0 0 16px 0;
+  font-weight: 500;
+}
+
+.page-subtitle {
+  font-size: 1.25rem;
+  color: var(--muted);
+  max-width: 600px;
+  line-height: 1.5;
+  margin: 0;
 }
 
 .profile-column {
@@ -84,43 +104,52 @@ h1 {
   transition: font-size 300ms ease;
 }
 
-.main-content.panel-open h1 {
-  font-size: 1.4rem;
+/* Page width handled by responsive max-width */
+
+.main-content.panel-open .intro-secondary {
+  font-size: 1.5rem;
 }
 
-.intro-message {
-  font-size: 3rem;
+.intro-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 900px;
+}
+
+.intro-primary {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.2px;
+}
+
+.intro-secondary {
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.45;
   color: var(--text);
+  margin: 0;
   transition: font-size 300ms ease;
 }
 
-.intro-message .o-image {
-  display: inline-block;
-  vertical-align: middle;
-  width: 0.7em;
-  height: 0.7em;
-  margin: 0 -0.02em;
-  position: relative;
-  top: -0.05em;
+.hero-section {
+  margin-top: 60px;
+  margin-bottom: 48px;
 }
 
-.intro-message .o-image img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 11px;
-  margin-left: 5px;
-  margin-right: 0.5px;
-}
 
-.main-content.panel-open .intro-message {
-  font-size: 2.5rem;
+/* Shrink portfolio grid when panel is open */
+.main-content.panel-open .portfolio-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
 }
 
 /* Portfolio grid */
 .portfolio-section {
   margin-top: 32px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .portfolio-title {
@@ -130,102 +159,84 @@ h1 {
 }
 
 .portfolio-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 56px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px;
+  width: 100%;
 }
 
 .portfolio-item-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .link-wrapper {
+  display: block;
+  width: 100%;
   text-decoration: none;
   color: inherit;
-  transition: opacity 300ms ease;
+  transition: transform 300ms ease, opacity 300ms ease;
 }
 
 .link-wrapper:hover {
-  opacity: 0.9;
+  opacity: 0.95;
+  transform: translateY(-4px);
 }
 
 .portfolio-item {
   background: #f3f4f6;
   /* light grey */
-  min-height: 680px;
-  border-radius: 4px;
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
 
-/* BOBO image */
-.bobo-image {
-  height: 610px;
-  width: auto;
+/* Base project image styles */
+.portfolio-item img {
+  width: 32%;
+  max-width: 100%;
+  height: auto;
   display: block;
-  margin: 45px auto 0 auto;
+  object-fit: contain;
+  transition: transform 500ms ease;
+  border-radius: 12px;
 }
 
-/* Development Pathways image */
-.dp-image {
-  height: 610px;
-  width: auto;
-  display: block;
-  margin: 45px auto 0 auto;
+.link-wrapper:hover .portfolio-item img {
+  transform: scale(1.05);
 }
 
-/* Forella image */
-.forella-image {
-  height: 610px;
-  width: auto;
-  display: block;
-  margin: 45px auto 0 auto;
-}
-
-/* Ophir Labs image */
+/* Individual project adjustments */
+.echo-image,
 .ophir-image {
-  height: 475px;
-  width: auto;
-  display: block;
-  margin: 120px auto 0 auto;
-  transition: height 300ms ease;
+  width: 88% !important;
 }
 
-/* Shrink Ophir image slightly when right panel is open */
+.dp-image,
+.skip-image,
+.forella-image {
+  margin: 0;
+}
+
+.main-content.panel-open .portfolio-item img {
+  width: 30%;
+}
+
+.main-content.panel-open .echo-image,
 .main-content.panel-open .ophir-image {
-  height: 450px;
-}
-
-/* Skip x WestJet image */
-.skip-image {
-  height: 610px;
-  width: auto;
-  display: block;
-  margin: 45px auto 0 auto;
-}
-
-/* Mossy AI image */
-.mossy-image {
-  height: 475px;
-  width: auto;
-  display: block;
-  margin: 120px auto 0 auto;
-  transition: height 300ms ease;
-}
-
-/* Shrink Mossy image slightly when right panel is open */
-.mossy-image {
-  transition: height 300ms ease;
-}
-
-.main-content.panel-open .mossy-image {
-  height: 450px;
+  width: 80% !important;
 }
 
 .portfolio-label {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  margin-bottom: 32px;
 }
 
 .portfolio-project {
@@ -248,10 +259,22 @@ h1 {
   background: rgba(255, 255, 255, 0.03);
 }
 
-@media (max-width: 768px) {
-  .main-content.panel-open {
-    margin-right: 0;
+@media (max-width: 900px) {
+  .home-page {
+    width: 90%;
   }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-item {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Panel pushing on mobile handled by fixed width overlay */
 
   /* On small screens make the chat take full width and don't push */
   .chat-panel.open {

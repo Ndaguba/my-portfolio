@@ -1,25 +1,23 @@
 .chat-panel {
-  /* Fixed to viewport so it does not scroll with the page */
-  position: fixed;
-  top: 0;
-  right: 0;
+  /* Side-by-side flex layout item */
   width: 0;
   height: 100vh;
   background: var(--panel-bg);
-  border-left: 1px solid var(--divider-default);
+  border-left: 0px solid var(--divider-default);
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  transition: width 500ms ease;
-  z-index: 1000;
+  transition: width 500ms ease, border-left 500ms ease;
+  flex-shrink: 0;
 }
 
 .chat-panel.open {
   width: 475px;
+  border-left: 1px solid var(--divider-default);
 }
 
 .chat-header {
-  padding: 17px 20px;
+  padding: 11px 20px;
   border-bottom: 1px solid var(--divider-default);
   display: flex;
   align-items: center;
@@ -27,7 +25,7 @@
 }
 
 .intro-message {
-  padding-top: 5rem;
+  padding-top: 2rem;
   padding-bottom: 0rem;
   margin-bottom: 0px;
 }
@@ -77,7 +75,7 @@
 
 .chat-messages {
   flex: 1;
-  overflow-y: auto;
+  overflow-y: hidden;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -85,6 +83,16 @@
   position: relative;
   min-height: 0;
   -webkit-overflow-scrolling: touch;
+  /* Hide scrollbar */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE/Edge */
+}
+
+.chat-messages::-webkit-scrollbar {
+  display: none;
+  /* Chrome/Safari/Opera */
 }
 
 .empty-state {

@@ -9,15 +9,10 @@ import Loading from '../components/Loading';
 
 export default function DevelopmentPathways() {
     const [isPanelOpen, setIsPanelOpen] = useState(false);
-    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        const t = setTimeout(() => setLoading(false), 800);
-        return () => clearTimeout(t);
     }, []);
-
-    if (loading) return <Loading />;
 
     return (
         <div className="case-study-container">

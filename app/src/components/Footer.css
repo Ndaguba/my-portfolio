@@ -26,7 +26,7 @@
   cursor: pointer;
   color: var(--muted);
   font-size: 16px;
-  padding:8px;
+  padding: 8px;
 }
 
 .theme-option.active {
@@ -45,7 +45,7 @@
 
 .footer-left {
   color: var(--muted);
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .footer-right {
@@ -64,9 +64,9 @@
 }
 
 .social-icon:hover {
-  background: rgba(0,0,0,0.04);
+  background: rgba(0, 0, 0, 0.04);
 }
 
 .theme-dark .social-icon:hover {
-  background: rgba(255,255,255,0.04);
+  background: rgba(255, 255, 255, 0.04);
 }
