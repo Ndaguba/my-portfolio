@@ -2,12 +2,16 @@
   "name": "my-portfolio",
   "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "app",
+    "api"
+  ],
   "dependencies": {},
   "scripts": {
-    "start": "cd app && react-scripts start",
-    "build": "cd app && react-scripts build",
-    "test": "cd app && react-scripts test",
-    "eject": "cd app && react-scripts eject"
+    "start": "npm start -w app",
+    "build": "npm run build -w app",
+    "test": "npm test -w app",
+    "eject": "npm run eject -w app"
   },
   "browserslist": {
     "production": [
