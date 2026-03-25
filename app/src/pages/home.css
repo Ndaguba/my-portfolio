@@ -106,10 +106,6 @@ h1 {
 
 /* Page width handled by responsive max-width */
 
-.main-content.panel-open .intro-secondary {
-  font-size: 1.5rem;
-}
-
 .hero-section {
   padding-top: 40px;
   position: relative;
@@ -361,6 +357,7 @@ h1 {
   flex-direction: column;
   gap: 4px;
   margin-bottom: 32px;
+  margin-top: 24px;
 }
 
 .portfolio-project {
@@ -381,6 +378,15 @@ h1 {
 
 .theme-dark .portfolio-item {
   background: rgba(255, 255, 255, 0.03);
+}
+
+/* Dark mode: make the tab indicator visible (white) and active tab text clear */
+.theme-dark .tab-indicator {
+  background: #ffffff !important;
+}
+
+.theme-dark .category-tabs .tab.active {
+  color: #ffffff;
 }
 
 @media (max-width: 900px) {

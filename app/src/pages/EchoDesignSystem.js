@@ -25,8 +25,8 @@ export default function EchoDesignSystem() {
                     </Link>
 
                     <header className="case-study-header">
-                        <h1 className="case-study-title">echo Design System</h1>
-                        <p className="case-study-subtitle">A human-centered, token-based foundation built to scale consistency and accessibility across Bobo's product ecosystem.</p>
+                        <h1 className="case-study-title">ECHO 2 — Reclaiming the Design DNA of Bobo</h1>
+                        <p className="case-study-subtitle">A tokenized, human-centered design system built to transition Bobo from a static agency handoff to a scalable, living product language.</p>
                     </header>
 
                     {/* PROJECT OVERVIEW */}
