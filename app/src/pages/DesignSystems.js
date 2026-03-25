@@ -33,7 +33,7 @@ export default function DesignSystems() {
                                 </div>
                                 <div className="portfolio-label">
                                     <p className="portfolio-project">echo Design System</p>
-                                    <p className="portfolio-company">Internal design system for Bobo App</p>
+                                    <p className="portfolio-company">Internal design system for Bobo Health</p>
                                 </div>
                             </Link>
 

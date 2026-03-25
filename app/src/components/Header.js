@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
-import { LuSparkles } from "react-icons/lu";
+import { LuSparkles, LuSun, LuMenu } from "react-icons/lu";
 
 export default function Header({ onChatToggle, isChatOpen }) {
 
@@ -13,17 +13,17 @@ export default function Header({ onChatToggle, isChatOpen }) {
             <span className="brand-name">Emeka Ndaguba</span>
           </Link>
         </div>
-        <nav className="nav">
-          <Link to="/">WORK</Link>
-          <Link to="/design-systems">DESIGN SYSTEMS</Link>
-          <a href="/#projects">ABOUT</a>
-          <a href="/#contact">RESUME</a>
-          <p className='chat-trigger' onClick={onChatToggle}>
-            <LuSparkles className="emekaLLM-icon" />
-            {!isChatOpen && <span className="chat-trigger-text"></span>}
-          </p>
-        </nav>
-
+        
+        <div className="header-actions">
+          <button className="book-call-btn">
+            <span className="phone-icon">📞</span> Book a call
+          </button>
+          
+          <div className="header-icons">
+             <LuSun className="header-icon" />
+             <LuMenu className="header-icon" onClick={onChatToggle} />
+          </div>
+        </div>
       </div>
     </header>
   );
