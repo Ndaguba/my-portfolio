@@ -1,5 +1,27 @@
 .site-header {
-  background: var(--header-bg);
+  background: rgba(255, 255, 255, 0.01);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.theme-dark .site-header {
+  background: rgba(0, 0, 0, 0.01);
+}
+
+.site-header.scrolled {
+  background: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.theme-dark .site-header.scrolled {
+  background: rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .site-header .container {
@@ -7,10 +29,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 12px;
+  padding: 16px 24px;
   width: 100%;
   max-width: 1650px;
   box-sizing: border-box;
+}
+
+.site-header.scrolled .container {
+  padding: 12px 24px;
 }
 
 .brand {
@@ -39,24 +65,28 @@
 }
 
 .book-call-btn {
-  padding: 8px 16px;
-  border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background: white;
+  padding: 10px 24px;
+  border-radius: 50px;
+  border: none;
+  background: #f5f5f5;
   color: black;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   text-transform: capitalize;
   transition: all 0.2s ease;
 }
 
+.btn-icon {
+  width: 18px;
+  height: 18px;
+}
+
 .book-call-btn:hover {
   background: #f8f8f8;
-  border-color: rgba(0, 0, 0, 0.2);
 }
 
 .header-icons {
@@ -78,28 +108,11 @@
 }
 
 .theme-dark .book-call-btn {
-  background: #111;
+  background: rgba(255, 255, 255, 0.05); /* Use translucent white for better blending */
   color: white;
-  border-color: rgba(255, 255, 255, 0.1);
+  border: none;
 }
 
 .theme-dark .book-call-btn:hover {
-  background: #222;
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Base header layout */
-.site-header {
-  background: var(--background);
-}
-
-.site-header .container {
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 24px 0px;
-  width: 100%;
-  max-width: 1650px;
-  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.1);
 }

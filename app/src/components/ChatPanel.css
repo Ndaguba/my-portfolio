@@ -1,27 +1,35 @@
 .chat-panel {
-  /* Side-by-side flex layout item */
-  width: 0;
-  height: 100vh;
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 440px;
+  height: min(700px, calc(100vh - 100px));
   background: var(--panel-bg);
-  border-left: 0px solid var(--divider-default);
+  border: 1px solid var(--divider-default);
+  border-radius: 24px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  transition: width 500ms ease, border-left 500ms ease;
-  flex-shrink: 0;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  z-index: 2000;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .chat-panel.open {
-  width: 475px;
-  border-left: 1px solid var(--divider-default);
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .chat-header {
-  padding: 11px 20px;
-  border-bottom: 1px solid var(--divider-default);
-  display: flex;
+  padding: 15px 20px 11px;
+  border-bottom: none;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
 }
 
 .intro-message {
@@ -41,6 +49,7 @@
   flex-direction: row;
   align-items: center;
   gap: 8px;
+  justify-self: end;
 }
 
 .action-btn {
@@ -129,8 +138,9 @@
 
 .suggested-prompts {
   display: flex;
-  flex-direction: column;
-  gap: 3px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
   opacity: 0;
   transform: translateY(10px);
   transition: all 600ms ease 250ms;
@@ -146,10 +156,11 @@
   flex-direction: row;
   align-items: center;
   gap: 5px;
-  padding: 8px 4px;
-  background: transparent;
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.04);
   border: none;
-  border-radius: 8px;
+  border-radius: 40px;
+  width: fit-content;
   text-align: left;
   color: var(--muted);
   cursor: pointer;
@@ -181,8 +192,12 @@
   border-color: var(--primary);
 }
 
-.theme-dark .prompt-button:hover {
+.theme-dark .prompt-button {
   background: rgba(255, 255, 255, 0.05);
+}
+
+.theme-dark .prompt-button:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .message {

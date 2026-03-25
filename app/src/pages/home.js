@@ -6,13 +6,61 @@ import Header from '../components/Header';
 import ChatPanel from '../components/ChatPanel';
 import { IoLocationOutline } from "react-icons/io5";
 import Footer from '../components/Footer';
-import Loading from '../components/Loading';
 
 export default function Home() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
-  const [activeFilter, setActiveFilter] = useState('All');
+
+  const renderTitle = () => {
+    const lines = [
+      "I design products",
+      "for impact and scale"
+    ];
+    let totalCharIndex = 0;
+    return lines.map((line, lineIndex) => (
+      <span key={lineIndex} style={{ display: 'block', overflow: 'hidden', paddingBottom: '0.2em', marginBottom: '-0.2em' }}>
+        {line.split('').map((char, charIndex) => {
+          const delay = totalCharIndex * 0.05;
+          totalCharIndex++;
+          return (
+            <span 
+              key={charIndex} 
+              className="char" 
+              style={{ animationDelay: `${delay}s` }}
+            >
+              {char === ' ' ? '\u00A0' : char}
+            </span>
+          );
+        })}
+      </span>
+    ));
+  };
 
   const projects = [
+    {
+      id: "skip-westjet",
+      title: "SkipTheDishes x WestJet",
+      company: "The largest food delivery partnership",
+      image: require('../assets/profile/Skip.png'),
+      category: "B2C",
+      imgClass: "skip-image"
+    },
+    {
+      id: "pain-discomfort",
+      title: "Pain & Discomfort",
+      company: "Solving for pediatric health outcomes",
+      image: require('../assets/profile/bobo-poppy.png'),
+      category: "B2C",
+      imgClass: "bobo-image"
+    },
+    {
+      id: "bobo-design-system",
+      title: "Bobo Design System",
+      company: "Internal design system for healthcare",
+      image: require('../assets/profile/echo.png'),
+      category: "Design systems",
+      link: "/echo-design-system",
+      imgClass: "echo-image"
+    },
     {
       id: "development-pathways",
       title: "Development Pathways",
@@ -21,94 +69,35 @@ export default function Home() {
       category: "B2B",
       link: "/development-pathways",
       imgClass: "dp-image"
-    },
-    {
-      id: "echo-design-system",
-      title: "echo Design System",
-      company: "Internal design system for Bobo Health",
-      image: require('../assets/profile/echo.png'),
-      category: "Design systems",
-      link: "/echo-design-system",
-      imgClass: "echo-image"
-    },
-    {
-      id: "skip-westjet",
-      title: "SKIP x WESTJET",
-      company: "SKIPTHEDISHES",
-      image: require('../assets/profile/Skip.png'),
-      category: "B2C",
-      imgClass: "skip-image"
-    },
-    {
-      id: "forella-ai",
-      title: "Forella AI",
-      company: "AI personal assistant in your pocket",
-      image: require('../assets/profile/forella.png'),
-      category: "B2C",
-      imgClass: "forella-image"
-    },
-    {
-      id: "ophir-labs-ai",
-      title: "Ophir Labs AI",
-      company: "AI agents for HR",
-      image: require('../assets/profile/OPhirlabs.png'),
-      category: "B2B",
-      imgClass: "ophir-image"
     }
   ];
 
-  const categories = ['All', 'B2C', 'B2B', 'Design systems'];
-
-  const filteredProjects = activeFilter === 'All' 
-    ? projects 
-    : projects.filter(project => project.category === activeFilter);
-
   return (
     <div className="home-container">
-      <div className={`main-content ${isPanelOpen ? 'panel-open' : ''}`}>
+      <div className="main-content">
         <Header onChatToggle={() => setIsPanelOpen(!isPanelOpen)} isChatOpen={isPanelOpen} />
         <main className="home-page">
           <div className="hero-section">
             <div className="hero-main-content">
               <h1 className="hero-title">
-                I design products<br />
-                for impact, at scale.
+                {renderTitle()}
               </h1>
               
               <div className="hero-subtext-group">
                 <p className="hero-description">
-                  Hey - I’m Emeka. Senior Product designer currently building the future of pediatric health at Bobo Health. Previously at SkipTheDishes.
+                  Hey - I’m Emeka. Product designer currently building the future of pediatric care at Bobo Health. Previously at SkipTheDishes.
                 </p>
                 <div className="hero-education-row">
-                   <p className="hero-education">BSc Computer Science, University of Winnipeg</p>
+                    <p className="hero-education">Based in Canada</p>
                 </div>
               </div>
             </div>
 
-            <div className="hero-footer">
-              <div className="hero-footer-line"></div>
-              <div className="hero-footer-content">
-                <span className="hero-location">BASED IN WINNIPEG, MANITOBA</span>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hero-social-link">LINKEDIN ↗</a>
-              </div>
-            </div>
           </div>
 
           <section className="portfolio-section">
-            <div className="filter-group">
-              {categories.map(category => (
-                <button
-                  key={category}
-                  className={`filter-pill ${activeFilter === category ? 'active' : ''}`}
-                  onClick={() => setActiveFilter(category)}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
-
             <div className="portfolio-grid">
-              {filteredProjects.map(project => (
+              {projects.map(project => (
                 project.link ? (
                   <Link key={project.id} to={project.link} className="portfolio-item-wrapper link-wrapper">
                     <div className="portfolio-item">
@@ -140,7 +129,7 @@ export default function Home() {
             </div>
             <div className="about-right">
               <p className="about-text">
-                I'm Emeka, a Senior Product Designer based in Winnipeg with a background in Computer Science. 
+                I'm Emeka, a Product Designer based in Winnipeg with a background in Computer Science. 
                 Currently at <span className="highlight-green">Bobo Health</span> leading the design of AI-powered pediatric care solutions. 
                 I specialize in building B2C consumer apps that feel human and scale easily.
               </p>
@@ -161,7 +150,7 @@ export default function Home() {
                 <div className="experience-list">
                   <ExperienceItem 
                     company="Bobo Health"
-                    role="Senior Product Designer"
+                    role="Product Designer"
                     date="Aug 2023 - Present"
                     description="Leading the design of AI-powered pediatric care solutions. Built 'echo', a human-centered design system to scale Bobo's product ecosystem and accelerate development cycles."
                   />

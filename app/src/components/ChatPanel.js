@@ -31,22 +31,25 @@ export default function ChatPanel({ isOpen, onClose }) {
   const suggestedPrompts = [
     "Tell me about your design process",
     "What projects have you worked on?",
-    "How do you approach problem-solving?"
+    "How do you approach problem-solving?",
+    "Book a meeting"
   ];
 
   return (
     <div className={`chat-panel ${isOpen ? 'open' : ''}`}>
       <div className="chat-header">
+        <button className="action-btn" aria-label="Redo">
+          <LiaRedoAltSolid />
+        </button>
         <h3>EMEKALLM</h3>
         <div className="chat-header-actions">
-          <button className="action-btn" aria-label="Redo">
-            <LiaRedoAltSolid />
-          </button>
           <button className="action-btn" aria-label="Microphone">
             <PiMicrophoneBold />
           </button>
           <button className="close-btn" onClick={onClose} aria-label="Close chat">
-            <LuPanelLeftOpen />
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
           </button>
         </div>
       </div>

@@ -95,9 +95,6 @@
   }
 }
 
-.main-content.panel-open .home-page {
-  padding: 14px 12px;
-}
 
 h1 {
   font-size: 2rem;
@@ -118,73 +115,67 @@ h1 {
 .hero-main-content {
   display: flex;
   flex-direction: column;
-  gap: 120px;
+  gap: 57px;
   position: relative;
   z-index: 2;
+  align-items: center;
 }
 
 .hero-title {
-  font-size: 6.5rem;
+  font-size: 5rem;
   font-weight: 500;
-  line-height: 0.95;
+  line-height: 1.1;
   letter-spacing: -2.5px;
   margin: 0;
   color: var(--text);
-  text-align: left;
+  text-align: center;
+  overflow: visible;
+}
+
+.hero-title .char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(1.2em);
+  animation: charRiseup 0.5s cubic-bezier(0.2, 0.6, 0.35, 1) forwards;
+}
+
+@keyframes charRiseup {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-subtext-group {
-    max-width: 450px;
+    max-width: 514px;
+    text-align: center;
+    opacity: 0;
+    animation: fadeInSecondary 1.2s ease-out 2.5s forwards;
+}
+
+@keyframes fadeInSecondary {
+  to {
+    opacity: 1;
+  }
 }
 
 .hero-description {
-  font-size: 0.85rem;
+  font-size: 1rem;
   line-height: 1.6;
   color: var(--text);
-  margin-bottom: 8px;
+  margin-bottom: 20px;
   font-weight: 400;
+  margin-top: 0px;
 }
 
 .hero-education {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
-.hero-footer {
-  width: 100%;
-  margin-top: 40px;
-}
 
-.hero-footer-line {
-  width: 100%;
-  height: 1px;
-  background-color: var(--border-color, rgba(0, 0, 0, 0.08));
-  margin-bottom: 12px;
-}
-
-.hero-footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.hero-location, .hero-social-link {
-  font-size: 0.7rem;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-decoration: none;
-}
-
-.hero-social-link:hover {
-  color: var(--text);
-}
-
-.theme-dark .hero-footer-line {
-  background-color: rgba(255, 255, 255, 0.1);
-}
 
 @media (max-width: 1024px) {
   .hero-title {
@@ -208,11 +199,6 @@ h1 {
 }
 
 
-/* Shrink portfolio grid when panel is open */
-.main-content.panel-open .portfolio-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
 
 /* Portfolio grid */
 .portfolio-section {
@@ -229,7 +215,7 @@ h1 {
   flex-direction: row;
   justify-content: center;
   gap: 8px;
-  margin-bottom: 44px;
+  margin-bottom: 77px;
   flex-wrap: wrap;
 }
 
