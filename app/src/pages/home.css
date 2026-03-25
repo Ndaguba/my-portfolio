@@ -391,8 +391,9 @@ h1 {
 
 /* About Section */
 .about-section {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   gap: 60px;
   padding-top: 40px;
   margin-top: 180px;
@@ -427,6 +428,7 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 32px;
+  max-width: 700px; /* Explicitly constrain width */
 }
 
 .about-text {
