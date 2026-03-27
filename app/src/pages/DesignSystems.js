@@ -27,15 +27,15 @@ export default function DesignSystems() {
 
                     <section className="portfolio-section">
                         <div className="portfolio-grid">
-                            <Link to="/echo-design-system" className="portfolio-item-wrapper link-wrapper">
-                                <div className="portfolio-item">
-                                    <img className="echo-image" src={require('../assets/profile/echo.png')} alt="echo Design System" />
+                            <div className="portfolio-item-wrapper">
+                                <div className={`portfolio-item order-tracker-item`}>
+                                    <img className="order-tracker-image" src={require('../assets/profile/Delivery-tracker.png')} alt="Order Tracker Redesign" />
                                 </div>
                                 <div className="portfolio-label">
-                                    <p className="portfolio-project">echo Design System</p>
-                                    <p className="portfolio-company">Internal design system for Bobo Health</p>
+                                    <p className="portfolio-project">Order Tracker Redesign</p>
+                                    <p className="portfolio-company">The future of post-purchase logistics. A complete overhaul of the tracking experience to provide zero-friction visibility for millions of deliveries.</p>
                                 </div>
-                            </Link>
+                            </div>
 
                             {/* You can add more design system projects here in the future */}
                         </div>

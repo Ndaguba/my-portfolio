@@ -40,26 +40,16 @@ export default function Home() {
       id: "skip-westjet",
       title: "SkipTheDishes x WestJet",
       company: "The largest food delivery partnership",
-      image: require('../assets/profile/Skip.png'),
       category: "B2C",
       imgClass: "skip-image"
     },
     {
-      id: "pain-discomfort",
-      title: "Pain & Discomfort",
-      company: "Solving for pediatric health outcomes",
-      image: require('../assets/profile/bobo-poppy.png'),
-      category: "B2C",
-      imgClass: "bobo-image"
-    },
-    {
-      id: "bobo-design-system",
-      title: "Bobo Design System",
-      company: "Internal design system for healthcare",
-      image: require('../assets/profile/echo.png'),
-      category: "Design systems",
-      link: "/echo-design-system",
-      imgClass: "echo-image"
+      id: "order-tracker",
+      title: "Order Tracker Redesign",
+      company: "Real-time logistics and post-purchase tracking.",
+      image: require('../assets/profile/Delivery-tracker.png'),
+      category: "B2B",
+      imgClass: "order-tracker-image"
     },
     {
       id: "development-pathways",
@@ -100,8 +90,8 @@ export default function Home() {
               {projects.map(project => (
                 project.link ? (
                   <Link key={project.id} to={project.link} className="portfolio-item-wrapper link-wrapper">
-                    <div className="portfolio-item">
-                      <img className={project.imgClass} src={project.image} alt={project.title} />
+                    <div className={`portfolio-item ${project.id}-item`}>
+                      {project.image && <img className={project.imgClass} src={project.image} alt={project.title} />}
                     </div>
                     <div className="portfolio-label">
                       <p className="portfolio-project">{project.title}</p>
@@ -110,8 +100,8 @@ export default function Home() {
                   </Link>
                 ) : (
                   <div key={project.id} className="portfolio-item-wrapper">
-                    <div className="portfolio-item">
-                      <img className={project.imgClass} src={project.image} alt={project.title} />
+                    <div className={`portfolio-item ${project.id}-item`}>
+                      {project.image && <img className={project.imgClass} src={project.image} alt={project.title} />}
                     </div>
                     <div className="portfolio-label">
                       <p className="portfolio-project">{project.title}</p>
