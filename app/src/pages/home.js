@@ -37,28 +37,20 @@ export default function Home() {
 
   const projects = [
     {
-      id: "skip-westjet",
-      title: "SkipTheDishes x WestJet",
-      company: "The largest food delivery partnership",
+      id: "poppy-ai",
+      title: "Poppy AI",
+      company: "Pediatric AI Chatbot",
+      image: require('../assets/profile/Frame 23458.png'),
       category: "B2C",
-      imgClass: "skip-image"
+      imgClass: "poppy-image"
     },
     {
       id: "order-tracker",
       title: "Order Tracker Redesign",
-      company: "Real-time logistics and post-purchase tracking.",
+      company: "Real-time logistics and delivery tracking",
       image: require('../assets/profile/Delivery-tracker.png'),
       category: "B2B",
       imgClass: "order-tracker-image"
-    },
-    {
-      id: "development-pathways",
-      title: "Development Pathways",
-      company: "Professional growth and learning platform",
-      image: require('../assets/profile/developmentPathways.png'),
-      category: "B2B",
-      link: "/development-pathways",
-      imgClass: "dp-image"
     }
   ];
 

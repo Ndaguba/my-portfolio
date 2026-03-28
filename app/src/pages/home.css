@@ -265,21 +265,6 @@ h1 {
   width: 100%;
 }
 
-.portfolio-item-wrapper:first-child {
-  grid-column: span 2;
-}
-
-.portfolio-item-wrapper:first-child .portfolio-item {
-  aspect-ratio: 16 / 7;
-}
-
-.portfolio-item-wrapper:first-child .portfolio-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 0;
-}
-
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
@@ -309,7 +294,7 @@ h1 {
   background: #f3f4f6;
   /* light grey */
   aspect-ratio: 4 / 3;
-  border-radius: 0;
+  border-radius: 4px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -328,16 +313,47 @@ h1 {
   border-radius: 0;
 }
 
-.link-wrapper:hover .portfolio-item img {
+.portfolio-item-wrapper:hover .portfolio-item img {
   transform: scale(1.05);
 }
 
 /* Individual project adjustments */
+.poppy-ai-item {
+  background: transparent !important;
+}
+
+.development-pathways-item {
+  background: #f0f7ff !important; /* Soft blue-white */
+}
+
+.skip-westjet-item {
+  background: #ffffff !important; /* Clean white */
+}
+
+.poppy-image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transform: scale(1.4);
+}
+
+.portfolio-item-wrapper:hover .portfolio-item .poppy-image {
+  transform: scale(1.45);
+}
+
+.skip-image {
+  width: 80% !important;
+}
+
+.dp-image {
+  width: 90% !important;
+  margin: 0;
+}
+
 .order-tracker-image {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
-  border-radius: 0 !important;
 }
 
 .order-tracker-item {
@@ -349,8 +365,6 @@ h1 {
   width: 88% !important;
 }
 
-.dp-image,
-.skip-image,
 .forella-image {
   margin: 0;
 }
@@ -368,12 +382,12 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  margin-bottom: 32px;
-  margin-top: 24px;
+  margin-bottom: 12px;
+  margin-top: 10px;
 }
 
 .portfolio-project {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 500;
   color: var(--text);
   margin: 0;
