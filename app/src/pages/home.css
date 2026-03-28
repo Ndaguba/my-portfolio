@@ -261,20 +261,27 @@ h1 {
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 11px;
+  gap: 20px;
   width: 100%;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 .portfolio-item-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  animation: fadeIn 0.4s ease-out forwards;
+  gap: 7px;
+}
+
+@supports (animation-timeline: view()) {
+  .portfolio-item-wrapper {
+    animation: scrollFadeOut linear both;
+    animation-timeline: view();
+    animation-range: cover 60% exit 90%;
+  }
+}
+
+@keyframes scrollFadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0.2; transform: translateY(-20px); }
 }
 
 .link-wrapper {
@@ -291,15 +298,42 @@ h1 {
 }
 
 .portfolio-item {
+  position: relative;
   background: #f3f4f6;
   /* light grey */
   aspect-ratio: 4 / 3;
-  border-radius: 4px;
+  border-radius: 0px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   border: none;
+}
+
+.status-pill {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(65, 65, 65, 0.466);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #ffffff;
+  z-index: 20;
+  letter-spacing: 0.5px;
+  border-radius: 0; /* no radius as requested */
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  background: #22c55e; /* green dot */
+  border-radius: 50%;
 }
 
 /* Base project image styles */
@@ -323,11 +357,22 @@ h1 {
 }
 
 .development-pathways-item {
-  background: #f0f7ff !important; /* Soft blue-white */
+  background: transparent !important;
+}
+
+.dp-image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transform: scale(1.35);
+}
+
+.portfolio-item-wrapper:hover .portfolio-item .dp-image {
+  transform: scale(1.4);
 }
 
 .skip-westjet-item {
-  background: #ffffff !important; /* Clean white */
+  background: transparent !important;
 }
 
 .poppy-image {
@@ -342,12 +387,9 @@ h1 {
 }
 
 .skip-image {
-  width: 80% !important;
-}
-
-.dp-image {
-  width: 90% !important;
-  margin: 0;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
 }
 
 .order-tracker-image {

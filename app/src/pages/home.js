@@ -45,6 +45,23 @@ export default function Home() {
       imgClass: "poppy-image"
     },
     {
+      id: "development-pathways",
+      title: "Development Pathways",
+      company: "Digitizing CDIC clinical milestones into a tracking platform",
+      image: require('../assets/profile/Dev-pathways.png'),
+      category: "B2B",
+      link: "/development-pathways",
+      imgClass: "dp-image"
+    },
+    {
+      id: "skip-westjet",
+      title: "Skip x WestJet Partnership",
+      company: "Canada's largest food delivery partnership",
+      image: require('../assets/profile/SKIP X WESTJET.png'),
+      category: "B2C",
+      imgClass: "skip-image"
+    },
+    {
       id: "order-tracker",
       title: "Order Tracker Redesign",
       company: "Real-time logistics and delivery tracking",
@@ -67,7 +84,7 @@ export default function Home() {
               
               <div className="hero-subtext-group">
                 <p className="hero-description">
-                  Hey - I’m Emeka. Product designer currently building the future of pediatric care at Bobo Health. Previously at SkipTheDishes.
+                  Hey - I’m Emeka. Senior product designer currently building the future of pediatric care at Bobo Health. Previously at SkipTheDishes.
                 </p>
                 <div className="hero-education-row">
                     <p className="hero-education">Based in Canada</p>
@@ -83,6 +100,10 @@ export default function Home() {
                 project.link ? (
                   <Link key={project.id} to={project.link} className="portfolio-item-wrapper link-wrapper">
                     <div className={`portfolio-item ${project.id}-item`}>
+                      <div className="status-pill">
+                        <span className="status-dot"></span>
+                        SHIPPED
+                      </div>
                       {project.image && <img className={project.imgClass} src={project.image} alt={project.title} />}
                     </div>
                     <div className="portfolio-label">
@@ -93,6 +114,10 @@ export default function Home() {
                 ) : (
                   <div key={project.id} className="portfolio-item-wrapper">
                     <div className={`portfolio-item ${project.id}-item`}>
+                      <div className="status-pill">
+                        <span className="status-dot"></span>
+                        SHIPPED
+                      </div>
                       {project.image && <img className={project.imgClass} src={project.image} alt={project.title} />}
                     </div>
                     <div className="portfolio-label">
@@ -111,7 +136,7 @@ export default function Home() {
             </div>
             <div className="about-right">
               <p className="about-text">
-                I'm Emeka, a Product Designer based in Winnipeg with a background in Computer Science. 
+                I'm Emeka, Senior Product Designer based in Winnipeg with a background in Computer Science. 
                 Currently at <span className="highlight-green">Bobo Health</span> leading the design of AI-powered pediatric care solutions. 
                 I specialize in building B2C consumer apps that feel human and scale easily.
               </p>
