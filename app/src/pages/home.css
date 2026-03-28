@@ -271,17 +271,11 @@ h1 {
   gap: 7px;
 }
 
-@supports (animation-timeline: view()) {
-  .portfolio-item-wrapper {
-    animation: scrollFadeOut linear both;
-    animation-timeline: view();
-    animation-range: cover 60% exit 90%;
-  }
-}
-
-@keyframes scrollFadeOut {
-  from { opacity: 1; transform: translateY(0); }
-  to { opacity: 0.2; transform: translateY(-20px); }
+/* Removed scroll fade out which contributed to images feeling greyed out/faded */
+.portfolio-item-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
 }
 
 .link-wrapper {
@@ -289,25 +283,29 @@ h1 {
   width: 100%;
   text-decoration: none;
   color: inherit;
-  transition: transform 300ms ease, opacity 300ms ease;
+  transition: transform 400ms cubic-bezier(0.2, 0, 0.2, 1);
 }
 
 .link-wrapper:hover {
-  opacity: 0.95;
-  transform: translateY(-4px);
+  transform: translateY(-6px);
 }
 
 .portfolio-item {
   position: relative;
-  background: #f3f4f6;
-  /* light grey */
+  background: var(--bg); /* Use page background to keep it seamless */
   aspect-ratio: 4 / 3;
-  border-radius: 0px;
+  border-radius: 4px; /* Added slight radius for premium feel */
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: none;
+  border: 1px solid var(--divider-default); /* Subtle border instead of grey fill */
+  transition: border-color 300ms ease, box-shadow 300ms ease;
+}
+
+.link-wrapper:hover .portfolio-item {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
 }
 
 .status-pill {
@@ -338,13 +336,14 @@ h1 {
 
 /* Base project image styles */
 .portfolio-item img {
-  width: 32%;
+  width: 90%; /* Much larger by default to reduce 'grey' border effect */
   max-width: 100%;
   height: auto;
   display: block;
   object-fit: contain;
-  transition: transform 500ms ease;
+  transition: transform 600ms cubic-bezier(0.2, 0, 0.2, 1);
   border-radius: 0;
+  filter: saturate(1.05) contrast(1.02); /* Subtle pop to avoid 'grey' feel */
 }
 
 .portfolio-item-wrapper:hover .portfolio-item img {
@@ -413,12 +412,12 @@ h1 {
 }
 
 .main-content.panel-open .portfolio-item img {
-  width: 30%;
+  width: 85%;
 }
 
 .main-content.panel-open .echo-image,
 .main-content.panel-open .ophir-image {
-  width: 80% !important;
+  width: 95% !important;
 }
 
 .portfolio-label {
@@ -445,8 +444,14 @@ h1 {
   letter-spacing: 0.5px;
 }
 
+/* Dark mode: keep background seamless with the page */
 .theme-dark .portfolio-item {
-  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.theme-dark .link-wrapper:hover .portfolio-item {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 /* Dark mode: make the tab indicator visible (white) and active tab text clear */
