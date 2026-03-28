@@ -42,6 +42,7 @@ export default function Home() {
       company: "Pediatric AI Chatbot",
       image: require('../assets/profile/Frame 23458.png'),
       category: "B2C",
+      link: "/poppy-ai",
       imgClass: "poppy-image"
     },
     {

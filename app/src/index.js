@@ -8,6 +8,7 @@ import Home from './pages/home';
 import DevelopmentPathways from './pages/DevelopmentPathways';
 import EchoDesignSystem from './pages/EchoDesignSystem';
 import DesignSystems from './pages/DesignSystems';
+import PoppyAI from './pages/PoppyAI';
 import reportWebVitals from './reportWebVitals';
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
       <Route path="/development-pathways" element={<DevelopmentPathways />} />
       <Route path="/echo-design-system" element={<EchoDesignSystem />} />
       <Route path="/design-systems" element={<DesignSystems />} />
+      <Route path="/poppy-ai" element={<PoppyAI />} />
     </Routes>
   );
 };
