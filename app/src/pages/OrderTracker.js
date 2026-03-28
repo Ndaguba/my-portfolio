@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { IoArrowBack } from "react-icons/io5";
-import './DevelopmentPathways.css';
+import './OrderTracker.css';
 import Header from '../components/Header';
 import ChatPanel from '../components/ChatPanel';
 import Footer from '../components/Footer';
 import Loading from '../components/Loading';
 
-export default function DevelopmentPathways() {
+export default function OrderTracker() {
     const [isPanelOpen, setIsPanelOpen] = useState(false);
 
     useEffect(() => {
@@ -30,31 +30,31 @@ export default function DevelopmentPathways() {
                         </div>
 
                         <h1 className="hero-statement">
-                            Transforming clinical CDC milestones into an intuitive tracking experience that reduces parental anxiety and builds confidence.
+                            Redesigning order tracking from the ground up to provide zero-friction visibility for millions of deliveries across Canada.
                         </h1>
 
                         <div className="project-metadata">
                             <div className="meta-col">
                                 <span className="meta-label">Product</span>
-                                <span className="meta-value">Bobo Health</span>
+                                <span className="meta-value">SkipTheDishes Order Tracker</span>
                              </div>
                              <div className="meta-col">
                                 <span className="meta-label">Skills</span>
-                                <span className="meta-value">Product design, IA, UX Flows, Interaction Design</span>
+                                <span className="meta-value">Mobile Design, Real-time Interaction, Logistics UX</span>
                              </div>
                              <div className="meta-col">
                                 <span className="meta-label">My role</span>
-                                <span className="meta-value">Lead Product Designer</span>
+                                <span className="meta-value">Senior Product Designer</span>
                              </div>
                              <div className="meta-col">
                                 <span className="meta-label">Timeline</span>
-                                <span className="meta-value">8 weeks</span>
+                                <span className="meta-value">16 weeks</span>
                              </div>
                         </div>
                     </header>
 
                     <section className="hero-visual">
-                         <img src={require('../assets/profile/Dev-pathways.png')} alt="Development Pathways Timeline" />
+                         <img src={require('../assets/profile/Delivery-tracker.png')} alt="Order Tracker Redesign" />
                     </section>
 
                     {/* Section 1: Overview */}
@@ -62,12 +62,12 @@ export default function DevelopmentPathways() {
                         <h2 className="section-title">Overview</h2>
                         <div className="section-grid">
                             <div className="text-content">
-                                <p>Development Pathways translates complex CDC clinical guidelines into personalized, understandable progress pathways. By removing jargon, we made it easy for parents to track their child's development with confidence.</p>
+                                <p>A complete overhaul of the order tracking experience to provide real-time updates and proactive status information, reducing user anxiety and support volume.</p>
                             </div>
                             <div className="stats-sidebar">
                                 <div className="stat-item">
-                                    <span className="stat-icon">🏥</span>
-                                    <p>CDC milestones use dense, medical language difficult for non-professionals.</p>
+                                    <span className="stat-icon">📦</span>
+                                    <p>Millions of daily users now have precise status visibility.</p>
                                 </div>
                             </div>
                         </div>
@@ -78,12 +78,12 @@ export default function DevelopmentPathways() {
                         <h2 className="section-title">Problem</h2>
                         <div className="section-grid">
                             <div className="text-content">
-                                <p>Authoritative resources are overwhelming. Existing apps present CDC data as static lists that lack context and progression, leaving parents feeling more anxious than informed about their child's unique growth.</p>
+                                <p>The legacy order tracker was static and vague, leading to high support volumes as users felt unsure about where their orders were and when they would arrive.</p>
                             </div>
                             <div className="stats-sidebar">
                                 <div className="stat-item">
-                                    <span className="stat-icon">😰</span>
-                                    <p>72% of parents report increased anxiety when reading raw clinical data.</p>
+                                    <span className="stat-icon">☎️</span>
+                                    <p>40% of support calls were related to order status inquiries.</p>
                                 </div>
                             </div>
                         </div>
@@ -92,20 +92,20 @@ export default function DevelopmentPathways() {
                     {/* Section 3: Research */}
                     <section className="casestudy-section">
                         <h2 className="section-title">Research</h2>
-                        <p className="section-subtitle">Conducted 1:1 virtual interviews with 8 parents to understand why clinical data felt so overwhelming.</p>
+                        <p className="section-subtitle">Analyzed heatmaps and support data to pinpoint frictions in the tracking experience.</p>
                         
                         <div className="constraint-grid">
                             <div className="constraint-card">
-                                <h3>Missing Translation</h3>
-                                <p>Observed parents consistently skipping medical headers (like "Gross Motor") in favor of age-based answers.</p>
+                                <h3>Status Anxiety</h3>
+                                <p>Found that most users checked the app 5+ times during a single delivery order.</p>
                             </div>
                             <div className="constraint-card">
-                                <h3>Communication Over Presentation</h3>
-                                <p>Realized the core friction was the mental load of "translating" clinical taxonomy into everyday parenting questions.</p>
+                                <h3>Map vs Steps</h3>
+                                <p>Discovered that users valued accurate status text ("Preparing your food") over pure map movement.</p>
                             </div>
                             <div className="constraint-card">
-                                <h3>Support over Assessment</h3>
-                                <p>Parents seek guidance on "what to do now" rather than just checking off what has already happened.</p>
+                                <h3>Edge Case Friction</h3>
+                                <p>Identified that delayed or reassigned orders were the biggest source of user frustration.</p>
                             </div>
                         </div>
                     </section>
@@ -117,20 +117,20 @@ export default function DevelopmentPathways() {
                                 <h2 className="constellation-title">A constellation of constraints</h2>
                             </div>
                             <div className="constraints-right">
-                                <p className="constraints-summary">Balancing static CDC requirements with the dynamic, personalized nature of individual child development.</p>
+                                <p className="constraints-summary">Balancing complex logistics events with a simple, high-confidence user interface.</p>
                                 <span className="constraints-label">Technical Constraints</span>
                                 
                                 <div className="constraint-item">
-                                    <h3>Data Integrity</h3>
-                                    <p>Strict CDC requirements meant we couldn't skip or alter the core milestone text, requiring creative UX to make them feel less clinical.</p>
+                                    <h3>GPS Latency</h3>
+                                    <p>Designing for a smooth UI even when courier GPS updates are intermittent or less accurate.</p>
                                 </div>
                                 <div className="constraint-item">
-                                    <h3>Platform Scalability</h3>
-                                    <p>Designed a modular component library to handle thousands of unique milestones across different age gaps and categories.</p>
+                                    <h3>Event-Driven Sync</h3>
+                                    <p>Ensuring that push notifications and in-app status updates were perfectly synchronized across platforms.</p>
                                 </div>
                                 <div className="constraint-item last">
-                                    <h3>Syncing & Latency</h3>
-                                    <p>Ensuring that cross-device logging (e.g., both parents tracking) synced instantly to avoid duplicate entries or confusion.</p>
+                                    <h3>Legacy Status Mapping</h3>
+                                    <p>Translating dozens of legacy backend status codes into human-readable steps without losing precision.</p>
                                 </div>
                             </div>
                         </div>
@@ -139,10 +139,10 @@ export default function DevelopmentPathways() {
                     {/* Section 5: Prototyping */}
                     <section className="casestudy-section">
                         <h2 className="section-title">Prototyping</h2>
-                        <p className="section-subtitle">Iterating from clinical lists to a supportive journey.</p>
+                        <p className="section-subtitle">Iterating from status lists to a map-centric live journey.</p>
                         <div className="full-width-visual">
                             <div className="placeholder-box large">
-                                <span>Concept options: Age-based vs Timeline vs Hybrid</span>
+                                <span>UX Explorations: Status Stepper vs Live Map View</span>
                             </div>
                         </div>
                     </section>
@@ -152,23 +152,23 @@ export default function DevelopmentPathways() {
                         <div className="solution-header-layout">
                             <div className="solution-left">
                                 <h2 className="section-title">Solution</h2>
-                                <p className="solution-tagline">A journey, not a checklist</p>
+                                <p className="solution-tagline">Visibility at every step</p>
                             </div>
                             <div className="solution-right">
-                                <p className="solution-intro">The final design uses a horizontal timeline for orientation and category-based checklists for action, creating a supportive, non-evaluative experience.</p>
+                                <p className="solution-intro">The final solution features a progressive status journey and a real-time live map, ensuring users always know exactly what’s happening with their order.</p>
                                 
                                 <div className="solution-feature-list">
                                     <div className="feature-item">
                                         <span className="feature-icon">📍</span>
-                                        <p>Horizontal timeline for clear growth orientation</p>
+                                        <p>Real-time live map with courier tracking</p>
                                     </div>
                                     <div className="feature-item">
-                                        <span className="feature-icon">✨</span>
-                                        <p>Plain-language action items instead of clinical codes</p>
+                                        <span className="feature-icon">📶</span>
+                                        <p>Proactive status updates for any delays or issues</p>
                                     </div>
                                     <div className="feature-item">
-                                        <span className="feature-icon">🌱</span>
-                                        <p>"Progress over evaluation" - removing labels of being "behind"</p>
+                                        <span className="feature-icon">🛡️</span>
+                                        <p>Increased transparency into preparing and delivery steps</p>
                                     </div>
                                 </div>
                             </div>
@@ -176,11 +176,11 @@ export default function DevelopmentPathways() {
 
                         <div className="solution-visuals">
                             <div className="main-visual">
-                                <div className="placeholder-box"><span>Hero UI: Profile Timeline</span></div>
+                                 <div className="placeholder-box"><span>Main Visual: Order Tracker Interface</span></div>
                             </div>
                             <div className="visual-grid">
-                                <div className="placeholder-box"><span>Mockup: Category Detail</span></div>
-                                <div className="placeholder-box"><span>Mockup: Log Flow</span></div>
+                                <div className="placeholder-box"><span>Mockup: Detailed Steps</span></div>
+                                <div className="placeholder-box"><span>Mockup: Map Interaction</span></div>
                             </div>
                         </div>
                     </section>
@@ -188,31 +188,31 @@ export default function DevelopmentPathways() {
                     {/* Section 7: Impact */}
                     <section className="casestudy-section">
                         <h2 className="section-title">Impact</h2>
-                        <h3 className="impact-headline">Confidence through clarity</h3>
+                        <h3 className="impact-headline">A calmer delivery journey</h3>
                         
                         <div className="impact-grid">
                             <div className="impact-card">
-                                <span className="impact-value">+42%</span>
-                                <p>Increase in weekly downloads</p>
+                                <span className="impact-value">-25%</span>
+                                <p>Reduction in status-related support calls</p>
                             </div>
                             <div className="impact-card">
-                                <span className="impact-value">+28%</span>
-                                <p>New signup conversion lift</p>
+                                <span className="impact-value">+15%</span>
+                                <p>Increase in post-delivery order satisfaction</p>
                             </div>
                             <div className="impact-card">
-                                <span className="impact-value">100+</span>
-                                <p>Weekly feature shares among parents</p>
+                                <span className="impact-value">Zero</span>
+                                <p>Friction transition between old and new tracking UX</p>
                             </div>
                         </div>
                     </section>
 
                     <section className="cta-section">
                         <h2 className="section-title">Next project</h2>
-                        <Link to="/echo-design-system" className="next-project-card">
+                        <Link to="/poppy-ai" className="next-project-card">
                             <div className="next-meta">
                                 <span className="next-badge">SHIPPED</span>
-                                <h3>Echo Design System</h3>
-                                <p>A human-centered design language for pediatric care</p>
+                                <h3>Poppy AI</h3>
+                                <p>Conversational AI for pediatric care</p>
                             </div>
                             <div className="next-arrow">→</div>
                         </Link>

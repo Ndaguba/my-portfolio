@@ -9,6 +9,8 @@ import DevelopmentPathways from './pages/DevelopmentPathways';
 import EchoDesignSystem from './pages/EchoDesignSystem';
 import DesignSystems from './pages/DesignSystems';
 import PoppyAI from './pages/PoppyAI';
+import SkipWestJet from './pages/SkipWestJet';
+import OrderTracker from './pages/OrderTracker';
 import reportWebVitals from './reportWebVitals';
 
 const App = () => {
@@ -19,6 +21,8 @@ const App = () => {
       <Route path="/echo-design-system" element={<EchoDesignSystem />} />
       <Route path="/design-systems" element={<DesignSystems />} />
       <Route path="/poppy-ai" element={<PoppyAI />} />
+      <Route path="/skip-westjet" element={<SkipWestJet />} />
+      <Route path="/order-tracker" element={<OrderTracker />} />
     </Routes>
   );
 };

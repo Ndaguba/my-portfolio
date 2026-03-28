@@ -60,6 +60,7 @@ export default function Home() {
       company: "Canada's largest food delivery partnership",
       image: require('../assets/profile/SKIP X WESTJET.png'),
       category: "B2C",
+      link: "/skip-westjet",
       imgClass: "skip-image"
     },
     {
@@ -68,6 +69,7 @@ export default function Home() {
       company: "Real-time logistics and delivery tracking",
       image: require('../assets/profile/Delivery-tracker.png'),
       category: "B2B",
+      link: "/order-tracker",
       imgClass: "order-tracker-image"
     }
   ];
