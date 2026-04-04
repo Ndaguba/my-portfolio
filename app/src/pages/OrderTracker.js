@@ -30,7 +30,7 @@ export default function OrderTracker() {
                         </div>
 
                         <h1 className="hero-statement">
-                            Redesigning order tracking from the ground up to provide zero-friction visibility for millions of deliveries across Canada.
+                            Redesigning order tracking from the ground up to provide real-time visibility and reduce support volume for millions of deliveries.
                         </h1>
 
                         <div className="project-metadata">
@@ -57,151 +57,143 @@ export default function OrderTracker() {
                          <img src={require('../assets/profile/Delivery-tracker.png')} alt="Order Tracker Redesign" />
                     </section>
 
-                    {/* Section 1: Overview */}
-                    <section className="casestudy-section">
-                        <h2 className="section-title">Overview</h2>
-                        <div className="section-grid">
-                            <div className="text-content">
-                                <p>A complete overhaul of the order tracking experience to provide real-time updates and proactive status information, reducing user anxiety and support volume.</p>
-                            </div>
-                            <div className="stats-sidebar">
-                                <div className="stat-item">
-                                    <span className="stat-icon">📦</span>
-                                    <p>Millions of daily users now have precise status visibility.</p>
+                    {/* Section 1: Defining the Problem */}
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">PROBLEM</div>
+                        <div className="section-content">
+                            <h2 className="content-title">Defining the Problem</h2>
+                            <p className="emotional-hook">"Waiting for food shouldn't feel like staring into a void."</p>
+                            <div className="section-grid">
+                                <div className="text-content">
+                                    <p>Order tracking is a high-stakes moment for Skip’s millions of users. The legacy system was vague and static, leading to a **40% support call volume** for "Where is my order?" (WISMO) inquiries. Our UI failing to provide real-time confidence forced users to call a human for information a computer already had.</p>
                                 </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Section 2: Problem */}
-                    <section className="casestudy-section alt-bg">
-                        <h2 className="section-title">Problem</h2>
-                        <div className="section-grid">
-                            <div className="text-content">
-                                <p>The legacy order tracker was static and vague, leading to high support volumes as users felt unsure about where their orders were and when they would arrive.</p>
-                            </div>
-                            <div className="stats-sidebar">
-                                <div className="stat-item">
-                                    <span className="stat-icon">☎️</span>
-                                    <p>40% of support calls were related to order status inquiries.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Section 3: Research */}
-                    <section className="casestudy-section">
-                        <h2 className="section-title">Research</h2>
-                        <p className="section-subtitle">Analyzed heatmaps and support data to pinpoint frictions in the tracking experience.</p>
-                        
-                        <div className="constraint-grid">
-                            <div className="constraint-card">
-                                <h3>Status Anxiety</h3>
-                                <p>Found that most users checked the app 5+ times during a single delivery order.</p>
-                            </div>
-                            <div className="constraint-card">
-                                <h3>Map vs Steps</h3>
-                                <p>Discovered that users valued accurate status text ("Preparing your food") over pure map movement.</p>
-                            </div>
-                            <div className="constraint-card">
-                                <h3>Edge Case Friction</h3>
-                                <p>Identified that delayed or reassigned orders were the biggest source of user frustration.</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Section 4: Technical Constraints */}
-                    <section className="casestudy-section constraint-list-section">
-                        <div className="constraints-layout">
-                            <div className="constraints-left">
-                                <h2 className="constellation-title">A constellation of constraints</h2>
-                            </div>
-                            <div className="constraints-right">
-                                <p className="constraints-summary">Balancing complex logistics events with a simple, high-confidence user interface.</p>
-                                <span className="constraints-label">Technical Constraints</span>
-                                
-                                <div className="constraint-item">
-                                    <h3>GPS Latency</h3>
-                                    <p>Designing for a smooth UI even when courier GPS updates are intermittent or less accurate.</p>
-                                </div>
-                                <div className="constraint-item">
-                                    <h3>Event-Driven Sync</h3>
-                                    <p>Ensuring that push notifications and in-app status updates were perfectly synchronized across platforms.</p>
-                                </div>
-                                <div className="constraint-item last">
-                                    <h3>Legacy Status Mapping</h3>
-                                    <p>Translating dozens of legacy backend status codes into human-readable steps without losing precision.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Section 5: Prototyping */}
-                    <section className="casestudy-section">
-                        <h2 className="section-title">Prototyping</h2>
-                        <p className="section-subtitle">Iterating from status lists to a map-centric live journey.</p>
-                        <div className="full-width-visual">
-                            <div className="placeholder-box large">
-                                <span>UX Explorations: Status Stepper vs Live Map View</span>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Section 6: Solution */}
-                    <section className="casestudy-section solution-section">
-                        <div className="solution-header-layout">
-                            <div className="solution-left">
-                                <h2 className="section-title">Solution</h2>
-                                <p className="solution-tagline">Visibility at every step</p>
-                            </div>
-                            <div className="solution-right">
-                                <p className="solution-intro">The final solution features a progressive status journey and a real-time live map, ensuring users always know exactly what’s happening with their order.</p>
-                                
-                                <div className="solution-feature-list">
-                                    <div className="feature-item">
-                                        <span className="feature-icon">📍</span>
-                                        <p>Real-time live map with courier tracking</p>
-                                    </div>
-                                    <div className="feature-item">
-                                        <span className="feature-icon">📶</span>
-                                        <p>Proactive status updates for any delays or issues</p>
-                                    </div>
-                                    <div className="feature-item">
-                                        <span className="feature-icon">🛡️</span>
-                                        <p>Increased transparency into preparing and delivery steps</p>
+                                <div className="stats-sidebar">
+                                    <div className="stat-item">
+                                        <span className="stat-icon">☎️</span>
+                                        <p>High support volume due to lack of real-time visibility.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </section>
 
-                        <div className="solution-visuals">
-                            <div className="main-visual">
-                                 <div className="placeholder-box"><span>Main Visual: Order Tracker Interface</span></div>
-                            </div>
-                            <div className="visual-grid">
-                                <div className="placeholder-box"><span>Mockup: Detailed Steps</span></div>
-                                <div className="placeholder-box"><span>Mockup: Map Interaction</span></div>
+                    <div className="section-divider"></div>
+
+                    {/* Section 2: Research */}
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">RESEARCH</div>
+                        <div className="section-content">
+                            <h2 className="content-title">Discovery & Strategy</h2>
+                            <p className="section-subtitle">We combined logistics data with behavioral audits to understand why users "stress-refresh" the app.</p>
+                            
+                            <div className="constraint-grid">
+                                <div className="constraint-card">
+                                    <h3>Competitive Analysis</h3>
+                                    <p>Audited 5 global delivery apps. Found that most fail during the "Blind Spot"—the 10-minute gap where the courier is waiting at the restaurant.</p>
+                                </div>
+                                <div className="constraint-card">
+                                    <h3>Refresh Loop Audit</h3>
+                                    <p>Design Constraint: Uncertainty drives "Stress Refreshing." We had to design active reassurance moments to keep users from manual refreshing.</p>
+                                </div>
+                                <div className="constraint-card">
+                                    <h3>Motion Integrity</h3>
+                                    <p>Design Constraint: Small location jumps look like "system bugs." We designed a soft-motion buffer to mask data jitter and maintain visual trust.</p>
+                                </div>
+                                <div className="constraint-card">
+                                    <h3>Status Taxonomy</h3>
+                                    <p>Mapped 50+ archaic backend codes into 5 simple human stages to eliminate user guessing during the hunger window.</p>
+                                </div>
                             </div>
                         </div>
                     </section>
 
-                    {/* Section 7: Impact */}
+                    <div className="section-divider"></div>
+
+                    {/* Section 3: Solution */}
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">SOLUTION</div>
+                        <div className="section-content">
+                            <h2 className="content-title">The Real-Time Narrative</h2>
+                            <div className="constraints-layout">
+                                <div className="constraints-left">
+                                    <h2 className="constellation-title">Design Decisions</h2>
+                                </div>
+                                <div className="constraints-right">
+                                    <div className="constraint-item">
+                                        <h3>Smoothing the Jump</h3>
+                                        <p>Designed a soft-motion buffer to mask data jitter and maintain visual trust during courier transit.</p>
+                                    </div>
+                                    <div className="constraint-item">
+                                        <h3>Proactive Reassurance</h3>
+                                        <p>Designed alert cards for restaurant delays, explaining the status before the user feels the need to call support.</p>
+                                    </div>
+                                    <div className="constraint-item last">
+                                        <h3>Reassurance moments</h3>
+                                        <p>Uncertainty drives "Stress Refreshing." We designed active moments to keep users from manual refreshing.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="solution-visuals" style={{ marginTop: '40px' }}>
+                                <div className="main-visual">
+                                     <img src={require('../assets/profile/Delivery-tracker.png')} alt="Final Tracking Interface" />
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div className="section-divider"></div>
+
+                    {/* Section 4: Showcase */}
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">SHOWCASE</div>
+                        <div className="section-content">
+                            <h2 className="content-title">Live Tracking Interaction Showcase</h2>
+                            <div className="full-width-visual">
+                                <div className="main-visual">
+                                     <img src={require('../assets/profile/Delivery-tracker.png')} alt="Final Tracking Interface Showcase" />
+                                </div>
+                                <div className="visual-grid" style={{ marginTop: '20px' }}>
+                                    <div className="placeholder-box"><span>Mockup: Detailed Steps</span></div>
+                                    <div className="placeholder-box"><span>Mockup: Map Interaction</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Section 7: Impact & Learnings */}
                     <section className="casestudy-section">
-                        <h2 className="section-title">Impact</h2>
-                        <h3 className="impact-headline">A calmer delivery journey</h3>
+                        <div className="impact-header">
+                            <h2 className="section-title">Impact</h2>
+                            <h3 className="impact-headline">A Calmer Journey</h3>
+                        </div>
                         
                         <div className="impact-grid">
                             <div className="impact-card">
                                 <span className="impact-value">-25%</span>
-                                <p>Reduction in status-related support calls</p>
+                                <p>Reduction in status-related support calls (WISMO) during the nationwide rollout.</p>
                             </div>
                             <div className="impact-card">
                                 <span className="impact-value">+15%</span>
-                                <p>Increase in post-delivery order satisfaction</p>
+                                <p>Increase in post-delivery satisfaction scores for order visibility.</p>
                             </div>
                             <div className="impact-card">
-                                <span className="impact-value">Zero</span>
-                                <p>Friction transition between old and new tracking UX</p>
+                                <span className="impact-value">Shipped</span>
+                                <p>Seamless transition to 100% of the market with positive user sentiment.</p>
+                            </div>
+                        </div>
+
+                        <div className="learnings-block">
+                            <h2 className="section-title">Learnings</h2>
+                            <div className="learnings-grid">
+                                <div className="learning-item">
+                                    <h3>Transparency Breeds Trust</h3>
+                                    <p>Even bad news is better than silence. Telling a user a restaurant is busy reduces support calls more than saying "Soon."</p>
+                                </div>
+                                <div className="learning-item">
+                                    <h3>Precision over Movement</h3>
+                                    <p>High-fidelity status text does more for a user's mental calm than a high-fidelity moving icon on a map.</p>
+                                </div>
                             </div>
                         </div>
                     </section>

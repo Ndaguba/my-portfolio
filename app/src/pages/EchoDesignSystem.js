@@ -57,155 +57,157 @@ export default function EchoDesignSystem() {
                          <img src={require('../assets/profile/echo.png')} alt="Echo Design System Architecture" />
                     </section>
 
-                    {/* Section 1: Overview */}
-                    <section className="casestudy-section">
-                        <h2 className="section-title">Overview</h2>
-                        <div className="section-grid">
-                            <div className="text-content">
-                                <p>echo is Bobo’s internal design system focused on creating consistent, accessible, and human-centered interfaces through a token-driven foundation. It establishes a strong foundational layer that powers visual decisions across all desktop and mobile products.</p>
-                            </div>
-                            <div className="stats-sidebar">
-                                <div className="stat-item">
-                                    <span className="stat-icon">🎨</span>
-                                    <p>Covers 100% of core app foundations (Color, Type, Space, Radius).</p>
+                    {/* Section 1: Defining the Problem */}
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">PROBLEM</div>
+                        <div className="section-content">
+                            <h2 className="content-title">Defining the Problem</h2>
+                            <p className="emotional-hook">"A design system is a living engine, not a static library."</p>
+                            <div className="section-grid">
+                                <div className="text-content">
+                                    <p>As Bobo Health grew, UI inconsistency became a major bottleneck. Designers were designing in pixels, but engineers were building in flexible units. This <strong>"Translation Gap"</strong> led to massive visual bugs and an engineering team that had to re-guess every design decision during handoff.</p>
                                 </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Section 2: Problem */}
-                    <section className="casestudy-section alt-bg">
-                        <h2 className="section-title">Problem</h2>
-                        <div className="section-grid">
-                            <div className="text-content">
-                                <p>As Bobo’s ecosystem expanded, visual foundations were hardcoded at the component level. Managing dark mode required "re-translating" values for every feature, resulting in deep inconsistencies and fragmented user experiences across platforms.</p>
-                            </div>
-                            <div className="stats-sidebar">
-                                <div className="stat-item">
-                                    <span className="stat-icon">🛠️</span>
-                                    <p>Dark mode updates previously took 3+ weeks of manual effort.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Section 3: Research */}
-                    <section className="casestudy-section">
-                        <h2 className="section-title">Research</h2>
-                        <p className="section-subtitle">Conducted audits and interviewed engineers to understand pain points with CSS inheritance and design handoff.</p>
-                        
-                        <div className="constraint-grid">
-                            <div className="constraint-card">
-                                <h3>Synthesizing Intent</h3>
-                                <p>Discovered that listing values wasn't enough; the system needed to communicate *why* a color or spacing was chosen.</p>
-                            </div>
-                            <div className="constraint-card">
-                                <h3>Engineering Friction</h3>
-                                <p>Identified that hardcoded hex values were the leading cause of visual regression bugs during sprints.</p>
-                            </div>
-                            <div className="constraint-card">
-                                <h3>Design Fragmentation</h3>
-                                <p>Figma files were disconnected from production code, leading to "pixel-pushing" back-and-forth during QA.</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Section 4: Technical Constraints */}
-                    <section className="casestudy-section constraint-list-section">
-                        <div className="constraints-layout">
-                            <div className="constraints-left">
-                                <h2 className="constellation-title">A constellation of constraints</h2>
-                            </div>
-                            <div className="constraints-right">
-                                <p className="constraints-summary">Architecting a system that works across multiple frontend frameworks and varying levels of platform maturity.</p>
-                                <span className="constraints-label">Technical Constraints</span>
-                                
-                                <div className="constraint-item">
-                                    <h3>Multi-Platform Legacy</h3>
-                                    <p>The system had to support legacy web components while enabling modern Swift UI and Kotlin Compose implementations.</p>
-                                </div>
-                                <div className="constraint-item">
-                                    <h3>Token Pipeline Integration</h3>
-                                    <p>Designed a workflow to export tokens from Figma to Style Dictionary without breaking existing CSS class structures.</p>
-                                </div>
-                                <div className="constraint-item last">
-                                    <h3>Theming Complexity</h3>
-                                    <p>Ensuring that 100% WCAG compliance was maintained across both light and dark modes required a rigid semantic token layer.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Section 5: Prototyping */}
-                    <section className="casestudy-section">
-                        <h2 className="section-title">Prototyping</h2>
-                        <p className="section-subtitle">Iterating on the Three-Tier Token Architecture (Global → Semantic → Component).</p>
-                        <div className="full-width-visual">
-                            <div className="placeholder-box large">
-                                <span>Architecture Diagram: From Hex Codes to Semantic Intent</span>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Section 6: Solution */}
-                    <section className="casestudy-section solution-section">
-                        <div className="solution-header-layout">
-                            <div className="solution-left">
-                                <h2 className="section-title">Solution</h2>
-                                <p className="solution-tagline">Shared language for scale</p>
-                            </div>
-                            <div className="solution-right">
-                                <p className="solution-intro">echo is a tiered, tokenized system where every visual decision—from 4px spatial grids to color palettes—is predictable, accessible, and easily thematic.</p>
-                                
-                                <div className="solution-feature-list">
-                                    <div className="feature-item">
-                                        <span className="feature-icon">💎</span>
-                                        <p>Three-Tier Architecture: Abstracting color from value</p>
-                                    </div>
-                                    <div className="feature-item">
-                                        <span className="feature-icon">📏</span>
-                                        <p>4px Baseline Grid: Eliminating spacing guesswork</p>
-                                    </div>
-                                    <div className="feature-item">
-                                        <span className="feature-icon">🔡</span>
-                                        <p>Geometric Typography Scales (Major Second hierarchy)</p>
-                                    </div>
-                                    <div className="feature-item">
-                                        <span className="feature-icon">🪞</span>
-                                        <p>Dynamic Radius & Shadow System for visual coherence</p>
+                                <div className="stats-sidebar">
+                                    <div className="stat-item">
+                                        <span className="stat-icon">🎨</span>
+                                        <p>Manual UI updates to cross-platform themes previously took weeks.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </section>
 
-                        <div className="solution-visuals">
-                            <div className="main-visual">
-                                <div className="placeholder-box"><span>Main Visual: Design Token Library</span></div>
-                            </div>
-                            <div className="visual-grid">
-                                <div className="placeholder-box"><span>Mockup: Spatial Grid System</span></div>
-                                <div className="placeholder-box"><span>Mockup: Dark Mode Mapping</span></div>
+                    <div className="section-divider"></div>
+
+                    {/* Section 2: The Approach */}
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">APPROACH</div>
+                        <div className="section-content">
+                            <h2 className="content-title">The Approach</h2>
+                            <p className="section-subtitle">We combined aesthetic audits with technical interviews to map out where the system was failing our teams.</p>
+                            
+                            <div className="constraint-grid">
+                                <div className="constraint-card">
+                                    <h3>Engineering Interviews</h3>
+                                    <p>Found that 60% of CSS work was spent on overrides. The team was treating the system as a "suggestion" rather than a foundation.</p>
+                                </div>
+                                <div className="constraint-card">
+                                    <h3>System Mapping</h3>
+                                    <p>Learned that most bugs weren't from "bad design," but from a lack of shared taxonomy (Pixels vs Rem).</p>
+                                </div>
                             </div>
                         </div>
                     </section>
 
-                    {/* Section 7: Impact */}
+                    <div className="section-divider"></div>
+
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">INSIGHTS</div>
+                        <div className="section-content">
+                            <h2 className="content-title">Research Themes</h2>
+                            <div className="constraint-grid">
+                                <div className="constraint-card">
+                                    <h3>Interdisciplinary Audits</h3>
+                                    <p>Spoke with engineers to identify why 60% of CSS work was spent on overrides. The team lacked a shared language.</p>
+                                </div>
+                                <div className="constraint-card">
+                                    <h3>System Taxonomy</h3>
+                                    <p>Design Constraint: Pixels don't translate to code variables. We had to design an immutable token structure to bridge this gap.</p>
+                                </div>
+                                <div className="constraint-card">
+                                    <h3>Contrast Accessibility</h3>
+                                    <p>Design Constraint: Compliance was being "skipped" during sprints. We baked WCAG 2.1 checks directly into the color engine tokens.</p>
+                                </div>
+                                <div className="constraint-card">
+                                    <h3>Governance Logic</h3>
+                                    <p>Designed a contribution model that allows the library to grow without becoming a "collection of orphans."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div className="section-divider"></div>
+
+                    {/* Section 3: Solution */}
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">SOLUTION</div>
+                        <div className="section-content">
+                            <h2 className="content-title">The Unified Language</h2>
+                            
+                            <div className="constraints-layout">
+                                <div className="constraints-left">
+                                    <h2 className="constellation-title">Design Decisions</h2>
+                                </div>
+                                <div className="constraints-right">
+                                    <div className="constraint-item">
+                                        <h3>Immutable Tokens</h3>
+                                        <p>Designed a Semantic Token architecture that maps abstract values (e.g., Pink-500) to functional uses (e.g., CTA-Background).</p>
+                                    </div>
+                                    <div className="constraint-item">
+                                        <h3>Governance by Design</h3>
+                                        <p>Designed a tiered contribution flow that allows designers to "propose" components, keeping the system alive but governed.</p>
+                                    </div>
+                                    <div className="constraint-item last">
+                                        <h3>System Taxonomy</h3>
+                                        <p>The disconnect between design tools and code was the #1 source of debt. We designed a 1:1 tokenized bridge.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="solution-visuals" style={{ marginTop: '40px' }}>
+                                <div className="main-visual">
+                                     <img src={require('../assets/profile/echo.png')} alt="Echo Design System Library" />
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div className="section-divider"></div>
+
+                    {/* Section 4: Showcase */}
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">SHOWCASE</div>
+                        <div className="section-content">
+                            <h2 className="content-title">The Living Library Showcase</h2>
+                            <div className="full-width-visual">
+                                <div className="placeholder-box large">Echo Design System High-Fidelity UI Library Visuals</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Section 7: Impact & Learnings */}
                     <section className="casestudy-section">
-                        <h2 className="section-title">Impact</h2>
-                        <h3 className="impact-headline">A Resilient Foundation</h3>
+                        <div className="impact-header">
+                            <h2 className="section-title">Impact</h2>
+                            <h3 className="impact-headline">A Resilient Foundation</h3>
+                        </div>
                         
                         <div className="impact-grid">
                             <div className="impact-card">
                                 <span className="impact-value">2X</span>
-                                <p>Faster design-to-dev handoff</p>
+                                <p>Increase in design-to-engineering handoff speed for new features since tokenization.</p>
                             </div>
                             <div className="impact-card">
                                 <span className="impact-value">40%</span>
-                                <p>Reduction in visual regression bugs</p>
+                                <p>Reduction in cross-platform visual regression bugs and layout inconsistencies.</p>
                             </div>
                             <div className="impact-card">
                                 <span className="impact-value">100%</span>
-                                <p>Dark mode coverage across core products</p>
+                                <p>Unified dark mode coverage across all core flagship applications with zero manual overrides.</p>
+                            </div>
+                        </div>
+
+                        <div className="learnings-block">
+                            <h2 className="section-title">Learnings</h2>
+                            <div className="learnings-grid">
+                                <div className="learning-item">
+                                    <h3>Systems are Living</h3>
+                                    <p>A design system is never "finished." Success is measured by how well the team can evolve the tokens, not how perfect the initial library was.</p>
+                                </div>
+                                <div className="learning-item">
+                                    <h3>Governance is Key</h3>
+                                    <p>Building the tokens was 20% of the work. The remaining 80% was building the social culture of documentation and contribution.</p>
+                                </div>
                             </div>
                         </div>
                     </section>

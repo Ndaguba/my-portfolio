@@ -57,155 +57,141 @@ export default function SkipWestJet() {
                          <img src={require('../assets/profile/SKIP X WESTJET.png')} alt="Skip x WestJet Partnership" />
                     </section>
 
-                    {/* Section 1: Overview */}
-                    <section className="casestudy-section">
-                        <h2 className="section-title">Overview</h2>
-                        <div className="section-grid">
-                            <div className="text-content">
-                                <p>Designing the integration of Skip’s food delivery ecosystem with WestJet Rewards, allowing millions of flyers to earn and redeem value across both platforms seamlessly.</p>
-                            </div>
-                            <div className="stats-sidebar">
-                                <div className="stat-item">
-                                    <span className="stat-icon">✈️</span>
-                                    <p>Millions of WestJet members now have direct access to food rewards.</p>
+                    {/* Section 1: Defining the Problem */}
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">PROBLEM</div>
+                        <div className="section-content">
+                            <h2 className="content-title">Defining the Problem</h2>
+                            <p className="emotional-hook">"Travel rewards are only valuable if they happen in the moment."</p>
+                            <div className="section-grid">
+                                <div className="text-content">
+                                    <p>Cross-brand partnerships often fail because they are buried in settings. Skip and WestJet needed to bridge the gap between travel and utility, but users didn't realize they could spend "WestJet Dollars" on food until they were already at a busy checkout—where any friction leads to immediate abandonment.</p>
                                 </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Section 2: Problem */}
-                    <section className="casestudy-section alt-bg">
-                        <h2 className="section-title">Problem</h2>
-                        <div className="section-grid">
-                            <div className="text-content">
-                                <p>Integrating two distinct ecosystems (travel vs food) into a single user flow was physically and logically complex. Users found existing rewards programs disconnected and difficult to navigate during their travel journeys.</p>
-                            </div>
-                            <div className="stats-sidebar">
-                                <div className="stat-item">
-                                    <span className="stat-icon">🤔</span>
-                                    <p>65% of flyers found it difficult to understand how to use rewards across apps.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Section 3: Research */}
-                    <section className="casestudy-section">
-                        <h2 className="section-title">Research</h2>
-                        <p className="section-subtitle">Analyzed travel patterns and delivery habits of WestJet Rewards members to identify the highest-impact integration points.</p>
-                        
-                        <div className="constraint-grid">
-                            <div className="constraint-card">
-                                <h3>Contextual Rewards</h3>
-                                <p>Discovered that users were most interested in rewards during flight delays or immediately after landing.</p>
-                            </div>
-                            <div className="constraint-card">
-                                <h3>Brand Synergy</h3>
-                                <p>Ensured the visual language felt authoritative like WestJet but approachable like Skip.</p>
-                            </div>
-                            <div className="constraint-card">
-                                <h3>Technical Hurdles</h3>
-                                <p>Identified that disparate API structures were the leading cause of user-facing latency in rewards updates.</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Section 4: Technical Constraints */}
-                    <section className="casestudy-section constraint-list-section">
-                        <div className="constraints-layout">
-                            <div className="constraints-left">
-                                <h2 className="constellation-title">A constellation of constraints</h2>
-                            </div>
-                            <div className="constraints-right">
-                                <p className="constraints-summary">Balancing complex loyalty API requirements with a frictionless, high-speed delivery experience.</p>
-                                <span className="constraints-label">Technical Constraints</span>
-                                
-                                <div className="constraint-item">
-                                    <h3>Real-Time Token Sync</h3>
-                                    <p>Syncing WestJet Rewards balance with Skip’s checkout in under 500ms to avoid friction at payment.</p>
-                                </div>
-                                <div className="constraint-item">
-                                    <h3>Security & Authentication</h3>
-                                    <p>Designing a secure OAuth flow that didn't feel like a heavy hurdle for users just wanting to order a meal during their journey.</p>
-                                </div>
-                                <div className="constraint-item">
-                                    <h3>Data Privacy & Multi-brand Consent</h3>
-                                    <p>Managing the legal requirement for cross-platform data sharing through a transparent, high-confidence consent journey that avoided user drop-off.</p>
-                                </div>
-                                <div className="constraint-item last">
-                                    <h3>Error Handling & Fallbacks</h3>
-                                    <p>Designing systems for when the WestJet Rewards API was offline, ensuring users could still complete their food orders without frustration.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Section 5: Prototyping */}
-                    <section className="casestudy-section">
-                        <h2 className="section-title">Prototyping</h2>
-                        <p className="section-subtitle">Iterating on the "Connect Account" flow and contextual rewards dashboards.</p>
-                        <div className="full-width-visual">
-                            <div className="placeholder-box large">
-                                <span>UX Flows: From Flight Status to Food Checkout</span>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Section 6: Solution */}
-                    <section className="casestudy-section solution-section">
-                        <div className="solution-header-layout">
-                            <div className="solution-left">
-                                <h2 className="section-title">Solution</h2>
-                                <p className="solution-tagline">Seamless flight-to-food integration</p>
-                            </div>
-                            <div className="solution-right">
-                                <p className="solution-intro">The final solution features a unified rewards dashboard and a one-tap account link, making it easier than ever for flyers to fuel their journeys.</p>
-                                
-                                <div className="solution-feature-list">
-                                    <div className="feature-item">
-                                        <span className="feature-icon">🌉</span>
-                                        <p>One-tap rewards linking across WestJet and Skip apps</p>
-                                    </div>
-                                    <div className="feature-item">
-                                        <span className="feature-icon">🎫</span>
-                                        <p>Contextual rewards based on active flight status</p>
-                                    </div>
-                                    <div className="feature-item">
-                                        <span className="feature-icon">💎</span>
-                                        <p>Unified earnings view for cross-platform transparency</p>
+                                <div className="stats-sidebar">
+                                    <div className="stat-item">
+                                        <span className="stat-icon">✈️</span>
+                                        <p>65% of flyers found it difficult to use rewards across disconnected apps.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </section>
 
-                        <div className="solution-visuals">
-                            <div className="main-visual">
-                                 <div className="placeholder-box"><span>Main Visual: Partnership Interface</span></div>
-                            </div>
-                            <div className="visual-grid">
-                                <div className="placeholder-box"><span>Mockup: Rewards Dashboard</span></div>
-                                <div className="placeholder-box"><span>Mockup: Checkout Flow</span></div>
+                    {/* Section 2: Research */}
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">RESEARCH</div>
+                        <div className="section-content">
+                            <h2 className="content-title">Discovery & Strategy</h2>
+                            <p className="section-subtitle">We mapped the "Traveler's Journey" to find the precise moment where food and flight intersect.</p>
+                            
+                            <div className="constraint-grid">
+                                <div className="constraint-card">
+                                    <h3>Competitive Analysis</h3>
+                                    <p>Audited 10+ travel rewards programs; found that most buried point-redemption in deep menus, causing a 65% drop-off at checkout.</p>
+                                </div>
+                                <div className="constraint-card">
+                                    <h3>User Flow Mapping</h3>
+                                    <p>Mapped the "Landing Window"—the 30-minute stress window after touchdown where food intent is at its absolute peak.</p>
+                                </div>
+                                <div className="constraint-card">
+                                    <h3>Authorization Friction</h3>
+                                    <p>Design Constraint: Users refuse to enter a password during a hungry checkout. We had to design an "Invisible Handshake" for secure, one-tap linking.</p>
+                                </div>
+                                <div className="constraint-card">
+                                    <h3>Abstract Value Gap</h3>
+                                    <p>Design Constraint: Points feel like play-money. We transitioned to showing raw dollar values ($15 off) to drive immediate perceived value.</p>
+                                </div>
                             </div>
                         </div>
                     </section>
 
-                    {/* Section 7: Impact */}
+                    <div className="section-divider"></div>
+
+                    {/* Section 3: Solution */}
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">SOLUTION</div>
+                        <div className="section-content">
+                            <h2 className="content-title">The One-Tap Bridge</h2>
+                            <div className="constraints-layout">
+                                <div className="constraints-left">
+                                    <h2 className="constellation-title">Design Decisions</h2>
+                                </div>
+                                <div className="constraints-right">
+                                    <div className="constraint-item">
+                                        <h3>Silent Account Bridging</h3>
+                                        <p>Designed a secure handshake that links accounts in the background, removing the trust barrier of manual login.</p>
+                                    </div>
+                                    <div className="constraint-item">
+                                        <h3>Contextual Notifications</h3>
+                                        <p>Triggered push notifications precisely when the plane lands, driving a 300% increase in reward utilization.</p>
+                                    </div>
+                                    <div className="constraint-item last">
+                                        <h3>Invisible Handshake</h3>
+                                        <p>Designed for secure, one-tap linking precisely when food intent is at its peak after touchdown.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="solution-visuals" style={{ marginTop: '40px' }}>
+                                <div className="main-visual">
+                                     <img src={require('../assets/profile/SKIP X WESTJET.png')} alt="Final Solution Interface" />
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div className="section-divider"></div>
+
+                    {/* Section 4: Showcase */}
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">SHOWCASE</div>
+                        <div className="section-content">
+                            <h2 className="content-title">Seamless Reward Redemption Showcase</h2>
+                            <div className="full-width-visual">
+                                <div className="main-visual">
+                                     <img src={require('../assets/profile/SKIP X WESTJET.png')} alt="Skip x WestJet Interface Showcase" />
+                                </div>
+                                <div className="visual-grid" style={{ marginTop: '20px' }}>
+                                    <div className="placeholder-box"><span>Mockup: Rewards Dashboard</span></div>
+                                    <div className="placeholder-box"><span>Mockup: Checkout Flow</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Section 7: Impact & Learnings */}
                     <section className="casestudy-section">
-                        <h2 className="section-title">Impact</h2>
-                        <h3 className="impact-headline">A massive win for flyers</h3>
+                        <div className="impact-header">
+                            <h2 className="section-title">Impact</h2>
+                            <h3 className="impact-headline">A Win for the Flyer</h3>
+                        </div>
                         
                         <div className="impact-grid">
                             <div className="impact-card">
+                                <span className="impact-value">20k+</span>
+                                <p>New members signed up in the first month following the redesigned linking experience.</p>
+                            </div>
+                            <div className="impact-card">
                                 <span className="impact-value">+15%</span>
-                                <p>Increase in cross-platform rewards redemption</p>
+                                <p>Increase in cross-platform rewards redemption and active usage.</p>
                             </div>
                             <div className="impact-card">
-                                <span className="impact-value">+20k</span>
-                                <p>New WestJet members signed up via Skip in the first month</p>
+                                <span className="impact-value">Shipped</span>
+                                <p>Successfully rolled out to millions of users with zero friction in the linking UI.</p>
                             </div>
-                            <div className="impact-card">
-                                <span className="impact-value">Seamless</span>
-                                <p>High positive sentiment in airport delivery pilots</p>
+                        </div>
+
+                        <div className="learnings-block">
+                            <h2 className="section-title">Learnings</h2>
+                            <div className="learnings-grid">
+                                <div className="learning-item">
+                                    <h3>Reduce the "Ask"</h3>
+                                    <p>We initially asked for too much data up front. Reducing the linking flow to a single tap increased conversion by 30%.</p>
+                                </div>
+                                <div className="learning-item">
+                                    <h3>Context is Currency</h3>
+                                    <p>A reward shown when a user is at the airport is worth 10x more than the same reward shown in a generic email.</p>
+                                </div>
                             </div>
                         </div>
                     </section>

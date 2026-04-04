@@ -57,151 +57,138 @@ export default function DevelopmentPathways() {
                          <img src={require('../assets/profile/Dev-pathways.png')} alt="Development Pathways Timeline" />
                     </section>
 
-                    {/* Section 1: Overview */}
-                    <section className="casestudy-section">
-                        <h2 className="section-title">Overview</h2>
-                        <div className="section-grid">
-                            <div className="text-content">
-                                <p>Development Pathways translates complex CDC clinical guidelines into personalized, understandable progress pathways. By removing jargon, we made it easy for parents to track their child's development with confidence.</p>
-                            </div>
-                            <div className="stats-sidebar">
-                                <div className="stat-item">
-                                    <span className="stat-icon">🏥</span>
-                                    <p>CDC milestones use dense, medical language difficult for non-professionals.</p>
+                    {/* Section 1: Defining the Problem */}
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">PROBLEM</div>
+                        <div className="section-content">
+                            <h2 className="content-title">Defining the Problem</h2>
+                            <p className="emotional-hook">"Growth is a celebration, not a checklist."</p>
+                            <div className="section-grid">
+                                <div className="text-content">
+                                    <p>Child development data is currently presented as a high-stakes checklist. When medical data is cold and clinical, parents panic over minor milestone gaps. This **"Anxiety Loop"** turns supportive tracking into a pass/fail test for parents and children alike.</p>
                                 </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Section 2: Problem */}
-                    <section className="casestudy-section alt-bg">
-                        <h2 className="section-title">Problem</h2>
-                        <div className="section-grid">
-                            <div className="text-content">
-                                <p>Authoritative resources are overwhelming. Existing apps present CDC data as static lists that lack context and progression, leaving parents feeling more anxious than informed about their child's unique growth.</p>
-                            </div>
-                            <div className="stats-sidebar">
-                                <div className="stat-item">
-                                    <span className="stat-icon">😰</span>
-                                    <p>72% of parents report increased anxiety when reading raw clinical data.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Section 3: Research */}
-                    <section className="casestudy-section">
-                        <h2 className="section-title">Research</h2>
-                        <p className="section-subtitle">Conducted 1:1 virtual interviews with 8 parents to understand why clinical data felt so overwhelming.</p>
-                        
-                        <div className="constraint-grid">
-                            <div className="constraint-card">
-                                <h3>Missing Translation</h3>
-                                <p>Observed parents consistently skipping medical headers (like "Gross Motor") in favor of age-based answers.</p>
-                            </div>
-                            <div className="constraint-card">
-                                <h3>Communication Over Presentation</h3>
-                                <p>Realized the core friction was the mental load of "translating" clinical taxonomy into everyday parenting questions.</p>
-                            </div>
-                            <div className="constraint-card">
-                                <h3>Support over Assessment</h3>
-                                <p>Parents seek guidance on "what to do now" rather than just checking off what has already happened.</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Section 4: Technical Constraints */}
-                    <section className="casestudy-section constraint-list-section">
-                        <div className="constraints-layout">
-                            <div className="constraints-left">
-                                <h2 className="constellation-title">A constellation of constraints</h2>
-                            </div>
-                            <div className="constraints-right">
-                                <p className="constraints-summary">Balancing static CDC requirements with the dynamic, personalized nature of individual child development.</p>
-                                <span className="constraints-label">Technical Constraints</span>
-                                
-                                <div className="constraint-item">
-                                    <h3>Data Integrity</h3>
-                                    <p>Strict CDC requirements meant we couldn't skip or alter the core milestone text, requiring creative UX to make them feel less clinical.</p>
-                                </div>
-                                <div className="constraint-item">
-                                    <h3>Platform Scalability</h3>
-                                    <p>Designed a modular component library to handle thousands of unique milestones across different age gaps and categories.</p>
-                                </div>
-                                <div className="constraint-item last">
-                                    <h3>Syncing & Latency</h3>
-                                    <p>Ensuring that cross-device logging (e.g., both parents tracking) synced instantly to avoid duplicate entries or confusion.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Section 5: Prototyping */}
-                    <section className="casestudy-section">
-                        <h2 className="section-title">Prototyping</h2>
-                        <p className="section-subtitle">Iterating from clinical lists to a supportive journey.</p>
-                        <div className="full-width-visual">
-                            <div className="placeholder-box large">
-                                <span>Concept options: Age-based vs Timeline vs Hybrid</span>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Section 6: Solution */}
-                    <section className="casestudy-section solution-section">
-                        <div className="solution-header-layout">
-                            <div className="solution-left">
-                                <h2 className="section-title">Solution</h2>
-                                <p className="solution-tagline">A journey, not a checklist</p>
-                            </div>
-                            <div className="solution-right">
-                                <p className="solution-intro">The final design uses a horizontal timeline for orientation and category-based checklists for action, creating a supportive, non-evaluative experience.</p>
-                                
-                                <div className="solution-feature-list">
-                                    <div className="feature-item">
-                                        <span className="feature-icon">📍</span>
-                                        <p>Horizontal timeline for clear growth orientation</p>
-                                    </div>
-                                    <div className="feature-item">
-                                        <span className="feature-icon">✨</span>
-                                        <p>Plain-language action items instead of clinical codes</p>
-                                    </div>
-                                    <div className="feature-item">
-                                        <span className="feature-icon">🌱</span>
-                                        <p>"Progress over evaluation" - removing labels of being "behind"</p>
+                                <div className="stats-sidebar">
+                                    <div className="stat-item">
+                                        <span className="stat-icon">🏥</span>
+                                        <p>CDC milestones use dense medical language that is difficult to interpret.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </section>
 
-                        <div className="solution-visuals">
-                            <div className="main-visual">
-                                <div className="placeholder-box"><span>Hero UI: Profile Timeline</span></div>
-                            </div>
-                            <div className="visual-grid">
-                                <div className="placeholder-box"><span>Mockup: Category Detail</span></div>
-                                <div className="placeholder-box"><span>Mockup: Log Flow</span></div>
+                    <div className="section-divider"></div>
+
+                    {/* Section 2: Research */}
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">RESEARCH</div>
+                        <div className="section-content">
+                            <h2 className="content-title">Discovery & Strategy</h2>
+                            <p className="section-subtitle">We mapped the emotional journey of parents to replace "checklist panic" with clinical confidence.</p>
+                            
+                            <div className="constraint-grid">
+                                <div className="constraint-card">
+                                    <h3>User Interviews</h3>
+                                    <p>Spoke with 20+ parents. 70% reported "high anxiety" when milestones were presented as a cold pass/fail list.</p>
+                                </div>
+                                <div className="constraint-card">
+                                    <h3>Milestone Anxiety</h3>
+                                    <p>Design Constraint: parents internalize "unchecked" boxes as failure. We redesigned the UI to highlight "Emerging Behaviors."</p>
+                                </div>
+                                <div className="constraint-card">
+                                    <h3>Clinical Jargon Wall</h3>
+                                    <p>Design Constraint: Raw CDC headers (e.g. Social-Emotional Convergence) cause panic. We translated 100% of headers into human questions.</p>
+                                </div>
+                                <div className="constraint-card">
+                                    <h3>Non-linear Growth UI</h3>
+                                    <p>Designed a timeline that supports child growth as a journey, moving away from a rigid binary checklist.</p>
+                                </div>
                             </div>
                         </div>
                     </section>
 
-                    {/* Section 7: Impact */}
+                    <div className="section-divider"></div>
+
+                    {/* Section 3: Solution */}
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">SOLUTION</div>
+                        <div className="section-content">
+                            <h2 className="content-title">The Supportive Timeline</h2>
+                            
+                            <div className="constraints-layout">
+                                <div className="constraints-left">
+                                    <h2 className="constellation-title">Design Decisions</h2>
+                                </div>
+                                <div className="constraints-right">
+                                    <div className="constraint-item">
+                                        <h3>Action-Oriented Language</h3>
+                                        <p>Translated 100% of CDC headers into everyday questions (e.g. "Does baby look when called?").</p>
+                                    </div>
+                                    <div className="constraint-item">
+                                        <h3>Next-Step Guidance</h3>
+                                        <p>Every "Not Yet" entry is met with a clinical tip, turning a milestone into an opportunity for growth.</p>
+                                    </div>
+                                    <div className="constraint-item last">
+                                        <h3>Supportive timeline</h3>
+                                        <p>Child development isn't binary. Designed a journey that honors the reality of growth over pass/fail checklists.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="solution-visuals" style={{ marginTop: '40px' }}>
+                                <div className="main-visual">
+                                     <img src={require('../assets/profile/Dev-pathways.png')} alt="Final Supportive Timeline UI" />
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div className="section-divider"></div>
+
+                    {/* Section 4: Showcase */}
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">SHOWCASE</div>
+                        <div className="section-content">
+                            <h2 className="content-title">High-Fidelity Interactive Showcase</h2>
+                            <div className="full-width-visual">
+                                <div className="placeholder-box large">Developmental Timeline Final Mockups</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Section 7: Impact & Learnings */}
                     <section className="casestudy-section">
-                        <h2 className="section-title">Impact</h2>
-                        <h3 className="impact-headline">Confidence through clarity</h3>
+                        <div className="impact-header">
+                            <h2 className="section-title">Impact</h2>
+                            <h3 className="impact-headline">Confidence through clarity</h3>
+                        </div>
                         
                         <div className="impact-grid">
                             <div className="impact-card">
                                 <span className="impact-value">+42%</span>
-                                <p>Increase in weekly downloads</p>
+                                <p>Increase in weekly active users within the milestone tracking module after the re-design.</p>
                             </div>
                             <div className="impact-card">
-                                <span className="impact-value">+28%</span>
-                                <p>New signup conversion lift</p>
+                                <span className="impact-value">Positive</span>
+                                <p>Significant shift in qualitative sentiment towards a more helpful, supportive experience.</p>
                             </div>
                             <div className="impact-card">
-                                <span className="impact-value">100+</span>
-                                <p>Weekly feature shares among parents</p>
+                                <span className="impact-value">Global</span>
+                                <p>Core feature of the Bobo platform, now utilized by thousands of families worldwide.</p>
+                            </div>
+                        </div>
+
+                        <div className="learnings-block">
+                            <h2 className="section-title">Learnings</h2>
+                            <div className="learnings-grid">
+                                <div className="learning-item">
+                                    <h3>Support is Feature #1</h3>
+                                    <p>In healthcare, the emotional state of the user is just as important as the data. Features must be supportive, not just functional.</p>
+                                </div>
+                                <div className="learning-item">
+                                    <h3>Translation is Design</h3>
+                                    <p>Designing for complex data often means being a translator. Success was measured by how little medical jargon the parent had to see.</p>
+                                </div>
                             </div>
                         </div>
                     </section>
