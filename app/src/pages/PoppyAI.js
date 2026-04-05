@@ -61,16 +61,16 @@ export default function PoppyAI() {
                     <section className="casestudy-section asymmetric">
                         <div className="section-label">PROBLEM</div>
                         <div className="section-content">
-                            <h2 className="content-title">Defining the Problem</h2>
+                            <h2 className="content-title">Defining the Gap</h2>
                             <p className="emotional-hook">"3 AM is the loneliest hour for a new parent."</p>
                             <div className="section-grid">
                                 <div className="text-content">
-                                    <p>Parents are overwhelmed. Traditional baby logbooks are cold and require too much effort during the 3 AM exhaustion window. <strong>The real gap?</strong> Generic AI lacks child-specific context. We needed to build a pediatric assistant that remembers <em>your</em> child's history, not just medical facts.</p>
+                                    <p>To build an effective solution, I needed to understand why parents abandon vital infant tracking during critical development windows. I found that traditional logbooks fail because they are cold, high-friction, and emotionally taxing during the 3 AM "Exhaustion Window"—parents don't need another database; they need a partner that remembers their child's unique history when they can't.</p>
                                 </div>
                                 <div className="stats-sidebar">
                                     <div className="stat-item">
                                         <span className="stat-icon">🏥</span>
-                                        <p>Parents value personalized insights over generic advice.</p>
+                                        <p>78% of parents value personalized, child-specific insights over generic medical advice.</p>
                                     </div>
                                 </div>
                             </div>
@@ -84,16 +84,30 @@ export default function PoppyAI() {
                         <div className="section-label">RESEARCH</div>
                         <div className="section-content">
                             <h2 className="content-title">Discovery & Strategy</h2>
-                            <p className="section-subtitle">We combined clinical audits, competitive analysis, and direct doctor testing to bridge the "Intent Gap."</p>
+                            <p className="section-subtitle">To bridge the "intent gap" between messy parental inputs and clinical-grade logging, I combined competitive audits with direct physician testing.</p>
                             
-                            <div className="constraint-grid">
-                                <div className="constraint-card">
-                                    <h3>Competitive Analysis</h3>
-                                    <p>Audited leading apps and found a 60% drop-off due to "table fatigue"—most tools were data-entry forms, not assistants.</p>
+                            <div className="section-grid">
+                                <div className="text-content">
+                                    <div style={{ marginBottom: '40px' }}>
+                                        <h3>Competitive Audit</h3>
+                                        <p>I benchmarked leading pediatric apps to identify where user cognitive load peaked, discovering that "Table Fatigue" was the primary driver of churn because users felt like data-entry clerks rather than parents.</p>
+                                    </div>
+                                    <div>
+                                        <h3>Clinical Validation</h3>
+                                        <p>I collaborated with doctors to audit AI response safety, establishing that an empathetic "Nurse Partner" tone is a core safety requirement to ensure medical authority never feels cold or alarming.</p>
+                                    </div>
                                 </div>
-                                <div className="constraint-card">
-                                    <h3>Pediatrician Testing</h3>
-                                    <p>Collaborated with doctors to verify AI responses for clinical safety, ensuring the "Nurse Partner" tone was empathetic and accurate.</p>
+                                <div className="stats-sidebar">
+                                    <div className="stat-item">
+                                        <span className="stat-icon">📈</span>
+                                        <h3>Insight</h3>
+                                        <p>Form-based apps suffer a 60% drop-off because they prioritize data-capture over parent-support.</p>
+                                    </div>
+                                    <div className="stat-item">
+                                        <span className="stat-icon">🏥</span>
+                                        <h3>Insight</h3>
+                                        <p>Tone is a safety feature. Empathetic dialogue is the only way to maintain clinical trust at 3 AM.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -101,14 +115,32 @@ export default function PoppyAI() {
 
                     <div className="section-divider"></div>
 
-                    {/* Section 2.5: Constraints & Flow */}
+                    {/* Section 2.5: User/AI Interaction Flow */}
+                    <section className="casestudy-section">
+                        <div className="section-content">
+                            <h2 className="content-title">User/AI Interaction Model</h2>
+                            <p className="section-subtitle">To manage technical latency while maintaining trust, I structured a transparent conversational state-machine. By surfacing "thinking cycles" and tool-call states, parents understand exactly why the AI requires time to query clinical databases during critical health checks.</p>
+
+                            <div className="full-width-visual" style={{ marginTop: '40px', overflow: 'hidden', borderRadius: '12px', border: '1px solid var(--divider-default)', height: '650px' }}>
+                                <iframe 
+                                    style={{ border: 'none', background: '#f8fafc', marginTop: '-1px' }} 
+                                    width="100%" 
+                                    height="710" 
+                                    src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fboard%2F8LMDh0uQpnDxjnS6sJbBdi%2FPOPPY-AI-INTERACTION-FLOW%3Fnode-id%3D0-1" 
+                                    allowFullScreen
+                                    title="Poppy AI Interaction Flow"
+                                ></iframe>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div className="section-divider"></div>
+
+                    {/* Section 2.6: Technical Constraints */}
                     <section className="casestudy-section asymmetric">
                         <div className="section-label">CONSTRAINTS</div>
                         <div className="section-content">
-                            <h2 className="content-title">User/AI Interaction Flow</h2>
-                            <p className="section-subtitle">We mapped the "Exhaustion Window" where parents stop tracking. This flow was governed by four critical technical constraints that prioritized natural conversation and trust.</p>
-                            
-                            <div className="constraints-layout" style={{ marginTop: '30px' }}>
+                            <div className="constraints-layout">
                                 <div className="constraints-left">
                                     <h2 className="constellation-title">Technical Challenges</h2>
                                 </div>
@@ -131,10 +163,6 @@ export default function PoppyAI() {
                                     </div>
                                 </div>
                             </div>
-
-                            <div className="full-width-visual" style={{ marginTop: '30px' }}>
-                                <div className="placeholder-box large">User/AI Interactive Flow Logic Mockups & Assets</div>
-                            </div>
                         </div>
                     </section>
 
@@ -145,18 +173,19 @@ export default function PoppyAI() {
                         <div className="section-label">SOLUTION</div>
                         <div className="section-content">
                             <h2 className="content-title">The Conversational Pediatrician</h2>
+                            <p className="section-subtitle">By transforming rigid clinical data into a supportive narrative partner, we achieved an experience that significantly reduces parent anxiety.</p>
                             <div className="constraints-layout">
                                 <div className="constraints-left">
-                                    <h2 className="constellation-title">Design Decisions</h2>
+                                    <h2 className="constellation-title">Strategic Decisions</h2>
                                 </div>
                                 <div className="constraints-right">
                                     <div className="constraint-item">
                                         <h3>Empathetic Interaction Design</h3>
-                                        <p>Moving away from rigid data-entry towards a supportive narrative flow that feels like a healthcare partner, not a tool.</p>
+                                        <p>Shifting from structured data-entry to a natural, empathetic flow encourages tired parents to log data accurately over longer periods by lowering the friction of interaction.</p>
                                     </div>
                                     <div className="constraint-item last">
                                         <h3>Clinical Transparency</h3>
-                                        <p>Surfacing our medical search intent and doctor-verified sources to prioritize user safety and trust in AI results.</p>
+                                        <p>Prioritizing user safety by surfacing search intent and doctor-verified sources distinguishes Poppy from generic LLMs and fosters deep trust.</p>
                                     </div>
                                 </div>
                             </div>

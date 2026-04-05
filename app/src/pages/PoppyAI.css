@@ -113,7 +113,14 @@
 }
 
 .casestudy-section {
-    margin-bottom: 20px;
+    margin-bottom: 120px;
+}
+
+.section-divider {
+    height: 1px;
+    background: var(--divider-default);
+    width: 100%;
+    margin-bottom: 120px;
 }
 
 .section-title {
@@ -150,11 +157,17 @@
 .stat-item {
     display: flex;
     flex-direction: column;
-    gap: 12px;
 }
 
 .stat-icon {
     font-size: 1.5rem;
+    margin-bottom: 12px;
+}
+
+.stat-item h3 {
+    margin: 0;
+    margin-bottom: 6px;
+    font-size: 1.1rem;
 }
 
 .stat-item p {
@@ -179,7 +192,7 @@
 .section-subtitle {
     font-size: 1.5rem;
     color: var(--muted);
-    max-width: 800px;
+    max-width: 100%;
     margin-bottom: 60px;
 }
 
