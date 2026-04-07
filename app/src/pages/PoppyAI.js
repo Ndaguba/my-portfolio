@@ -172,41 +172,68 @@ export default function PoppyAI() {
                     <section className="casestudy-section asymmetric">
                         <div className="section-label">SOLUTION</div>
                         <div className="section-content">
-                            <h2 className="content-title">The Conversational Pediatrician</h2>
-                            <p className="section-subtitle">By transforming rigid clinical data into a supportive narrative partner, we achieved an experience that significantly reduces parent anxiety.</p>
                             <div className="constraints-layout">
                                 <div className="constraints-left">
-                                    <h2 className="constellation-title">Strategic Decisions</h2>
+                                    <h2 className="content-title">The Conversational Pediatrician</h2>
+                                    <p className="section-subtitle" style={{ fontSize: '1.1rem', marginTop: '20px', lineHeight: '1.6' }}>A conversational pediatric assistant designed to transform messy, natural language inputs into structured health logs and doctor-verified clinical guidance.</p>
                                 </div>
                                 <div className="constraints-right">
                                     <div className="constraint-item">
                                         <h3>Empathetic Interaction Design</h3>
-                                        <p>Shifting from structured data-entry to a natural, empathetic flow encourages tired parents to log data accurately over longer periods by lowering the friction of interaction.</p>
+                                        <p>A conversational interface that converts messy, natural language inputs into structured clinical data points by handling the cognitive load of tracking for parents.</p>
                                     </div>
                                     <div className="constraint-item last">
                                         <h3>Clinical Transparency</h3>
-                                        <p>Prioritizing user safety by surfacing search intent and doctor-verified sources distinguishes Poppy from generic LLMs and fosters deep trust.</p>
+                                        <p>A transparent reasoning engine that surfaces search intent and doctor-verified pediatric sources to provide medical authority during conversational health lookups.</p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="solution-visuals" style={{ marginTop: '40px' }}>
-                                <div className="main-visual">
-                                     <img src={require('../assets/profile/bobo-poppy.png')} alt="Main Solution Interface" />
-                                </div>
-                            </div>
+
                         </div>
                     </section>
 
-                    <div className="section-divider"></div>
+                    {/* Section 4: Showcase - Interaction Model */}
+                    <section className="interaction-showcase">
+                        <div className="interaction-item"> {/* Force re-sync */}
+                            <div className="interaction-header">
+                                <div className="interaction-left">
+                                    <h2>Conversational Foundations</h2>
+                                </div>
+                                <div className="interaction-right">
+                                    <p>The initial chat state introduces the 24/7 pediatric assistant as a friendly partner. By greeting parents by name and offering clear, conversational prompts, the interface lowers the barrier to initial interaction during stressful moments.</p>
+                                    <div className="interaction-visual-box">
+                                        <img src={require('../assets/projects/poppy-interaction/Initial.png')} alt="Initial Chat State" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                    {/* Section 4: Showcase */}
-                    <section className="casestudy-section asymmetric">
-                        <div className="section-label">SHOWCASE</div>
-                        <div className="section-content">
-                            <h2 className="content-title">High-Fidelity Interaction Showcase</h2>
-                            <div className="full-width-visual">
-                                <img src={require('../assets/profile/bobo-poppy.png')} alt="Poppy AI Interaction Showcase" />
+                        <div className="interaction-item">
+                            <div className="interaction-header">
+                                <div className="interaction-left">
+                                    <h2>Managing Latency with Transparency</h2>
+                                </div>
+                                <div className="interaction-right">
+                                    <p>During complex medical lookups, the AI surfaces its internal 'thinking cycles' through interactive state-markers. This transparency maintains user trust during the brief latency required for secure clinical database queries.</p>
+                                    <div className="interaction-visual-box">
+                                        <img src={require('../assets/projects/poppy-interaction/thinking-2.png')} alt="Thinking State" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="interaction-item">
+                            <div className="interaction-header">
+                                <div className="interaction-left">
+                                    <h2>Seamless Data Synchronization</h2>
+                                </div>
+                                <div className="interaction-right">
+                                    <p>Once a trackable event is identified—such as a feeding or symptom—the assistant confirms the log in real-time. This turns messy natural language into structured records, closing the data-gap between home life and clinical care.</p>
+                                    <div className="interaction-visual-box">
+                                        <img src={require('../assets/projects/poppy-interaction/Complete-session.png')} alt="Complete Session State" />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </section>
