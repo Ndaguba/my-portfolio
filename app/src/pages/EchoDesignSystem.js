@@ -212,17 +212,7 @@ export default function EchoDesignSystem() {
                         </div>
                     </section>
 
-                    <section className="cta-section">
-                        <h2 className="section-title">Next project</h2>
-                        <Link to="/poppy-ai" className="next-project-card">
-                            <div className="next-meta">
-                                <span className="next-badge">SHIPPED</span>
-                                <h3>Poppy AI</h3>
-                                <p>Conversational AI for pediatric care</p>
-                            </div>
-                            <div className="next-arrow">→</div>
-                        </Link>
-                    </section>
+
                 </main>
 
                 <Footer />

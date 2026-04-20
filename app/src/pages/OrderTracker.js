@@ -30,7 +30,7 @@ export default function OrderTracker() {
                         </div>
 
                         <h1 className="hero-statement">
-                            Redesigning order tracking from the ground up to provide real-time visibility and reduce support volume for millions of deliveries.
+                            Led the redesign of Skip’s order tracking experience by introducing a bottom-sheet architecture that created a more flexible foundation for logistics, monetization, and post-purchase growth.
                         </h1>
 
                         <div className="project-metadata">
@@ -39,16 +39,16 @@ export default function OrderTracker() {
                                 <span className="meta-value">SkipTheDishes Order Tracker</span>
                              </div>
                              <div className="meta-col">
-                                <span className="meta-label">Skills</span>
-                                <span className="meta-value">Mobile Design, Real-time Interaction, Logistics UX</span>
+                                 <span className="meta-label">Skills</span>
+                                 <span className="meta-value">Mobile Product Design, Logistics UX, Platform Thinking, Monetization Design</span>
                              </div>
                              <div className="meta-col">
-                                <span className="meta-label">My role</span>
-                                <span className="meta-value">Senior Product Designer</span>
+                                 <span className="meta-label">My role</span>
+                                 <span className="meta-value">Senior Product Designer</span>
                              </div>
                              <div className="meta-col">
-                                <span className="meta-label">Timeline</span>
-                                <span className="meta-value">16 weeks</span>
+                                 <span className="meta-label">Timeline</span>
+                                 <span className="meta-value">5 weeks</span>
                              </div>
                         </div>
                     </header>
@@ -57,21 +57,30 @@ export default function OrderTracker() {
                          <img src={require('../assets/profile/Delivery-tracker.png')} alt="Order Tracker Redesign" />
                     </section>
 
-                    {/* Section 1: Defining the Problem */}
+                    {/* Section 1: Overview & Problem */}
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">OVERVIEW</div>
+                        <div className="section-content">
+                            <h2 className="content-title">Overview</h2>
+                            <p className="emotional-hook">Order tracking was one of the most frequently visited surfaces in the Skip experience, but it had become too limited for the evolving needs of the business. What had historically functioned as a status page needed to become a more extensible product surface.</p>
+                            <div className="section-grid">
+                                <div className="text-content">
+                                    <p>I led UX for the redesign of the tracking experience, with the goal of creating a new structural foundation that could support emerging logistics requirements and unlock new business opportunities.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div className="section-divider"></div>
+
                     <section className="casestudy-section asymmetric">
                         <div className="section-label">PROBLEM</div>
                         <div className="section-content">
-                            <h2 className="content-title">Defining the Problem</h2>
-                            <p className="emotional-hook">"Waiting for food shouldn't feel like staring into a void."</p>
+                            <h2 className="content-title">The Problem</h2>
+                            <p className="section-subtitle">The challenge was bigger than improving visibility during delivery. Skip needed the tracking experience to do more.</p>
                             <div className="section-grid">
                                 <div className="text-content">
-                                    <p>Order tracking is a high-stakes moment for Skip’s millions of users. The legacy system was vague and static, leading to a **40% support call volume** for "Where is my order?" (WISMO) inquiries. Our UI failing to provide real-time confidence forced users to call a human for information a computer already had.</p>
-                                </div>
-                                <div className="stats-sidebar">
-                                    <div className="stat-item">
-                                        <span className="stat-icon">☎️</span>
-                                        <p>High support volume due to lack of real-time visibility.</p>
-                                    </div>
+                                    <p>The existing model did not create enough flexibility for PIN-based handoff flows, multi-partner delivery, and monetization opportunities. The experience needed a new architecture that could support all of that without becoming cluttered or overwhelming.</p>
                                 </div>
                             </div>
                         </div>
@@ -79,29 +88,24 @@ export default function OrderTracker() {
 
                     <div className="section-divider"></div>
 
-                    {/* Section 2: Research */}
+                    {/* Section 2: Role & Approach */}
                     <section className="casestudy-section asymmetric">
-                        <div className="section-label">RESEARCH</div>
+                        <div className="section-label">ROLE</div>
                         <div className="section-content">
-                            <h2 className="content-title">Discovery & Strategy</h2>
-                            <p className="section-subtitle">We combined logistics data with behavioral audits to understand why users "stress-refresh" the app.</p>
-                            
+                            <h2 className="content-title">My Role</h2>
+                            <p className="section-subtitle">As UX lead, I was responsible for rethinking the experience and defining the new interaction model.</p>
                             <div className="constraint-grid">
                                 <div className="constraint-card">
-                                    <h3>Competitive Analysis</h3>
-                                    <p>Audited 5 global delivery apps. Found that most fail during the "Blind Spot"—the 10-minute gap where the courier is waiting at the restaurant.</p>
+                                    <h3>Product UX Strategy</h3>
+                                    <p>Rethinking the tracking surface from a status page to a flexible platform surface.</p>
                                 </div>
                                 <div className="constraint-card">
-                                    <h3>Refresh Loop Audit</h3>
-                                    <p>Design Constraint: Uncertainty drives "Stress Refreshing." We had to design active reassurance moments to keep users from manual refreshing.</p>
+                                    <h3>Bottom-Sheet Architecture</h3>
+                                    <p>Introducing a new interaction model that allows the experience to scale gracefully.</p>
                                 </div>
                                 <div className="constraint-card">
-                                    <h3>Motion Integrity</h3>
-                                    <p>Design Constraint: Small location jumps look like "system bugs." We designed a soft-motion buffer to mask data jitter and maintain visual trust.</p>
-                                </div>
-                                <div className="constraint-card">
-                                    <h3>Status Taxonomy</h3>
-                                    <p>Mapped 50+ archaic backend codes into 5 simple human stages to eliminate user guessing during the hunger window.</p>
+                                    <h3>Monetization Design</h3>
+                                    <p>Creating space for additional merchandising and upsell opportunities during transit.</p>
                                 </div>
                             </div>
                         </div>
@@ -109,34 +113,26 @@ export default function OrderTracker() {
 
                     <div className="section-divider"></div>
 
-                    {/* Section 3: Solution */}
                     <section className="casestudy-section asymmetric">
-                        <div className="section-label">SOLUTION</div>
+                        <div className="section-label">APPROACH</div>
                         <div className="section-content">
-                            <h2 className="content-title">The Real-Time Narrative</h2>
                             <div className="constraints-layout">
                                 <div className="constraints-left">
-                                    <h2 className="constellation-title">Design Decisions</h2>
+                                    <h2 className="constellation-title">The Approach</h2>
                                 </div>
                                 <div className="constraints-right">
                                     <div className="constraint-item">
-                                        <h3>Smoothing the Jump</h3>
-                                        <p>Designed a soft-motion buffer to mask data jitter and maintain visual trust during courier transit.</p>
+                                        <h3>Turning page into platform</h3>
+                                        <p>Introducing a bottom-sheet model that allowed the experience to scale as new business needs were added.</p>
                                     </div>
                                     <div className="constraint-item">
-                                        <h3>Proactive Reassurance</h3>
-                                        <p>Designed alert cards for restaurant delays, explaining the status before the user feels the need to call support.</p>
+                                        <h3>Operational simplicity</h3>
+                                        <p>Designing for complex logistics (PIN codes, pooled delivery) while keeping the experience simple for the user.</p>
                                     </div>
                                     <div className="constraint-item last">
-                                        <h3>Reassurance moments</h3>
-                                        <p>Uncertainty drives "Stress Refreshing." We designed active moments to keep users from manual refreshing.</p>
+                                        <h3>Creating room for growth</h3>
+                                        <p>Creating space for merchandising and upsell opportunities while the user is actively engaged with their order.</p>
                                     </div>
-                                </div>
-                            </div>
-
-                            <div className="solution-visuals" style={{ marginTop: '40px' }}>
-                                <div className="main-visual">
-                                     <img src={require('../assets/profile/Delivery-tracker.png')} alt="Final Tracking Interface" />
                                 </div>
                             </div>
                         </div>
@@ -144,71 +140,30 @@ export default function OrderTracker() {
 
                     <div className="section-divider"></div>
 
-                    {/* Section 4: Showcase */}
-                    <section className="casestudy-section asymmetric">
-                        <div className="section-label">SHOWCASE</div>
-                        <div className="section-content">
-                            <h2 className="content-title">Live Tracking Interaction Showcase</h2>
-                            <div className="full-width-visual">
-                                <div className="main-visual">
-                                     <img src={require('../assets/profile/Delivery-tracker.png')} alt="Final Tracking Interface Showcase" />
-                                </div>
-                                <div className="visual-grid" style={{ marginTop: '20px' }}>
-                                    <div className="placeholder-box"><span>Mockup: Detailed Steps</span></div>
-                                    <div className="placeholder-box"><span>Mockup: Map Interaction</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Section 7: Impact & Learnings */}
+                    {/* Section 5: Outcome */}
                     <section className="casestudy-section">
                         <div className="impact-header">
-                            <h2 className="section-title">Impact</h2>
+                            <h2 className="section-title">Outcome</h2>
                             <h3 className="impact-headline">A Calmer Journey</h3>
                         </div>
                         
                         <div className="impact-grid">
                             <div className="impact-card">
-                                <span className="impact-value">-25%</span>
-                                <p>Reduction in status-related support calls (WISMO) during the nationwide rollout.</p>
+                                <span className="impact-value">Extensible</span>
+                                <p>Repositioned order tracking into a more extensible platform surface inside Skip.</p>
                             </div>
                             <div className="impact-card">
-                                <span className="impact-value">+15%</span>
-                                <p>Increase in post-delivery satisfaction scores for order visibility.</p>
+                                <span className="impact-value">Flexible</span>
+                                <p>Created a new bottom-sheet architecture that supports evolving logistics requirements.</p>
                             </div>
                             <div className="impact-card">
-                                <span className="impact-value">Shipped</span>
-                                <p>Seamless transition to 100% of the market with positive user sentiment.</p>
-                            </div>
-                        </div>
-
-                        <div className="learnings-block">
-                            <h2 className="section-title">Learnings</h2>
-                            <div className="learnings-grid">
-                                <div className="learning-item">
-                                    <h3>Transparency Breeds Trust</h3>
-                                    <p>Even bad news is better than silence. Telling a user a restaurant is busy reduces support calls more than saying "Soon."</p>
-                                </div>
-                                <div className="learning-item">
-                                    <h3>Precision over Movement</h3>
-                                    <p>High-fidelity status text does more for a user's mental calm than a high-fidelity moving icon on a map.</p>
-                                </div>
+                                <span className="impact-value">Strategic</span>
+                                <p>Unlocked room for post-purchase upsell and additional monetization surfaces.</p>
                             </div>
                         </div>
                     </section>
 
-                    <section className="cta-section">
-                        <h2 className="section-title">Next project</h2>
-                        <Link to="/poppy-ai" className="next-project-card">
-                            <div className="next-meta">
-                                <span className="next-badge">SHIPPED</span>
-                                <h3>Poppy AI</h3>
-                                <p>Conversational AI for pediatric care</p>
-                            </div>
-                            <div className="next-arrow">→</div>
-                        </Link>
-                    </section>
+
                 </main>
 
                 <Footer />

@@ -30,7 +30,7 @@ export default function DevelopmentPathways() {
                         </div>
 
                         <h1 className="hero-statement">
-                            Transforming clinical CDC milestones into an intuitive tracking experience that reduces parental anxiety and builds confidence.
+                            Led UX for a new milestone tracking experience that transformed CDC developmental guidance into a parent-friendly product designed to build confidence, not anxiety.
                         </h1>
 
                         <div className="project-metadata">
@@ -39,16 +39,16 @@ export default function DevelopmentPathways() {
                                 <span className="meta-value">Bobo Health</span>
                              </div>
                              <div className="meta-col">
-                                <span className="meta-label">Skills</span>
-                                <span className="meta-value">Product design, IA, UX Flows, Interaction Design</span>
+                                 <span className="meta-label">Skills</span>
+                                 <span className="meta-value">Product Design, Information Architecture, UX Strategy, Interaction Design</span>
                              </div>
                              <div className="meta-col">
-                                <span className="meta-label">My role</span>
-                                <span className="meta-value">Lead Product Designer</span>
+                                 <span className="meta-label">My role</span>
+                                 <span className="meta-value">Senior Product Designer</span>
                              </div>
                              <div className="meta-col">
-                                <span className="meta-label">Timeline</span>
-                                <span className="meta-value">8 weeks</span>
+                                 <span className="meta-label">Timeline</span>
+                                 <span className="meta-value">3 weeks</span>
                              </div>
                         </div>
                     </header>
@@ -57,21 +57,30 @@ export default function DevelopmentPathways() {
                          <img src={require('../assets/profile/Dev-pathways.png')} alt="Development Pathways Timeline" />
                     </section>
 
-                    {/* Section 1: Defining the Problem */}
+                    {/* Section 1: Overview & Problem */}
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">OVERVIEW</div>
+                        <div className="section-content">
+                            <h2 className="content-title">Overview</h2>
+                            <p className="emotional-hook">Bobo saw an opportunity to expand into developmental tracking by creating a product experience rooted in trusted milestone guidance. The challenge was that most developmental frameworks are clinically useful but emotionally difficult for parents to engage with, especially when presented as rigid checklists.</p>
+                            <div className="section-grid">
+                                <div className="text-content">
+                                    <p>I led UX for Development Pathways as a new product initiative, defining how milestone tracking could feel supportive, understandable, and scalable from the start.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div className="section-divider"></div>
+
                     <section className="casestudy-section asymmetric">
                         <div className="section-label">PROBLEM</div>
                         <div className="section-content">
-                            <h2 className="content-title">Defining the Problem</h2>
-                            <p className="emotional-hook">"Growth is a celebration, not a checklist."</p>
+                            <h2 className="content-title">The Problem</h2>
+                            <p className="section-subtitle">Clinical milestone systems are typically designed for accuracy, not everyday usability. Left untranslated, they can feel formal, intimidating, and judgmental. That creates a poor emotional experience for parents and makes consistent engagement less likely.</p>
                             <div className="section-grid">
                                 <div className="text-content">
-                                    <p>Child development data is currently presented as a high-stakes checklist. When medical data is cold and clinical, parents panic over minor milestone gaps. This **"Anxiety Loop"** turns supportive tracking into a pass/fail test for parents and children alike.</p>
-                                </div>
-                                <div className="stats-sidebar">
-                                    <div className="stat-item">
-                                        <span className="stat-icon">🏥</span>
-                                        <p>CDC milestones use dense medical language that is difficult to interpret.</p>
-                                    </div>
+                                    <p>The challenge was to preserve clinical credibility without creating a pass/fail dynamic. Bobo needed an experience that could help parents understand development, track progress over time, and feel supported when a child was not yet meeting a milestone.</p>
                                 </div>
                             </div>
                         </div>
@@ -79,29 +88,24 @@ export default function DevelopmentPathways() {
 
                     <div className="section-divider"></div>
 
-                    {/* Section 2: Research */}
+                    {/* Section 2: Role & Approach */}
                     <section className="casestudy-section asymmetric">
-                        <div className="section-label">RESEARCH</div>
+                        <div className="section-label">ROLE</div>
                         <div className="section-content">
-                            <h2 className="content-title">Discovery & Strategy</h2>
-                            <p className="section-subtitle">We mapped the emotional journey of parents to replace "checklist panic" with clinical confidence.</p>
-                            
+                            <h2 className="content-title">My Role</h2>
+                            <p className="section-subtitle">As UX lead, I was responsible for defining the experience from the ground up.</p>
                             <div className="constraint-grid">
                                 <div className="constraint-card">
-                                    <h3>User Interviews</h3>
-                                    <p>Spoke with 20+ parents. 70% reported "high anxiety" when milestones were presented as a cold pass/fail list.</p>
+                                    <h3>Product UX Strategy</h3>
+                                    <p>Defining how milestone tracking could feel supportive and scalable from the start.</p>
                                 </div>
                                 <div className="constraint-card">
-                                    <h3>Milestone Anxiety</h3>
-                                    <p>Design Constraint: parents internalize "unchecked" boxes as failure. We redesigned the UI to highlight "Emerging Behaviors."</p>
+                                    <h3>Information Architecture</h3>
+                                    <p>Structuring the milestone navigation for ease of use across different age ranges.</p>
                                 </div>
                                 <div className="constraint-card">
-                                    <h3>Clinical Jargon Wall</h3>
-                                    <p>Design Constraint: Raw CDC headers (e.g. Social-Emotional Convergence) cause panic. We translated 100% of headers into human questions.</p>
-                                </div>
-                                <div className="constraint-card">
-                                    <h3>Non-linear Growth UI</h3>
-                                    <p>Designed a timeline that supports child growth as a journey, moving away from a rigid binary checklist.</p>
+                                    <h3>Clinical Alignment</h3>
+                                    <p>Collaborating with stakeholders to align usability with trustworthiness.</p>
                                 </div>
                             </div>
                         </div>
@@ -109,35 +113,58 @@ export default function DevelopmentPathways() {
 
                     <div className="section-divider"></div>
 
-                    {/* Section 3: Solution */}
                     <section className="casestudy-section asymmetric">
-                        <div className="section-label">SOLUTION</div>
+                        <div className="section-label">APPROACH</div>
                         <div className="section-content">
-                            <h2 className="content-title">The Supportive Timeline</h2>
-                            
                             <div className="constraints-layout">
                                 <div className="constraints-left">
-                                    <h2 className="constellation-title">Design Decisions</h2>
+                                    <h2 className="constellation-title">The Approach</h2>
                                 </div>
                                 <div className="constraints-right">
                                     <div className="constraint-item">
-                                        <h3>Action-Oriented Language</h3>
-                                        <p>Translated 100% of CDC headers into everyday questions (e.g. "Does baby look when called?").</p>
+                                        <h3>Translating clinical guidance</h3>
+                                        <p>Rethinking how milestones were written and presented using language parents could quickly understand.</p>
                                     </div>
                                     <div className="constraint-item">
-                                        <h3>Next-Step Guidance</h3>
-                                        <p>Every "Not Yet" entry is met with a clinical tip, turning a milestone into an opportunity for growth.</p>
+                                        <h3>Designing for reassurance</h3>
+                                        <p>Intentionally designing for a supportive tone and progression model rather than a success/failure evaluation.</p>
                                     </div>
                                     <div className="constraint-item last">
-                                        <h3>Supportive timeline</h3>
-                                        <p>Child development isn't binary. Designed a journey that honors the reality of growth over pass/fail checklists.</p>
+                                        <h3>Building a scalable foundation</h3>
+                                        <p>Structuring the experience to scale cleanly across age ranges and milestone groups without becoming overwhelming.</p>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </section>
 
-                            <div className="solution-visuals" style={{ marginTop: '40px' }}>
-                                <div className="main-visual">
-                                     <img src={require('../assets/profile/Dev-pathways.png')} alt="Final Supportive Timeline UI" />
+                    <div className="section-divider"></div>
+                    
+                    <section className="interaction-showcase">
+                        <div className="interaction-item">
+                            <div className="interaction-header">
+                                <div className="interaction-left">
+                                    <h2>Translating CDC Guidance</h2>
+                                </div>
+                                <div className="interaction-right">
+                                    <p>I reviewed clinical milestones from the CDC (CDIC) and converted them into parent-friendly checklists. By focusing on observable behaviors, we reduced parental anxiety while maintaining clinical accuracy.</p>
+                                    <div className="interaction-visual-box">
+                                        <img src={require('../assets/profile/cdc-checklist.png')} alt="CDC Milestone Checklist Design" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="interaction-item">
+                            <div className="interaction-header">
+                                <div className="interaction-left">
+                                    <h2>Milestone Progress Visualization</h2>
+                                </div>
+                                <div className="interaction-right">
+                                    <p>To provide a holistic view of developmental growth, I designed a vertical scroll view for milestone progress. This was integrated into the data visualization profile page, allowing parents to see their child's journey at a glance.</p>
+                                    <div className="interaction-visual-box">
+                                        <img src={require('../assets/profile/milestone-visualization.png')} alt="Vertical Milestone Progress Visualization" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -145,65 +172,30 @@ export default function DevelopmentPathways() {
 
                     <div className="section-divider"></div>
 
-                    {/* Section 4: Showcase */}
-                    <section className="casestudy-section asymmetric">
-                        <div className="section-label">SHOWCASE</div>
-                        <div className="section-content">
-                            <h2 className="content-title">High-Fidelity Interactive Showcase</h2>
-                            <div className="full-width-visual">
-                                <div className="placeholder-box large">Developmental Timeline Final Mockups</div>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Section 7: Impact & Learnings */}
+                    {/* Section 5: Outcome */}
                     <section className="casestudy-section">
                         <div className="impact-header">
-                            <h2 className="section-title">Impact</h2>
-                            <h3 className="impact-headline">Confidence through clarity</h3>
+                            <h2 className="section-title">Outcome</h2>
+                            <h3 className="impact-headline">Confidence through Clarity</h3>
                         </div>
                         
                         <div className="impact-grid">
                             <div className="impact-card">
-                                <span className="impact-value">+42%</span>
-                                <p>Increase in weekly active users within the milestone tracking module after the re-design.</p>
+                                <span className="impact-value">Supportive</span>
+                                <p>Created a parent-friendly model for milestone tracking that builds confidence.</p>
                             </div>
                             <div className="impact-card">
-                                <span className="impact-value">Positive</span>
-                                <p>Significant shift in qualitative sentiment towards a more helpful, supportive experience.</p>
+                                <span className="impact-value">Scalable</span>
+                                <p>Established a UX foundation for future developmental experiences.</p>
                             </div>
                             <div className="impact-card">
-                                <span className="impact-value">Global</span>
-                                <p>Core feature of the Bobo platform, now utilized by thousands of families worldwide.</p>
-                            </div>
-                        </div>
-
-                        <div className="learnings-block">
-                            <h2 className="section-title">Learnings</h2>
-                            <div className="learnings-grid">
-                                <div className="learning-item">
-                                    <h3>Support is Feature #1</h3>
-                                    <p>In healthcare, the emotional state of the user is just as important as the data. Features must be supportive, not just functional.</p>
-                                </div>
-                                <div className="learning-item">
-                                    <h3>Translation is Design</h3>
-                                    <p>Designing for complex data often means being a translator. Success was measured by how little medical jargon the parent had to see.</p>
-                                </div>
+                                <span className="impact-value">Bridged</span>
+                                <p>Created a stronger bridge between clinical credibility and everyday usability.</p>
                             </div>
                         </div>
                     </section>
 
-                    <section className="cta-section">
-                        <h2 className="section-title">Next project</h2>
-                        <Link to="/echo-design-system" className="next-project-card">
-                            <div className="next-meta">
-                                <span className="next-badge">SHIPPED</span>
-                                <h3>Echo Design System</h3>
-                                <p>A human-centered design language for pediatric care</p>
-                            </div>
-                            <div className="next-arrow">→</div>
-                        </Link>
-                    </section>
+
                 </main>
 
                 <Footer />

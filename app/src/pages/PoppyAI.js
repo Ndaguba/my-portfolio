@@ -48,7 +48,7 @@ export default function PoppyAI() {
                              </div>
                              <div className="meta-col">
                                 <span className="meta-label">Timeline</span>
-                                <span className="meta-value">Oct 2023 - Present</span>
+                                <span className="meta-value">3 weeks</span>
                              </div>
                         </div>
                     </header>
@@ -236,6 +236,22 @@ export default function PoppyAI() {
                                 </div>
                             </div>
                         </div>
+
+                        <div className="interaction-item">
+                            <div className="interaction-header">
+                                <div className="interaction-left">
+                                    <h2>Proactive Context Gathering</h2>
+                                </div>
+                                <div className="interaction-right">
+                                    <p>To ensure accuracy in clinical logging, I designed an interaction model where the AI proactively asks for missing details. By using supportive, low-friction prompts, we capture precise data points—like volume or duration—without overwhelming the parent during high-stress moments.</p>
+                                    <div className="interaction-visual-box">
+                                        <div className="placeholder-box">
+                                            [Interactive Follow-up Mockup Placeholder]
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </section>
 
                     {/* Section 7: Impact & Learnings */}
@@ -247,16 +263,16 @@ export default function PoppyAI() {
                         
                         <div className="impact-grid">
                             <div className="impact-card">
-                                <span className="impact-value">45%</span>
-                                <p>Increase in weekly active logging sessions compared to legacy form-based apps.</p>
+                                <span className="impact-value">30%</span>
+                                <p>Increase in overall health tracking, with a majority of logs now submitted via natural language.</p>
                             </div>
                             <div className="impact-card">
-                                <span className="impact-value">Verified</span>
-                                <p>100% clinical source transparency for all AI-generated pediatric tips.</p>
+                                <span className="impact-value">24%</span>
+                                <p>Lift in subscription conversion as Poppy AI became the primary driver for premium upgrades.</p>
                             </div>
                             <div className="impact-card">
-                                <span className="impact-value">12 Min</span>
-                                <p>Average reduction in "time-to-insight" during high-stress health checks.</p>
+                                <span className="impact-value">40%</span>
+                                <p>Increase in daily interaction time as users shifted from simple logging to developmental inquiries.</p>
                             </div>
                         </div>
 
@@ -275,17 +291,7 @@ export default function PoppyAI() {
                         </div>
                     </section>
 
-                    <section className="cta-section">
-                        <h2 className="section-title">Next project</h2>
-                        <Link to="/development-pathways" className="next-project-card">
-                            <div className="next-meta">
-                                <span className="next-badge">SHIPPED</span>
-                                <h3>Development Pathways</h3>
-                                <p>Digitizing CDIC milestones into a global tracking platform</p>
-                            </div>
-                            <div className="next-arrow">→</div>
-                        </Link>
-                    </section>
+
                 </main>
 
                 <Footer />
