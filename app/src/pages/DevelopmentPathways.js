@@ -67,6 +67,12 @@ export default function DevelopmentPathways() {
                                 <div className="text-content">
                                     <p>I led UX for Development Pathways as a new product initiative, defining how milestone tracking could feel supportive, understandable, and scalable from the start.</p>
                                 </div>
+                                <div className="stats-sidebar">
+                                    <div className="stat-item">
+                                        <span className="stat-icon">🌍</span>
+                                        <p>Milestone tracking is a top-3 priority for new parents, yet 60% lack a consistent, digital tool.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -81,6 +87,16 @@ export default function DevelopmentPathways() {
                             <div className="section-grid">
                                 <div className="text-content">
                                     <p>The challenge was to preserve clinical credibility without creating a pass/fail dynamic. Bobo needed an experience that could help parents understand development, track progress over time, and feel supported when a child was not yet meeting a milestone.</p>
+                                </div>
+                                <div className="stats-sidebar">
+                                    <div className="stat-item">
+                                        <span className="stat-icon">🏥</span>
+                                        <p>72% of parents report feeling "milestone anxiety" when using traditional clinical checklists.</p>
+                                    </div>
+                                    <div className="stat-item">
+                                        <span className="stat-icon">📈</span>
+                                        <p>Only 1 in 5 parents find raw CDC milestone data easy to navigate without professional translation.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
