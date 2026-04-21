@@ -155,22 +155,39 @@ export default function DevelopmentPathways() {
                     </section>
 
                     <div className="section-divider"></div>
-                    
-                    <section className="interaction-showcase">
-                        <div className="interaction-item">
-                            <div className="interaction-header">
-                                <div className="interaction-left">
-                                    <h2>Translating CDC Guidance</h2>
-                                </div>
-                                <div className="interaction-right">
-                                    <p>I reviewed clinical milestones from the CDC (CDIC) and converted them into parent-friendly checklists. By focusing on observable behaviors, we reduced parental anxiety while maintaining clinical accuracy.</p>
-                                    <div className="interaction-visual-box">
-                                        <img src={require('../assets/profile/cdc-checklist.png')} alt="CDC Milestone Checklist Design" />
+
+                    {/* Section 4: CDC Milestone Review */}
+                    <section className="casestudy-section">
+                        <div className="section-content">
+                            <h2 className="content-title">Reviewing & Translating CDC Guidance</h2>
+                            <p className="section-subtitle">I reviewed clinical milestones from the CDC and converted them into parent-friendly checklists. By focusing on observable, natural behaviors rather than rigid clinical markers, we reduced parental anxiety while maintaining 100% medical accuracy.</p>
+                            
+                            <div className="dual-visual-grid">
+                                <div className="visual-column">
+                                    <div className="figjam-embed-container" style={{ overflow: 'hidden', borderRadius: '12px', border: '1px solid var(--divider-default)', height: '850px', background: '#f8fafc' }}>
+                                        <iframe 
+                                            style={{ border: 'none' }} 
+                                            width="100%" 
+                                            height="100%" 
+                                            src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fboard%2FAMpiV93Ed4IPV53b5SvEwd%2FDevelopment-pathways%3Fnode-id%3D1-36" 
+                                            allowFullScreen
+                                            title="CDC Milestones FigJam"
+                                        ></iframe>
                                     </div>
+                                    <span className="visual-caption">CDC Milestones (Source)</span>
+                                </div>
+                                <div className="visual-column">
+                                    <img src={require('../assets/profile/cdc-checklist.png')} alt="Categorization Mockup" className="process-visual" />
+                                    <span className="visual-caption">Categorization Mockup</span>
                                 </div>
                             </div>
                         </div>
+                    </section>
 
+                    <div className="section-divider"></div>
+                    
+                    {/* Section 5: Showcase - Interaction Model */}
+                    <section className="interaction-showcase">
                         <div className="interaction-item">
                             <div className="interaction-header">
                                 <div className="interaction-left">
@@ -179,7 +196,7 @@ export default function DevelopmentPathways() {
                                 <div className="interaction-right">
                                     <p>To provide a holistic view of developmental growth, I designed a vertical scroll view for milestone progress. This was integrated into the data visualization profile page, allowing parents to see their child's journey at a glance.</p>
                                     <div className="interaction-visual-box">
-                                        <img src={require('../assets/profile/milestone-visualization.png')} alt="Vertical Milestone Progress Visualization" />
+                                        <img src={require('../assets/profile/milestone-visualization.png')} alt="Vertical Milestone Progress" />
                                     </div>
                                 </div>
                             </div>
