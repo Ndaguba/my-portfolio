@@ -7,6 +7,25 @@ import ChatPanel from '../components/ChatPanel';
 import { IoLocationOutline } from "react-icons/io5";
 import Footer from '../components/Footer';
 
+const OptimizedImage = ({ src, alt, className, priority = false }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  
+  return (
+    <div className={`image-container ${isLoaded ? 'loaded' : 'loading'}`}>
+      <img 
+        src={src} 
+        alt={alt} 
+        className={`${className} ${isLoaded ? 'visible' : 'hidden'}`}
+        onLoad={() => setIsLoaded(true)}
+        loading={priority ? "eager" : "lazy"}
+        decoding="async"
+        fetchpriority={priority ? "high" : "auto"}
+      />
+      {!isLoaded && <div className="image-skeleton" />}
+    </div>
+  );
+};
+
 export default function Home() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState('Design');
@@ -91,7 +110,7 @@ export default function Home() {
       id: "ophir-labs",
       title: "Ophir Labs",
       company: "AI Agent for Compliance",
-      image: require('../assets/engineering/ophir-labs.png'),
+      image: require('../assets/profile/OPhirlabs.png'),
       category: "Engineering",
       link: null,
       imgClass: "ophir-image",
@@ -160,7 +179,7 @@ export default function Home() {
               ))}
             </div>
             <div className="portfolio-grid">
-              {filteredProjects.map(project => (
+              {filteredProjects.map((project, index) => (
                 project.link ? (
                   <Link key={project.id} to={project.link} className="portfolio-item-wrapper link-wrapper">
                     <div className={`portfolio-item ${project.id}-item ${project.status === 'NOT SHIPPED' ? 'not-shipped-item' : ''}`}>
@@ -168,7 +187,14 @@ export default function Home() {
                         <span className={`status-dot ${project.status === 'NOT SHIPPED' ? 'not-shipped' : ''}`}></span>
                         {project.status}
                       </div>
-                      {project.image && <img className={project.imgClass} src={project.image} alt={project.title} />}
+                      {project.image && (
+                        <OptimizedImage 
+                          className={project.imgClass} 
+                          src={project.image} 
+                          alt={project.title}
+                          priority={index < 2} 
+                        />
+                      )}
                       {project.status === 'NOT SHIPPED' && (
                         <div className="lock-overlay">
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="lock-icon">
