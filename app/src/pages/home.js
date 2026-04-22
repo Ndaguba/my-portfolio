@@ -44,7 +44,8 @@ export default function Home() {
       image: require('../assets/profile/Frame 23458.png'),
       category: "Design",
       link: "/poppy-ai",
-      imgClass: "poppy-image"
+      imgClass: "poppy-image",
+      status: "SHIPPED"
     },
     {
       id: "development-pathways",
@@ -53,7 +54,8 @@ export default function Home() {
       image: require('../assets/profile/Dev-pathways.png'),
       category: "Design",
       link: "/development-pathways",
-      imgClass: "dp-image"
+      imgClass: "dp-image",
+      status: "SHIPPED"
     },
     {
       id: "skip-westjet",
@@ -62,7 +64,8 @@ export default function Home() {
       image: require('../assets/profile/SKIP X WESTJET.png'),
       category: "Design",
       link: "/skip-westjet",
-      imgClass: "skip-image"
+      imgClass: "skip-image",
+      status: "SHIPPED"
     },
     {
       id: "order-tracker",
@@ -71,7 +74,8 @@ export default function Home() {
       image: require('../assets/profile/Delivery-tracker.png'),
       category: "Design",
       link: "/order-tracker",
-      imgClass: "order-tracker-image"
+      imgClass: "order-tracker-image",
+      status: "SHIPPED"
     },
     {
       id: "forella",
@@ -80,7 +84,8 @@ export default function Home() {
       image: require('../assets/engineering/Forella.png'),
       category: "Engineering",
       link: "/forella",
-      imgClass: "forella-image"
+      imgClass: "forella-image",
+      status: "SHIPPED"
     },
     {
       id: "ophir-labs",
@@ -89,7 +94,8 @@ export default function Home() {
       image: require('../assets/engineering/ophir-labs.png'),
       category: "Engineering",
       link: null,
-      imgClass: "ophir-image"
+      imgClass: "ophir-image",
+      status: "NOT SHIPPED"
     }
   ];
 
@@ -157,12 +163,19 @@ export default function Home() {
               {filteredProjects.map(project => (
                 project.link ? (
                   <Link key={project.id} to={project.link} className="portfolio-item-wrapper link-wrapper">
-                    <div className={`portfolio-item ${project.id}-item`}>
+                    <div className={`portfolio-item ${project.id}-item ${project.status === 'NOT SHIPPED' ? 'not-shipped-item' : ''}`}>
                       <div className="status-pill">
-                        <span className="status-dot"></span>
-                        SHIPPED
+                        <span className={`status-dot ${project.status === 'NOT SHIPPED' ? 'not-shipped' : ''}`}></span>
+                        {project.status}
                       </div>
                       {project.image && <img className={project.imgClass} src={project.image} alt={project.title} />}
+                      {project.status === 'NOT SHIPPED' && (
+                        <div className="lock-overlay">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="lock-icon">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                          </svg>
+                        </div>
+                      )}
                     </div>
                     <div className="portfolio-label">
                       <p className="portfolio-project">{project.title}</p>
@@ -171,12 +184,19 @@ export default function Home() {
                   </Link>
                 ) : (
                   <div key={project.id} className="portfolio-item-wrapper">
-                    <div className={`portfolio-item ${project.id}-item`}>
+                    <div className={`portfolio-item ${project.id}-item ${project.status === 'NOT SHIPPED' ? 'not-shipped-item' : ''}`}>
                       <div className="status-pill">
-                        <span className="status-dot"></span>
-                        SHIPPED
+                        <span className={`status-dot ${project.status === 'NOT SHIPPED' ? 'not-shipped' : ''}`}></span>
+                        {project.status}
                       </div>
                       {project.image && <img className={project.imgClass} src={project.image} alt={project.title} />}
+                      {project.status === 'NOT SHIPPED' && (
+                        <div className="lock-overlay">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="lock-icon">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                          </svg>
+                        </div>
+                      )}
                     </div>
                     <div className="portfolio-label">
                       <p className="portfolio-project">{project.title}</p>
