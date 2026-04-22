@@ -9,10 +9,18 @@ import Footer from '../components/Footer';
 
 const OptimizedImage = ({ src, alt, className, priority = false }) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const imgRef = React.useRef(null);
+
+  useEffect(() => {
+    if (imgRef.current && imgRef.current.complete) {
+      setIsLoaded(true);
+    }
+  }, []);
   
   return (
     <div className={`image-container ${isLoaded ? 'loaded' : 'loading'}`}>
       <img 
+        ref={imgRef}
         src={src} 
         alt={alt} 
         className={`${className} ${isLoaded ? 'visible' : 'hidden'}`}
@@ -110,7 +118,7 @@ export default function Home() {
       id: "ophir-labs",
       title: "Ophir Labs",
       company: "AI Agent for Compliance",
-      image: require('../assets/profile/OPhirlabs.png'),
+      image: require('../assets/engineering/ophir-labs.png'),
       category: "Engineering",
       link: null,
       imgClass: "ophir-image",
@@ -215,7 +223,14 @@ export default function Home() {
                         <span className={`status-dot ${project.status === 'NOT SHIPPED' ? 'not-shipped' : ''}`}></span>
                         {project.status}
                       </div>
-                      {project.image && <img className={project.imgClass} src={project.image} alt={project.title} />}
+                      {project.image && (
+                        <OptimizedImage 
+                          className={project.imgClass} 
+                          src={project.image} 
+                          alt={project.title}
+                          priority={index < 2}
+                        />
+                      )}
                       {project.status === 'NOT SHIPPED' && (
                         <div className="lock-overlay">
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="lock-icon">
