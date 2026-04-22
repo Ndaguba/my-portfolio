@@ -245,9 +245,7 @@ export default function PoppyAI() {
                                 <div className="interaction-right">
                                     <p>To ensure accuracy in clinical logging, I designed an interaction model where the AI proactively asks for missing details. By using supportive, low-friction prompts, we capture precise data points—like volume or duration—without overwhelming the parent during high-stress moments.</p>
                                     <div className="interaction-visual-box">
-                                        <div className="placeholder-box">
-                                            [Interactive Follow-up Mockup Placeholder]
-                                        </div>
+                                        <img src={require('../assets/projects/poppy-interaction/Sleeep-modal.png')} alt="Proactive Context Gathering" />
                                     </div>
                                 </div>
                             </div>

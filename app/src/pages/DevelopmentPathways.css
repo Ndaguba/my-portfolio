@@ -214,7 +214,7 @@
 }
 
 .impact-card {
-    padding: 24px;
+    padding: 33px 20px;
     background: #f8fafc;
     border-radius: 4px;
 }
@@ -527,8 +527,8 @@
 
 .interaction-visual-box {
     background: #F8F8F8;
-    border-radius: 32px;
-    padding: 80px 40px;
+    border-radius: 0;
+    padding: 120px 40px;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -540,7 +540,7 @@
 
 .interaction-visual-box img {
     width: 100%;
-    max-width: 800px;
+    max-width: 332px;
     border-radius: 12px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
@@ -552,7 +552,7 @@
     }
     
     .interaction-visual-box {
-        padding: 40px 20px;
+        padding: 33px 20px;
     }
 }
 
@@ -602,4 +602,216 @@
     .visual-column .placeholder-box {
         height: 600px; /* Slightly shorter on mobile */
     }
+}
+/* Milestone Process Panel Styling */
+.milestone-process-panel {
+    height: 850px;
+    width: 100%;
+    background: #f8fafc;
+    border: 1px solid var(--divider-default);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.theme-dark .milestone-process-panel {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.panel-header {
+    padding: 32px;
+    border-bottom: 1px solid var(--divider-default);
+}
+
+.panel-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.milestone-items {
+    flex: 1;
+    padding: 24px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.milestone-item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--divider-default);
+}
+
+.milestone-item-row:last-child {
+    border-bottom: none;
+}
+
+.milestone-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.milestone-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 4px;
+    width: fit-content;
+    text-transform: uppercase;
+}
+
+.milestone-tag.speech { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+.milestone-tag.sensory { background: rgba(139, 92, 246, 0.1); color: #8b5cf6; }
+.milestone-tag.gross { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+.milestone-tag.fine { background: rgba(245, 158, 11, 0.1); color: #f59e0b; }
+.milestone-tag.social { background: rgba(236, 72, 153, 0.1); color: #ec4899; }
+
+.milestone-info p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.milestone-status {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.milestone-status.completed { background: #22c55e; box-shadow: 0 0 10px rgba(34, 197, 94, 0.4); }
+.milestone-status.in-progress { background: #3b82f6; box-shadow: 0 0 10px rgba(59, 130, 246, 0.4); }
+.milestone-status.pending { background: var(--divider-default); }
+
+@media (max-width: 1024px) {
+    .milestone-process-panel {
+        height: auto;
+        min-height: 500px;
+    }
+}
+
+/* Age Group Explorer Styling */
+.age-group-explorer {
+    width: 100%;
+    max-width: 500px;
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    border: 1px solid var(--divider-default);
+}
+
+.theme-dark .age-group-explorer {
+    background: #1a1a1a;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.age-tab-row {
+    display: flex;
+    padding: 20px;
+    gap: 8px;
+    border-bottom: 1px solid var(--divider-default);
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.age-tab-row::-webkit-scrollbar {
+    display: none;
+}
+
+.age-tab {
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--muted);
+    background: #f1f5f9;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.theme-dark .age-tab {
+    background: #2a2a2a;
+}
+
+.age-tab.active {
+    background: #000000;
+    color: #ffffff;
+}
+
+.theme-dark .age-tab.active {
+    background: #ffffff;
+    color: #000000;
+}
+
+.age-content-panel {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.milestone-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.entry-text {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: var(--text);
+}
+
+.status-check {
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    background: #22c55e;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.status-check::after {
+    content: '✓';
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.status-check.empty {
+    background: transparent;
+    border: 2px solid var(--divider-default);
+}
+
+.status-check.empty::after {
+    content: '';
+}
+
+.interaction-visual-box.flush-bottom {
+    padding-top: 40px;
+    padding-bottom: 0;
+    align-items: flex-end;
+    height: 550px;
+}
+
+.interaction-visual-box.flush-bottom img {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-bottom: 0;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
 }

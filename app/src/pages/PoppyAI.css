@@ -263,7 +263,7 @@
 }
 
 .impact-card {
-    padding: 60px 40px;
+    padding: 33px 20px;
     background: #f8fafc;
     border-radius: 4px;
 }
@@ -683,7 +683,7 @@
 
 .interaction-visual-box {
     background: #F8F8F8; /* Light grey backdrop */
-    border-radius: 32px;
+    border-radius: 0;
     padding: 100px 40px;
     display: flex;
     justify-content: center;
@@ -692,7 +692,7 @@
 
 .interaction-visual-box img {
     width: 100%;
-    max-width: 320px; /* Slightly larger for better detail within the box */
+    max-width: 332px; /* Slightly larger for better detail within the box */
     border-radius: 20px;
 }
 

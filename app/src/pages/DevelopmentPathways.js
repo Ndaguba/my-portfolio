@@ -57,36 +57,16 @@ export default function DevelopmentPathways() {
                          <img src={require('../assets/profile/Dev-pathways.png')} alt="Development Pathways Timeline" />
                     </section>
 
-                    {/* Section 1: Overview & Problem */}
-                    <section className="casestudy-section asymmetric">
-                        <div className="section-label">OVERVIEW</div>
-                        <div className="section-content">
-                            <h2 className="content-title">Overview</h2>
-                            <p className="emotional-hook">Bobo saw an opportunity to expand into developmental tracking by creating a product experience rooted in trusted milestone guidance. The challenge was that most developmental frameworks are clinically useful but emotionally difficult for parents to engage with, especially when presented as rigid checklists.</p>
-                            <div className="section-grid">
-                                <div className="text-content">
-                                    <p>I led UX for Development Pathways as a new product initiative, defining how milestone tracking could feel supportive, understandable, and scalable from the start.</p>
-                                </div>
-                                <div className="stats-sidebar">
-                                    <div className="stat-item">
-                                        <span className="stat-icon">🌍</span>
-                                        <p>Milestone tracking is a top-3 priority for new parents, yet 60% lack a consistent, digital tool.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <div className="section-divider"></div>
-
+                    {/* Section 1: Defining the Problem */}
                     <section className="casestudy-section asymmetric">
                         <div className="section-label">PROBLEM</div>
                         <div className="section-content">
-                            <h2 className="content-title">The Problem</h2>
-                            <p className="section-subtitle">Clinical milestone systems are typically designed for accuracy, not everyday usability. Left untranslated, they can feel formal, intimidating, and judgmental. That creates a poor emotional experience for parents and makes consistent engagement less likely.</p>
+                            <h2 className="content-title">Bridging the Confidence Gap</h2>
+                            <p className="emotional-hook">"Milestones are the leading source of new-parent anxiety."</p>
                             <div className="section-grid">
                                 <div className="text-content">
-                                    <p>The challenge was to preserve clinical credibility without creating a pass/fail dynamic. Bobo needed an experience that could help parents understand development, track progress over time, and feel supported when a child was not yet meeting a milestone.</p>
+                                    <p>Most developmental frameworks are clinically accurate but emotionally intimidating. When presented as rigid, pass/fail checklists, they often leave parents feeling judged rather than supported. I found that parents don't need a medical database; they need a guide that helps them celebrate progress while providing reassurance during the messy reality of child development.</p>
+                                    <p>The challenge was to preserve the CDC’s clinical credibility without creating a stressful emotional experience, transforming a formal milestone system into a supportive daily companion.</p>
                                 </div>
                                 <div className="stats-sidebar">
                                     <div className="stat-item">
@@ -162,32 +142,50 @@ export default function DevelopmentPathways() {
                             <h2 className="content-title">Reviewing & Translating CDC Guidance</h2>
                             <p className="section-subtitle">I reviewed clinical milestones from the CDC and converted them into parent-friendly checklists. By focusing on observable, natural behaviors rather than rigid clinical markers, we reduced parental anxiety while maintaining 100% medical accuracy.</p>
                             
-                            <div className="dual-visual-grid">
-                                <div className="visual-column">
-                                    <div className="figjam-embed-container" style={{ overflow: 'hidden', borderRadius: '12px', border: '1px solid var(--divider-default)', height: '850px', background: '#f8fafc' }}>
-                                        <iframe 
-                                            style={{ border: 'none' }} 
-                                            width="100%" 
-                                            height="100%" 
-                                            src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fboard%2FAMpiV93Ed4IPV53b5SvEwd%2FDevelopment-pathways%3Fnode-id%3D1-36" 
-                                            allowFullScreen
-                                            title="CDC Milestones FigJam"
-                                        ></iframe>
-                                    </div>
-                                    <span className="visual-caption">CDC Milestones (Source)</span>
-                                </div>
-                                <div className="visual-column">
-                                    <img src={require('../assets/profile/cdc-checklist.png')} alt="Categorization Mockup" className="process-visual" />
-                                    <span className="visual-caption">Categorization Mockup</span>
-                                </div>
+                            <div className="full-width-visual" style={{ marginTop: '40px', overflow: 'hidden', borderRadius: '12px', border: '1px solid var(--divider-default)', height: '850px' }}>
+                                <iframe 
+                                    style={{ border: 'none' }} 
+                                    width="100%" 
+                                    height="100%" 
+                                    src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fboard%2FAMpiV93Ed4IPV53b5SvEwd%2FDevelopment-pathways%3Fnode-id%3D1-36" 
+                                    allowFullScreen
+                                    title="CDC Milestones FigJam"
+                                ></iframe>
                             </div>
+                            <span className="visual-caption">CDC Milestones (Source)</span>
                         </div>
                     </section>
 
-                    <div className="section-divider"></div>
-                    
                     {/* Section 5: Showcase - Interaction Model */}
                     <section className="interaction-showcase">
+                        <div className="interaction-item">
+                            <div className="interaction-header">
+                                <div className="interaction-left">
+                                    <h2>Developmental Grouping</h2>
+                                </div>
+                                <div className="interaction-right">
+                                    <p>To provide a structured understanding of progress, I categorized clinical milestones into five core domains. This grouping allows parents to track development across specific areas like speech, motor skills, and social bonding, making the data more actionable and less overwhelming.</p>
+                                    <div className="interaction-visual-box">
+                                        <img src={require('../assets/Dev-path/Milestone-group.png')} alt="Developmental Grouping" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="interaction-item">
+                            <div className="interaction-header">
+                                <div className="interaction-left">
+                                    <h2>Age-Specific Categorization</h2>
+                                </div>
+                                <div className="interaction-right">
+                                    <p>To maintain clarity and reduce cognitive load, I structured the milestone database into age-specific buckets. By surfacing only the milestones relevant to a child's current developmental stage, we ensured the experience felt personal and focused rather than overwhelming.</p>
+                                    <div className="interaction-visual-box">
+                                        <img src={require('../assets/Dev-path/Month-group.png')} alt="Age-Specific Categorization" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div className="interaction-item">
                             <div className="interaction-header">
                                 <div className="interaction-left">
@@ -195,8 +193,8 @@ export default function DevelopmentPathways() {
                                 </div>
                                 <div className="interaction-right">
                                     <p>To provide a holistic view of developmental growth, I designed a vertical scroll view for milestone progress. This was integrated into the data visualization profile page, allowing parents to see their child's journey at a glance.</p>
-                                    <div className="interaction-visual-box">
-                                        <img src={require('../assets/profile/milestone-visualization.png')} alt="Vertical Milestone Progress" />
+                                    <div className="interaction-visual-box flush-bottom">
+                                        <img src={require('../assets/Dev-path/milestones.png')} alt="Vertical Milestone Progress" />
                                     </div>
                                 </div>
                             </div>

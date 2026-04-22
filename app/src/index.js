@@ -11,6 +11,7 @@ import DesignSystems from './pages/DesignSystems';
 import PoppyAI from './pages/PoppyAI';
 import SkipWestJet from './pages/SkipWestJet';
 import OrderTracker from './pages/OrderTracker';
+import Forella from './pages/Forella';
 import reportWebVitals from './reportWebVitals';
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
       <Route path="/poppy-ai" element={<PoppyAI />} />
       <Route path="/skip-westjet" element={<SkipWestJet />} />
       <Route path="/order-tracker" element={<OrderTracker />} />
+      <Route path="/forella" element={<Forella />} />
     </Routes>
   );
 };
