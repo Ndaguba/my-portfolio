@@ -259,7 +259,7 @@
 .impact-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 9px;
 }
 
 .impact-card {
@@ -652,7 +652,7 @@
 }
 
 .interaction-item:last-child {
-    margin-bottom: 120px;
+    margin-bottom: 40px;
 }
 
 .interaction-header {

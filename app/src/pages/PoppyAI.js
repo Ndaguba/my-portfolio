@@ -261,16 +261,16 @@ export default function PoppyAI() {
                         
                         <div className="impact-grid">
                             <div className="impact-card">
-                                <span className="impact-value">30%</span>
-                                <p>Increase in overall health tracking, with a majority of logs now submitted via natural language.</p>
+                                <span className="impact-value">68%</span>
+                                <p>Logs completed via Poppy AI instead of traditional forms, proving a preference for conversational logging.</p>
                             </div>
                             <div className="impact-card">
-                                <span className="impact-value">24%</span>
-                                <p>Lift in subscription conversion as Poppy AI became the primary driver for premium upgrades.</p>
+                                <span className="impact-value">42%</span>
+                                <p>Reduction in abandoned sessions by replacing rigid forms with guided conversational prompts.</p>
                             </div>
                             <div className="impact-card">
-                                <span className="impact-value">40%</span>
-                                <p>Increase in daily interaction time as users shifted from simple logging to developmental inquiries.</p>
+                                <span className="impact-value">37%</span>
+                                <p>Faster log completion time by reducing input friction and using proactive follow-up questions.</p>
                             </div>
                         </div>
 

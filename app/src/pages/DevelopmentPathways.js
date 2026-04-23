@@ -164,7 +164,7 @@ export default function DevelopmentPathways() {
                                     <h2>Developmental Grouping</h2>
                                 </div>
                                 <div className="interaction-right">
-                                    <p>To provide a structured understanding of progress, I categorized clinical milestones into five core domains. This grouping allows parents to track development across specific areas like speech, motor skills, and social bonding, making the data more actionable and less overwhelming.</p>
+                                    <p>To provide a structured understanding of progress, I categorized clinical milestones into 4 core domains. I integrated a custom icon system for each group to provide clear visual representation, making it easier for parents to track development across areas like speech, motor skills, and social bonding.</p>
                                     <div className="interaction-visual-box">
                                         <img src={require('../assets/Dev-path/Milestone-group.png')} alt="Developmental Grouping" />
                                     </div>
@@ -194,8 +194,30 @@ export default function DevelopmentPathways() {
                                 <div className="interaction-right">
                                     <p>To provide a holistic view of developmental growth, I designed a vertical scroll view for milestone progress. This was integrated into the data visualization profile page, allowing parents to see their child's journey at a glance.</p>
                                     <div className="interaction-visual-box flush-bottom">
-                                        <img src={require('../assets/Dev-path/milestones.png')} alt="Vertical Milestone Progress" />
+                                        <img src={require('../assets/Dev-path/Path.png')} alt="Vertical Milestone Progress" />
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Section 6: Key Product Decisions */}
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">STRATEGY</div>
+                        <div className="section-content">
+                            <h2 className="content-title">Key Product Decisions</h2>
+                            <div className="constraint-grid">
+                                <div className="constraint-card">
+                                    <h3>Avoiding Pass/Fail Milestones</h3>
+                                    <p>We intentionally avoided rigid completion scoring because it increased parental anxiety during testing. Instead, we designed for progress and reassurance, helping parents see milestones as developmental guidance rather than a judgment system.</p>
+                                </div>
+                                <div className="constraint-card">
+                                    <h3>Age-Based Surfacing</h3>
+                                    <p>Showing the full milestone database overwhelmed users and increased drop-off. We surfaced only age-relevant milestones to reduce cognitive load and create a sense of achievable progress.</p>
+                                </div>
+                                <div className="constraint-card">
+                                    <h3>Clinical Language Translation</h3>
+                                    <p>Raw CDC terminology created confusion and dependency on external interpretation. We translated milestones into observable everyday behaviors while preserving medical accuracy.</p>
                                 </div>
                             </div>
                         </div>
@@ -212,16 +234,16 @@ export default function DevelopmentPathways() {
                         
                         <div className="impact-grid">
                             <div className="impact-card">
-                                <span className="impact-value">Supportive</span>
-                                <p>Created a parent-friendly model for milestone tracking that builds confidence.</p>
+                                <span className="impact-value">74%</span>
+                                <p>of active parents completed at least one milestone check within their first 14 days, showing strong adoption of the tracking experience.</p>
                             </div>
                             <div className="impact-card">
-                                <span className="impact-value">Scalable</span>
-                                <p>Established a UX foundation for future developmental experiences.</p>
+                                <span className="impact-value">82%</span>
+                                <p>task completion rate during usability testing, validating the clarity of the information architecture and age-relevant navigation.</p>
                             </div>
                             <div className="impact-card">
-                                <span className="impact-value">Bridged</span>
-                                <p>Created a stronger bridge between clinical credibility and everyday usability.</p>
+                                <span className="impact-value">67%</span>
+                                <p>of parents reported feeling “more confident” compared to interpreting raw CDC milestone checklists alone.</p>
                             </div>
                         </div>
                     </section>

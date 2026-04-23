@@ -234,6 +234,7 @@
 .impact-card p {
     font-size: 1rem;
     color: var(--muted);
+    line-height: 1.25;
 }
 
 .cta-section {
@@ -801,17 +802,23 @@
 }
 
 .interaction-visual-box.flush-bottom {
-    padding-top: 40px;
-    padding-bottom: 0;
-    align-items: flex-end;
-    height: 550px;
+    padding: 40px 0 40px 0;
+    background: #F8F8F8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    overflow: hidden;
+}
+
+.theme-dark .interaction-visual-box.flush-bottom {
+    background: rgba(255, 255, 255, 0.02);
 }
 
 .interaction-visual-box.flush-bottom img {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    margin-bottom: 0;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
+    width: 60%;
+    max-width: none;
+    height: auto;
+    border-radius: 0;
+    display: block;
 }
