@@ -252,6 +252,32 @@ export default function PoppyAI() {
                         </div>
                     </section>
 
+                    <div className="section-divider"></div>
+
+                    {/* Section 6: Key Product Decisions */}
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">STRATEGY</div>
+                        <div className="section-content">
+                            <h2 className="content-title">Key Product Decisions</h2>
+                            <div className="constraint-grid">
+                                <div className="constraint-card">
+                                    <h3>Designing Thinking States</h3>
+                                    <p>Users lost trust during silent latency and assumed the AI had failed. We introduced visible reasoning states to make processing transparent and preserve confidence during sensitive medical interactions.</p>
+                                </div>
+                                <div className="constraint-card">
+                                    <h3>Avoiding Pure Automation</h3>
+                                    <p>Automatically logging vague inputs created dangerous ambiguity in health records. We chose guided clarification over silent assumptions to protect data accuracy and user trust.</p>
+                                </div>
+                                <div className="constraint-card">
+                                    <h3>Tone as a Safety Feature</h3>
+                                    <p>Clinical accuracy alone was not enough. During physician reviews, cold medical language increased anxiety, so we designed for an empathetic “nurse partner” tone that balanced authority with reassurance.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div className="section-divider"></div>
+
                     {/* Section 7: Impact & Learnings */}
                     <section className="casestudy-section">
                         <div className="impact-header">
