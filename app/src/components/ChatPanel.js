@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './ChatPanel.css';
 import { LuPanelLeftOpen } from 'react-icons/lu';
 import { BsArrowUp } from 'react-icons/bs';
@@ -9,19 +9,82 @@ export default function ChatPanel({ isOpen, onClose }) {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
 
-  const handleSend = () => {
-    if (!message.trim()) return;
+  const [isLoading, setIsLoading] = useState(false);
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, isLoading]);
+
+  const handleSend = async () => {
+    if (!message.trim() || isLoading) return;
     
-    setMessages([...messages, { role: 'user', content: message }]);
+    const newMessages = [...messages, { role: 'user', content: message }];
+    setMessages(newMessages);
     setMessage('');
-    
-    // Simulate AI response
-    setTimeout(() => {
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          messages: newMessages
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      // Add an empty assistant message to append chunks to
+      setMessages(prev => [...prev, { role: 'assistant', content: '' }]);
+      setIsLoading(false); // Stop typing indicator as stream starts
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder('utf-8');
+      let done = false;
+
+      while (!done) {
+        const { value, done: readerDone } = await reader.read();
+        done = readerDone;
+        if (value) {
+          const chunk = decoder.decode(value, { stream: true });
+          const lines = chunk.split('\n');
+          for (const line of lines) {
+            if (line.startsWith('data: ') && !line.includes('[DONE]')) {
+              try {
+                const data = JSON.parse(line.replace('data: ', ''));
+                if (data.content) {
+                  setMessages(prev => {
+                    const updated = [...prev];
+                    updated[updated.length - 1].content += data.content;
+                    return updated;
+                  });
+                }
+              } catch (e) {
+                console.error("Error parsing stream chunk", e);
+              }
+            }
+          }
+        }
+      }
+
+    } catch (error) {
+      console.error("OpenAI API Error:", error);
       setMessages(prev => [...prev, { 
         role: 'assistant', 
-        content: 'This is a demo response. Connect your AI backend here!' 
+        content: "Oops! Something went wrong connecting to my AI brain." 
       }]);
-    }, 500);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handlePromptClick = (prompt) => {
@@ -78,6 +141,14 @@ export default function ChatPanel({ isOpen, onClose }) {
             <div className="message-content">{msg.content}</div>
           </div>
         ))}
+        {isLoading && (
+          <div className="message assistant">
+            <div className="message-content typing-indicator">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+        )}
+        <div ref={messagesEndRef} />
       </div>
       
       <div className="chat-input">
