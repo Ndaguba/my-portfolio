@@ -37,3 +37,37 @@ body {
   border-radius: 6px;
   cursor: pointer;
 }
+
+.hero-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+    margin-bottom: 40px;
+}
+
+.hero-pill-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: none;
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--text);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.hero-pill-button:hover {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.theme-dark .hero-pill-button {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.theme-dark .hero-pill-button:hover {
+    background: rgba(255, 255, 255, 0.12);
+}

@@ -41,7 +41,7 @@ export default function Footer() {
       <div className="footer-row">
         <div className="footer-left">DESIGNED + CODED BY EMEKA NDAGUBA</div>
         <div className="footer-right">
-          <a href="https://linkedin.com/in/ndaguba" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="social-icon"><GrLinkedin /></a>
+          <a href="https://www.linkedin.com/in/emeka-ndaguba" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="social-icon"><GrLinkedin /></a>
           <a href="https://instagram.com/ndaguba" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="social-icon"><PiInstagramLogoBold /></a>
           <a href="https://x.com/ndaguba" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" className="social-icon"><BsTwitterX /></a>
           <a href="https://github.com/ndaguba" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="social-icon"><FaGithub /></a>

@@ -100,9 +100,9 @@ export default function Home() {
       company: "Real-time logistics and delivery tracking",
       image: require('../assets/profile/Delivery-tracker.png'),
       category: "Design",
-      link: "/order-tracker",
+      link: null,
       imgClass: "order-tracker-image",
-      status: "SHIPPED"
+      status: "NOT SHIPPED"
     },
     {
       id: "forella",
@@ -152,7 +152,7 @@ export default function Home() {
                       <path fill="currentColor" fillRule="evenodd" d="M5 1a4 4 0 0 0 -4 4v14a4 4 0 0 0 4 4h14a4 4 0 0 0 4 -4V5a4 4 0 0 0 -4 -4H5Zm1.815 5.11a7.99 7.99 0 0 1 5.182 -1.903 7.99 7.99 0 0 1 2.531 15.572c-0.405 0.077 -0.535 -0.159 -0.535 -0.372v-2.212a1.893 1.893 0 0 0 -0.546 -1.473c1.78 -0.197 3.648 -0.871 3.648 -3.942a3.086 3.086 0 0 0 -0.822 -2.146 2.87 2.87 0 0 0 -0.08 -2.114s-0.666 -0.214 -2.194 0.82a7.561 7.561 0 0 0 -4.002 0C8.472 7.306 7.8 7.52 7.8 7.52a2.867 2.867 0 0 0 -0.078 2.114 3.09 3.09 0 0 0 -0.823 2.144c0 3.063 1.866 3.748 3.64 3.95a1.705 1.705 0 0 0 -0.508 1.065 1.702 1.702 0 0 1 -2.325 -0.664 1.678 1.678 0 0 0 -1.224 -0.823s-0.78 -0.01 -0.054 0.487c0.426 0.271 0.74 0.686 0.887 1.168 0 0 0.459 1.535 2.682 1.053 0.003 0.504 0.002 0.929 0 1.19l0 0.2c0 0.21 -0.126 0.445 -0.525 0.375A7.99 7.99 0 0 1 6.815 6.11Z" clipRule="evenodd"></path>
                     </svg>
                   </a>
-                  <a href="https://linkedin.com/in/ndaguba" target="_blank" rel="noopener noreferrer" className="hero-social-icon" aria-label="LinkedIn">
+                  <a href="https://www.linkedin.com/in/emeka-ndaguba" target="_blank" rel="noopener noreferrer" className="hero-social-icon" aria-label="LinkedIn">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="20" width="20">
                       <path fill="currentColor" fillRule="evenodd" d="M5 1a4 4 0 0 0 -4 4v14a4 4 0 0 0 4 4h14a4 4 0 0 0 4 -4V5a4 4 0 0 0 -4 -4H5Zm1.205 6.91a1.705 1.705 0 1 0 0 -3.41 1.705 1.705 0 0 0 0 3.41ZM7.909 19.5V9.273H4.5V19.5h3.41Zm4.432 -10.227H9.273V19.5h3.068v-6.17c0.395 -0.642 1.077 -1.33 2.045 -1.33 1.364 0 1.705 1.364 1.705 2.046V19.5H19.5v-5.454c0 -1.828 -0.797 -4.773 -3.75 -4.773 -1.878 0 -2.92 0.685 -3.41 1.327V9.273Z" clipRule="evenodd"></path>
                     </svg>
@@ -255,7 +255,7 @@ export default function Home() {
             </div>
             <div className="about-right">
               <p className="about-text">
-                I’m Emeka, a Product Designer and Design Engineer based in Winnipeg with a background in Applied Computer Science. I specialize in building digital products at the intersection of design, engineering, and product strategy. My goal is to create simple experiences that solve complex technical problems.
+                I’m Emeka, a Product Designer and Design Engineer based in Winnipeg with a background in frontend development and user experience design. I specialize in building digital products at the intersection of design, engineering, and product strategy. My goal is to create simple experiences that solve complex technical problems.
               </p>
               <p className="about-text">
                 Across <span className="highlight-green">SkipTheDishes</span>, <span className="highlight-green">IntuitionPay</span>, and <span className="highlight-green">Bobo Health</span>, I’ve led product design for consumer platforms, financial systems, and AI-powered healthcare. I own the work from early concept through shipped production.
@@ -274,21 +274,33 @@ export default function Home() {
                 <div className="experience-list">
                   <ExperienceItem 
                     company="Bobo Health"
-                    role="Product Designer / Design Engineer"
-                    date="Aug 2023 - Present"
-                    description="Leading the design of AI-powered pediatric care solutions. Built 'echo', a human-centered design system to scale Bobo's product ecosystem and accelerate development cycles."
+                    role="Senior Product Designer / Design Engineer"
+                    date="Aug 2025 - Present"
+                    description={
+                      <>
+                        <strong>Senior Product Designer / Design Engineer</strong> at Bobo Health, serving as the first in-house designer and owning product design, brand, and user experience across the company. Lead design across mobile, web, and core product experiences while also writing frontend code for both the marketing website and product surfaces within the app. Built and launched <strong>Echo</strong>, the company’s first design system, creating scalable patterns, stronger consistency, and faster product development across teams. Responsible for shaping the product from strategy to shipped experience, including high-impact initiatives such as Poppy AI, Development Pathways, Doctor’s Reports, and core pediatric health tracking experiences.
+                      </>
+                    }
                   />
                   <ExperienceItem 
                     company="SkipTheDishes"
                     role="Product Designer"
-                    date="2021 - 2023"
-                    description="Optimized courier and merchant workflows for Canada's largest food delivery platform. Collaborated with cross-functional teams to ship user-centered features that improved delivery efficiency and partner satisfaction."
+                    date="Mar 2023 - Aug 2025"
+                    description={
+                      <>
+                        <strong>Product Designer</strong> at SkipTheDishes, owning design across the Partnerships portfolio and post-order experience. Led UX for strategic partner integrations, including the WestJet partnership experience, designing discovery, onboarding, permissions, and account management flows that strengthened cross-platform engagement and rewards adoption. Drove improvements to the post-order experience through the Order Tracker redesign, introducing a scalable bottom-sheet architecture that unlocked features like PIN verification, multi-partner logistics support, upsell opportunities, and additional advertising surfaces. Regularly contributed to the PIE design system and helped shape reusable product patterns across the platform.
+                      </>
+                    }
                   />
                   <ExperienceItem 
-                    company="IntuitionPay"
-                    role="Lead Product Designer / Design Engineer"
-                    date="2019 - 2021"
-                    description="Led the user experience for a simplified fintech payment platform. Focused on streamlining the onboarding process and improving overall transaction transparency for small to medium-sized businesses."
+                    company="InTuitionPay"
+                    role="Founding Product Designer & Frontend Developer"
+                    date="Feb 2021 - Aug 2023"
+                    description={
+                      <>
+                        <strong>Founding Product Designer</strong> at InTuitionPay, serving as the first in-house designer and leading both product design and frontend engineering across mobile, web, and back-office platforms. Owned the full product experience from strategy and UX to implementation, writing production frontend code and driving execution across teams. Built and launched <strong>Cookies</strong>, the company’s first design system, creating consistency, scalability, and faster development across the entire product ecosystem. Led both design and engineering workflows, helping shape the product from early concept to launch. Played a key role in the company’s growth leading up to its 2024 appearance on Dragons' Den.
+                      </>
+                    }
                   />
                 </div>
               </div>
