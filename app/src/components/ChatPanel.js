@@ -4,6 +4,7 @@ import { LuPanelLeftOpen } from 'react-icons/lu';
 import { BsArrowUp } from 'react-icons/bs';
 import { PiSparkleBold, PiMicrophoneBold } from 'react-icons/pi';
 import { LiaRedoAltSolid } from 'react-icons/lia';
+import ReactMarkdown from 'react-markdown';
 
 export default function ChatPanel({ isOpen, onClose }) {
   const [message, setMessage] = useState('');
@@ -50,26 +51,33 @@ export default function ChatPanel({ isOpen, onClose }) {
       const reader = response.body.getReader();
       const decoder = new TextDecoder('utf-8');
       let done = false;
+      let remainder = ''; // Buffer for partial lines
 
       while (!done) {
         const { value, done: readerDone } = await reader.read();
         done = readerDone;
         if (value) {
           const chunk = decoder.decode(value, { stream: true });
-          const lines = chunk.split('\n');
+          const lines = (remainder + chunk).split('\n');
+          remainder = lines.pop() || ''; // Keep the incomplete line for the next chunk
+
           for (const line of lines) {
-            if (line.startsWith('data: ') && !line.includes('[DONE]')) {
+            if (line.trim() === '' || line.includes('[DONE]')) continue;
+            if (line.startsWith('data: ')) {
               try {
                 const data = JSON.parse(line.replace('data: ', ''));
                 if (data.content) {
                   setMessages(prev => {
                     const updated = [...prev];
-                    updated[updated.length - 1].content += data.content;
+                    const lastMsg = updated[updated.length - 1];
+                    if (lastMsg && lastMsg.role === 'assistant') {
+                      lastMsg.content += data.content;
+                    }
                     return updated;
                   });
                 }
               } catch (e) {
-                console.error("Error parsing stream chunk", e);
+                console.error("Error parsing stream chunk", e, line);
               }
             }
           }
@@ -138,7 +146,13 @@ export default function ChatPanel({ isOpen, onClose }) {
         )}
         {messages.map((msg, idx) => (
           <div key={idx} className={`message ${msg.role}`}>
-            <div className="message-content">{msg.content}</div>
+            <div className="message-content">
+              {msg.role === 'assistant' ? (
+                <ReactMarkdown>{msg.content}</ReactMarkdown>
+              ) : (
+                msg.content
+              )}
+            </div>
           </div>
         ))}
         {isLoading && (
