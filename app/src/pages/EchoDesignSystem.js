@@ -7,6 +7,7 @@ import ChatPanel from '../components/ChatPanel';
 import Footer from '../components/Footer';
 import Loading from '../components/Loading';
 import SummaryModal from '../components/SummaryModal';
+import { useAudio } from '../context/AudioContext';
 
 export default function EchoDesignSystem() {
     const [isPanelOpen, setIsPanelOpen] = useState(false);
@@ -14,7 +15,7 @@ export default function EchoDesignSystem() {
     const [summary, setSummary] = useState('');
     const [isSummaryLoading, setIsSummaryLoading] = useState(false);
     const [isAudioLoading, setIsAudioLoading] = useState(false);
-    const [audioUrl, setAudioUrl] = useState(null);
+    const { playAudio } = useAudio();
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -42,12 +43,6 @@ export default function EchoDesignSystem() {
     };
 
     const handleAudio = async () => {
-        if (audioUrl) {
-            const audio = new Audio(audioUrl);
-            audio.play();
-            return;
-        }
-
         setIsAudioLoading(true);
         try {
             const response = await fetch('/api/audio', {
@@ -57,9 +52,7 @@ export default function EchoDesignSystem() {
             });
             const data = await response.json();
             if (data.audioUrl) {
-                setAudioUrl(data.audioUrl);
-                const audio = new Audio(data.audioUrl);
-                audio.play();
+                playAudio(data.audioUrl, 'Echo Design System');
             }
         } catch (error) {
             console.error('Error generating audio:', error);

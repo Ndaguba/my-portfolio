@@ -14,18 +14,24 @@ import OrderTracker from './pages/OrderTracker';
 import Forella from './pages/Forella';
 import reportWebVitals from './reportWebVitals';
 
+import { AudioProvider } from './context/AudioContext';
+import FloatingAudioPlayer from './components/FloatingAudioPlayer';
+
 const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/development-pathways" element={<DevelopmentPathways />} />
-      <Route path="/echo-design-system" element={<EchoDesignSystem />} />
-      <Route path="/design-systems" element={<DesignSystems />} />
-      <Route path="/poppy-ai" element={<PoppyAI />} />
-      <Route path="/skip-westjet" element={<SkipWestJet />} />
-      <Route path="/order-tracker" element={<OrderTracker />} />
-      <Route path="/forella" element={<Forella />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/development-pathways" element={<DevelopmentPathways />} />
+        <Route path="/echo-design-system" element={<EchoDesignSystem />} />
+        <Route path="/design-systems" element={<DesignSystems />} />
+        <Route path="/poppy-ai" element={<PoppyAI />} />
+        <Route path="/skip-westjet" element={<SkipWestJet />} />
+        <Route path="/order-tracker" element={<OrderTracker />} />
+        <Route path="/forella" element={<Forella />} />
+      </Routes>
+      <FloatingAudioPlayer />
+    </>
   );
 };
 
@@ -33,9 +39,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ThemeProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <AudioProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </AudioProvider>
     </ThemeProvider>
   </React.StrictMode>
 );
