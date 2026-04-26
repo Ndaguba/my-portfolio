@@ -479,11 +479,10 @@
     height: auto;
     border-radius: 12px;
     border: 1px solid var(--divider-default);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
 }
 
 .theme-dark .full-width-visual img {
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: none;
 }
 
 .visual-grid {
@@ -543,7 +542,6 @@
     width: 100%;
     max-width: 332px;
     border-radius: 12px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
 @media (max-width: 1024px) {
@@ -688,8 +686,8 @@
     flex-shrink: 0;
 }
 
-.milestone-status.completed { background: #22c55e; box-shadow: 0 0 10px rgba(34, 197, 94, 0.4); }
-.milestone-status.in-progress { background: #3b82f6; box-shadow: 0 0 10px rgba(59, 130, 246, 0.4); }
+.milestone-status.completed { background: #22c55e; }
+.milestone-status.in-progress { background: #3b82f6; }
 .milestone-status.pending { background: var(--divider-default); }
 
 @media (max-width: 1024px) {
@@ -705,14 +703,12 @@
     max-width: 500px;
     background: #ffffff;
     border-radius: 24px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
     overflow: hidden;
     border: 1px solid var(--divider-default);
 }
 
 .theme-dark .age-group-explorer {
     background: #1a1a1a;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .age-tab-row {
