@@ -6,6 +6,9 @@ const cors = require('cors');
 const { OpenAI } = require('openai');
 const dataContext = require('./context');
 
+const { createClient } = require('@supabase/supabase-js');
+const axios = require('axios');
+
 const app = express();
 const port = process.env.PORT || 4000;
 
@@ -14,6 +17,137 @@ app.use(express.json());
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
+});
+
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_SERVICE_ROLE_KEY
+);
+
+// Summarize Case Study
+app.post('/api/summarize', async (req, res) => {
+  const { pageId } = req.body;
+  if (!pageId) return res.status(400).json({ error: 'pageId is required' });
+
+  try {
+    // 1. Check Cache in Supabase
+    const { data: cachedFile, error: fetchError } = await supabase.storage
+      .from('summaries')
+      .download(`${pageId}.txt`);
+
+    if (cachedFile) {
+      const summary = await cachedFile.text();
+      return res.json({ summary });
+    }
+
+    // 2. Generate Summary if not cached
+    const project = dataContext.projects.find(p => p.id === pageId);
+    if (!project) return res.status(404).json({ error: 'Project not found' });
+
+    const completion = await openai.chat.completions.create({
+      model: 'gpt-4o-mini',
+      messages: [
+        { role: 'system', content: 'You are a professional design critic. Summarize the following case study into a concise, impact-driven summary using markdown. Use bullet points for key highlights.' },
+        { role: 'user', content: JSON.stringify(project) }
+      ],
+      max_tokens: 500
+    });
+
+    const summary = completion.choices[0].message.content;
+
+    // 3. Cache in Supabase
+    await supabase.storage
+      .from('summaries')
+      .upload(`${pageId}.txt`, summary, { upsert: true });
+
+    res.json({ summary });
+  } catch (error) {
+    console.error('Summarize error:', error);
+    res.status(500).json({ error: 'Failed to generate summary' });
+  }
+});
+
+// Generate Audio Podcast
+app.post('/api/audio', async (req, res) => {
+  const { pageId } = req.body;
+  if (!pageId) return res.status(400).json({ error: 'pageId is required' });
+
+  try {
+    const fileName = `${pageId}.mp3`;
+    
+    // 1. Check if audio already exists
+    const { data: publicUrlData } = supabase.storage
+      .from('audio')
+      .getPublicUrl(fileName);
+
+    // Check if file actually exists by trying to get its metadata
+    const { data: fileData, error: metaError } = await supabase.storage
+      .from('audio')
+      .list('', { search: fileName });
+
+    if (fileData && fileData.length > 0) {
+      return res.json({ audioUrl: publicUrlData.publicUrl });
+    }
+
+    // 2. Generate Podcast Script
+    const project = dataContext.projects.find(p => p.id === pageId);
+    if (!project) return res.status(404).json({ error: 'Project not found' });
+
+    const scriptCompletion = await openai.chat.completions.create({
+      model: 'gpt-4o-mini',
+      messages: [
+        { role: 'system', content: `Generate a short, high-energy podcast script (2-3 minutes) between two hosts, Alex and Sam, reviewing Emeka's case study: ${project.title}. 
+        Alex is design-focused, Sam is technical. 
+        Focus on the narrative: The problem (${project.problem}), the solution (${project.solution}), and the impact (${project.impact.join(', ')}). 
+        Make it sound like a "Project Deep Dive" episode. 
+        IMPORTANT: Do not describe specific images, focus on the concepts and results. 
+        Output ONLY the script text, no host names or stage directions.` },
+        { role: 'user', content: JSON.stringify(project) }
+      ],
+      max_tokens: 1000
+    });
+
+    const scriptText = scriptCompletion.choices[0].message.content;
+
+    // 3. Generate Audio using Hume AI
+    const humeResponse = await axios.post(
+      'https://api.hume.ai/v0/tts/file',
+      {
+        text: scriptText,
+        voice: {
+          provider: 'HUME',
+          name: 'DAWSON' // A professional podcast-style voice
+        },
+        format: 'mp3'
+      },
+      {
+        headers: {
+          'X-Hume-Api-Key': process.env.HUME_API_KEY,
+          'Content-Type': 'application/json'
+        },
+        responseType: 'arraybuffer'
+      }
+    );
+
+    // 4. Upload to Supabase Storage
+    const { error: uploadError } = await supabase.storage
+      .from('audio')
+      .upload(fileName, humeResponse.data, {
+        contentType: 'audio/mpeg',
+        upsert: true
+      });
+
+    if (uploadError) throw uploadError;
+
+    const { data: finalUrl } = supabase.storage
+      .from('audio')
+      .getPublicUrl(fileName);
+
+    res.json({ audioUrl: finalUrl.publicUrl });
+  } catch (error) {
+    console.error('Audio generation error:', error);
+    res.status(500).json({ error: 'Failed to generate audio' });
+  }
 });
 
 app.post('/api/chat', async (req, res) => {
