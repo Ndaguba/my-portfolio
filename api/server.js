@@ -31,7 +31,14 @@ app.get('/api/flags', async (req, res) => {
       .from('feature_flags')
       .select('key, value');
 
-    if (error) throw error;
+    if (error) {
+      console.error('Supabase error fetching flags:', error);
+      throw error;
+    }
+
+    if (!data || data.length === 0) {
+      console.warn('No feature flags found in table. Using defaults.');
+    }
 
     // Convert array of {key, value} to object { [key]: value }
     const flags = data.reduce((acc, flag) => {
@@ -39,14 +46,15 @@ app.get('/api/flags', async (req, res) => {
       return acc;
     }, {});
 
+    console.log('Backend flags retrieved:', flags);
     res.json(flags);
   } catch (error) {
     console.error('Fetch flags error:', error);
     // Fallback to defaults if table doesn't exist or error occurs
     res.json({
       ai_features_enabled: true,
-      engineering_tab_enabled: true,
-      product_design_only: false
+      engineering_tab_enabled: false,
+      product_design_only: true
     });
   }
 });
@@ -186,8 +194,10 @@ app.post('/api/chat', async (req, res) => {
     }
 
     res.setHeader('Content-Type', 'text/event-stream');
-    res.setHeader('Cache-Control', 'no-cache');
+    res.setHeader('Cache-Control', 'no-cache, no-transform');
     res.setHeader('Connection', 'keep-alive');
+    res.setHeader('X-Accel-Buffering', 'no'); // Disable Nginx buffering
+    res.setHeader('X-Content-Type-Options', 'nosniff');
 
     const systemPrompt = `
 You are Emeka Ndaguba, a Senior Design Engineer and Product Designer based in ${dataContext.profile.location}. 
@@ -239,6 +249,7 @@ Instructions for responding:
       const content = chunk.choices[0]?.delta?.content || '';
       if (content) {
         res.write(`data: ${JSON.stringify({ content })}\n\n`);
+        if (res.flush) res.flush(); // Flush the response buffer
       }
     }
     res.write('data: [DONE]\n\n');

@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 import SummaryModal from '../components/SummaryModal';
 import { useAudio } from '../context/AudioContext';
 import { useFlags } from '../context/FlagsContext';
+import { apiFetch } from '../lib/api';
 
 export default function OrderTracker() {
     const [isPanelOpen, setIsPanelOpen] = useState(false);
@@ -27,10 +28,10 @@ export default function OrderTracker() {
         
         setIsSummaryLoading(true);
         try {
-            const response = await fetch('/api/summarize', {
+            const response = await apiFetch('/api/summarize', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ pageId: 'order-tracker-redesign' })
+                body: JSON.stringify({ pageId: 'order-tracker' })
             });
             const data = await response.json();
             setSummary(data.summary);
@@ -45,10 +46,10 @@ export default function OrderTracker() {
     const handleAudio = async () => {
         setIsAudioLoading(true);
         try {
-            const response = await fetch('/api/audio', {
+            const response = await apiFetch('/api/audio', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ pageId: 'order-tracker-redesign' })
+                body: JSON.stringify({ pageId: 'order-tracker' })
             });
             const data = await response.json();
             if (data.audioUrl) {

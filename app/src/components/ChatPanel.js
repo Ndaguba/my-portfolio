@@ -2,9 +2,10 @@ import React, { useState, useRef, useEffect } from 'react';
 import './ChatPanel.css';
 import { LuPanelLeftOpen } from 'react-icons/lu';
 import { BsArrowUp } from 'react-icons/bs';
-import { PiSparkleBold, PiMicrophoneBold } from 'react-icons/pi';
+import { PiSparkleBold } from 'react-icons/pi';
 import { LiaRedoAltSolid } from 'react-icons/lia';
 import ReactMarkdown from 'react-markdown';
+import { apiFetch } from '../lib/api';
 
 export default function ChatPanel({ isOpen, onClose }) {
   const [message, setMessage] = useState('');
@@ -30,7 +31,7 @@ export default function ChatPanel({ isOpen, onClose }) {
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/chat', {
+      const response = await apiFetch('/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -46,7 +47,6 @@ export default function ChatPanel({ isOpen, onClose }) {
 
       // Add an empty assistant message to append chunks to
       setMessages(prev => [...prev, { role: 'assistant', content: '' }]);
-      setIsLoading(false); // Stop typing indicator as stream starts
 
       const reader = response.body.getReader();
       const decoder = new TextDecoder('utf-8');
@@ -59,25 +59,31 @@ export default function ChatPanel({ isOpen, onClose }) {
         if (value) {
           const chunk = decoder.decode(value, { stream: true });
           const lines = (remainder + chunk).split('\n');
-          remainder = lines.pop() || ''; // Keep the incomplete line for the next chunk
+          remainder = lines.pop() || '';
 
           for (const line of lines) {
-            if (line.trim() === '' || line.includes('[DONE]')) continue;
-            if (line.startsWith('data: ')) {
+            const trimmedLine = line.trim();
+            if (!trimmedLine || trimmedLine === 'data: [DONE]') continue;
+            
+            if (trimmedLine.startsWith('data: ')) {
               try {
-                const data = JSON.parse(line.replace('data: ', ''));
+                const jsonStr = trimmedLine.replace('data: ', '');
+                const data = JSON.parse(jsonStr);
                 if (data.content) {
                   setMessages(prev => {
                     const updated = [...prev];
                     const lastMsg = updated[updated.length - 1];
                     if (lastMsg && lastMsg.role === 'assistant') {
-                      lastMsg.content += data.content;
+                      return [
+                        ...updated.slice(0, -1),
+                        { ...lastMsg, content: lastMsg.content + data.content }
+                      ];
                     }
                     return updated;
                   });
                 }
               } catch (e) {
-                console.error("Error parsing stream chunk", e, line);
+                console.warn("Partial or invalid JSON chunk:", trimmedLine);
               }
             }
           }
@@ -114,9 +120,6 @@ export default function ChatPanel({ isOpen, onClose }) {
         </button>
         <h3>EMEKALLM</h3>
         <div className="chat-header-actions">
-          <button className="action-btn" aria-label="Microphone">
-            <PiMicrophoneBold />
-          </button>
           <button className="close-btn" onClick={onClose} aria-label="Close chat">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -155,7 +158,7 @@ export default function ChatPanel({ isOpen, onClose }) {
             </div>
           </div>
         ))}
-        {isLoading && (
+        {isLoading && (!messages.length || messages[messages.length - 1].role !== 'assistant' || !messages[messages.length - 1].content) && (
           <div className="message assistant">
             <div className="message-content typing-indicator">
               <span></span><span></span><span></span>

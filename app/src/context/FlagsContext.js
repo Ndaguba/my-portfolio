@@ -1,29 +1,53 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { supabase } from '../lib/supabase';
+import { apiFetch } from '../lib/api';
 
 const FlagsContext = createContext();
 
 export const FlagsProvider = ({ children }) => {
   const [flags, setFlags] = useState({
     ai_features_enabled: true,
-    engineering_tab_enabled: true,
-    product_design_only: false
+    engineering_tab_enabled: false,
+    product_design_only: true
   });
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchFlags = async () => {
-      try {
-        const response = await fetch('/api/flags');
-        const data = await response.json();
-        setFlags(prev => ({ ...prev, ...data }));
-      } catch (error) {
-        console.error('Error fetching feature flags:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetchFlags = async () => {
+    try {
+      const response = await apiFetch('/api/flags');
+      const data = await response.json();
+      console.log('Fetched Flags:', data);
+      setFlags(prev => ({ ...prev, ...data }));
+    } catch (error) {
+      console.error('Error fetching feature flags:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchFlags();
+
+    // Set up Realtime subscription
+    const channel = supabase
+      .channel('public:feature_flags')
+      .on(
+        'postgres_changes',
+        { event: 'UPDATE', schema: 'public', table: 'feature_flags' },
+        (payload) => {
+          console.log('Flag Update Received:', payload);
+          const { key, value } = payload.new;
+          setFlags(prev => ({
+            ...prev,
+            [key]: value
+          }));
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, []);
 
   return (

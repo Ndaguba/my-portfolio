@@ -7,6 +7,7 @@ import ChatPanel from '../components/ChatPanel';
 import Footer from '../components/Footer';
 import SummaryModal from '../components/SummaryModal';
 import { useAudio } from '../context/AudioContext';
+import { apiFetch } from '../lib/api';
 
 export default function Forella() {
     const [isPanelOpen, setIsPanelOpen] = useState(false);
@@ -26,7 +27,7 @@ export default function Forella() {
         
         setIsSummaryLoading(true);
         try {
-            const response = await fetch('/api/summarize', {
+            const response = await apiFetch('/api/summarize', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ pageId: 'forella' })
@@ -44,7 +45,7 @@ export default function Forella() {
     const handleAudio = async () => {
         setIsAudioLoading(true);
         try {
-            const response = await fetch('/api/audio', {
+            const response = await apiFetch('/api/audio', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ pageId: 'forella' })

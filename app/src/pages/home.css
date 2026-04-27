@@ -356,7 +356,7 @@ h1 {
 }
 
 .link-wrapper:hover {
-  transform: translateY(-6px);
+  /* Removed translateY elevation */
 }
 
 .portfolio-item {

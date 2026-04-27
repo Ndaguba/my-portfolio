@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 import Loading from '../components/Loading';
 import SummaryModal from '../components/SummaryModal';
 import { useAudio } from '../context/AudioContext';
+import { apiFetch } from '../lib/api';
 
 export default function EchoDesignSystem() {
     const [isPanelOpen, setIsPanelOpen] = useState(false);
@@ -27,7 +28,7 @@ export default function EchoDesignSystem() {
         
         setIsSummaryLoading(true);
         try {
-            const response = await fetch('/api/summarize', {
+            const response = await apiFetch('/api/summarize', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ pageId: 'echo-design-system' })
@@ -45,7 +46,7 @@ export default function EchoDesignSystem() {
     const handleAudio = async () => {
         setIsAudioLoading(true);
         try {
-            const response = await fetch('/api/audio', {
+            const response = await apiFetch('/api/audio', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ pageId: 'echo-design-system' })

@@ -580,13 +580,12 @@
     width: 100%;
     max-width: 332px; /* Mobile mockup size matching Poppy AI */
     border-radius: 32px;
-    box-shadow: 0 20px 48px rgba(0,0,0,0.12);
     height: auto;
     display: block;
 }
 
 .theme-dark .interaction-visual-box img {
-    box-shadow: 0 20px 48px rgba(0,0,0,0.4);
+    box-shadow: none;
 }
 
 /* Placeholder for missing assets */

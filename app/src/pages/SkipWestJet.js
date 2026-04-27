@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 import SummaryModal from '../components/SummaryModal';
 import { useAudio } from '../context/AudioContext';
 import { useFlags } from '../context/FlagsContext';
+import { apiFetch } from '../lib/api';
 
 export default function SkipWestJet() {
     const [isPanelOpen, setIsPanelOpen] = useState(false);
@@ -27,7 +28,7 @@ export default function SkipWestJet() {
         
         setIsSummaryLoading(true);
         try {
-            const response = await fetch('/api/summarize', {
+            const response = await apiFetch('/api/summarize', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ pageId: 'skip-westjet' })
@@ -45,7 +46,7 @@ export default function SkipWestJet() {
     const handleAudio = async () => {
         setIsAudioLoading(true);
         try {
-            const response = await fetch('/api/audio', {
+            const response = await apiFetch('/api/audio', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ pageId: 'skip-westjet' })
@@ -321,8 +322,8 @@ export default function SkipWestJet() {
                                 </div>
                                 <div className="interaction-right">
                                     <p>An ongoing control surface designed to preserve trust post-setup. Users can effortlessly monitor their status and revoke permissions at any time, eliminating the fear of a permanent data connection.</p>
-                                    <div className="interaction-visual-box placeholder">
-                                        <span className="placeholder-text">Management Surface Asset Pending</span>
+                                    <div className="interaction-visual-box">
+                                        <img src={require('../assets/skip-westjet/partnership-management.png')} alt="Partnership Management Page" />
                                     </div>
                                 </div>
                             </div>
