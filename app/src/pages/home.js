@@ -158,7 +158,7 @@ export default function Home() {
               
               <div className="hero-subtext-group">
                 <p className="hero-description">
-                  Hey - I’m Emeka. A Product Designer {!flags.product_design_only && "& Design Engineer"} currently building the future of pediatric care at Bobo Health. Previously at SkipTheDishes.
+                  Hey - I’m Emeka. A Product Designer{flags.product_design_only ? "" : " and Design Engineer"} currently building the future of pediatric care at Bobo Health. Previously at SkipTheDishes.
                 </p>
                 <div className="hero-education-row">
                     <p className="hero-education">Based in Canada</p>
@@ -273,7 +273,7 @@ export default function Home() {
             </div>
             <div className="about-right">
               <p className="about-text">
-                I’m Emeka, a Product Designer {!flags.product_design_only && "and Design Engineer"} based in Winnipeg with a background in {!flags.product_design_only && "frontend development and"} user experience design. I specialize in building digital products at the intersection of design {!flags.product_design_only && ", engineering,"} and product strategy. My goal is to create simple experiences that solve complex {!flags.product_design_only && "technical"} problems.
+                I’m Emeka, a Product Designer{flags.product_design_only ? "" : " and Design Engineer"} based in Winnipeg{flags.product_design_only ? "" : " with a background in frontend development and user experience design"}. I specialize in building digital products at the intersection of design{flags.product_design_only ? "" : ", engineering,"} and product strategy. My goal is to create simple experiences that solve complex{flags.product_design_only ? "" : " technical"} problems.
               </p>
               <p className="about-text">
                 Across <span className="highlight-green">SkipTheDishes</span>, <span className="highlight-green">IntuitionPay</span>, and <span className="highlight-green">Bobo Health</span>, I’ve led product design for consumer platforms, financial systems, and AI-powered healthcare. I own the work from early concept through shipped production.
