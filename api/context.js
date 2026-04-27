@@ -17,7 +17,7 @@ const dataContext = {
       company: "SkipTheDishes",
       role: "Product Designer",
       period: "Mar 2023 - Aug 2025",
-      description: "Owned design across Partnerships portfolio and post-order experience. Led UX for strategic partner integrations (WestJet partnership). Redesigned the Order Tracker with a scalable bottom-sheet architecture that unlocked features like PIN verification and multi-partner logistics. Regularly contributed to the PIE design system."
+      description: "Owned design across Partnerships portfolio and post-order experience. Led the design for the Skip x WestJet partnership, creating a framework that was later adopted across Just Eat Takeaway markets globally. Redesigned the Order Tracker with a scalable bottom-sheet architecture that unlocked features like PIN verification and multi-partner logistics. Regularly contributed to the PIE design system."
     },
     {
       company: "InTuitionPay",
@@ -28,54 +28,21 @@ const dataContext = {
   ],
   projects: [
     {
-      id: "poppy-ai",
-      title: "Poppy AI",
-      tagline: "Conversational Pediatric Assistant",
-      problem: "Traditional infant tracking is cold and high-friction, especially during the '3 AM Exhaustion Window'.",
-      solution: "A 24/7 pediatric assistant that turns natural language into clinical data using an empathetic 'Nurse Partner' tone.",
-      decisions: [
-        "Designing Thinking States: Surfaces AI reasoning to maintain trust during latency.",
-        "Guided Correction: Prefers asking for clarification over making silent assumptions.",
-        "Tone as a Safety Feature: Uses empathetic language to reduce parental anxiety."
-      ],
-      impact: [
-        "68% of logs completed via AI vs traditional forms.",
-        "42% reduction in abandoned sessions.",
-        "37% faster log completion time."
-      ]
-    },
-    {
       id: "skip-westjet",
       title: "Skip x WestJet Partnership",
       tagline: "Canada's largest food delivery partnership",
-      problem: "Designing trust across brands when asking for explicit data-sharing permissions.",
-      solution: "A trust-first experience prioritizing user confidence over promotional mechanics.",
+      problem: "WestJet and Skip decided to form a strategic partnership to bring unique value to their shared customer base.",
+      solution: "Creating a seamless end-to-end experience for users to earn travel rewards through food delivery.",
       decisions: [
         "Rewards-First Architecture: Moved discovery from Settings to Rewards based on user mental models.",
-        "Value Before Permission: Surfaced benefits before the linking flow.",
-        "Consent as Value Exchange: Framed permissions around benefits enabled."
+        "Competitive Benchmarking: Audited banking and travel loyalty ecosystems to define trust patterns.",
+        "User Flow Mapping: Simplified complex OAuth-style handshakes into a 3-step value exchange.",
+        "Scalable Framework: Built a reusable model adopted by parent company Just Eat Takeaway."
       ],
       impact: [
         "72% account-link completion rate.",
-        "41% drop-off reduction during permission requests.",
-        "58% return rate to management surface."
-      ]
-    },
-    {
-      id: "echo-design-system",
-      title: "Echo Design System",
-      tagline: "Tokenized Product Language",
-      problem: "UI inconsistency and a 'Translation Gap' between designers and engineers leading to 60% CSS work spent on overrides.",
-      solution: "A tokenized, human-centered design language built for scalability.",
-      decisions: [
-        "Immutable Tokens: Semantic token architecture mapping abstract values to functional uses.",
-        "Governance by Design: Tiered contribution flow to keep the system alive but governed.",
-        "System Taxonomy: 1:1 tokenized bridge between design tools and code."
-      ],
-      impact: [
-        "2X increase in design-to-engineering handoff speed.",
-        "40% reduction in visual regression bugs.",
-        "100% dark mode coverage with zero manual overrides."
+        "Solution adopted across Just Eat Takeaway markets globally.",
+        "58% return rate to partnership management surface."
       ]
     },
     {
@@ -96,6 +63,23 @@ const dataContext = {
       ]
     },
     {
+      id: "poppy-ai",
+      title: "Poppy AI",
+      tagline: "Conversational Pediatric Assistant",
+      problem: "Traditional infant tracking is cold and high-friction, especially during the '3 AM Exhaustion Window'.",
+      solution: "A 24/7 pediatric assistant that turns natural language into clinical data using an empathetic 'Nurse Partner' tone.",
+      decisions: [
+        "Designing Thinking States: Surfaces AI reasoning to maintain trust during latency.",
+        "Guided Correction: Prefers asking for clarification over making silent assumptions.",
+        "Tone as a Safety Feature: Uses empathetic language to reduce parental anxiety."
+      ],
+      impact: [
+        "68% of logs completed via AI vs traditional forms.",
+        "42% reduction in abandoned sessions.",
+        "37% faster log completion time."
+      ]
+    },
+    {
       id: "order-tracker-redesign",
       title: "Order Tracker Redesign",
       tagline: "Flexible Logistics Platform",
@@ -110,6 +94,23 @@ const dataContext = {
         "Extensible: Repositioned tracking as a platform surface.",
         "Flexible: Supports evolving logistics requirements.",
         "Strategic: Unlocked new monetization opportunities."
+      ]
+    },
+    {
+      id: "echo-design-system",
+      title: "Echo Design System",
+      tagline: "Tokenized Product Language",
+      problem: "UI inconsistency and a 'Translation Gap' between designers and engineers leading to 60% CSS work spent on overrides.",
+      solution: "A tokenized, human-centered design language built for scalability.",
+      decisions: [
+        "Immutable Tokens: Semantic token architecture mapping abstract values to functional uses.",
+        "Governance by Design: Tiered contribution flow to keep the system alive but governed.",
+        "System Taxonomy: 1:1 tokenized bridge between design tools and code."
+      ],
+      impact: [
+        "2X increase in design-to-engineering handoff speed.",
+        "40% reduction in visual regression bugs.",
+        "100% dark mode coverage with zero manual overrides."
       ]
     },
     {

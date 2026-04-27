@@ -518,3 +518,111 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* Interaction Showcase Styling - Mirroring Poppy AI for consistency */
+.interaction-showcase {
+    padding: 100px 0;
+    padding-bottom: 24px;
+}
+
+.interaction-item {
+    margin-bottom: 240px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.interaction-item:last-child {
+    margin-bottom: 120px;
+}
+
+.interaction-header {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 120px;
+    border-top: 1px solid var(--divider-default);
+    padding-top: 40px;
+    margin-bottom: 60px;
+    align-items: flex-start;
+}
+
+.interaction-left h2 {
+    font-size: 2.5rem;
+    font-weight: 500;
+    line-height: 1.15;
+    margin: 0;
+    letter-spacing: -1.2px;
+    color: var(--text);
+}
+
+.interaction-right p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0;
+}
+
+.interaction-visual-box {
+    background: #F8F8F8; /* Light grey backdrop */
+    border-radius: 4px;
+    padding: 100px 40px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.theme-dark .interaction-visual-box {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.interaction-visual-box img {
+    width: 100%;
+    max-width: 332px; /* Mobile mockup size matching Poppy AI */
+    border-radius: 32px;
+    box-shadow: 0 20px 48px rgba(0,0,0,0.12);
+    height: auto;
+    display: block;
+}
+
+.theme-dark .interaction-visual-box img {
+    box-shadow: 0 20px 48px rgba(0,0,0,0.4);
+}
+
+/* Placeholder for missing assets */
+.interaction-visual-box.placeholder {
+    aspect-ratio: 16 / 10;
+    align-items: center;
+    border: 1px dashed var(--divider-default);
+}
+
+.placeholder-text {
+    font-size: 0.9rem;
+    color: var(--muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 1024px) {
+    .interaction-header {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .interaction-left h2 {
+        font-size: 2rem;
+    }
+    
+    .interaction-right p {
+        font-size: 1.1rem;
+    }
+    
+    .interaction-visual-box {
+        padding: 60px 24px;
+    }
+    
+    .interaction-item {
+        margin-bottom: 120px;
+    }
+}

@@ -65,13 +65,13 @@ export default function Home() {
 
   const projects = [
     {
-      id: "poppy-ai",
-      title: "Poppy AI",
-      company: "Pediatric AI Chatbot",
-      image: require('../assets/profile/Frame 23458.png'),
+      id: "skip-westjet",
+      title: "Skip x WestJet Partnership",
+      company: "Canada's largest food delivery partnership",
+      image: require('../assets/profile/SKIP X WESTJET.png'),
       category: "Design",
-      link: "/poppy-ai",
-      imgClass: "poppy-image",
+      link: "/skip-westjet",
+      imgClass: "skip-image",
       status: "SHIPPED"
     },
     {
@@ -85,13 +85,13 @@ export default function Home() {
       status: "SHIPPED"
     },
     {
-      id: "skip-westjet",
-      title: "Skip x WestJet Partnership",
-      company: "Canada's largest food delivery partnership",
-      image: require('../assets/profile/SKIP X WESTJET.png'),
+      id: "poppy-ai",
+      title: "Poppy AI",
+      company: "Pediatric AI Chatbot",
+      image: require('../assets/profile/Frame 23458.png'),
       category: "Design",
-      link: "/skip-westjet",
-      imgClass: "skip-image",
+      link: "/poppy-ai",
+      imgClass: "poppy-image",
       status: "SHIPPED"
     },
     {

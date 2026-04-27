@@ -76,7 +76,7 @@ export default function SkipWestJet() {
                         </div>
 
                         <h1 className="hero-statement">
-                            Led UX for the Skip x WestJet partnership, designing a trust-first experience connecting food delivery with travel rewards. By prioritizing user confidence over promotional mechanics, we made cross-brand value feel native, intuitive, and frictionless.
+                            Led the design for the Skip x WestJet partnership, creating a seamless end-to-end experience for users to earn travel rewards through food delivery. The framework's success led to its adoption across Just Eat Takeaway markets globally.
                         </h1>
 
                         <div className="hero-actions">
@@ -127,21 +127,67 @@ export default function SkipWestJet() {
 
                     {/* Problem */}
                     <section className="casestudy-section asymmetric">
-                        <div className="section-label">PROBLEM</div>
+                        <div className="section-label">THE GOAL</div>
                         <div className="section-content">
-                            <h2 className="content-title">Designing Trust Across Brands</h2>
-                            <p className="emotional-hook">Partnerships often fail because the UX creates hesitation, not because the offer is weak.</p>
+                            <h2 className="content-title">Defining the Partnership Experience</h2>
+                            <p className="emotional-hook">Creating a bridge between food delivery and travel rewards for millions of users.</p>
                             <div className="section-grid">
                                 <div className="text-content">
-                                    <p>Users were asked to connect two major ecosystems—food delivery and airline loyalty—requiring explicit data-sharing permissions.</p>
-                                    <p><strong>The Challenge:</strong> How do we make account linking feel secure and worthwhile without triggering distrust or abandonment?</p>
-                                    <p>If the flow felt too promotional or legally heavy, users would bounce. This wasn't a marketing problem—it was a product trust problem.</p>
+                                    <p>WestJet and Skip decided to form a strategic partnership to bring unique value to their shared customer base. The goal was simple: create an integrated product experience that allowed users to earn WestJet Dollars on Skip orders.</p>
+                                    <p><strong>The Challenge:</strong> I needed to design a flow that felt native to both brands while handling the complexities of account linking and real-time reward tracking.</p>
+                                    <p>This wasn't just about a one-time promotion; it was about building a persistent, trustworthy feature that added long-term value to the Skip ecosystem.</p>
                                 </div>
                                 <div className="stats-sidebar">
                                     <div className="stat-item">
-                                        <span className="stat-icon">⚠️</span>
-                                        <h3>Insight</h3>
-                                        <p>Trust must be visible, not implied. Users abandon flows that feel overly legal or promotional before ever seeing the value.</p>
+                                        <span className="stat-icon">🤝</span>
+                                        <h3>Objective</h3>
+                                        <p>Build a scalable partnership framework that could be reused for future loyalty integrations across the platform.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div className="section-divider"></div>
+
+                    {/* Discovery */}
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">DISCOVERY</div>
+                        <div className="section-content">
+                            <h2 className="content-title">Benchmarking Loyalty Ecosystems</h2>
+                            <div className="section-grid">
+                                <div className="text-content">
+                                    <p>I started by auditing established loyalty partnerships across the banking and travel sectors (e.g., Amex x Delta, Starbucks x Aeroplan) to understand the mental models users carry into these experiences.</p>
+                                    <p>I discovered that the most successful integrations shared three traits: they surfaced <strong>immediate value</strong>, used <strong>familiar UI patterns</strong> for account linking, and provided <strong>persistent visibility</strong> of the partnership status.</p>
+                                </div>
+                                <div className="stats-sidebar">
+                                    <div className="stat-item">
+                                        <span className="stat-icon">🔍</span>
+                                        <h3>Competitive Analysis</h3>
+                                        <p>Users don't compare Skip to other food apps; they compare the partnership experience to their banking and airline apps.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div className="section-divider"></div>
+
+                    {/* User Flows */}
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">STRATEGY</div>
+                        <div className="section-content">
+                            <h2 className="content-title">Mapping the Multi-Platform Journey</h2>
+                            <div className="section-grid">
+                                <div className="text-content">
+                                    <p>The technical architecture required a hand-off between Skip and WestJet’s secure environments. I mapped out the user flows to ensure that the transition felt like a single, unified product experience rather than a series of disjointed web-views.</p>
+                                    <p>By identifying 'High-Friction' zones—like the account verification step—I was able to design proactive messaging that explained <em>why</em> certain data was needed, significantly reducing anxiety and potential drop-off.</p>
+                                </div>
+                                <div className="stats-sidebar">
+                                    <div className="stat-item">
+                                        <span className="stat-icon">🗺️</span>
+                                        <h3>User Flows</h3>
+                                        <p>Simplifying the OAuth-style handshake into a 3-step value exchange: Discover, Connect, and Confirm.</p>
                                     </div>
                                 </div>
                             </div>
@@ -157,7 +203,7 @@ export default function SkipWestJet() {
                             <h2 className="content-title">Testing Mental Models</h2>
                             <div className="section-grid">
                                 <div className="text-content">
-                                    <p>We tested the end-to-end flow to validate comprehension, discoverability, and trust. Our goal: ensure the partnership felt familiar enough to be safe.</p>
+                                    <p>I tested the end-to-end flow to validate comprehension, discoverability, and trust. My goal: ensure the partnership felt familiar enough to be safe.</p>
                                     <h3 style={{ marginTop: '32px', marginBottom: '16px' }}>Aligning with Expectations</h3>
                                     <p>Users instantly understood the relationship, comparing it to established banking and airline loyalty programs. Instead of questioning the partnership, they immediately asked, <em>"What rewards do I get?"</em>—validating our native, non-promotional design approach.</p>
                                     <p>Crucially, testing revealed users naturally hunted for partnerships inside the <strong>Rewards</strong> tab, never <strong>Settings</strong>. This single insight drove a major architectural pivot.</p>
@@ -189,19 +235,19 @@ export default function SkipWestJet() {
                             <div className="constraint-grid">
                                 <div className="constraint-card">
                                     <h3>Rewards-First Architecture</h3>
-                                    <p>Testing proved users expected partnerships in Rewards, not Settings. We moved discovery and management to where users naturally looked for value.</p>
+                                    <p>Testing proved users expected partnerships in Rewards, not Settings. I moved discovery and management to where users naturally looked for value.</p>
                                 </div>
                                 <div className="constraint-card">
                                     <h3>Value Before Permission</h3>
-                                    <p>We surfaced benefits before the linking flow. Users only proceed when tangible rewards are clear; permission without visible value feels like a risk.</p>
+                                    <p>I surfaced benefits before the linking flow. Users only proceed when tangible rewards are clear; permission without visible value feels like a risk.</p>
                                 </div>
                                 <div className="constraint-card">
                                     <h3>Consent as Value Exchange</h3>
-                                    <p>We framed permissions around the benefits users were enabling (earning travel value), rather than dense data-sharing jargon. This made consent intentional.</p>
+                                    <p>I framed permissions around the benefits users were enabling (earning travel value), rather than dense data-sharing jargon. This made consent intentional.</p>
                                 </div>
                                 <div className="constraint-card">
                                     <h3>Persistent Management</h3>
-                                    <p>We rejected one-time setup. A dedicated management surface allows users to view status and control permissions, building long-term confidence.</p>
+                                    <p>I rejected one-time setup. A dedicated management surface allows users to view status and control permissions, building long-term confidence.</p>
                                 </div>
                             </div>
                         </div>
@@ -228,8 +274,8 @@ export default function SkipWestJet() {
                                 </div>
                                 <div className="interaction-right">
                                     <p>Placed natively within the Rewards tab to match natural mental models. This ensures partnerships are discovered as core product features, rather than hidden in Settings.</p>
-                                    <div className="interaction-visual-box" style={{ background: 'rgba(0,0,0,0.03)', border: '1px dashed var(--divider-default)' }}>
-                                        {/* Image Placeholder */}
+                                    <div className="interaction-visual-box">
+                                        <img src={require('../assets/skip-westjet/PartnershipsTab.png')} alt="Partnerships Tab in Rewards" />
                                     </div>
                                 </div>
                             </div>
@@ -241,9 +287,9 @@ export default function SkipWestJet() {
                                     <h2>Partnership Landing Page</h2>
                                 </div>
                                 <div className="interaction-right">
-                                    <p>A value-first destination framing the relationship entirely around user benefits. By explicitly outlining rewards upfront, we turned an intimidating account-linking request into an anticipated upgrade.</p>
-                                    <div className="interaction-visual-box" style={{ background: 'rgba(0,0,0,0.03)', border: '1px dashed var(--divider-default)' }}>
-                                        {/* Image Placeholder */}
+                                    <p>A value-first destination framing the relationship entirely around user benefits. By explicitly outlining rewards upfront, I turned an intimidating account-linking request into an anticipated upgrade.</p>
+                                    <div className="interaction-visual-box">
+                                        <img src={require('../assets/skip-westjet/Partnership Landing Page.png')} alt="Partnership Landing Page" />
                                     </div>
                                 </div>
                             </div>
@@ -256,8 +302,8 @@ export default function SkipWestJet() {
                                 </div>
                                 <div className="interaction-right">
                                     <p>A transparent consent experience that translates dense data-sharing agreements into a clear value exchange. Framing permissions around earning travel rewards dramatically reduced drop-off while maintaining legal compliance.</p>
-                                    <div className="interaction-visual-box" style={{ background: 'rgba(0,0,0,0.03)', border: '1px dashed var(--divider-default)' }}>
-                                        {/* Image Placeholder */}
+                                    <div className="interaction-visual-box">
+                                        <img src={require('../assets/skip-westjet/Permission-request.png')} alt="Permission Request Flow" />
                                     </div>
                                 </div>
                             </div>
@@ -270,8 +316,8 @@ export default function SkipWestJet() {
                                 </div>
                                 <div className="interaction-right">
                                     <p>An ongoing control surface designed to preserve trust post-setup. Users can effortlessly monitor their status and revoke permissions at any time, eliminating the fear of a permanent data connection.</p>
-                                    <div className="interaction-visual-box" style={{ background: 'rgba(0,0,0,0.03)', border: '1px dashed var(--divider-default)' }}>
-                                        {/* Image Placeholder */}
+                                    <div className="interaction-visual-box placeholder">
+                                        <span className="placeholder-text">Management Surface Asset Pending</span>
                                     </div>
                                 </div>
                             </div>
@@ -284,7 +330,7 @@ export default function SkipWestJet() {
                     <section className="casestudy-section">
                         <div className="impact-header">
                             <h2 className="section-title">Outcome</h2>
-                            <h3 className="impact-headline">Turning Trust into Adoption</h3>
+                            <h3 className="impact-headline">From Local Launch to Global Standard</h3>
                         </div>
                         
                         <div className="impact-grid" style={{ gridTemplateColumns: 'repeat(4, 1fr)' }}>
@@ -293,16 +339,16 @@ export default function SkipWestJet() {
                                 <p>Account-link completion rate driven by value-first onboarding.</p>
                             </div>
                             <div className="impact-card">
-                                <span className="impact-value">41%</span>
-                                <p>Drop-off reduction during permission requests by reframing consent.</p>
+                                <span className="impact-value">Global</span>
+                                <p>Adopted as the standard partnership framework across Just Eat Takeaway markets.</p>
                             </div>
                             <div className="impact-card">
                                 <span className="impact-value">58%</span>
-                                <p>Return rate to partnership management within 30 days, proving ongoing trust.</p>
+                                <p>Return rate to partnership management within 30 days, proving ongoing utility.</p>
                             </div>
                             <div className="impact-card">
-                                <span className="impact-value" style={{ fontSize: '1.5rem', marginBottom: '16px' }}>Zero Friction</span>
-                                <p>Moving partnerships from Settings to Rewards eliminated a major adoption barrier.</p>
+                                <span className="impact-value" style={{ fontSize: '1.5rem', marginBottom: '16px' }}>JET Scale</span>
+                                <p>The framework now powers cross-brand rewards for millions of users worldwide.</p>
                             </div>
                         </div>
 
