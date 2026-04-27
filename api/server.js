@@ -24,6 +24,33 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY
 );
 
+// Get Feature Flags
+app.get('/api/flags', async (req, res) => {
+  try {
+    const { data, error } = await supabase
+      .from('feature_flags')
+      .select('key, value');
+
+    if (error) throw error;
+
+    // Convert array of {key, value} to object { [key]: value }
+    const flags = data.reduce((acc, flag) => {
+      acc[flag.key] = flag.value;
+      return acc;
+    }, {});
+
+    res.json(flags);
+  } catch (error) {
+    console.error('Fetch flags error:', error);
+    // Fallback to defaults if table doesn't exist or error occurs
+    res.json({
+      ai_features_enabled: true,
+      engineering_tab_enabled: true,
+      product_design_only: false
+    });
+  }
+});
+
 // Summarize Case Study
 app.post('/api/summarize', async (req, res) => {
   const { pageId } = req.body;

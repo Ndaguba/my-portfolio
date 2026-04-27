@@ -15,6 +15,7 @@ import Forella from './pages/Forella';
 import reportWebVitals from './reportWebVitals';
 
 import { AudioProvider } from './context/AudioContext';
+import { FlagsProvider } from './context/FlagsContext';
 import FloatingAudioPlayer from './components/FloatingAudioPlayer';
 
 const App = () => {
@@ -40,9 +41,11 @@ root.render(
   <React.StrictMode>
     <ThemeProvider>
       <AudioProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <FlagsProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </FlagsProvider>
       </AudioProvider>
     </ThemeProvider>
   </React.StrictMode>

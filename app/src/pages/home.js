@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useFlags } from '../context/FlagsContext';
 import { Link } from 'react-router-dom';
 import { PiBriefcase } from "react-icons/pi";
 import './home.css';
@@ -36,7 +37,14 @@ const OptimizedImage = ({ src, alt, className, priority = false }) => {
 
 export default function Home() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
+  const { flags } = useFlags();
   const [activeFilter, setActiveFilter] = useState('Design');
+
+  useEffect(() => {
+    if (flags.product_design_only) {
+      setActiveFilter('Design');
+    }
+  }, [flags.product_design_only]);
 
   const renderTitle = () => {
     const lines = [
@@ -63,7 +71,7 @@ export default function Home() {
     ));
   };
 
-  const projects = [
+  const allProjects = [
     {
       id: "skip-westjet",
       title: "Skip x WestJet Partnership",
@@ -126,7 +134,16 @@ export default function Home() {
     }
   ];
 
+  const projects = flags.product_design_only 
+    ? allProjects.filter(p => p.category === 'Design')
+    : allProjects;
+
   const filteredProjects = projects.filter(p => p.category === activeFilter);
+
+  const availableFilters = ['Design'];
+  if (!flags.product_design_only && flags.engineering_tab_enabled) {
+    availableFilters.push('Engineering');
+  }
 
   return (
     <div className="home-container">
@@ -141,7 +158,7 @@ export default function Home() {
               
               <div className="hero-subtext-group">
                 <p className="hero-description">
-                  Hey - I’m Emeka. A Product Designer and Design Engineer currently building the future of pediatric care at Bobo Health. Previously at SkipTheDishes.
+                  Hey - I’m Emeka. A Product Designer {!flags.product_design_only && "& Design Engineer"} currently building the future of pediatric care at Bobo Health. Previously at SkipTheDishes.
                 </p>
                 <div className="hero-education-row">
                     <p className="hero-education">Based in Canada</p>
@@ -160,32 +177,33 @@ export default function Home() {
                 </div>
               </div>
             </div>
-
           </div>
 
           <section className="portfolio-section">
-            <div className="filter-group" data-active={activeFilter}>
-              <div className="filter-slider" />
-              {['Design', 'Engineering'].map(filter => (
-                <button 
-                  key={filter} 
-                  className={`filter-pill ${activeFilter === filter ? 'active' : ''}`}
-                  onClick={() => setActiveFilter(filter)}
-                >
-                  {filter === 'Design' && (
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" className="filter-icon" height="14" width="14">
-                      <path fill="currentColor" fillRule="evenodd" d="M13.2785 0.719056c-1.0082 -1.001769 -2.7007 -0.949749 -3.64554 0.111866l-0.00045 0.000509L4.72835 6.31438c-0.17798 -0.02267 -0.35786 -0.03177 -0.53809 -0.02703 -0.47908 0.01261 -0.95056 0.12278 -1.38562 0.32377 -0.42996 0.19864 -0.81542 0.48185 -1.13341 0.83268 -0.45064 0.45466 -0.672087 0.91112 -0.749099 1.38573 -0.060945 0.3756 -0.023667 0.75008 0.005107 1.03913 0.004622 0.04643 0.009024 0.09066 0.012765 0.13234 0.029459 0.3282 0.035864 0.5999 -0.048559 0.894 -0.083342 0.2904 -0.271378 0.6545 -0.71592 1.1146 -0.2347126 0.2429 -0.2339339 0.6284 0.001758 0.8703 0.913748 0.9382 2.147998 1.2305 3.328338 1.0842 1.14662 -0.1421 2.28087 -0.6986 3.13429 -1.5318 0.35347 -0.3178 0.63903 -0.7039 0.83948 -1.135 0.20205 -0.4346 0.31337 -0.9058 0.32715 -1.38482 0.00686 -0.23845 -0.01052 -0.47635 -0.0515 -0.7101L13.1683 4.3674l0.0003 -0.00027c1.0622 -0.94472 1.1145 -2.63749 0.1121 -3.645888l0 -0.000006 -0.0022 -0.00218ZM5.12717 7.69855c-0.28722 -0.11477 -0.59483 -0.16977 -0.90402 -0.16163 -0.3092 0.00814 -0.61349 0.07924 -0.89427 0.20896 -0.28079 0.12972 -0.53217 0.31533 -0.73879 0.54549 -0.0075 0.00835 -0.01522 0.0165 -0.02315 0.02443 -0.2914 0.2914 -0.37925 0.51863 -0.41095 0.71394 -0.03285 0.20246 -0.01452 0.39628 0.01351 0.69263 0.00494 0.05223 0.01018 0.10765 0.0155 0.16686 0.03304 0.36807 0.05788 0.82817 -0.09207 1.35067 -0.10528 0.3668 -0.28876 0.7389 -0.57839 1.1254 0.5253 0.3297 1.16318 0.4419 1.83734 0.3583 0.87581 -0.1085 1.77167 -0.5468 2.43994 -1.2104l0.0198 -0.0198 0.00144 -0.0015c0.01776 -0.0177 0.03632 -0.0342 0.05557 -0.0494 0.19852 -0.1929 0.36035 -0.4207 0.47729 -0.6722 0.1304 -0.2805 0.20225 -0.5846 0.21114 -0.89376 0.00889 -0.30917 -0.04536 -0.61691 -0.15942 -0.90441 -0.11407 -0.2875 -0.28557 -0.54872 -0.50401 -0.7677 -0.21844 -0.21897 -0.47924 -0.39111 -0.76646 -0.50588Z" clipRule="evenodd"></path>
-                    </svg>
-                  )}
-                  {filter === 'Engineering' && (
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="filter-icon" height="14" width="14">
-                      <path d="M4.32 5.884375 1.78125 8l2.53875 2.115625a0.5 0.5 0 1 1 -0.64 0.768125l-3 -2.5a0.5 0.5 0 0 1 0 -0.768125l3 -2.5a0.5 0.5 0 0 1 0.64 0.76875Zm11 1.73125 -3 -2.5a0.5 0.5 0 1 0 -0.64 0.76875L14.21875 8l-2.53875 2.115625a0.5 0.5 0 1 0 0.64 0.768125l3 -2.5a0.5 0.5 0 0 0 0 -0.768125Zm-5.149375 -5.585625a0.5 0.5 0 0 0 -0.640625 0.299375l-4 11a0.5 0.5 0 0 0 0.299375 0.64125A0.50875 0.50875 0 0 0 6 14a0.5 0.5 0 0 0 0.47 -0.329375l4 -11a0.5 0.5 0 0 0 -0.299375 -0.640625Z"></path>
-                    </svg>
-                  )}
-                  {filter}
-                </button>
-              ))}
-            </div>
+            {availableFilters.length > 1 && (
+              <div className="filter-group" data-active={activeFilter}>
+                <div className="filter-slider" />
+                {availableFilters.map(filter => (
+                  <button 
+                    key={filter} 
+                    className={`filter-pill ${activeFilter === filter ? 'active' : ''}`}
+                    onClick={() => setActiveFilter(filter)}
+                  >
+                    {filter === 'Design' && (
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" className="filter-icon" height="14" width="14">
+                        <path fill="currentColor" fillRule="evenodd" d="M13.2785 0.719056c-1.0082 -1.001769 -2.7007 -0.949749 -3.64554 0.111866l-0.00045 0.000509L4.72835 6.31438c-0.17798 -0.02267 -0.35786 -0.03177 -0.53809 -0.02703 -0.47908 0.01261 -0.95056 0.12278 -1.38562 0.32377 -0.42996 0.19864 -0.81542 0.48185 -1.13341 0.83268 -0.45064 0.45466 -0.672087 0.91112 -0.749099 1.38573 -0.060945 0.3756 -0.023667 0.75008 0.005107 1.03913 0.004622 0.04643 0.009024 0.09066 0.012765 0.13234 0.029459 0.3282 0.035864 0.5999 -0.048559 0.894 -0.083342 0.2904 -0.271378 0.6545 -0.71592 1.1146 -0.2347126 0.2429 -0.2339339 0.6284 0.001758 0.8703 0.913748 0.9382 2.147998 1.2305 3.328338 1.0842 1.14662 -0.1421 2.28087 -0.6986 3.13429 -1.5318 0.35347 -0.3178 0.63903 -0.7039 0.83948 -1.135 0.20205 -0.4346 0.31337 -0.9058 0.32715 -1.38482 0.00686 -0.23845 -0.01052 -0.47635 -0.0515 -0.7101L13.1683 4.3674l0.0003 -0.00027c1.0622 -0.94472 1.1145 -2.63749 0.1121 -3.645888l0 -0.000006 -0.0022 -0.00218ZM5.12717 7.69855c-0.28722 -0.11477 -0.59483 -0.16977 -0.90402 -0.16163 -0.3092 0.00814 -0.61349 0.07924 -0.89427 0.20896 -0.28079 0.12972 -0.53217 0.31533 -0.73879 0.54549 -0.0075 0.00835 -0.01522 0.0165 -0.02315 0.02443 -0.2914 0.2914 -0.37925 0.51863 -0.41095 0.71394 -0.03285 0.20246 -0.01452 0.39628 0.01351 0.69263 0.00494 0.05223 0.01018 0.10765 0.0155 0.16686 0.03304 0.36807 0.05788 0.82817 -0.09207 1.35067 -0.10528 0.3668 -0.28876 0.7389 -0.57839 1.1254 0.5253 0.3297 1.16318 0.4419 1.83734 0.3583 0.87581 -0.1085 1.77167 -0.5468 2.43994 -1.2104l0.0198 -0.0198 0.00144 -0.0015c0.01776 -0.0177 0.03632 -0.0342 0.05557 -0.0494 0.19852 -0.1929 0.36035 -0.4207 0.47729 -0.6722 0.1304 -0.2805 0.20225 -0.5846 0.21114 -0.89376 0.00889 -0.30917 -0.04536 -0.61691 -0.15942 -0.90441 -0.11407 -0.2875 -0.28557 -0.54872 -0.50401 -0.7677 -0.21844 -0.21897 -0.47924 -0.39111 -0.76646 -0.50588Z" clipRule="evenodd"></path>
+                      </svg>
+                    )}
+                    {filter === 'Engineering' && (
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="filter-icon" height="14" width="14">
+                        <path d="M4.32 5.884375 1.78125 8l2.53875 2.115625a0.5 0.5 0 1 1 -0.64 0.768125l-3 -2.5a0.5 0.5 0 0 1 0 -0.768125l3 -2.5a0.5 0.5 0 0 1 0.64 0.76875Zm11 1.73125 -3 -2.5a0.5 0.5 0 1 0 -0.64 0.76875L14.21875 8l-2.53875 2.115625a0.5 0.5 0 1 0 0.64 0.768125l3 -2.5a0.5 0.5 0 0 0 0 -0.768125Zm-5.149375 -5.585625a0.5 0.5 0 0 0 -0.640625 0.299375l-4 11a0.5 0.5 0 0 0 0.299375 0.64125A0.50875 0.50875 0 0 0 6 14a0.5 0.5 0 0 0 0.47 -0.329375l4 -11a0.5 0.5 0 0 0 -0.299375 -0.640625Z"></path>
+                      </svg>
+                    )}
+                    {filter}
+                  </button>
+                ))}
+              </div>
+            )}
             <div className="portfolio-grid">
               {filteredProjects.map((project, index) => (
                 project.link ? (
@@ -255,16 +273,19 @@ export default function Home() {
             </div>
             <div className="about-right">
               <p className="about-text">
-                I’m Emeka, a Product Designer and Design Engineer based in Winnipeg with a background in frontend development and user experience design. I specialize in building digital products at the intersection of design, engineering, and product strategy. My goal is to create simple experiences that solve complex technical problems.
+                I’m Emeka, a Product Designer {!flags.product_design_only && "and Design Engineer"} based in Winnipeg with a background in {!flags.product_design_only && "frontend development and"} user experience design. I specialize in building digital products at the intersection of design {!flags.product_design_only && ", engineering,"} and product strategy. My goal is to create simple experiences that solve complex {!flags.product_design_only && "technical"} problems.
               </p>
               <p className="about-text">
                 Across <span className="highlight-green">SkipTheDishes</span>, <span className="highlight-green">IntuitionPay</span>, and <span className="highlight-green">Bobo Health</span>, I’ve led product design for consumer platforms, financial systems, and AI-powered healthcare. I own the work from early concept through shipped production.
               </p>
               <p className="about-text">
-                I bridge the gap between design and code by thinking deeply about system behavior and implementation quality. I don’t just stop at mockups. I often work directly in the code using tools like Cursor, Claude Code, and React to ensure the final product matches the vision.
+                {flags.product_design_only 
+                  ? "I focus on creating high-fidelity, human-centered interfaces that make complex systems feel clear and trustworthy. I lead design strategy and execution, ensuring every pixel serves a purpose."
+                  : "I bridge the gap between design and code by thinking deeply about system behavior and implementation quality. I don’t just stop at mockups. I often work directly in the code using tools like Cursor, Claude Code, and React to ensure the final product matches the vision."
+                }
               </p>
               <p className="about-text">
-                I believe the best products come from the space where design precision meets engineering execution. I care about building reliable, human-centered interfaces that make complex systems feel clear and trustworthy.
+                I believe the best products come from the space where design precision meets {!flags.product_design_only ? "engineering execution" : "user needs"}. I care about building reliable, human-centered interfaces that make complex systems feel clear and trustworthy.
               </p>
 
               <div className="experience-section">
@@ -274,11 +295,11 @@ export default function Home() {
                 <div className="experience-list">
                   <ExperienceItem 
                     company="Bobo Health"
-                    role="Senior Product Designer / Design Engineer"
+                    role={flags.product_design_only ? "Senior Product Designer" : "Senior Product Designer / Design Engineer"}
                     date="Aug 2025 - Present"
                     description={
                       <>
-                        <strong>Senior Product Designer / Design Engineer</strong> at Bobo Health, serving as the first in-house designer and owning product design, brand, and user experience across the company. Lead design across mobile, web, and core product experiences while also writing frontend code for both the marketing website and product surfaces within the app. Built and launched <strong>Echo</strong>, the company’s first design system, creating scalable patterns, stronger consistency, and faster product development across teams. Responsible for shaping the product from strategy to shipped experience, including high-impact initiatives such as Poppy AI, Development Pathways, Doctor’s Reports, and core pediatric health tracking experiences.
+                        <strong>{flags.product_design_only ? "Senior Product Designer" : "Senior Product Designer / Design Engineer"}</strong> at Bobo Health, serving as the first in-house designer and owning product design, brand, and user experience across the company. Lead design across mobile, web, and core product experiences {!flags.product_design_only && "while also writing frontend code for both the marketing website and product surfaces within the app"}. Built and launched <strong>Echo</strong>, the company’s first design system, creating scalable patterns, stronger consistency, and faster product development across teams. Responsible for shaping the product from strategy to shipped experience, including high-impact initiatives such as Poppy AI, Development Pathways, Doctor’s Reports, and core pediatric health tracking experiences.
                       </>
                     }
                   />
@@ -294,11 +315,21 @@ export default function Home() {
                   />
                   <ExperienceItem 
                     company="InTuitionPay"
-                    role="Founding Product Designer & Frontend Developer"
+                    role={flags.product_design_only ? "Founding Product Designer" : "Founding Product Designer & Frontend Developer"}
                     date="Feb 2021 - Aug 2023"
                     description={
                       <>
-                        <strong>Founding Product Designer</strong> at InTuitionPay, serving as the first in-house designer and leading both product design and frontend engineering across mobile, web, and back-office platforms. Owned the full product experience from strategy and UX to implementation, writing production frontend code and driving execution across teams. Built and launched <strong>Cookies</strong>, the company’s first design system, creating consistency, scalability, and faster development across the entire product ecosystem. Led both design and engineering workflows, helping shape the product from early concept to launch. Played a key role in the company’s growth leading up to its 2024 appearance on Dragons' Den.
+                        <strong>{flags.product_design_only ? "Founding Product Designer" : "Founding Product Designer & Frontend Developer"}</strong> at InTuitionPay, serving as the first in-house designer and leading {!flags.product_design_only ? "both product design and frontend engineering" : "product design"} across mobile, web, and back-office platforms. Owned the full product experience from strategy and UX {!flags.product_design_only && "to implementation, writing production frontend code and driving execution across teams"}. Built and launched <strong>Cookies</strong>, the company’s first design system, creating consistency, scalability, and faster development across the entire product ecosystem. Led both design {!flags.product_design_only && "and engineering"} workflows, helping shape the product from early concept to launch. Played a key role in the company’s growth leading up to its 2024 appearance on Dragons' Den.
+                        <div style={{ marginTop: '24px', width: '100%', borderRadius: '12px', overflow: 'hidden', aspectRatio: '16/9', background: 'rgba(0,0,0,0.05)' }}>
+                          <iframe 
+                            src="https://www.cbc.ca/i/phoenix/player/syndicate/?mediaId=9.6620729" 
+                            width="100%" 
+                            height="100%" 
+                            frameBorder="0" 
+                            allowFullScreen
+                            title="InTuitionPay on Dragons' Den"
+                          ></iframe>
+                        </div>
                       </>
                     }
                   />
@@ -330,9 +361,9 @@ function ExperienceItem({ company, role, date, description }) {
         </div>
       </div>
       <div className={`experience-description-wrapper ${isExpanded ? 'active' : ''}`}>
-        <p className="experience-description">
+        <div className="experience-description">
           {description}
-        </p>
+        </div>
       </div>
     </div>
   );
