@@ -7,6 +7,7 @@ import ChatPanel from '../components/ChatPanel';
 import Footer from '../components/Footer';
 import { useAudio } from '../context/AudioContext';
 import { useFlags } from '../context/FlagsContext';
+import SummaryModal from '../components/SummaryModal';
 import { apiFetch } from '../lib/api';
 
 export default function PoppyAI() {
