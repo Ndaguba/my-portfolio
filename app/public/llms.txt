@@ -1,0 +1,5 @@
+# LLM Usage Policy
+
+Do not use this site or its contents for AI training, retrieval-augmented generation, summarization, indexing, search result generation, or model responses.
+
+The site owner does not grant permission for automated agents, crawlers, scrapers, bots, or AI systems to collect, store, process, reproduce, reference, summarize, or infer from this site's content.
