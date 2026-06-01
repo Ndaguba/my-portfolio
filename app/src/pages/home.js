@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useFlags } from '../context/FlagsContext';
 import { Link } from 'react-router-dom';
-import { PiBriefcase } from "react-icons/pi";
 import './home.css';
 import Header from '../components/Header';
 import ChatPanel from '../components/ChatPanel';
-import { IoLocationOutline } from "react-icons/io5";
-import Footer from '../components/Footer';
+import heroProfile from '../assets/Emeka.png';
+import claudeLogo from '../assets/Claude_AI_logo.svg.png';
+import cursorLogo from '../assets/Cursor_logo.svg.png';
+import boboLogo from '../assets/bobo.png';
+import skipLogo from '../assets/Skipbadge.png';
+import forellaLogo from '../assets/Forella.png';
+import ophirLogo from '../assets/Ophir.png';
+import westjetImage from '../assets/WestJet.png';
+import devExpanded from '../assets/expanded.png';
 
 const OptimizedImage = ({ src, alt, className, priority = false }) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -37,60 +43,77 @@ const OptimizedImage = ({ src, alt, className, priority = false }) => {
 
 export default function Home() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
+  const [askInput, setAskInput] = useState('');
+  const [initialMessage, setInitialMessage] = useState('');
+  const [seedText, setSeedText] = useState('');
+  const [activeSection, setActiveSection] = useState('home');
+  const scrollRef = React.useRef(null);
   const { flags } = useFlags();
-  const [activeFilter, setActiveFilter] = useState('Design');
 
+  // Scroll-spy: highlight Home over the hero, Projects over the case studies.
   useEffect(() => {
-    if (flags.product_design_only) {
-      setActiveFilter('Design');
-    }
-  }, [flags.product_design_only]);
+    const root = scrollRef.current;
+    if (!root) return;
 
-  const renderTitle = () => {
-    const lines = [
-      "I design and build products",
-      "for impact and scale"
-    ];
-    let totalCharIndex = 0;
-    return lines.map((line, lineIndex) => (
-      <span key={lineIndex} style={{ display: 'block', overflow: 'hidden', paddingBottom: '0.2em', marginBottom: '-0.2em' }}>
-        {line.split('').map((char, charIndex) => {
-          const delay = totalCharIndex * 0.05;
-          totalCharIndex++;
-          return (
-            <span 
-              key={charIndex} 
-              className="char" 
-              style={{ animationDelay: `${delay}s` }}
-            >
-              {char === ' ' ? '\u00A0' : char}
-            </span>
-          );
-        })}
-      </span>
-    ));
-  };
+    const sections = ['home', 'work']
+      .map(id => document.getElementById(id))
+      .filter(Boolean);
+    if (!sections.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter(e => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) {
+          setActiveSection(visible.target.id);
+        }
+      },
+      { root, rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+    );
+
+    sections.forEach(s => observer.observe(s));
+    return () => observer.disconnect();
+  }, []);
+
 
   const allProjects = [
     {
       id: "skip-westjet",
       title: "Skip x WestJet Partnership",
       company: "Canada's largest food delivery partnership",
-      image: require('../assets/profile/SKIP X WESTJET.png'),
+      description: "An end-to-end loyalty integration connecting SkipTheDishes and WestJet Rewards — I led UX for discovery, account linking, and rewards earn-and-redeem.",
+      image: westjetImage,
+      showImage: true,
+      mediaBg: '#e4e0f3',
+      logo: skipLogo,
+      logoLabel: "SkipTheDishes",
       category: "Design",
+      tags: ["Design"],
       link: "/skip-westjet",
       imgClass: "skip-image",
-      status: "SHIPPED"
+      status: "SHIPPED",
+      statValue: "4.2M",
+      statLabel: "users reached"
     },
     {
       id: "development-pathways",
       title: "Development Pathways",
       company: "Digitizing CDIC clinical milestones into a tracking platform",
-      image: require('../assets/profile/Dev-pathways.png'),
+      description: "Digitizing the CDIC clinical milestone framework into a structured tracking platform — milestone timelines, clinician review flows, and parent-facing summaries.",
+      image: require('../assets/profile/Dev-apth.png'),
+      showImage: true,
+      overlayImage: devExpanded,
+      mediaBg: '#dbe7f5',
+      logo: boboLogo,
+      logoLabel: "Bobo Health",
       category: "Design",
+      tags: ["Design"],
       link: "/development-pathways",
       imgClass: "dp-image",
-      status: "SHIPPED"
+      status: "SHIPPED",
+      statValue: "12",
+      statLabel: "milestones digitized"
     },
     {
       id: "poppy-ai",
@@ -100,7 +123,9 @@ export default function Home() {
       category: "Design",
       link: "/poppy-ai",
       imgClass: "poppy-image",
-      status: "SHIPPED"
+      status: "SHIPPED",
+      statValue: "3.2",
+      statLabel: "issues / wk"
     },
     {
       id: "order-tracker",
@@ -110,164 +135,211 @@ export default function Home() {
       category: "Design",
       link: null,
       imgClass: "order-tracker-image",
-      status: "NOT SHIPPED"
+      status: "NOT SHIPPED",
+      statValue: "—",
+      statLabel: "in progress"
     },
     {
       id: "forella",
       title: "Forella",
       company: "AI Personal Assistant",
+      description: "An AI personal assistant I designed and built end to end — from interface design to shipping the React frontend and LLM backend. Now in beta with 150 users.",
       image: require('../assets/engineering/Forella.png'),
+      logo: forellaLogo,
+      logoLabel: "Forella",
       category: "Engineering",
+      tags: ["Design", "Engineering"],
       link: "/forella",
       imgClass: "forella-image",
-      status: "SHIPPED"
+      status: "SHIPPED",
+      statValue: "150",
+      statLabel: "beta users"
     },
     {
       id: "ophir-labs",
       title: "Ophir Labs",
       company: "AI Agent for Compliance",
+      description: "An AI agent that automates compliance review — ingesting policies and firm standards, then answering and flagging questions against them. I lead design and frontend across the knowledge base, Q&A, and evidence flows.",
       image: require('../assets/engineering/ophir-labs.png'),
+      logo: ophirLogo,
+      logoLabel: "Ophir Labs",
       category: "Engineering",
+      tags: ["Design", "Engineering"],
       link: null,
       imgClass: "ophir-image",
-      status: "NOT SHIPPED"
+      status: "NOT SHIPPED",
+      statValue: "1",
+      statLabel: "organizational pilot"
     }
   ];
 
-  const projects = flags.product_design_only 
-    ? allProjects.filter(p => p.category === 'Design')
-    : allProjects;
-
-  const filteredProjects = projects.filter(p => p.category === activeFilter);
-
-  const availableFilters = ['Design'];
-  if (!flags.product_design_only && flags.engineering_tab_enabled) {
-    availableFilters.push('Engineering');
-  }
+  // Projects shown in the case-study section, in this exact order.
+  const featuredOrder = ['development-pathways', 'skip-westjet', 'forella', 'ophir-labs'];
+  const featuredProjects = featuredOrder
+    .map(id => allProjects.find(p => p.id === id))
+    .filter(Boolean);
 
   return (
     <div className="home-container">
-      <div className="main-content">
-        <Header onChatToggle={() => setIsPanelOpen(!isPanelOpen)} isChatOpen={isPanelOpen} />
+      <div className="main-content" ref={scrollRef}>
+        <Header activeSection={activeSection} />
         <main className="home-page">
-          <div className="hero-section">
-            <div className="hero-main-content">
-              <h1 className="hero-title">
-                {renderTitle()}
+          <div id="home" className="hero-section">
+            <div className="intro-hero">
+              <h1 className="intro-line intro-line-top">
+                <span className="intro-avatar-wrap">
+                  <img src={heroProfile} alt="Emeka portrait" className="intro-avatar" />
+                  <span className="intro-avatar-dot" />
+                </span>
+                <span>I&apos;m </span>
+                <span className="intro-name">Emeka</span>
+                <span>, Senior Product Designer/Engineer.</span>
               </h1>
-              
-              <div className="hero-subtext-group">
-                <p className="hero-description">
-                  Hey - I’m Emeka. A Product Designer{flags.product_design_only ? "" : " and Design Engineer"} currently building the future of pediatric care at Bobo Health. Previously at SkipTheDishes.
-                </p>
-                <div className="hero-education-row">
-                    <p className="hero-education">Based in Canada</p>
-                </div>
-                <div className="hero-social-row">
-                  <a href="https://github.com/ndaguba" target="_blank" rel="noopener noreferrer" className="hero-social-icon" aria-label="GitHub">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="20" width="20">
-                      <path fill="currentColor" fillRule="evenodd" d="M5 1a4 4 0 0 0 -4 4v14a4 4 0 0 0 4 4h14a4 4 0 0 0 4 -4V5a4 4 0 0 0 -4 -4H5Zm1.815 5.11a7.99 7.99 0 0 1 5.182 -1.903 7.99 7.99 0 0 1 2.531 15.572c-0.405 0.077 -0.535 -0.159 -0.535 -0.372v-2.212a1.893 1.893 0 0 0 -0.546 -1.473c1.78 -0.197 3.648 -0.871 3.648 -3.942a3.086 3.086 0 0 0 -0.822 -2.146 2.87 2.87 0 0 0 -0.08 -2.114s-0.666 -0.214 -2.194 0.82a7.561 7.561 0 0 0 -4.002 0C8.472 7.306 7.8 7.52 7.8 7.52a2.867 2.867 0 0 0 -0.078 2.114 3.09 3.09 0 0 0 -0.823 2.144c0 3.063 1.866 3.748 3.64 3.95a1.705 1.705 0 0 0 -0.508 1.065 1.702 1.702 0 0 1 -2.325 -0.664 1.678 1.678 0 0 0 -1.224 -0.823s-0.78 -0.01 -0.054 0.487c0.426 0.271 0.74 0.686 0.887 1.168 0 0 0.459 1.535 2.682 1.053 0.003 0.504 0.002 0.929 0 1.19l0 0.2c0 0.21 -0.126 0.445 -0.525 0.375A7.99 7.99 0 0 1 6.815 6.11Z" clipRule="evenodd"></path>
-                    </svg>
-                  </a>
-                  <a href="https://www.linkedin.com/in/emeka-ndaguba" target="_blank" rel="noopener noreferrer" className="hero-social-icon" aria-label="LinkedIn">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="20" width="20">
-                      <path fill="currentColor" fillRule="evenodd" d="M5 1a4 4 0 0 0 -4 4v14a4 4 0 0 0 4 4h14a4 4 0 0 0 4 -4V5a4 4 0 0 0 -4 -4H5Zm1.205 6.91a1.705 1.705 0 1 0 0 -3.41 1.705 1.705 0 0 0 0 3.41ZM7.909 19.5V9.273H4.5V19.5h3.41Zm4.432 -10.227H9.273V19.5h3.068v-6.17c0.395 -0.642 1.077 -1.33 2.045 -1.33 1.364 0 1.705 1.364 1.705 2.046V19.5H19.5v-5.454c0 -1.828 -0.797 -4.773 -3.75 -4.773 -1.878 0 -2.92 0.685 -3.41 1.327V9.273Z" clipRule="evenodd"></path>
-                    </svg>
-                  </a>
-                </div>
-              </div>
+              <h2 className="intro-line">
+                <span>I design data-led </span>
+                <span className="intro-accent">interfaces &amp; ship code</span>
+                <span>, </span>
+                <span className="intro-italic">end to end.</span>
+              </h2>
+
+              <p className="intro-subtext">
+                Currently leading design <span className="intro-subtext-accent">@ Bobo Health</span>
+              </p>
+
+              <form
+                className="ask-bar"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const text = askInput.trim();
+                  if (!text) return;
+                  setInitialMessage(text);
+                  setIsPanelOpen(true);
+                  setAskInput('');
+                }}
+              >
+                <span className="ask-bar-prefix" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" height="16" width="16">
+                    <path fill="currentColor" fillRule="evenodd" d="M4.66515 0.979874c-1.59836 0 -2.90081 1.266986 -2.95782 2.851436C0.690751 4.62493 -0.000976562 5.67789 -0.000976562 7.17822c0 1.14978 0.417839562 1.92544 1.033416562 2.65329 0.05722 1.77069 1.51061 3.18869 3.2953 3.18869 1.09943 0 2.07318 -0.5381 2.67223 -1.3654 0.59905 0.8273 1.5728 1.3654 2.67223 1.3654 1.7847 0 3.2381 -1.418 3.2953 -3.18869 0.6156 -0.72785 1.0334 -1.50351 1.0334 -2.65329 0 -1.50033 -0.6917 -2.55329 -1.7083 -3.34691 -0.057 -1.58445 -1.3594 -2.851436 -2.95781 -2.851436 -0.94871 0 -1.79317 0.446356 -2.33482 1.140526C6.45832 1.42623 5.61386 0.979874 4.66515 0.979874ZM2.95539 3.93964c0 -0.94428 0.76549 -1.70977 1.70976 -1.70977 0.94428 0 1.70977 0.76549 1.70977 1.70977L6.3749 5.86218c-0.01634 0.18969 -0.12495 0.5874 -0.37436 0.9511 -0.24716 0.36041 -0.5905 0.63058 -1.0611 0.68311 -0.34305 0.03828 -0.59011 0.34742 -0.55182 0.69047 0.03829 0.34304 0.34742 0.5901 0.69047 0.55181 0.52263 -0.05833 0.9519 -0.25669 1.29679 -0.52008l-0.00002 1.50447c0 1.13064 -0.91653 2.04714 -2.04712 2.04714 -1.13057 0 -2.04705 -0.9165 -2.04705 -2.04714v-0.01897c0.03552 -0.18671 0.10725 -0.405 0.20408 -0.60191 0.10425 -0.21201 0.21058 -0.34444 0.28194 -0.40079 0.27091 -0.21391 0.31712 -0.60693 0.10321 -0.87784 -0.2139 -0.2709 -0.60692 -0.31711 -0.87783 -0.10321 -0.20146 0.15908 -0.36585 0.36999 -0.49611 0.58611 -0.16475 -0.33285 -0.24696 -0.68703 -0.24696 -1.12823 0 -0.81621 0.27799 -1.44107 0.79088 -1.97254 0.11125 0.19263 0.24112 0.3595 0.37708 0.50063 0.31738 0.32945 0.70034 0.55146 1.01423 0.62302 0.33654 0.07673 0.67156 -0.1339 0.74829 -0.47044 0.07672 -0.33654 -0.1339 -0.67156 -0.47044 -0.74829 0.00019 0.00005 0.00017 0.00004 -0.00006 -0.00003 -0.00171 -0.00047 -0.01474 -0.00408 -0.03865 -0.01436 -0.02603 -0.0112 -0.05951 -0.02798 -0.0983 -0.05142 -0.07802 -0.04717 -0.16797 -0.11554 -0.25484 -0.20572 -0.16957 -0.17602 -0.31945 -0.42569 -0.36182 -0.76147v-0.13796Zm5.96646 4.79903c-0.52263 -0.05833 -0.9519 -0.25669 -1.29679 -0.52008l0.00002 1.50447c0 1.13064 0.91653 2.04714 2.04712 2.04714 1.1306 0 2.047 -0.9165 2.047 -2.04714v-0.01897c-0.0355 -0.18671 -0.1072 -0.405 -0.204 -0.60191 -0.1043 -0.21201 -0.2106 -0.34444 -0.282 -0.40079 -0.2709 -0.21391 -0.3171 -0.60693 -0.1032 -0.87784 0.2139 -0.2709 0.6069 -0.31711 0.8779 -0.10321 0.2014 0.15908 0.3658 0.36999 0.4961 0.58611 0.1647 -0.33285 0.2469 -0.68703 0.2469 -1.12823 0 -0.81617 -0.2779 -1.44101 -0.7908 -1.97246 -0.1112 0.19259 -0.2411 0.35944 -0.377 0.50055 -0.3174 0.32945 -0.7004 0.55146 -1.0142 0.62302 -0.3366 0.07673 -0.67161 -0.1339 -0.74833 -0.47044 -0.07673 -0.33654 0.13389 -0.67156 0.47043 -0.74829l0.0001 -0.00002 0 -0.00001c0.0017 -0.00047 0.0147 -0.00408 0.0386 -0.01436 0.026 -0.0112 0.0595 -0.02798 0.0983 -0.05142 0.078 -0.04717 0.168 -0.11554 0.2549 -0.20572 0.1694 -0.17585 0.3191 -0.42521 0.3617 -0.7605v-0.13893c0 -0.94428 -0.7655 -1.70977 -1.70981 -1.70977 -0.94428 0 -1.70977 0.76549 -1.70977 1.70977l0.00002 1.92255c0.01634 0.1897 0.12495 0.58739 0.37436 0.95109 0.24716 0.36041 0.5905 0.63058 1.0611 0.68311 0.34305 0.03828 0.59011 0.34742 0.55182 0.69047 -0.03829 0.34304 -0.34742 0.5901 -0.69047 0.55181Z" clipRule="evenodd" />
+                  </svg>
+                </span>
+                <input
+                  type="text"
+                  className="ask-bar-input"
+                  placeholder="Ask my Digital Brain"
+                  value={askInput}
+                  onChange={(e) => {
+                    const text = e.target.value;
+                    // First keystroke opens the full-screen chat and carries the text over.
+                    if (!isPanelOpen && text) {
+                      setSeedText(text);
+                      setIsPanelOpen(true);
+                      setAskInput('');
+                    } else {
+                      setAskInput(text);
+                    }
+                  }}
+                />
+                <button type="submit" className="ask-bar-send" aria-label="Send">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </button>
+              </form>
+
+              <p className="ask-bar-credit">
+                <span>Built with</span>
+                <img src={claudeLogo} alt="Claude" className="ask-bar-credit-logo ask-bar-credit-logo--claude" />
+                <span>Code &amp;</span>
+                <img src={cursorLogo} alt="Cursor" className="ask-bar-credit-logo" />
+              </p>
             </div>
           </div>
 
-          <section className="portfolio-section">
-            {availableFilters.length > 1 && (
-              <div className="filter-group" data-active={activeFilter}>
-                <div className="filter-slider" />
-                {availableFilters.map(filter => (
-                  <button 
-                    key={filter} 
-                    className={`filter-pill ${activeFilter === filter ? 'active' : ''}`}
-                    onClick={() => setActiveFilter(filter)}
-                  >
-                    {filter === 'Design' && (
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" className="filter-icon" height="14" width="14">
-                        <path fill="currentColor" fillRule="evenodd" d="M13.2785 0.719056c-1.0082 -1.001769 -2.7007 -0.949749 -3.64554 0.111866l-0.00045 0.000509L4.72835 6.31438c-0.17798 -0.02267 -0.35786 -0.03177 -0.53809 -0.02703 -0.47908 0.01261 -0.95056 0.12278 -1.38562 0.32377 -0.42996 0.19864 -0.81542 0.48185 -1.13341 0.83268 -0.45064 0.45466 -0.672087 0.91112 -0.749099 1.38573 -0.060945 0.3756 -0.023667 0.75008 0.005107 1.03913 0.004622 0.04643 0.009024 0.09066 0.012765 0.13234 0.029459 0.3282 0.035864 0.5999 -0.048559 0.894 -0.083342 0.2904 -0.271378 0.6545 -0.71592 1.1146 -0.2347126 0.2429 -0.2339339 0.6284 0.001758 0.8703 0.913748 0.9382 2.147998 1.2305 3.328338 1.0842 1.14662 -0.1421 2.28087 -0.6986 3.13429 -1.5318 0.35347 -0.3178 0.63903 -0.7039 0.83948 -1.135 0.20205 -0.4346 0.31337 -0.9058 0.32715 -1.38482 0.00686 -0.23845 -0.01052 -0.47635 -0.0515 -0.7101L13.1683 4.3674l0.0003 -0.00027c1.0622 -0.94472 1.1145 -2.63749 0.1121 -3.645888l0 -0.000006 -0.0022 -0.00218ZM5.12717 7.69855c-0.28722 -0.11477 -0.59483 -0.16977 -0.90402 -0.16163 -0.3092 0.00814 -0.61349 0.07924 -0.89427 0.20896 -0.28079 0.12972 -0.53217 0.31533 -0.73879 0.54549 -0.0075 0.00835 -0.01522 0.0165 -0.02315 0.02443 -0.2914 0.2914 -0.37925 0.51863 -0.41095 0.71394 -0.03285 0.20246 -0.01452 0.39628 0.01351 0.69263 0.00494 0.05223 0.01018 0.10765 0.0155 0.16686 0.03304 0.36807 0.05788 0.82817 -0.09207 1.35067 -0.10528 0.3668 -0.28876 0.7389 -0.57839 1.1254 0.5253 0.3297 1.16318 0.4419 1.83734 0.3583 0.87581 -0.1085 1.77167 -0.5468 2.43994 -1.2104l0.0198 -0.0198 0.00144 -0.0015c0.01776 -0.0177 0.03632 -0.0342 0.05557 -0.0494 0.19852 -0.1929 0.36035 -0.4207 0.47729 -0.6722 0.1304 -0.2805 0.20225 -0.5846 0.21114 -0.89376 0.00889 -0.30917 -0.04536 -0.61691 -0.15942 -0.90441 -0.11407 -0.2875 -0.28557 -0.54872 -0.50401 -0.7677 -0.21844 -0.21897 -0.47924 -0.39111 -0.76646 -0.50588Z" clipRule="evenodd"></path>
-                      </svg>
-                    )}
-                    {filter === 'Engineering' && (
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="filter-icon" height="14" width="14">
-                        <path d="M4.32 5.884375 1.78125 8l2.53875 2.115625a0.5 0.5 0 1 1 -0.64 0.768125l-3 -2.5a0.5 0.5 0 0 1 0 -0.768125l3 -2.5a0.5 0.5 0 0 1 0.64 0.76875Zm11 1.73125 -3 -2.5a0.5 0.5 0 1 0 -0.64 0.76875L14.21875 8l-2.53875 2.115625a0.5 0.5 0 1 0 0.64 0.768125l3 -2.5a0.5 0.5 0 0 0 0 -0.768125Zm-5.149375 -5.585625a0.5 0.5 0 0 0 -0.640625 0.299375l-4 11a0.5 0.5 0 0 0 0.299375 0.64125A0.50875 0.50875 0 0 0 6 14a0.5 0.5 0 0 0 0.47 -0.329375l4 -11a0.5 0.5 0 0 0 -0.299375 -0.640625Z"></path>
-                      </svg>
-                    )}
-                    {filter}
-                  </button>
-                ))}
-              </div>
-            )}
-            <div className="portfolio-grid">
-              {filteredProjects.map((project, index) => (
-                project.link ? (
-                  <Link key={project.id} to={project.link} className="portfolio-item-wrapper link-wrapper">
-                    <div className={`portfolio-item ${project.id}-item ${project.status === 'NOT SHIPPED' ? 'not-shipped-item' : ''}`}>
-                      <div className="status-pill">
-                        <span className={`status-dot ${project.status === 'NOT SHIPPED' ? 'not-shipped' : ''}`}></span>
-                        {project.status}
-                      </div>
-                      {project.image && (
-                        <OptimizedImage 
-                          className={project.imgClass} 
-                          src={project.image} 
-                          alt={project.title}
-                          priority={index < 2} 
-                        />
-                      )}
-                      {project.status === 'NOT SHIPPED' && (
-                        <div className="lock-overlay">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="lock-icon">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
-                          </svg>
-                        </div>
-                      )}
+          <section id="work" className="case-studies">
+            {featuredProjects.map((project, index) => (
+              <article key={project.id} className="case-study">
+                <div className="case-study-text">
+                  <h3 className="case-study-title">{project.title}</h3>
+                  <p className="case-study-desc">{project.description || project.company}</p>
+
+                  {project.logo && (
+                    <div className="case-study-company">
+                      <img src={project.logo} alt={project.logoLabel} className="case-study-company-logo" />
+                      <span className="case-study-company-name">{project.logoLabel}</span>
                     </div>
-                    <div className="portfolio-label">
-                      <p className="portfolio-project">{project.title}</p>
-                      <p className="portfolio-company">{project.company}</p>
+                  )}
+
+                  {project.tags && (
+                    <div className="case-study-tags">
+                      {project.tags.map(tag => (
+                        <span key={tag} className={`case-study-tag case-study-tag--${tag.toLowerCase()}`}>
+                          {tag === 'Design' && (
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="case-study-tag-icon" height="14" width="14" aria-hidden="true">
+                              <path fill="#0acf83" d="M8.0833 23.750025c2.162 0 3.91665 -1.754675 3.91665 -3.916675V15.916675H8.0833c-2.162 0 -3.916675 1.754675 -3.916675 3.916675s1.754675 3.916675 3.916675 3.916675Z" />
+                              <path fill="#a259ff" d="M4.166625 11.999975c0 -2.162 1.754675 -3.91665 3.916675 -3.91665h3.91665v7.833325H8.0833c-2.162 0 -3.916675 -1.754675 -3.916675 -3.916675Z" />
+                              <path fill="#f24e1e" d="M4.166625 4.166675C4.166625 2.0046675 5.9213 0.25 8.0833 0.25h3.91665v7.833325H8.0833c-2.162 0 -3.916675 -1.75465 -3.916675 -3.91665Z" />
+                              <path fill="#ff7262" d="M11.999875 0.25h3.916675c2.162 0 3.91665 1.7546675 3.91665 3.916675 0 2.162 -1.75465 3.91665 -3.91665 3.91665H11.999875V0.25Z" />
+                              <path fill="#1abcfe" d="M19.8332 11.999975c0 2.162 -1.75465 3.916675 -3.91665 3.916675s-3.916675 -1.754675 -3.916675 -3.916675 1.754675 -3.91665 3.916675 -3.91665 3.91665 1.75465 3.91665 3.91665Z" />
+                            </svg>
+                          )}
+                          {tag === 'Engineering' && (
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="case-study-tag-icon" height="14" width="14" aria-hidden="true">
+                              <path d="M14.1809 4.2755c0.4001 0.1072 0.6376 0.51846 0.5304 0.91856L10.7377 20.0238c-0.1073 0.4001 -0.5185 0.6375 -0.91861 0.5303 -0.4001 -0.1072 -0.63753 -0.5185 -0.53033 -0.9186L13.2624 4.80583c0.1072 -0.4001 0.5184 -0.63754 0.9185 -0.53033Z" fill="currentColor" />
+                              <path d="M16.4425 7.32781c0.2771 -0.30788 0.7513 -0.33284 1.0592 -0.05575l1.7375 1.56374c0.7364 0.66267 1.3472 1.2124 1.7666 1.7109 0.441 0.5243 0.7545 1.0875 0.7545 1.7828s-0.3135 1.2586 -0.7545 1.7828c-0.4194 0.4986 -1.0302 1.0483 -1.7666 1.711l-1.7375 1.5637c-0.3079 0.2771 -0.7821 0.2521 -1.0592 -0.0557 -0.2771 -0.3079 -0.2521 -0.7821 0.0558 -1.0592l1.6964 -1.5269c0.7879 -0.709 1.3191 -1.1894 1.6632 -1.5985 0.3303 -0.3926 0.4024 -0.6217 0.4024 -0.8172 0 -0.1954 -0.0721 -0.4246 -0.4024 -0.8172 -0.3441 -0.409 -0.8753 -0.8894 -1.6632 -1.59847L16.4983 8.387c-0.3079 -0.27709 -0.3329 -0.75131 -0.0558 -1.05919Z" fill="currentColor" />
+                              <path d="M7.50178 8.387c0.30788 -0.27709 0.33284 -0.75131 0.05574 -1.05919 -0.27709 -0.30788 -0.75131 -0.33284 -1.05919 -0.05575L4.76084 8.8358c-0.73634 0.66267 -1.34715 1.2124 -1.76656 1.7109 -0.44103 0.5243 -0.75453 1.0875 -0.75453 1.7828s0.3135 1.2586 0.75453 1.7828c0.41941 0.4986 1.03021 1.0483 1.76654 1.7109l1.73751 1.5638c0.30788 0.2771 0.7821 0.2521 1.05919 -0.0557 0.2771 -0.3079 0.25214 -0.7821 -0.05574 -1.0592l-1.69647 -1.5269c-0.78788 -0.709 -1.31908 -1.1894 -1.66318 -1.5985 -0.33025 -0.3926 -0.40238 -0.6217 -0.40238 -0.8172 0 -0.1954 0.07213 -0.4246 0.40238 -0.8172 0.3441 -0.409 0.8753 -0.8894 1.66318 -1.59847L7.50178 8.387Z" fill="currentColor" />
+                            </svg>
+                          )}
+                          {tag}
+                        </span>
+                      ))}
                     </div>
-                  </Link>
-                ) : (
-                  <div key={project.id} className="portfolio-item-wrapper">
-                    <div className={`portfolio-item ${project.id}-item ${project.status === 'NOT SHIPPED' ? 'not-shipped-item' : ''}`}>
-                      <div className="status-pill">
-                        <span className={`status-dot ${project.status === 'NOT SHIPPED' ? 'not-shipped' : ''}`}></span>
-                        {project.status}
-                      </div>
-                      {project.image && (
-                        <OptimizedImage 
-                          className={project.imgClass} 
-                          src={project.image} 
-                          alt={project.title}
-                          priority={index < 2}
-                        />
-                      )}
-                      {project.status === 'NOT SHIPPED' && (
-                        <div className="lock-overlay">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="lock-icon">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
-                          </svg>
-                        </div>
-                      )}
-                    </div>
-                    <div className="portfolio-label">
-                      <p className="portfolio-project">{project.title}</p>
-                      <p className="portfolio-company">{project.company}</p>
-                    </div>
+                  )}
+
+                  <div className="case-study-stat">
+                    <span className="case-study-stat-value">{project.statValue}</span>
+                    <span className="case-study-stat-label">{project.statLabel}</span>
                   </div>
-                )
-              ))}
-            </div>
+
+                  {project.link ? (
+                    <Link to={project.link} className="case-study-btn">
+                      <span>Open case study</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7" />
+                        <polyline points="7 7 17 7 17 17" />
+                      </svg>
+                    </Link>
+                  ) : (
+                    <span className="case-study-btn is-disabled">
+                      <span>Coming soon</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="5" y="11" width="14" height="10" rx="2" />
+                        <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+                      </svg>
+                    </span>
+                  )}
+                </div>
+
+                <div className="case-study-media-wrap">
+                  <div
+                    className="case-study-media"
+                    style={project.mediaBg ? { background: project.mediaBg } : undefined}
+                  >
+                    {project.showImage && project.image && (
+                      <img src={project.image} alt={project.title} className="case-study-media-img" />
+                    )}
+                  </div>
+                  {project.overlayImage && (
+                    <img src={project.overlayImage} alt="" aria-hidden="true" className="case-study-media-overlay" />
+                  )}
+                </div>
+              </article>
+            ))}
           </section>
 
-          <section className="about-section">
+          {/* About section hidden for now — set to true to re-enable */}
+          {false && (
+          <section id="about" className="about-section">
             <div className="about-left">
               <h2 className="about-title">About</h2>
             </div>
@@ -337,10 +409,18 @@ export default function Home() {
               </div>
             </div>
           </section>
+          )}
         </main>
-        <Footer />
       </div>
-      <ChatPanel isOpen={isPanelOpen} onClose={() => setIsPanelOpen(false)} />
+      <ChatPanel
+        isOpen={isPanelOpen}
+        onClose={() => setIsPanelOpen(false)}
+        initialMessage={initialMessage}
+        onInitialMessageConsumed={() => setInitialMessage('')}
+        seedText={seedText}
+        onSeedConsumed={() => setSeedText('')}
+        variant="fullscreen"
+      />
     </div>
   );
 }
