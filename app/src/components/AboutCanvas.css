@@ -1,0 +1,707 @@
+/* ============================================================
+   About Me — scattered "canvas" of floating cards around a
+   big centered headline. Absolute scatter on desktop, stacked
+   grid on mobile.
+   ============================================================ */
+.about-canvas {
+  position: relative;
+  /* Full-bleed: break out of the padded, max-width page container so the
+     dark canvas runs edge-to-edge across the viewport. */
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: 120px;
+  /* Pull the dark section down to the very bottom of the page, absorbing the
+     page container's bottom padding so no light gap shows below it. */
+  margin-bottom: -4rem;
+  padding: 64px 16px 88px;
+  box-sizing: border-box;
+  background-color: #1c1d20;
+  /* dot canvas on the dark background */
+  background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1.4px, transparent 1.4px);
+  background-size: 26px 26px;
+  background-position: -13px -13px;
+}
+
+.ac-stage {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  min-height: 980px;
+}
+
+.ac-headline {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% - 15px));
+  margin: 0;
+  width: max-content;
+  max-width: 90vw;
+  text-align: center;
+  font-size: clamp(2.1rem, 6.6vw, 4.8rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: #f4f4f5;
+  z-index: 1;
+}
+
+.ac-headline em {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.theme-dark .ac-headline {
+  color: #f2f2f2;
+}
+
+/* ---- shared card chrome ---- */
+.ac-card {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 12px 30px rgba(70, 70, 110, 0.12);
+  box-sizing: border-box;
+  text-decoration: none;
+  color: #1d1e22;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              translate 1.3s cubic-bezier(0.18, 1.04, 0.26, 1),
+              scale 1.3s cubic-bezier(0.18, 1.04, 0.26, 1),
+              opacity 0.9s ease;
+  will-change: transform, translate, scale;
+}
+
+/* ---- Reveal: cluster in the center, then spread to positions ---- */
+.ac-prereveal .ac-card {
+  opacity: 0;
+  scale: 0.55;
+  /* pulled toward the headline / stage center */
+  translate: var(--ac-cx, 0) var(--ac-cy, 0);
+}
+
+.ac-revealed .ac-card {
+  opacity: 1;
+  scale: 1;
+  translate: 0 0;
+}
+
+/* Per-card vector toward center + staggered delay for the "burst" feel */
+.ac-photo     { --ac-cx: 360px;  --ac-cy: 320px;  transition-delay: 0.05s; }
+.ac-player    { --ac-cx: 0px;    --ac-cy: 360px;  transition-delay: 0.15s; }
+.ac-booking   { --ac-cx: -180px; --ac-cy: 240px;  transition-delay: 0.25s; }
+.ac-available { --ac-cx: -420px; --ac-cy: 300px;  transition-delay: 0.35s; }
+.ac-figma     { --ac-cx: 300px;  --ac-cy: 160px;  transition-delay: 0.20s; }
+.ac-clock     { --ac-cx: 420px;  --ac-cy: -40px;  transition-delay: 0.30s; }
+.ac-learning  { --ac-cx: 300px;  --ac-cy: -180px; transition-delay: 0.40s; }
+.ac-rating    { --ac-cx: 260px;  --ac-cy: -300px; transition-delay: 0.50s; }
+.ac-github    { --ac-cx: 0px;    --ac-cy: -280px; transition-delay: 0.25s; }
+.ac-reading   { --ac-cx: -260px; --ac-cy: -220px; transition-delay: 0.45s; }
+.ac-resume    { --ac-cx: -420px; --ac-cy: -60px;  transition-delay: 0.35s; }
+.ac-online    { --ac-cx: -380px; --ac-cy: -160px; transition-delay: 0.55s; }
+
+/* Hover: lift, straighten the tilt, and pop the shadow.
+   Each card keeps its own resting rotation, so we straighten via a
+   per-card override below using the same transform but rotate(0). */
+.ac-card:hover {
+  z-index: 5;
+  box-shadow: 0 22px 48px rgba(70, 70, 110, 0.24);
+}
+
+@media (hover: hover) {
+  .ac-photo:hover { transform: rotate(-2deg) translateY(-6px) scale(1.03); }
+  .ac-player:hover { transform: translateX(-50%) translateY(-6px) scale(1.03); }
+  .ac-booking:hover { transform: rotate(0deg) translateY(-6px) scale(1.04); }
+  .ac-available:hover { transform: rotate(1deg) translateY(-6px) scale(1.03); }
+  .ac-clock:hover { transform: rotate(0deg) translateY(-6px) scale(1.04); }
+  .ac-learning:hover { transform: rotate(-1deg) translateY(-6px) scale(1.04); }
+  .ac-rating:hover { transform: rotate(0deg) translateY(-6px) scale(1.03); }
+  .ac-reading:hover { transform: rotate(0deg) translateY(-6px) scale(1.03); }
+  .ac-online:hover { transform: rotate(-1deg) translateY(-6px) scale(1.04); }
+  .ac-resume:hover { transform: rotate(1deg) translateY(-6px) scale(1.04); }
+  .ac-figma:hover { transform: rotate(0deg) translateY(-6px) scale(1.04); }
+  .ac-github:hover { transform: translateX(-50%) translateY(-6px) scale(1.03); }
+}
+
+/* Draggable: the drag offset rides on the `translate` property so it stacks
+   cleanly on top of each card's `transform` rotation. */
+.ac-draggable {
+  translate: var(--dragX, 0) var(--dragY, 0);
+  cursor: grab;
+  touch-action: none; /* let pointer drags work on touch without scrolling */
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+}
+
+/* Kill the native image drag-ghost / link preview tooltip on Safari */
+.ac-draggable img,
+.ac-draggable a {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+/* Neutralize the highlight tint that can flash while dragging cards */
+.about-canvas ::selection {
+  background: rgba(255, 255, 255, 0.4);
+}
+.about-canvas ::-moz-selection {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.ac-draggable.ac-dragging {
+  cursor: grabbing;
+  z-index: 10;
+  transition: none;
+  box-shadow: 0 28px 60px rgba(70, 70, 110, 0.3);
+}
+
+
+.theme-dark .ac-card {
+  background: rgba(255, 255, 255, 0.06);
+  color: #f2f2f2;
+}
+
+.ac-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.45);
+  font-weight: 600;
+}
+
+.ac-eyebrow-light {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ---- profile photo (polaroid) ---- */
+.ac-photo {
+  top: 60px;
+  left: 30px;
+  width: 200px;
+  padding: 12px 12px 0;
+  transform: rotate(-5deg);
+}
+
+.ac-photo img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.ac-photo-caption {
+  display: block;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.55);
+  padding: 14px 0 16px;
+}
+
+/* ---- music player ---- */
+.ac-player {
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%) rotate(1deg);
+  width: 270px;
+  background: #ffffff;
+  color: #1d1e22;
+  gap: 12px;
+}
+
+.ac-player-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ac-player-art {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #2a2c30;
+  flex: 0 0 auto;
+}
+
+.ac-player-meta {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.ac-player-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ac-player-artist {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.ac-player-spotify {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.ac-player-times {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.ac-player-bar {
+  height: 4px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.ac-player-bar span {
+  display: block;
+  height: 100%;
+  width: 24%;
+  border-radius: 4px;
+  background: #1d1e22;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ac-player-bar span {
+    animation: ac-progress 40s linear infinite;
+  }
+}
+
+@keyframes ac-progress {
+  from { width: 4%; }
+  to { width: 100%; }
+}
+
+.ac-player-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.ac-pc-main {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 50%;
+}
+
+/* ---- booking ---- */
+.ac-booking {
+  top: 200px;
+  left: 63%;
+  transform: rotate(-2deg);
+  width: 200px;
+  background: #ffffff;
+  color: #1d1e22;
+  gap: 8px;
+}
+
+.ac-booking-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.ac-booking-sub {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+/* ---- available now ---- */
+.ac-available {
+  top: 40px;
+  right: 20px;
+  width: 210px;
+  background: #76e0a8;
+  color: #0d3b27;
+  transform: rotate(3deg);
+  gap: 10px;
+}
+
+.ac-available-head {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.ac-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #0d3b27;
+}
+
+.ac-available-role {
+  font-size: 18px;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(13, 59, 39, 0.25);
+  padding-bottom: 10px;
+}
+
+.ac-available-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+}
+
+/* ---- clock ---- */
+.ac-clock {
+  top: 470px;
+  left: -60px;
+  width: 190px;
+  transform: rotate(-2deg);
+  gap: 6px;
+}
+
+.ac-clock-time {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+.ac-clock-time em {
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.ac-clock-zone {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+/* ---- learning ---- */
+.ac-learning {
+  top: 620px;
+  left: 110px;
+  width: 170px;
+  background: #8b5cf6;
+  color: #ffffff;
+  transform: rotate(-3deg);
+  gap: 6px;
+}
+
+.ac-learning-label {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.ac-learning-value {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* ---- rating ---- */
+.ac-rating {
+  top: 760px;
+  left: 18%;
+  width: 210px;
+  transform: rotate(2deg);
+  gap: 10px;
+  align-items: center;
+}
+
+.ac-stars {
+  display: flex;
+  gap: 4px;
+}
+
+.ac-star {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  line-height: 0;
+}
+
+/* ---- reading ---- */
+.ac-reading {
+  top: 540px;
+  left: 64%;
+  width: 200px;
+  transform: rotate(2deg);
+  gap: 12px;
+  padding-bottom: 28px;
+}
+
+.ac-book-cover {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: contain;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+.ac-reading-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 6px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+.ac-reading-bar span {
+  display: block;
+  height: 100%;
+  border-radius: 6px;
+  background: #1d1e22;
+}
+
+.ac-reading-bar b {
+  position: absolute;
+  right: -2px;
+  top: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+/* ---- find me online ---- */
+.ac-online {
+  bottom: 210px;
+  right: 30px;
+  width: 200px;
+  background: #2f6fed;
+  color: #fff;
+  transform: rotate(-4deg);
+  gap: 10px;
+}
+
+.ac-online-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ac-li {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background: #fff;
+  color: #2f6fed;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.ac-online-handle {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* ---- resume ---- */
+.ac-resume {
+  top: 470px;
+  right: -20px;
+  width: 175px;
+  background: #fbe46b;
+  transform: rotate(3deg);
+  gap: 8px;
+}
+
+.ac-resume-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ac-resume-title {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.ac-resume-sub {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+/* ---- figma ---- */
+.ac-figma {
+  top: 240px;
+  left: 270px;
+  width: 160px;
+  transform: rotate(-3deg);
+  gap: 10px;
+}
+
+.ac-figma-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ac-figma-name {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+/* ---- github contributions ---- */
+.ac-github {
+  top: 660px;
+  left: 50%;
+  transform: translateX(-50%) rotate(1deg);
+  width: 300px;
+  gap: 12px;
+}
+
+.ac-github-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1d1e22;
+}
+
+.ac-github-grid {
+  display: flex;
+  gap: 2px;
+  width: 100%;
+}
+
+.ac-github-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1 1 0;
+}
+
+.ac-github-cell {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 2px;
+  background: #ebedf0;
+}
+
+.ac-github-cell.lvl-1 { background: #9be9a8; }
+.ac-github-cell.lvl-2 { background: #40c463; }
+.ac-github-cell.lvl-3 { background: #30a14e; }
+.ac-github-cell.lvl-4 { background: #216e39; }
+
+.ac-github-sub {
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+/* ============================================================
+   Mobile / tablet — left-aligned headline + 2-column bento grid
+   (no scatter, no rotation).
+   ============================================================ */
+@media (max-width: 900px) {
+  .about-canvas {
+    margin-top: 80px;
+    padding: 28px 16px 56px;
+  }
+
+  .ac-stage {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: minmax(64px, auto);
+    grid-auto-flow: row dense;
+    gap: 14px;
+    align-items: stretch;
+  }
+
+  /* Headline spans the full width, left-aligned at the top */
+  .ac-headline {
+    position: static;
+    transform: none !important;
+    translate: none !important;
+    grid-column: 1 / -1;
+    width: auto;
+    max-width: none;
+    margin: 0 0 6px;
+    text-align: left;
+    font-size: clamp(2.2rem, 12vw, 3.6rem);
+  }
+
+  /* Every card becomes a flowing grid item — kill scatter + rotation */
+  .ac-card {
+    position: static;
+    transform: none !important;
+    translate: none !important;
+    animation: none !important;
+    width: auto;
+    max-width: none;
+    height: 100%;
+  }
+
+  .ac-card:hover {
+    transform: translateY(-2px) !important;
+  }
+
+  /* Tall feature cards span two rows; some span both columns */
+  .ac-photo { grid-row: span 3; }
+  .ac-available { grid-row: span 3; }
+  .ac-reading { grid-row: span 3; }
+  .ac-player { grid-column: 1 / -1; }
+  .ac-github { grid-column: 1 / -1; }
+
+  .ac-photo { width: auto; padding-bottom: 0; }
+  .ac-photo img { aspect-ratio: 4 / 5; }
+
+  /* GitHub heatmap fills the full width with larger cells on mobile */
+  .ac-github-grid {
+    width: 100%;
+    justify-content: space-between;
+    gap: 4px;
+  }
+
+  .ac-github-col {
+    flex: 1 1 0;
+    gap: 4px;
+  }
+
+  .ac-github-cell {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    border-radius: 3px;
+  }
+
+  .ac-rating { align-items: flex-start; }
+  .ac-stars { align-self: flex-start; }
+}
+
+@media (max-width: 480px) {
+  .ac-headline {
+    font-size: clamp(2rem, 13vw, 3rem);
+  }
+}

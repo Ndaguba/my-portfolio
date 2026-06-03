@@ -9,7 +9,18 @@ export default function Header({ activeSection = 'home' }) {
     // Only intercept when the target section exists on this page.
     if (el) {
       e.preventDefault();
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // For "home", scroll the page container fully to the top (the hero has
+      // top padding under the fixed header, so scrollIntoView leaves a gap).
+      if (id === 'home') {
+        const scroller = document.querySelector('.main-content');
+        if (scroller) {
+          scroller.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      } else {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
     setMenuOpen(false);
   };
@@ -45,7 +56,7 @@ export default function Header({ activeSection = 'home' }) {
             <a href="/#about" className="nav-link">About</a>
             <a
               className="nav-link"
-              href="https://drive.google.com/file/d/1t96-lAIvs9h8_11M5JLWqenU8XNJ6fOS/view?usp=sharing"
+              href="https://docs.google.com/document/d/1iJj-DzZBh493NrEzz_oyp5eKeDDIDJy65WbonwRHjpI/edit?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -86,7 +97,7 @@ export default function Header({ activeSection = 'home' }) {
           <a href="/#about" className="mobile-menu-link" onClick={() => setMenuOpen(false)}>About</a>
           <a
             className="mobile-menu-link"
-            href="https://drive.google.com/file/d/1t96-lAIvs9h8_11M5JLWqenU8XNJ6fOS/view?usp=sharing"
+            href="https://docs.google.com/document/d/1iJj-DzZBh493NrEzz_oyp5eKeDDIDJy65WbonwRHjpI/edit?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}

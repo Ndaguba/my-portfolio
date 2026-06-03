@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './home.css';
 import Header from '../components/Header';
 import ChatPanel from '../components/ChatPanel';
+import AboutCanvas from '../components/AboutCanvas';
 import heroProfile from '../assets/Emeka.png';
 import claudeLogo from '../assets/Claude_AI_logo.svg.png';
 import cursorLogo from '../assets/Cursor_logo.svg.png';
@@ -349,7 +350,9 @@ export default function Home() {
             ))}
           </section>
 
-          {/* About section hidden for now — set to true to re-enable */}
+          <AboutCanvas />
+
+          {/* Legacy text About section hidden — set to true to re-enable */}
           {false && (
           <section id="about" className="about-section">
             <div className="about-left">

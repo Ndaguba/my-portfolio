@@ -246,7 +246,7 @@ const dataContext = {
     }
   ],
   links: {
-    resume: "https://drive.google.com/file/d/1t96-lAIvs9h8_11M5JLWqenU8XNJ6fOS/view?usp=sharing",
+    resume: "https://docs.google.com/document/d/1iJj-DzZBh493NrEzz_oyp5eKeDDIDJy65WbonwRHjpI/edit?usp=sharing",
     booking: "https://cal.com/",
     linkedin: "https://www.linkedin.com/",
     github: "https://github.com/"
