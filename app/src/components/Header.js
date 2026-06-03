@@ -53,7 +53,13 @@ export default function Header({ activeSection = 'home' }) {
             >
               Projects
             </a>
-            <a href="/#about" className="nav-link">About</a>
+            <a
+              href="/#about"
+              onClick={(e) => scrollToSection(e, 'about')}
+              className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}
+            >
+              About
+            </a>
             <a
               className="nav-link"
               href="https://docs.google.com/document/d/1iJj-DzZBh493NrEzz_oyp5eKeDDIDJy65WbonwRHjpI/edit?usp=sharing"
@@ -94,7 +100,13 @@ export default function Header({ activeSection = 'home' }) {
           >
             Projects
           </a>
-          <a href="/#about" className="mobile-menu-link" onClick={() => setMenuOpen(false)}>About</a>
+          <a
+            href="/#about"
+            className="mobile-menu-link"
+            onClick={(e) => { scrollToSection(e, 'about'); setMenuOpen(false); }}
+          >
+            About
+          </a>
           <a
             className="mobile-menu-link"
             href="https://docs.google.com/document/d/1iJj-DzZBh493NrEzz_oyp5eKeDDIDJy65WbonwRHjpI/edit?usp=sharing"

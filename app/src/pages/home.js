@@ -60,7 +60,7 @@ export default function Home() {
     const root = scrollRef.current;
     if (!root) return;
 
-    const sections = ['home', 'work']
+    const sections = ['home', 'work', 'about']
       .map(id => document.getElementById(id))
       .filter(Boolean);
     if (!sections.length) return;
