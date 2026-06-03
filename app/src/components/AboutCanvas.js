@@ -4,6 +4,15 @@ import emekaProfile from '../assets/Emeka.png';
 import albumArt from '../assets/album.jpeg';
 import spotifyLogo from '../assets/spotify.png';
 import bookCover from '../assets/Promise-land.jpg';
+import boboLogo from '../assets/bobo_app_logo.jpeg';
+import intuitionPayLogo from '../assets/Intuitionpay.jpeg';
+import skipLogo from '../assets/Skip-badge.jpeg';
+
+const COMPANIES = [
+  { name: 'bobo Health', logo: boboLogo },
+  { name: 'InTuitionPay', logo: intuitionPayLogo },
+  { name: 'SkipTheDishes', logo: skipLogo },
+];
 
 const RESUME_URL = 'https://docs.google.com/document/d/1iJj-DzZBh493NrEzz_oyp5eKeDDIDJy65WbonwRHjpI/edit?usp=sharing';
 const BOOKING_URL = 'https://cal.com/ndaguba-nnaemeka-s5lfaw/30min';
@@ -236,13 +245,26 @@ export default function AboutCanvas() {
           <span className="ac-photo-caption">Emeka Ndaguba · Winnipeg</span>
         </Draggable>
 
+        {/* Companies I've worked for */}
+        <Draggable className="ac-card ac-companies">
+          <span className="ac-eyebrow">Worked with</span>
+          <ul className="ac-companies-list">
+            {COMPANIES.map((c) => (
+              <li key={c.name} className="ac-companies-item">
+                <img src={c.logo} alt={c.name} draggable="false" />
+                <span>{c.name}</span>
+              </li>
+            ))}
+          </ul>
+        </Draggable>
+
         {/* Now playing */}
         <Draggable className="ac-card ac-player">
           <div className="ac-player-top">
             <img className="ac-player-art" src={albumArt} alt="" aria-hidden="true" draggable="false" />
             <div className="ac-player-meta">
-              <span className="ac-player-title">Peace Piece</span>
-              <span className="ac-player-artist">Bill Evans</span>
+              <span className="ac-player-title">ICEMAN</span>
+              <span className="ac-player-artist">Drake</span>
             </div>
             <img className="ac-player-spotify" src={spotifyLogo} alt="Spotify" draggable="false" />
           </div>

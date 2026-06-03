@@ -107,6 +107,7 @@
 .ac-reading   { --ac-cx: -260px; --ac-cy: -220px; transition-delay: 0.45s; }
 .ac-resume    { --ac-cx: -420px; --ac-cy: -60px;  transition-delay: 0.35s; }
 .ac-online    { --ac-cx: -380px; --ac-cy: -160px; transition-delay: 0.55s; }
+.ac-companies { --ac-cx: 280px;  --ac-cy: 40px;   transition-delay: 0.30s; }
 
 /* Hover: lift, straighten the tilt, and pop the shadow.
    Each card keeps its own resting rotation, so we straighten via a
@@ -510,6 +511,46 @@ body.ac-drag-active * {
   color: rgba(0, 0, 0, 0.5);
 }
 
+/* ---- companies worked for ---- */
+.ac-companies {
+  top: 320px;
+  left: 10px;
+  width: 215px;
+  transform: rotate(-2deg);
+  gap: 12px;
+}
+
+.ac-companies-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ac-companies-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1d1e22;
+}
+
+.ac-companies-item img {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex: 0 0 auto;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.theme-dark .ac-companies-item {
+  color: #f2f2f2;
+}
+
 /* ---- find me online ---- */
 .ac-online {
   bottom: 210px;
@@ -691,6 +732,7 @@ body.ac-drag-active * {
   .ac-photo { grid-row: span 3; }
   .ac-available { grid-row: span 3; }
   .ac-reading { grid-row: span 3; }
+  .ac-companies { grid-row: span 2; }
   .ac-player { grid-column: 1 / -1; }
   .ac-github { grid-column: 1 / -1; }
 
