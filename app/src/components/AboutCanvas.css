@@ -107,7 +107,7 @@
 .ac-reading   { --ac-cx: -260px; --ac-cy: -220px; transition-delay: 0.45s; }
 .ac-resume    { --ac-cx: -420px; --ac-cy: -60px;  transition-delay: 0.35s; }
 .ac-online    { --ac-cx: -380px; --ac-cy: -160px; transition-delay: 0.55s; }
-.ac-companies { --ac-cx: 280px;  --ac-cy: 40px;   transition-delay: 0.30s; }
+.ac-companies { --ac-cx: 420px;  --ac-cy: -140px; transition-delay: 0.30s; }
 
 /* Hover: lift, straighten the tilt, and pop the shadow.
    Each card keeps its own resting rotation, so we straighten via a
