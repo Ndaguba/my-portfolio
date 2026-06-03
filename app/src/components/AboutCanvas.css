@@ -132,15 +132,35 @@
 }
 
 /* Draggable: the drag offset rides on the `translate` property so it stacks
-   cleanly on top of each card's `transform` rotation. */
-.ac-draggable {
+   cleanly on top of each card's `transform` rotation. The `.ac-revealed`
+   selector below would otherwise override `translate` back to 0, so we bump
+   specificity here to keep the drag offset winning. */
+.ac-revealed .ac-card.ac-dragging,
+.ac-revealed .ac-card.ac-has-offset {
   translate: var(--dragX, 0) var(--dragY, 0);
-  cursor: grab;
-  touch-action: none; /* let pointer drags work on touch without scrolling */
-  user-select: none;
+  transition: box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ac-draggable {
   -webkit-user-select: none;
+  user-select: none;
   -webkit-touch-callout: none;
   -webkit-user-drag: none;
+}
+
+/* Grab cursor + drag affordance only where there's a real mouse. */
+@media (hover: hover) and (pointer: fine) {
+  .ac-draggable { cursor: grab; }
+  .ac-draggable.ac-dragging { cursor: grabbing; }
+}
+
+/* While any card is being dragged, suppress text selection everywhere so the
+   drag doesn't paint a highlight across the canvas. */
+body.ac-drag-active,
+body.ac-drag-active * {
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  cursor: grabbing !important;
 }
 
 /* Kill the native image drag-ghost / link preview tooltip on Safari */

@@ -41,8 +41,11 @@ function Draggable({ as = 'div', className = '', children, ...rest }) {
   const state = useRef({ active: false, startX: 0, startY: 0, baseX: 0, baseY: 0, moved: false });
 
   const onPointerDown = useCallback((e) => {
+    // No dragging on touch devices — let the page scroll normally.
+    if (e.pointerType !== 'mouse') return;
     // Don't hijack interactions with the star buttons inside a card.
     if (e.target.closest('button')) return;
+    e.preventDefault();
     const s = state.current;
     s.active = true;
     s.moved = false;
@@ -51,6 +54,7 @@ function Draggable({ as = 'div', className = '', children, ...rest }) {
     s.baseX = offset.x;
     s.baseY = offset.y;
     setDragging(true);
+    document.body.classList.add('ac-drag-active');
     ref.current?.setPointerCapture?.(e.pointerId);
   }, [offset]);
 
@@ -68,6 +72,7 @@ function Draggable({ as = 'div', className = '', children, ...rest }) {
     if (!s.active) return;
     s.active = false;
     setDragging(false);
+    document.body.classList.remove('ac-drag-active');
     ref.current?.releasePointerCapture?.(e.pointerId);
   }, []);
 
@@ -84,7 +89,7 @@ function Draggable({ as = 'div', className = '', children, ...rest }) {
   return (
     <Tag
       ref={ref}
-      className={`${className} ac-draggable${dragging ? ' ac-dragging' : ''}`}
+      className={`${className} ac-draggable${dragging ? ' ac-dragging' : ''}${(offset.x !== 0 || offset.y !== 0) ? ' ac-has-offset' : ''}`}
       style={{ '--dragX': `${offset.x}px`, '--dragY': `${offset.y}px` }}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
