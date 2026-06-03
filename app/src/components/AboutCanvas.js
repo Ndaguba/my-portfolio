@@ -7,11 +7,20 @@ import bookCover from '../assets/Promise-land.jpg';
 import boboLogo from '../assets/bobo_app_logo.jpeg';
 import intuitionPayLogo from '../assets/Intuitionpay.jpeg';
 import skipLogo from '../assets/Skip-badge.jpeg';
+import typescriptLogo from '../assets/Typescript.png';
+import reactLogo from '../assets/React.svg';
+import javascriptLogo from '../assets/Javascript.png';
 
 const COMPANIES = [
   { name: 'bobo Health', logo: boboLogo },
   { name: 'InTuitionPay', logo: intuitionPayLogo },
   { name: 'SkipTheDishes', logo: skipLogo },
+];
+
+const TECHNOLOGIES = [
+  { name: 'TypeScript', logo: typescriptLogo },
+  { name: 'React', logo: reactLogo },
+  { name: 'JavaScript', logo: javascriptLogo },
 ];
 
 const RESUME_URL = 'https://docs.google.com/document/d/1iJj-DzZBh493NrEzz_oyp5eKeDDIDJy65WbonwRHjpI/edit?usp=sharing';
@@ -253,6 +262,19 @@ export default function AboutCanvas() {
               <li key={c.name} className="ac-companies-item">
                 <img src={c.logo} alt={c.name} draggable="false" />
                 <span>{c.name}</span>
+              </li>
+            ))}
+          </ul>
+        </Draggable>
+
+        {/* Developer technologies */}
+        <Draggable className="ac-card ac-technologies">
+          <span className="ac-eyebrow">Developer Technologies</span>
+          <ul className="ac-companies-list">
+            {TECHNOLOGIES.map((t) => (
+              <li key={t.name} className="ac-companies-item">
+                <img src={t.logo} alt={t.name} draggable="false" />
+                <span>{t.name}</span>
               </li>
             ))}
           </ul>
