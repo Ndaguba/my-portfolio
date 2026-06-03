@@ -435,6 +435,38 @@ h1 {
     height: 28px;
     border-radius: 50%;
   }
+
+  /* Ask bar: don't force a wide min-width on small screens */
+  .ask-bar {
+    min-width: 0;
+    width: 100%;
+    margin-top: 20px;
+    padding: 6px 6px 6px 16px;
+  }
+
+  .ask-bar-input {
+    font-size: 0.95rem;
+  }
+
+  .ask-bar-send {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-page {
+    padding-top: 140px;
+  }
+
+  .intro-line {
+    font-size: clamp(1.05rem, 6.2vw, 1.4rem);
+  }
+
+  .ask-bar-credit {
+    font-size: 0.72rem;
+    flex-wrap: wrap;
+  }
 }
 
 
@@ -629,6 +661,12 @@ h1 {
   pointer-events: none;
 }
 
+/* Skip x WestJet overlay: nudged up 5px and 10% smaller */
+.case-study-media-overlay.skip-overlay {
+  width: 37.8%;
+  top: calc(40% - 37px);
+}
+
 .case-study-img,
 .case-study-media .image-container {
   width: 100%;
@@ -648,6 +686,38 @@ h1 {
   transform-origin: top center;
 }
 
+/* Forella: landscape iPad-style screen beside the mobile app screen */
+.forella-media {
+  align-items: flex-end;
+  justify-content: center;
+  gap: 12px;
+}
+
+.case-study-media-img.forella-media-img {
+  align-self: flex-end;
+  width: 100%;
+  transform: translate(90px, 20px) scale(0.90);
+  transform-origin: bottom center;
+  border-radius: 0;
+}
+
+/* Ophir Labs: larger, centered */
+.case-study-media-img.ophir-media-img {
+  align-self: center;
+  transform: translateY(20px) scale(0.94);
+  transform-origin: center center;
+}
+
+/* Forella mobile app screen sitting beside the iPad screen */
+.forella-mobile-img {
+  align-self: flex-end;
+  width: 46%;
+  height: auto;
+  object-fit: contain;
+  transform: translate(-83px, 93px) scale(0.8);
+  transform-origin: bottom center;
+}
+
 .case-study-img {
   object-fit: contain;
   border-radius: 12px;
@@ -664,8 +734,82 @@ h1 {
     gap: 28px;
   }
 
+  /* Image above the copy when stacked */
+  .case-study-media-wrap {
+    order: -1;
+  }
+
   .case-study-desc {
     max-width: 100%;
+  }
+
+  /* Media panel: full width once the row is stacked */
+  .case-study-media {
+    width: 100%;
+    height: 300px;
+  }
+
+  .case-study-media-overlay {
+    width: 46%;
+  }
+
+  .case-study-media-overlay.skip-overlay {
+    width: 42%;
+    top: calc(40% - 24px);
+  }
+}
+
+/* Featured media: scale the device mockups down on smaller screens so the
+   hardcoded px offsets don't push images out of the panel. */
+@media (max-width: 600px) {
+  .case-study-media {
+    height: 240px;
+  }
+
+  /* Forella: tighten the side-by-side device offsets */
+  .forella-media {
+    gap: 6px;
+  }
+
+  .case-study-media-img.forella-media-img {
+    transform: translate(36px, 12px) scale(0.74);
+  }
+
+  .forella-mobile-img {
+    transform: translate(-124px, 40px) scale(0.62);
+  }
+
+  /* Ophir: keep centered, slightly smaller */
+  .case-study-media-img.ophir-media-img {
+    transform: translateY(12px) scale(0.82);
+  }
+
+  .case-study-media-overlay.skip-overlay {
+    width: 40%;
+    top: calc(40% - 46px);
+  }
+}
+
+@media (max-width: 420px) {
+  .case-study-media {
+    height: 200px;
+  }
+
+  .case-study-media-img.forella-media-img {
+    transform: translate(22px, 8px) scale(0.62);
+  }
+
+  .forella-mobile-img {
+    transform: translate(-116px, 28px) scale(0.56);
+  }
+
+  .case-study-media-img.ophir-media-img {
+    transform: translateY(8px) scale(0.72);
+  }
+
+  .case-study-media-overlay.skip-overlay {
+    width: 37%;
+    top: calc(40% - 40px);
   }
 }
 

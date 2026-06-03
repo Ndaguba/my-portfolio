@@ -10,9 +10,13 @@ import cursorLogo from '../assets/Cursor_logo.svg.png';
 import boboLogo from '../assets/bobo.png';
 import skipLogo from '../assets/Skipbadge.png';
 import forellaLogo from '../assets/Forella.png';
+import forellaWeb from '../assets/forella-web.png';
+import forellaMobile from '../assets/forella-mobile-app.png';
 import ophirLogo from '../assets/Ophir.png';
+import ophirLabs from '../assets/Ophir-labs.png';
 import westjetImage from '../assets/WestJet.png';
 import devExpanded from '../assets/expanded.png';
+import skipExpanded from '../assets/skip-expanded.png';
 
 const OptimizedImage = ({ src, alt, className, priority = false }) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -85,6 +89,7 @@ export default function Home() {
       description: "An end-to-end loyalty integration connecting SkipTheDishes and WestJet Rewards — I led UX for discovery, account linking, and rewards earn-and-redeem.",
       image: westjetImage,
       showImage: true,
+      overlayImage: skipExpanded,
       mediaBg: '#e4e0f3',
       logo: skipLogo,
       logoLabel: "SkipTheDishes",
@@ -93,8 +98,8 @@ export default function Home() {
       link: "/skip-westjet",
       imgClass: "skip-image",
       status: "SHIPPED",
-      statValue: "4.2M",
-      statLabel: "users reached"
+      statValue: "500K",
+      statLabel: "accounts connected"
     },
     {
       id: "development-pathways",
@@ -112,8 +117,8 @@ export default function Home() {
       link: "/development-pathways",
       imgClass: "dp-image",
       status: "SHIPPED",
-      statValue: "12",
-      statLabel: "milestones digitized"
+      statValue: "+35%",
+      statLabel: "free-to-paid upgrades"
     },
     {
       id: "poppy-ai",
@@ -144,12 +149,14 @@ export default function Home() {
       title: "Forella",
       company: "AI Personal Assistant",
       description: "An AI personal assistant I designed and built end to end — from interface design to shipping the React frontend and LLM backend. Now in beta with 150 users.",
-      image: require('../assets/engineering/Forella.png'),
+      image: forellaWeb,
+      showImage: true,
+      mediaBg: '#f1ede4',
       logo: forellaLogo,
       logoLabel: "Forella",
       category: "Engineering",
       tags: ["Design", "Engineering"],
-      link: "/forella",
+      link: null,
       imgClass: "forella-image",
       status: "SHIPPED",
       statValue: "150",
@@ -160,7 +167,9 @@ export default function Home() {
       title: "Ophir Labs",
       company: "AI Agent for Compliance",
       description: "An AI agent that automates compliance review — ingesting policies and firm standards, then answering and flagging questions against them. I lead design and frontend across the knowledge base, Q&A, and evidence flows.",
-      image: require('../assets/engineering/ophir-labs.png'),
+      image: ophirLabs,
+      showImage: true,
+      mediaBg: '#dde9e2',
       logo: ophirLogo,
       logoLabel: "Ophir Labs",
       category: "Engineering",
@@ -322,15 +331,18 @@ export default function Home() {
 
                 <div className="case-study-media-wrap">
                   <div
-                    className="case-study-media"
+                    className={`case-study-media ${project.id === 'forella' ? 'forella-media' : ''}`}
                     style={project.mediaBg ? { background: project.mediaBg } : undefined}
                   >
                     {project.showImage && project.image && (
-                      <img src={project.image} alt={project.title} className="case-study-media-img" />
+                      <img src={project.image} alt={project.title} className={`case-study-media-img ${project.id === 'forella' ? 'forella-media-img' : ''} ${project.id === 'ophir-labs' ? 'ophir-media-img' : ''}`} />
+                    )}
+                    {project.id === 'forella' && (
+                      <img src={forellaMobile} alt="Forella mobile app" className="forella-mobile-img" />
                     )}
                   </div>
                   {project.overlayImage && (
-                    <img src={project.overlayImage} alt="" aria-hidden="true" className="case-study-media-overlay" />
+                    <img src={project.overlayImage} alt="" aria-hidden="true" className={`case-study-media-overlay ${project.id === 'skip-westjet' ? 'skip-overlay' : ''}`} />
                   )}
                 </div>
               </article>
