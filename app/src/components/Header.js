@@ -1,56 +1,111 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import './Header.css';
-import { LuSun, LuMoon, LuMenu } from "react-icons/lu";
-import { useTheme } from '../context/ThemeContext';
 
-export default function Header({ onChatToggle, isChatOpen }) {
-  const { theme, setTheme } = useTheme();
-  const [scrolled, setScrolled] = React.useState(false);
+export default function Header({ activeSection = 'home' }) {
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  React.useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+  const scrollToSection = (e, id) => {
+    const el = document.getElementById(id);
+    // Only intercept when the target section exists on this page.
+    if (el) {
+      e.preventDefault();
+      // For "home", scroll the page container fully to the top (the hero has
+      // top padding under the fixed header, so scrollIntoView leaves a gap).
+      if (id === 'home') {
+        const scroller = document.querySelector('.main-content');
+        if (scroller) {
+          scroller.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      } else {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+    setMenuOpen(false);
+  };
+
+  // Close the mobile menu when the viewport grows back to desktop width.
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth > 920) setMenuOpen(false);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
   }, []);
 
   return (
-    <header className={`site-header ${scrolled ? 'scrolled' : ''}`}>
-      <div className="container">
-        <div className="brand">
-          <Link to="/" className="brand-link">
-            <span className="brand-name">Emeka Ndaguba</span>
-          </Link>
-        </div>
-        
-        <div className="header-actions">
+    <header className="site-header">
+      <div className="header-shell">
+        <div className="header-right">
+          <nav className="header-nav" aria-label="Primary">
+            <a
+              href="/"
+              onClick={(e) => scrollToSection(e, 'home')}
+              className={`nav-link ${activeSection === 'home' ? 'active' : ''}`}
+            >
+              Home
+            </a>
+            <a
+              href="/#work"
+              onClick={(e) => scrollToSection(e, 'work')}
+              className={`nav-link ${activeSection === 'work' ? 'active' : ''}`}
+            >
+              Projects
+            </a>
+            <a href="/#about" className="nav-link">About</a>
+            <a
+              className="nav-link"
+              href="https://docs.google.com/document/d/1iJj-DzZBh493NrEzz_oyp5eKeDDIDJy65WbonwRHjpI/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Resume
+            </a>
+          </nav>
 
-          
-          <div className="header-icons">
-             {theme === 'dark' ? (
-               <LuSun className="header-icon" onClick={() => setTheme('light')} />
-             ) : (
-               <LuMoon className="header-icon" onClick={() => setTheme('dark')} />
-             )}
-             <svg 
-               xmlns="http://www.w3.org/2000/svg" 
-               fill="none" 
-               viewBox="0 0 24 24" 
-               strokeWidth={1.5} 
-               width={20}
-               height={20}
-               stroke="currentColor" 
-               className="header-icon"
-               onClick={onChatToggle}
-               style={{ cursor: 'pointer' }}
-             >
-               <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
-             </svg>
-          </div>
+          <button
+            type="button"
+            className={`nav-toggle ${menuOpen ? 'open' : ''}`}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((v) => !v)}
+          >
+            <span className="nav-toggle-bar" />
+            <span className="nav-toggle-bar" />
+            <span className="nav-toggle-bar" />
+          </button>
         </div>
       </div>
+
+      {menuOpen && (
+        <nav className="mobile-menu" aria-label="Mobile">
+          <a
+            href="/"
+            onClick={(e) => scrollToSection(e, 'home')}
+            className={`mobile-menu-link ${activeSection === 'home' ? 'active' : ''}`}
+          >
+            Home
+          </a>
+          <a
+            href="/#work"
+            onClick={(e) => scrollToSection(e, 'work')}
+            className={`mobile-menu-link ${activeSection === 'work' ? 'active' : ''}`}
+          >
+            Projects
+          </a>
+          <a href="/#about" className="mobile-menu-link" onClick={() => setMenuOpen(false)}>About</a>
+          <a
+            className="mobile-menu-link"
+            href="https://docs.google.com/document/d/1iJj-DzZBh493NrEzz_oyp5eKeDDIDJy65WbonwRHjpI/edit?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMenuOpen(false)}
+          >
+            Resume
+          </a>
+        </nav>
+      )}
     </header>
   );
 }

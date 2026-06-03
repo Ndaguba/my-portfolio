@@ -2,17 +2,19 @@ import React, { useState, useRef, useEffect } from 'react';
 import './ChatPanel.css';
 import { LuPanelLeftOpen } from 'react-icons/lu';
 import { BsArrowUp } from 'react-icons/bs';
-import { PiSparkleBold } from 'react-icons/pi';
 import { LiaRedoAltSolid } from 'react-icons/lia';
 import ReactMarkdown from 'react-markdown';
 import { apiFetch } from '../lib/api';
+import emekaAvatar from '../assets/Emeka.png';
 
-export default function ChatPanel({ isOpen, onClose }) {
+export default function ChatPanel({ isOpen, onClose, initialMessage, onInitialMessageConsumed, seedText, onSeedConsumed, variant = 'panel' }) {
+  const GREETING = "I'm Emeka and I'm a senior product designer and design engineer based in Canada";
   const [message, setMessage] = useState('');
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([{ role: 'assistant', content: GREETING }]);
 
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
+  const inputRef = useRef(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -22,10 +24,41 @@ export default function ChatPanel({ isOpen, onClose }) {
     scrollToBottom();
   }, [messages, isLoading]);
 
-  const handleSend = async () => {
-    if (!message.trim() || isLoading) return;
-    
-    const newMessages = [...messages, { role: 'user', content: message }];
+  // Auto-send a message handed in from the home "ask" bar
+  useEffect(() => {
+    if (initialMessage && initialMessage.trim()) {
+      handleSend(initialMessage);
+      onInitialMessageConsumed?.();
+    }
+  }, [initialMessage]); // eslint-disable-line
+
+  // Seed the input (without sending) when the user starts typing in the hero bar
+  useEffect(() => {
+    if (seedText) {
+      setMessage(seedText);
+      onSeedConsumed?.();
+      // focus + place cursor at the end on the next frame
+      requestAnimationFrame(() => {
+        const el = inputRef.current;
+        if (el) {
+          el.focus();
+          const len = el.value.length;
+          el.setSelectionRange(len, len);
+        }
+      });
+    }
+  }, [seedText]); // eslint-disable-line
+
+  const handleNewChat = () => {
+    setMessages([{ role: 'assistant', content: GREETING }]);
+    setMessage('');
+  };
+
+  const handleSend = async (overrideText) => {
+    const text = (typeof overrideText === 'string' ? overrideText : message).trim();
+    if (!text || isLoading) return;
+
+    const newMessages = [...messages, { role: 'user', content: text }];
     setMessages(newMessages);
     setMessage('');
     setIsLoading(true);
@@ -102,53 +135,51 @@ export default function ChatPanel({ isOpen, onClose }) {
   };
 
   const handlePromptClick = (prompt) => {
-    setMessage(prompt);
+    if (prompt.kind === 'link') {
+      window.open(prompt.href, '_blank', 'noopener,noreferrer');
+      return;
+    }
+    if (prompt.kind === 'scroll') {
+      onClose?.();
+      requestAnimationFrame(() => {
+        document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
+      });
+      return;
+    }
+    handleSend(prompt.query || prompt.label);
   };
 
   const suggestedPrompts = [
-    "Tell me about your design process",
-    "What projects have you worked on?",
-    "How do you approach problem-solving?",
-    "Book a meeting"
+    { label: 'see my work', kind: 'scroll', icon: 'down' },
+    { label: 'how do you ship?', kind: 'ask', query: 'How do you ship products?' },
+    { label: 'what designer are you?', kind: 'ask', query: 'What kind of designer are you?' },
+    { label: "what's your availability?", kind: 'ask', query: "What's your availability?" },
+    { label: 'wanna chat?', kind: 'link', icon: 'out', href: 'https://cal.com/' },
+    { label: 'resume', kind: 'link', icon: 'out', href: 'https://docs.google.com/document/d/1iJj-DzZBh493NrEzz_oyp5eKeDDIDJy65WbonwRHjpI/edit?usp=sharing' },
+    { label: 'linkedin', kind: 'link', icon: 'out', href: 'https://www.linkedin.com/' },
+    { label: 'github', kind: 'link', icon: 'out', href: 'https://github.com/' }
   ];
 
   return (
-    <div className={`chat-panel ${isOpen ? 'open' : ''}`}>
+    <div className={`chat-panel chat-panel--${variant} ${isOpen ? 'open' : ''}`}>
       <div className="chat-header">
-        <button className="action-btn" aria-label="Redo">
+        <button className="action-btn" onClick={handleNewChat} aria-label="New chat">
           <LiaRedoAltSolid />
+          <span>New</span>
         </button>
-        <h3>EMEKALLM</h3>
-        <div className="chat-header-actions">
-          <button className="close-btn" onClick={onClose} aria-label="Close chat">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
+        <button className="close-btn" onClick={onClose} aria-label="Close chat">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
       </div>
       
       <div className="chat-messages">
-        {messages.length === 0 && (
-          <div className={`empty-state ${isOpen ? 'fade-in' : ''}`}>
-            <h2 className="empty-state-title">What would you like to know?</h2>
-            <div className="suggested-prompts">
-              {suggestedPrompts.map((prompt, idx) => (
-                <button
-                  key={idx}
-                  className="prompt-button"
-                  style={{ animationDelay: `${idx * 0.15}s` }}
-                  onClick={() => handlePromptClick(prompt)}
-                >
-                  <PiSparkleBold className="prompt-icon" />
-                  <span>{prompt}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
         {messages.map((msg, idx) => (
           <div key={idx} className={`message ${msg.role}`}>
+            {msg.role === 'assistant' && (
+              <img src={emekaAvatar} alt="Emeka" className="message-avatar" />
+            )}
             <div className="message-content">
               {msg.role === 'assistant' ? (
                 <ReactMarkdown>{msg.content}</ReactMarkdown>
@@ -165,18 +196,44 @@ export default function ChatPanel({ isOpen, onClose }) {
             </div>
           </div>
         )}
+        {messages.length === 1 && !isLoading && (
+          <div className="suggested-prompts">
+            {suggestedPrompts.map((prompt, idx) => (
+              <button
+                key={idx}
+                className="prompt-button"
+                onClick={() => handlePromptClick(prompt)}
+              >
+                <span>{prompt.label}</span>
+                {prompt.icon === 'down' && (
+                  <svg className="prompt-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <polyline points="19 12 12 19 5 12" />
+                  </svg>
+                )}
+                {prompt.icon === 'out' && (
+                  <svg className="prompt-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <line x1="7" y1="17" x2="17" y2="7" />
+                    <polyline points="7 7 17 7 17 17" />
+                  </svg>
+                )}
+              </button>
+            ))}
+          </div>
+        )}
         <div ref={messagesEndRef} />
       </div>
       
       <div className="chat-input">
         <input
+          ref={inputRef}
           type="text"
           placeholder="Ask about Emeka..."
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' && handleSend()}
         />
-        <button onClick={handleSend} aria-label="Send message">
+        <button onClick={() => handleSend()} aria-label="Send message">
           <BsArrowUp />
         </button>
       </div>

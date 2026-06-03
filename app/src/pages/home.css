@@ -5,6 +5,7 @@
   width: 100%;
   overflow: hidden;
   box-sizing: border-box;
+  background-color: #f3f3f1;
 }
 
 .main-content {
@@ -15,6 +16,48 @@
   overflow-y: auto;
   overflow-x: hidden;
   box-sizing: border-box;
+  position: relative;
+}
+
+/* Full-width blurred gradient wash across the top of the page */
+.main-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 460px;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(105deg,
+      rgba(225, 196, 168, 0.30) 0%,
+      rgba(214, 192, 196, 0.22) 30%,
+      rgba(206, 196, 224, 0.26) 62%,
+      rgba(243, 243, 241, 0.05) 100%),
+    linear-gradient(180deg,
+      rgba(243, 243, 241, 0) 55%,
+      rgba(243, 243, 241, 1) 100%);
+  filter: blur(30px);
+}
+
+.theme-dark .main-content::before {
+  background:
+    radial-gradient(115% 100% at 22% -10%,
+      rgba(180, 100, 50, 0.42) 0%,
+      rgba(150, 90, 50, 0.26) 38%,
+      rgba(30, 32, 44, 0) 72%),
+    radial-gradient(115% 100% at 80% -8%,
+      rgba(110, 70, 165, 0.42) 0%,
+      rgba(95, 65, 150, 0.26) 40%,
+      rgba(30, 32, 44, 0) 74%);
+}
+
+/* Keep page content above the wash */
+.home-page,
+.site-header {
+  position: relative;
+  z-index: 1;
 }
 
 /* Panel now pushes content naturally via flex layout in home-container */
@@ -104,82 +147,219 @@ h1 {
 /* Page width handled by responsive max-width */
 
 .hero-section {
-  padding-top: 40px;
+  padding-top: 56px;
   position: relative;
-  margin-bottom: 48px;
+  margin-bottom: 64px;
   display: flex;
   flex-direction: column;
-  gap: 120px; /* Space between dot, title, and footer */
+  gap: 20px;
+  min-height: auto;
+  padding-left: clamp(14px, 2vw, 28px);
+  padding-right: clamp(14px, 2vw, 28px);
+  padding-bottom: clamp(18px, 2.4vw, 34px);
+  isolation: isolate;
 }
 
-.hero-main-content {
+/* Hero gradient removed — the page-wide top wash on .main-content::before
+   now provides the blurred gradient backdrop behind the header + hero. */
+
+.intro-hero {
+  width: fit-content;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left;
   display: flex;
   flex-direction: column;
-  gap: 57px;
-  position: relative;
-  z-index: 2;
-  align-items: center;
-}
-
-.hero-title {
-  font-size: 5rem;
-  font-weight: 500;
-  line-height: 1.1;
-  letter-spacing: -2.5px;
-  margin: 0;
-  color: var(--text);
-  text-align: center;
-  overflow: visible;
-}
-
-.hero-title .char {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(1.2em);
-  animation: charRiseup 0.5s cubic-bezier(0.2, 0.6, 0.35, 1) forwards;
-}
-
-@keyframes charRiseup {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.hero-subtext-group {
-    max-width: 514px;
-    text-align: center;
-    opacity: 0;
-    animation: fadeInSecondary 1.2s ease-out 2.5s forwards;
-}
-
-@keyframes fadeInSecondary {
-  to {
-    opacity: 1;
-  }
-}
-
-.hero-description {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--text);
-  margin-bottom: 20px;
-  font-weight: 400;
-  margin-top: 0px;
-}
-
-.hero-education {
-  font-size: 0.85rem;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.hero-social-row {
-  display: flex;
-  justify-content: center;
   gap: 4px;
-  margin-top: 14px;
+  align-items: flex-start;
+}
+
+.intro-line {
+  margin: 0;
+  font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-optical-sizing: auto;
+  font-size: clamp(1.15rem, 2.3vw, 1.9rem);
+  line-height: 1.25;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: #1d1e22;
+}
+
+.intro-line-top {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 0 8px;
+}
+
+.intro-accent {
+  color: #ff450a;
+}
+
+/* Hero subtext (e.g. "Currently leading design @ Bobo Health") */
+.intro-subtext {
+  margin: 10px 0 0 0;
+  font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.intro-subtext-accent {
+  color: #1d1e22;
+  font-weight: 600;
+}
+
+.theme-dark .intro-subtext {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.theme-dark .intro-subtext-accent {
+  color: #f2f2f2;
+}
+
+/* "ask Emeka anything" input bar */
+.ask-bar {
+  margin-top: 28px;
+  width: 100%;
+  min-width: min(620px, 88vw);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 18px;
+  padding: 8px 9px 8px 20px;
+  box-shadow: 0 6px 20px rgba(120, 120, 160, 0.07);
+}
+
+.ask-bar-credit {
+  margin: 12px 0 0 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.ask-bar-credit-logo {
+  height: 18px;
+  width: auto;
+  object-fit: contain;
+  display: inline-block;
+}
+
+.ask-bar-credit-logo--claude {
+  margin-bottom: 4px;
+}
+
+.theme-dark .ask-bar-credit {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.ask-bar-prefix {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(0, 0, 0, 0.55);
+  flex: 0 0 auto;
+  user-select: none;
+}
+
+.theme-dark .ask-bar-prefix {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.ask-bar-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 1.05rem;
+  color: #1d1e22;
+}
+
+.ask-bar-input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.ask-bar-send {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: #9a9aa2;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.ask-bar-send:hover {
+  background: #1d1e22;
+  transform: scale(1.05);
+}
+
+.theme-dark .ask-bar {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+}
+
+.theme-dark .ask-bar-input {
+  color: #f2f2f2;
+}
+
+.theme-dark .ask-bar-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Italic serif accent phrase (e.g. "end to end.") */
+.intro-italic {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 600;
+}
+
+/* Highlighted name with selection-style box */
+.intro-name {
+  background: rgba(120, 130, 230, 0.16);
+  box-shadow: 0 0 0 1px rgba(120, 130, 230, 0.35);
+  border-radius: 4px;
+  padding: 0 6px;
+}
+
+.intro-avatar-wrap {
+  position: relative;
+  display: inline-flex;
+  margin-right: 6px;
+  flex: 0 0 auto;
+}
+
+.intro-avatar {
+  width: clamp(30px, 3vw, 40px);
+  height: clamp(30px, 3vw, 40px);
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+}
+
+.intro-avatar-dot {
+  position: absolute;
+  right: 0;
+  bottom: 1px;
+  width: clamp(8px, 0.85vw, 11px);
+  height: clamp(8px, 0.85vw, 11px);
+  background: #4ade80;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
 }
 
 .hero-social-icon {
@@ -189,7 +369,7 @@ h1 {
   height: 38px;
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.05);
-  transition: all 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -220,33 +400,424 @@ h1 {
 
 
 @media (max-width: 1024px) {
-  .hero-title {
-    font-size: 4rem;
+  .hero-section {
+    padding-top: 24px;
+    margin-bottom: 44px;
+  }
+
+  .intro-line {
+    font-size: clamp(1.5rem, 4.8vw, 3.2rem);
   }
 }
 
 @media (max-width: 768px) {
   .hero-section {
-    gap: 60px;
-    padding-top: 20px;
+    padding-top: 8px;
+    margin-bottom: 34px;
   }
-  
-  .hero-title {
-    font-size: 3rem;
+
+  .intro-hero {
+    align-items: flex-start;
+    text-align: left;
   }
-  
-  .hero-main-content {
-    gap: 60px;
+
+  .intro-line {
+    font-size: clamp(1.15rem, 5.2vw, 1.6rem);
+    line-height: 1.25;
+  }
+
+  .intro-line-top {
+    gap: 0 6px;
+  }
+
+  .intro-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+  }
+
+  /* Ask bar: don't force a wide min-width on small screens */
+  .ask-bar {
+    min-width: 0;
+    width: 100%;
+    margin-top: 20px;
+    padding: 6px 6px 6px 16px;
+  }
+
+  .ask-bar-input {
+    font-size: 0.95rem;
+  }
+
+  .ask-bar-send {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-page {
+    padding-top: 140px;
+  }
+
+  .intro-line {
+    font-size: clamp(1.05rem, 6.2vw, 1.4rem);
+  }
+
+  .ask-bar-credit {
+    font-size: 0.72rem;
+    flex-wrap: wrap;
   }
 }
 
 
 
+/* Case studies — alternating two-column rows */
+.case-studies {
+  margin: 120px auto 0 auto;
+  width: 100%;
+  max-width: 1110px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+  padding: 0 12px;
+}
+
+.case-study {
+  display: grid;
+  grid-template-columns: 0.85fr 1.45fr;
+  align-items: center;
+  gap: clamp(28px, 0vw, 64px);
+}
+
+.case-study-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.case-study-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #1d1e22;
+}
+
+.case-study-desc {
+  margin: 14px 0 0 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(0, 0, 0, 0.55);
+  max-width: 52ch;
+}
+
+.case-study-tags {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.case-study-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+
+.case-study-tag-icon {
+  flex: 0 0 auto;
+}
+
+/* Design — Figma-inspired violet */
+.case-study-tag--design {
+  color: #7b3fe4;
+  background: rgba(123, 63, 228, 0.1);
+}
+
+/* Engineering — blue */
+.case-study-tag--engineering {
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.1);
+}
+
+.case-study-company {
+  margin-top: 18px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.case-study-company-logo {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #ffffff;
+  flex: 0 0 auto;
+}
+
+.case-study-company-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.case-study-stat {
+  margin-top: 29px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.case-study-stat-value {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #1d1e22;
+}
+
+.case-study-stat-label {
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.case-study-btn {
+  margin-top: 34px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  background: #16191c;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 9px 14px;
+  border-radius: 999px;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.case-study-btn svg {
+  box-sizing: content-box;
+}
+
+.case-study-btn:hover {
+  background: #000000;
+  transform: translateY(-2px);
+}
+
+.case-study-btn.is-disabled {
+  background: rgba(0, 0, 0, 0.06);
+  color: rgba(0, 0, 0, 0.45);
+  cursor: default;
+}
+
+.case-study-btn.is-disabled svg {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.case-study-btn.is-disabled:hover {
+  transform: none;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.case-study-media-wrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* allow the overlay to pop out beyond the box */
+  overflow: visible;
+}
+
+.case-study-media {
+  background: #122024;
+  border-radius: 22px;
+  padding: 0 clamp(24px, 3vw, 48px) clamp(24px, 3vw, 48px);
+  width: 80%;
+  height: 370px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Overlay image that "pops out" of the mockup */
+.case-study-media-overlay {
+  position: absolute;
+  z-index: 2;
+  width: 42%;
+  height: auto;
+  top: 40%;
+  right: 14%;
+  filter: drop-shadow(0 18px 34px rgba(20, 30, 60, 0.22));
+  pointer-events: none;
+}
+
+/* Skip x WestJet overlay: nudged up 5px and 10% smaller */
+.case-study-media-overlay.skip-overlay {
+  width: 37.8%;
+  top: calc(40% - 37px);
+}
+
+.case-study-img,
+.case-study-media .image-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* Project image sitting on top of the dark media background.
+   Full image visible (contain), enlarged, anchored to the top so the
+   container crops the lower portion. */
+.case-study-media-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+  align-self: flex-start;
+  transform: translateY(calc(8% - 30px)) scale(0.42);
+  transform-origin: top center;
+}
+
+/* Forella: landscape iPad-style screen beside the mobile app screen */
+.forella-media {
+  align-items: flex-end;
+  justify-content: center;
+  gap: 12px;
+}
+
+.case-study-media-img.forella-media-img {
+  align-self: flex-end;
+  width: 100%;
+  transform: translate(90px, 20px) scale(0.90);
+  transform-origin: bottom center;
+  border-radius: 0;
+}
+
+/* Ophir Labs: larger, centered */
+.case-study-media-img.ophir-media-img {
+  align-self: center;
+  transform: translateY(20px) scale(0.94);
+  transform-origin: center center;
+}
+
+/* Forella mobile app screen sitting beside the iPad screen */
+.forella-mobile-img {
+  align-self: flex-end;
+  width: 46%;
+  height: auto;
+  object-fit: contain;
+  transform: translate(-83px, 93px) scale(0.8);
+  transform-origin: bottom center;
+}
+
+.case-study-img {
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+@media (max-width: 860px) {
+  .case-studies {
+    gap: 72px;
+    margin-top: 80px;
+  }
+
+  .case-study {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  /* Image above the copy when stacked */
+  .case-study-media-wrap {
+    order: -1;
+  }
+
+  .case-study-desc {
+    max-width: 100%;
+  }
+
+  /* Media panel: full width once the row is stacked */
+  .case-study-media {
+    width: 100%;
+    height: 300px;
+  }
+
+  .case-study-media-overlay {
+    width: 46%;
+  }
+
+  .case-study-media-overlay.skip-overlay {
+    width: 42%;
+    top: calc(40% - 24px);
+  }
+}
+
+/* Featured media: scale the device mockups down on smaller screens so the
+   hardcoded px offsets don't push images out of the panel. */
+@media (max-width: 600px) {
+  .case-study-media {
+    height: 240px;
+  }
+
+  /* Forella: tighten the side-by-side device offsets */
+  .forella-media {
+    gap: 6px;
+  }
+
+  .case-study-media-img.forella-media-img {
+    transform: translate(36px, 12px) scale(0.74);
+  }
+
+  .forella-mobile-img {
+    transform: translate(-124px, 40px) scale(0.62);
+  }
+
+  /* Ophir: keep centered, slightly smaller */
+  .case-study-media-img.ophir-media-img {
+    transform: translateY(12px) scale(0.82);
+  }
+
+  .case-study-media-overlay.skip-overlay {
+    width: 40%;
+    top: calc(40% - 46px);
+  }
+}
+
+@media (max-width: 420px) {
+  .case-study-media {
+    height: 200px;
+  }
+
+  .case-study-media-img.forella-media-img {
+    transform: translate(22px, 8px) scale(0.62);
+  }
+
+  .forella-mobile-img {
+    transform: translate(-116px, 28px) scale(0.56);
+  }
+
+  .case-study-media-img.ophir-media-img {
+    transform: translateY(8px) scale(0.72);
+  }
+
+  .case-study-media-overlay.skip-overlay {
+    width: 37%;
+    top: calc(40% - 40px);
+  }
+}
+
 /* Portfolio grid */
 .portfolio-section {
   margin-top: 82px;
   width: 100%;
-  max-width: 1350px;
+  max-width: 980px;
   margin-left: auto;
   margin-right: auto;
   box-sizing: border-box;
@@ -273,7 +844,7 @@ h1 {
   bottom: 4px;
   left: 4px;
   width: calc(50% - 4px);
-  background: white;
+  background: #ffe7cc;
   border-radius: 100px;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 0;
@@ -289,7 +860,7 @@ h1 {
 }
 
 .theme-dark .filter-slider {
-  background: rgba(255, 255, 255, 0.1);
+  background: #ffe7cc;
 }
 
 .filter-pill {
@@ -328,9 +899,9 @@ h1 {
 }
 
 .portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 26px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
   width: 100%;
 }
 
@@ -362,7 +933,7 @@ h1 {
 .portfolio-item {
   position: relative;
   background: var(--bg);
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 10;
   border-radius: 4px;
   overflow: hidden;
   display: flex;
@@ -629,11 +1200,11 @@ h1 {
   }
 
   .portfolio-grid {
-    grid-template-columns: 1fr;
+    gap: 22px;
   }
 
   .portfolio-item {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 16 / 10;
   }
 }
 
