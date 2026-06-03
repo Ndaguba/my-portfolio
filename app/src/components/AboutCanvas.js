@@ -6,7 +6,7 @@ import spotifyLogo from '../assets/spotify.png';
 import bookCover from '../assets/Promise-land.jpg';
 
 const RESUME_URL = 'https://docs.google.com/document/d/1iJj-DzZBh493NrEzz_oyp5eKeDDIDJy65WbonwRHjpI/edit?usp=sharing';
-const BOOKING_URL = 'https://cal.com/';
+const BOOKING_URL = 'https://cal.com/ndaguba-nnaemeka-s5lfaw/30min';
 const LINKEDIN_URL = 'https://www.linkedin.com/';
 const FIGMA_URL = 'https://www.figma.com/';
 const GITHUB_URL = 'https://github.com/';

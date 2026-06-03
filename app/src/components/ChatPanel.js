@@ -154,7 +154,7 @@ export default function ChatPanel({ isOpen, onClose, initialMessage, onInitialMe
     { label: 'how do you ship?', kind: 'ask', query: 'How do you ship products?' },
     { label: 'what designer are you?', kind: 'ask', query: 'What kind of designer are you?' },
     { label: "what's your availability?", kind: 'ask', query: "What's your availability?" },
-    { label: 'wanna chat?', kind: 'link', icon: 'out', href: 'https://cal.com/' },
+    { label: 'wanna chat?', kind: 'link', icon: 'out', href: 'https://cal.com/ndaguba-nnaemeka-s5lfaw/30min' },
     { label: 'resume', kind: 'link', icon: 'out', href: 'https://docs.google.com/document/d/1iJj-DzZBh493NrEzz_oyp5eKeDDIDJy65WbonwRHjpI/edit?usp=sharing' },
     { label: 'linkedin', kind: 'link', icon: 'out', href: 'https://www.linkedin.com/' },
     { label: 'github', kind: 'link', icon: 'out', href: 'https://github.com/' }
