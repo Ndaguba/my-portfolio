@@ -439,6 +439,15 @@ body.ac-drag-active * {
   color: #6b6c74;
 }
 
+.theme-dark .ac-learning {
+  background: rgba(255, 255, 255, 0.06);
+  color: #f2f2f2;
+}
+
+.theme-dark .ac-learning-label {
+  color: rgba(255, 255, 255, 0.7);
+}
+
 .ac-learning-value {
   display: flex;
   align-items: center;
