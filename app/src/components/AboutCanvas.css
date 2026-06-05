@@ -428,15 +428,15 @@ body.ac-drag-active * {
   top: 620px;
   left: 250px;
   width: 170px;
-  background: #0e1430;
-  color: #ffffff;
+  background: #ffffff;
+  color: #1d1e22;
   transform: rotate(-3deg);
   gap: 6px;
 }
 
 .ac-learning-label {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.7);
+  color: #6b6c74;
 }
 
 .ac-learning-value {
