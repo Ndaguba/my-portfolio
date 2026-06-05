@@ -262,7 +262,7 @@ const localDate = (d) => {
   return new Date(d.getTime() - off * 60000).toISOString().slice(0, 10);
 };
 
-function BookingFlow({ onClose }) {
+export function BookingFlow({ onClose }) {
   const TZ = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
   const [phase, setPhase] = useState('loading'); // loading | pick | form | booking | done | error
   const [slotsByDay, setSlotsByDay] = useState({}); // { 'YYYY-MM-DD': [{start}] }

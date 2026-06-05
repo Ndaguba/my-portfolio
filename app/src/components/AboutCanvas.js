@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import './AboutCanvas.css';
+import { BookingFlow } from './ChatPanel';
 import emekaProfile from '../assets/Emeka.png';
 import albumArt from '../assets/album.jpeg';
 import spotifyLogo from '../assets/spotify.png';
@@ -12,6 +13,7 @@ import reactLogo from '../assets/React.svg';
 import javascriptLogo from '../assets/Javascript.png';
 import sanityLogo from '../assets/sanity.webp';
 import afterEffectsLogo from '../assets/AE.svg';
+import uWinnipegLogo from '../assets/uwx1.png';
 
 const COMPANIES = [
   { name: 'bobo Health', logo: boboLogo },
@@ -27,7 +29,6 @@ const TECHNOLOGIES = [
 ];
 
 const RESUME_URL = 'https://docs.google.com/document/d/1iJj-DzZBh493NrEzz_oyp5eKeDDIDJy65WbonwRHjpI/edit?usp=sharing';
-const BOOKING_URL = 'https://cal.com/ndaguba-nnaemeka-s5lfaw/30min';
 const LINKEDIN_URL = 'https://www.linkedin.com/in/emeka-ndaguba';
 const FIGMA_URL = 'https://www.figma.com/';
 const GITHUB_URL = 'https://github.com/';
@@ -220,6 +221,7 @@ export default function AboutCanvas() {
   // time the section scrolls into view.
   const sectionRef = useRef(null);
   const [revealed, setRevealed] = useState(false);
+  const [bookingOpen, setBookingOpen] = useState(false);
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
@@ -255,7 +257,7 @@ export default function AboutCanvas() {
         {/* Profile photo (polaroid) */}
         <Draggable className="ac-card ac-photo">
           <img src={emekaProfile} alt="Emeka Ndaguba" draggable="false" />
-          <span className="ac-photo-caption">Emeka Ndaguba · Winnipeg</span>
+          <span className="ac-photo-caption">Emeka Ndaguba 🇳🇬</span>
         </Draggable>
 
         {/* Companies I've worked for */}
@@ -314,11 +316,16 @@ export default function AboutCanvas() {
 
         {/* Open to work / book a call */}
         <Draggable
-          as="a"
           className="ac-card ac-booking"
-          href={BOOKING_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+          role="button"
+          tabIndex={0}
+          onClick={() => setBookingOpen(true)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              setBookingOpen(true);
+            }
+          }}
         >
           <span className="ac-eyebrow">Open to work</span>
           <span className="ac-booking-title">Book a call</span>
@@ -399,6 +406,19 @@ export default function AboutCanvas() {
           <span className="ac-resume-sub">PDF · 1 page</span>
         </Draggable>
 
+        {/* Education */}
+        <Draggable className="ac-card ac-education">
+          <span className="ac-eyebrow">Education</span>
+          <span className="ac-education-row">
+            <img className="ac-education-logo" src={uWinnipegLogo} alt="University of Winnipeg" draggable="false" />
+            <span className="ac-education-info">
+              <span className="ac-education-degree">BSc Computer Science ’22</span>
+              <span className="ac-education-school">University of Winnipeg</span>
+            </span>
+          </span>
+          <span className="ac-education-sub">Software engineering</span>
+        </Draggable>
+
         {/* Figma */}
         <Draggable
           as="a"
@@ -446,6 +466,22 @@ export default function AboutCanvas() {
           <span className="ac-github-sub">Contributions this year</span>
         </Draggable>
       </div>
+
+      {bookingOpen && (
+        <div className="ac-booking-overlay" onClick={() => setBookingOpen(false)}>
+          <div className="ac-booking-modal" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              className="ac-booking-close"
+              onClick={() => setBookingOpen(false)}
+              aria-label="Close booking"
+            >
+              &times;
+            </button>
+            <BookingFlow onClose={() => setBookingOpen(false)} />
+          </div>
+        </div>
+      )}
     </section>
   );
 }

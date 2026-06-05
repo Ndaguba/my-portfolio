@@ -109,6 +109,7 @@
 .ac-online    { --ac-cx: -380px; --ac-cy: -160px; transition-delay: 0.55s; }
 .ac-companies { --ac-cx: 420px;  --ac-cy: -140px; transition-delay: 0.30s; }
 .ac-technologies { --ac-cx: 420px; --ac-cy: 100px; transition-delay: 0.35s; }
+.ac-education { --ac-cx: 200px; --ac-cy: 220px; transition-delay: 0.50s; }
 
 /* Hover: lift, straighten the tilt, and pop the shadow.
    Each card keeps its own resting rotation, so we straighten via a
@@ -120,7 +121,7 @@
 
 @media (hover: hover) {
   .ac-photo:hover { transform: rotate(-2deg) translateY(-6px) scale(1.03); }
-  .ac-player:hover { transform: translateX(-50%) translateY(-6px) scale(1.03); }
+  .ac-player:hover { transform: translateX(calc(-50% + 40px)) translateY(-6px) scale(1.03); }
   .ac-booking:hover { transform: rotate(0deg) translateY(-6px) scale(1.04); }
   .ac-available:hover { transform: rotate(1deg) translateY(-6px) scale(1.03); }
   .ac-clock:hover { transform: rotate(0deg) translateY(-6px) scale(1.04); }
@@ -131,6 +132,7 @@
   .ac-resume:hover { transform: rotate(1deg) translateY(-6px) scale(1.04); }
   .ac-figma:hover { transform: rotate(0deg) translateY(-6px) scale(1.04); }
   .ac-github:hover { transform: translateX(-50%) translateY(-6px) scale(1.03); }
+  .ac-education:hover { transform: rotate(0deg) translateY(-6px) scale(1.04); }
 }
 
 /* Draggable: the drag offset rides on the `translate` property so it stacks
@@ -208,7 +210,7 @@ body.ac-drag-active * {
 /* ---- profile photo (polaroid) ---- */
 .ac-photo {
   top: 60px;
-  left: 30px;
+  left: -30px;
   width: 200px;
   padding: 12px 12px 0;
   transform: rotate(-5deg);
@@ -223,7 +225,7 @@ body.ac-drag-active * {
 
 .ac-photo-caption {
   display: block;
-  text-align: center;
+  text-align: left;
   font-size: 13px;
   color: rgba(0, 0, 0, 0.55);
   padding: 14px 0 16px;
@@ -233,7 +235,7 @@ body.ac-drag-active * {
 .ac-player {
   top: 30px;
   left: 50%;
-  transform: translateX(-50%) rotate(1deg);
+  transform: translateX(calc(-50% + 40px)) rotate(1deg);
   width: 270px;
   background: #ffffff;
   color: #1d1e22;
@@ -332,8 +334,8 @@ body.ac-drag-active * {
 
 /* ---- booking ---- */
 .ac-booking {
-  top: 200px;
-  left: 63%;
+  top: 140px;
+  left: calc(63% + 30px);
   transform: rotate(-2deg);
   width: 200px;
   background: #ffffff;
@@ -354,7 +356,7 @@ body.ac-drag-active * {
 /* ---- available now ---- */
 .ac-available {
   top: 40px;
-  right: 20px;
+  right: -10px;
   width: 210px;
   background: #76e0a8;
   color: #0d3b27;
@@ -398,7 +400,7 @@ body.ac-drag-active * {
 /* ---- clock ---- */
 .ac-clock {
   top: 380px;
-  left: -60px;
+  left: -90px;
   width: 190px;
   transform: rotate(-2deg);
   gap: 6px;
@@ -488,7 +490,7 @@ body.ac-drag-active * {
 
 /* ---- reading ---- */
 .ac-reading {
-  top: 540px;
+  top: 560px;
   left: 64%;
   width: 200px;
   transform: rotate(2deg);
@@ -534,7 +536,7 @@ body.ac-drag-active * {
 /* ---- companies worked for ---- */
 .ac-companies {
   top: 320px;
-  right: -90px;
+  right: -130px;
   width: 215px;
   transform: rotate(-2deg);
   gap: 12px;
@@ -574,7 +576,7 @@ body.ac-drag-active * {
 /* ---- developer technologies ---- */
 .ac-technologies {
   top: 560px;
-  left: -20px;
+  left: -40px;
   width: 215px;
   transform: rotate(2deg);
   gap: 12px;
@@ -589,7 +591,7 @@ body.ac-drag-active * {
 /* ---- find me online ---- */
 .ac-online {
   bottom: 210px;
-  right: 30px;
+  right: 0px;
   width: 200px;
   background: #2f6fed;
   color: #fff;
@@ -624,7 +626,7 @@ body.ac-drag-active * {
 /* ---- resume ---- */
 .ac-resume {
   top: 540px;
-  right: -20px;
+  right: -50px;
   width: 175px;
   background: #fbe46b;
   transform: rotate(3deg);
@@ -647,10 +649,63 @@ body.ac-drag-active * {
   color: rgba(0, 0, 0, 0.5);
 }
 
+/* ---- education ---- */
+.ac-education {
+  top: 95px;
+  left: 250px;
+  width: 240px;
+  transform: rotate(2deg);
+  gap: 8px;
+}
+
+.ac-education-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ac-education-logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: #fff;
+  padding: 2px;
+  flex: 0 0 auto;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.ac-education-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.ac-education-degree {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.ac-education-school {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.ac-education-sub {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.theme-dark .ac-education-school,
+.theme-dark .ac-education-sub {
+  color: rgba(255, 255, 255, 0.6);
+}
+
 /* ---- figma ---- */
 .ac-figma {
-  top: 240px;
-  left: 270px;
+  top: 285px;
+  left: calc(63% - 150px);
   width: 160px;
   transform: rotate(-3deg);
   gap: 10px;
@@ -806,5 +861,70 @@ body.ac-drag-active * {
 @media (max-width: 480px) {
   .ac-headline {
     font-size: clamp(2rem, 13vw, 3rem);
+  }
+}
+
+/* ---- booking modal (opened from the "Book a call" card) ---- */
+.ac-booking-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 2000;
+  animation: acBookingFade 0.25s ease-out;
+}
+
+.ac-booking-modal {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  animation: acBookingPop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* The BookingFlow renders its own .booking-card shell; let it fill the modal. */
+.ac-booking-modal .booking-card {
+  max-height: min(80vh, 560px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+}
+
+.ac-booking-close {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--divider-default);
+  background: var(--panel-bg, #fff);
+  color: var(--text, #1d1e22);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  z-index: 1;
+}
+
+@keyframes acBookingFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes acBookingPop {
+  from { opacity: 0; transform: translateY(12px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 480px) {
+  .ac-booking-close {
+    top: 6px;
+    right: 6px;
   }
 }
