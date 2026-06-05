@@ -428,7 +428,7 @@ body.ac-drag-active * {
   top: 620px;
   left: 250px;
   width: 170px;
-  background: #8b5cf6;
+  background: #0e1430;
   color: #ffffff;
   transform: rotate(-3deg);
   gap: 6px;
@@ -436,12 +436,22 @@ body.ac-drag-active * {
 
 .ac-learning-label {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .ac-learning-value {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 15px;
   font-weight: 600;
+}
+
+.ac-learning-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  flex: 0 0 auto;
 }
 
 /* ---- rating ---- */

@@ -11,6 +11,7 @@ import typescriptLogo from '../assets/Typescript.png';
 import reactLogo from '../assets/React.svg';
 import javascriptLogo from '../assets/Javascript.png';
 import sanityLogo from '../assets/sanity.webp';
+import afterEffectsLogo from '../assets/AE.svg';
 
 const COMPANIES = [
   { name: 'bobo Health', logo: boboLogo },
@@ -349,7 +350,10 @@ export default function AboutCanvas() {
         {/* Currently learning */}
         <Draggable className="ac-card ac-learning">
           <span className="ac-learning-label">Currently learning</span>
-          <span className="ac-learning-value">🎹 Piano</span>
+          <span className="ac-learning-value">
+            <img className="ac-learning-icon" src={afterEffectsLogo} alt="" aria-hidden="true" draggable="false" />
+            Motion design
+          </span>
         </Draggable>
 
         {/* Rate this portfolio */}
