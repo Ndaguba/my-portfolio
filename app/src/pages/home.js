@@ -189,7 +189,7 @@ export default function Home() {
       id: "mossy",
       title: "Mossy",
       company: "AI Bookkeeping for Solopreneurs",
-      description: "An AI bookkeeping platform for solopreneurs and small business owners — automatically categorizing transactions, surfacing income and expense insights, and answering plain-language questions about your finances. I design and build the product end to end.",
+      description: "An AI bookkeeping platform for solopreneurs and small business owners — automatically categorizing transactions, surfacing income and expense insights, and answering plain-language questions about your finances. I designed and build the product end to end.",
       image: mossyImage,
       showImage: true,
       mediaBg: '#d3e3d6',
