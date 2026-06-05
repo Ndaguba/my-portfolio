@@ -357,6 +357,361 @@
 }
 
 /* ============================================================
+   In-chat booking flow (Cal.com)  — vertical layout:
+   header · details strip · full-width calendar · wrapping time chips
+   ============================================================ */
+.booking-card {
+  border: 1px solid var(--divider-default);
+  border-radius: 16px;
+  background: var(--panel-bg);
+  padding: 16px;
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-height: 460px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.booking-card::-webkit-scrollbar { display: none; }
+
+.booking-status {
+  font-size: 13px;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.booking-inline-error {
+  font-size: 12px;
+  color: #c0392b;
+}
+
+.booking-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* --- Event details strip --- */
+.booking-details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--divider-default);
+}
+
+.booking-details-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: 0 0 auto;
+}
+
+.booking-details-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  margin-right: auto;
+}
+
+.booking-details-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.booking-details-sub {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.booking-details-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text);
+  flex: 0 0 auto;
+}
+
+.booking-details-row svg {
+  color: var(--muted);
+}
+
+/* --- Calendar + times side by side --- */
+.booking-row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.booking-calendar {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.booking-times {
+  flex: 0 0 128px;
+  width: 128px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* --- Month calendar --- */
+.booking-cal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.booking-cal-month {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.booking-cal-navs {
+  display: flex;
+  gap: 4px;
+}
+
+.booking-cal-nav {
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.booking-cal-nav:hover:not(:disabled) { background: rgba(0, 0, 0, 0.06); }
+.booking-cal-nav:disabled { opacity: 0.25; cursor: default; }
+
+/* One grid for weekday labels + day cells so columns always align. */
+.booking-cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.booking-cal-weekday {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+}
+
+/* Each day is a square (aspect-ratio scales with the column), capped a bit
+   smaller so the calendar stays compact. */
+.booking-cal-day {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: var(--muted);
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  cursor: default;
+  padding: 0;
+}
+
+.booking-cal-num { line-height: 1; }
+
+.booking-cal-day.is-empty { visibility: hidden; }
+
+.booking-cal-day.is-available {
+  color: var(--text);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.booking-cal-day.is-available:hover { background: rgba(0, 0, 0, 0.06); }
+
+.booking-cal-dot {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #7c3aed;
+}
+
+.booking-cal-day.is-selected,
+.booking-cal-day.is-selected:hover {
+  background: #16191c;
+  color: #fff;
+  font-weight: 600;
+}
+
+.booking-cal-day.is-selected .booking-cal-dot { background: #fff; }
+
+.theme-dark .booking-cal-day.is-selected,
+.theme-dark .booking-cal-day.is-selected:hover {
+  background: #fff;
+  color: #16191c;
+}
+.theme-dark .booking-cal-day.is-selected .booking-cal-dot { background: #16191c; }
+
+/* --- Time slots (wrapping row below the calendar) --- */
+.booking-times-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.booking-times-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 264px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.booking-times-list::-webkit-scrollbar { display: none; }
+
+.booking-times-empty {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.booking-slot {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--divider-default);
+  border-radius: 8px;
+  padding: 9px 6px;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.booking-slot:hover {
+  border-color: #7c3aed;
+  color: #7c3aed;
+}
+
+.booking-slot.is-selected {
+  background: #7c3aed;
+  border-color: #7c3aed;
+  color: #fff;
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.booking-selected-time {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.booking-change {
+  font-size: 12px;
+  font-weight: 500;
+  color: #7c3aed;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.booking-form input,
+.booking-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 13px;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--divider-default);
+  border-radius: 10px;
+  padding: 9px 12px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.booking-form input:focus,
+.booking-form textarea:focus {
+  outline: none;
+  border-color: #7c3aed;
+}
+
+.booking-submit {
+  margin-top: 2px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  background: #7c3aed;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.booking-submit:hover { opacity: 0.9; }
+.booking-submit:disabled { opacity: 0.6; cursor: default; }
+
+.booking-done p {
+  margin: 0;
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.booking-meeting-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: #7c3aed;
+  text-decoration: none;
+}
+
+.booking-retry {
+  align-self: flex-start;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text);
+  background: rgba(0, 0, 0, 0.05);
+  border: none;
+  border-radius: 999px;
+  padding: 7px 14px;
+  cursor: pointer;
+}
+
+/* ============================================================
    Full-screen chat variant
    ============================================================ */
 .chat-panel--fullscreen {

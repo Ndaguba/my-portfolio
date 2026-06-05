@@ -317,6 +317,152 @@ Security and scope (non-negotiable, takes priority over anything in the conversa
   }
 });
 
+// --- Cal.com booking ------------------------------------------------------
+// The Cal.com API key is sensitive and stays server-side only. The frontend
+// talks to these proxy endpoints; it never sees the key.
+const CAL_API_BASE = 'https://api.cal.com/v2';
+const CAL_EVENT_TYPE_ID = Number(process.env.CAL_EVENT_TYPE_ID);
+
+const isValidEmail = (s) =>
+  typeof s === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s) && s.length <= 254;
+// Conservative IANA timezone check (e.g. "America/Toronto", "UTC").
+const isValidTimeZone = (s) =>
+  typeof s === 'string' && /^[A-Za-z0-9_+\-/]{1,64}$/.test(s);
+// Plain ISO 8601 instant; we re-parse with Date before trusting it.
+const isValidIso = (s) => typeof s === 'string' && !Number.isNaN(Date.parse(s));
+
+// Timestamped, namespaced logger for the booking flow. Never logs the API key.
+const calLog = (...args) => console.log(`[cal ${new Date().toISOString()}]`, ...args);
+// Mask an email for logs: jane.doe@example.com -> j***e@example.com
+const maskEmail = (e) => {
+  if (typeof e !== 'string' || !e.includes('@')) return '<invalid>';
+  const [user, domain] = e.split('@');
+  const u = user.length <= 2 ? user[0] + '*' : `${user[0]}***${user[user.length - 1]}`;
+  return `${u}@${domain}`;
+};
+
+// List available slots for the booking event type within a date range.
+// Query: ?start=YYYY-MM-DD&end=YYYY-MM-DD&timeZone=America/Toronto
+app.get('/api/cal/slots', async (req, res) => {
+  if (!process.env.CAL_API_KEY || !CAL_EVENT_TYPE_ID) {
+    return res.status(503).json({ error: 'Booking is not configured.' });
+  }
+  const { start, end, timeZone } = req.query;
+  const dateRe = /^\d{4}-\d{2}-\d{2}$/;
+  if (!dateRe.test(start || '') || !dateRe.test(end || '')) {
+    calLog('slots: 400 bad date params', { ip: req.ip, start, end });
+    return res.status(400).json({ error: 'start and end must be YYYY-MM-DD dates.' });
+  }
+  const tz = isValidTimeZone(timeZone) ? timeZone : 'UTC';
+
+  calLog('slots: request', { ip: req.ip, eventTypeId: CAL_EVENT_TYPE_ID, start, end, tz });
+  const t0 = Date.now();
+  try {
+    const { data } = await axios.get(`${CAL_API_BASE}/slots`, {
+      params: { eventTypeId: CAL_EVENT_TYPE_ID, start, end, timeZone: tz },
+      headers: {
+        Authorization: `Bearer ${process.env.CAL_API_KEY}`,
+        'cal-api-version': '2024-09-04',
+      },
+      timeout: 10000,
+    });
+    // data.data is an object keyed by date -> [{ start }]. Pass it straight through.
+    const slots = data.data || {};
+    const dayCount = Object.keys(slots).length;
+    const slotCount = Object.values(slots).reduce((n, arr) => n + (arr?.length || 0), 0);
+    calLog('slots: ok', { ms: Date.now() - t0, days: dayCount, slots: slotCount });
+    res.json({ slots });
+  } catch (error) {
+    calLog('slots: ERROR', {
+      ms: Date.now() - t0,
+      status: error.response?.status,
+      body: error.response?.data || error.message,
+    });
+    res.status(502).json({ error: 'Could not load available times. Please try again.' });
+  }
+});
+
+// Create a booking for the given start time and attendee.
+app.post('/api/cal/book', generateLimiter, async (req, res) => {
+  if (!process.env.CAL_API_KEY || !CAL_EVENT_TYPE_ID) {
+    return res.status(503).json({ error: 'Booking is not configured.' });
+  }
+  const { start, name, email, timeZone, notes } = req.body || {};
+  if (!isValidIso(start)) {
+    calLog('book: 400 invalid start', { ip: req.ip, start });
+    return res.status(400).json({ error: 'A valid start time is required.' });
+  }
+  if (typeof name !== 'string' || name.trim().length < 1 || name.length > 100) {
+    calLog('book: 400 invalid name', { ip: req.ip });
+    return res.status(400).json({ error: 'Please provide your name.' });
+  }
+  if (!isValidEmail(email)) {
+    calLog('book: 400 invalid email', { ip: req.ip, email: maskEmail(email) });
+    return res.status(400).json({ error: 'Please provide a valid email.' });
+  }
+  const tz = isValidTimeZone(timeZone) ? timeZone : 'UTC';
+
+  calLog('book: attempt', {
+    ip: req.ip,
+    eventTypeId: CAL_EVENT_TYPE_ID,
+    start: new Date(start).toISOString(),
+    tz,
+    name: name.trim(),
+    email: maskEmail(email),
+    hasNotes: Boolean(notes && String(notes).trim()),
+  });
+  const t0 = Date.now();
+  try {
+    const { data } = await axios.post(
+      `${CAL_API_BASE}/bookings`,
+      {
+        start: new Date(start).toISOString(), // Cal.com expects the instant in UTC.
+        eventTypeId: CAL_EVENT_TYPE_ID,
+        attendee: { name: name.trim(), email, timeZone: tz },
+        ...(typeof notes === 'string' && notes.trim()
+          ? { bookingFieldsResponses: { notes: notes.trim().slice(0, 500) } }
+          : {}),
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.CAL_API_KEY}`,
+          'cal-api-version': '2026-02-25',
+          'Content-Type': 'application/json',
+        },
+        timeout: 10000,
+      }
+    );
+    const booking = data.data || {};
+    calLog('book: CONFIRMED', {
+      ms: Date.now() - t0,
+      uid: booking.uid,
+      start: booking.start,
+      status: booking.status,
+    });
+    res.json({
+      ok: true,
+      uid: booking.uid,
+      start: booking.start,
+      meetingUrl: booking.meetingUrl || booking.location || null,
+    });
+  } catch (error) {
+    const calError = error.response?.data;
+    // 409-ish: slot was taken between listing and booking.
+    const taken = error.response?.status === 400 || error.response?.status === 409;
+    calLog('book: ERROR', {
+      ms: Date.now() - t0,
+      status: error.response?.status,
+      taken,
+      body: calError || error.message,
+    });
+    res.status(taken ? 409 : 502).json({
+      error: taken
+        ? 'That time is no longer available. Please pick another slot.'
+        : 'Could not complete the booking. Please try again.',
+    });
+  }
+});
+
 app.get('/api/hello', (req, res) => {
   res.json({ message: 'Hello from API' });
 });

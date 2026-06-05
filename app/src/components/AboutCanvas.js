@@ -10,6 +10,7 @@ import skipLogo from '../assets/Skip-badge.jpeg';
 import typescriptLogo from '../assets/Typescript.png';
 import reactLogo from '../assets/React.svg';
 import javascriptLogo from '../assets/Javascript.png';
+import sanityLogo from '../assets/sanity.webp';
 
 const COMPANIES = [
   { name: 'bobo Health', logo: boboLogo },
@@ -21,6 +22,7 @@ const TECHNOLOGIES = [
   { name: 'TypeScript', logo: typescriptLogo },
   { name: 'React', logo: reactLogo },
   { name: 'JavaScript', logo: javascriptLogo },
+  { name: 'Sanity CMS', logo: sanityLogo },
 ];
 
 const RESUME_URL = 'https://docs.google.com/document/d/1iJj-DzZBh493NrEzz_oyp5eKeDDIDJy65WbonwRHjpI/edit?usp=sharing';
@@ -28,6 +30,7 @@ const BOOKING_URL = 'https://cal.com/ndaguba-nnaemeka-s5lfaw/30min';
 const LINKEDIN_URL = 'https://www.linkedin.com/in/emeka-ndaguba';
 const FIGMA_URL = 'https://www.figma.com/';
 const GITHUB_URL = 'https://github.com/';
+const ICEMAN_URL = 'https://pitchfork.com/reviews/albums/drake-iceman/';
 
 // Deterministic mini contribution grid (7 rows x ~14 weeks), varied by index
 // so it reads like a GitHub heatmap without needing live data.
@@ -281,7 +284,13 @@ export default function AboutCanvas() {
         </Draggable>
 
         {/* Now playing */}
-        <Draggable className="ac-card ac-player">
+        <Draggable
+          as="a"
+          className="ac-card ac-player"
+          href={ICEMAN_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <div className="ac-player-top">
             <img className="ac-player-art" src={albumArt} alt="" aria-hidden="true" draggable="false" />
             <div className="ac-player-meta">

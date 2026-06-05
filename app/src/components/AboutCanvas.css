@@ -748,9 +748,15 @@ body.ac-drag-active * {
   .ac-photo { grid-row: span 3; }
   .ac-available { grid-row: span 3; }
   .ac-reading { grid-row: span 3; }
-  .ac-companies { grid-row: span 2; }
   .ac-player { grid-column: 1 / -1; }
   .ac-github { grid-column: 1 / -1; }
+
+  /* Pull the Figma card up so it tucks in beside/under the tall photo card,
+     filling its column instead of leaving the photo to stand alone. */
+  .ac-photo { order: 0; }
+  .ac-figma { order: 1; }
+  .ac-companies { order: 2; }
+  .ac-technologies { order: 3; }
 
   .ac-photo { width: auto; padding-bottom: 0; }
   .ac-photo img { aspect-ratio: 4 / 5; }

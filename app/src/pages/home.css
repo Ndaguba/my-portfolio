@@ -628,6 +628,34 @@ h1 {
   background: rgba(0, 0, 0, 0.06);
 }
 
+.case-study-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.case-study-visit-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #7c3aed;
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  margin-top: 34px;
+  transition: opacity 0.2s ease;
+}
+
+.case-study-visit-link:hover {
+  text-decoration: none;
+  opacity: 0.75;
+}
+
+.case-study-visit-link svg {
+  stroke: #7c3aed;
+}
+
 .case-study-media-wrap {
   position: relative;
   width: 100%;
@@ -708,6 +736,13 @@ h1 {
   transform-origin: center center;
 }
 
+/* Mossy: laptop dashboard mockup, larger and centered */
+.case-study-media-img.mossy-media-img {
+  align-self: center;
+  transform: translateY(36px) scale(0.96);
+  transform-origin: center center;
+}
+
 /* Forella mobile app screen sitting beside the iPad screen */
 .forella-mobile-img {
   align-self: flex-end;
@@ -756,6 +791,11 @@ h1 {
   .case-study-media-overlay.skip-overlay {
     width: 42%;
     top: calc(40% - 24px);
+  }
+
+  /* Mossy: shrink the laptop mockup on mobile so it sits within the panel */
+  .case-study-media-img.mossy-media-img {
+    transform: translateY(36px) scale(0.90);
   }
 }
 

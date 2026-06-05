@@ -15,6 +15,8 @@ import forellaWeb from '../assets/forella-web.png';
 import forellaMobile from '../assets/forella-mobile-app.png';
 import ophirLogo from '../assets/Ophir.png';
 import ophirLabs from '../assets/Ophir-labs.png';
+import mossyImage from '../assets/AI-bookkeeping.png';
+import mossyLogo from '../assets/mossy.jpg';
 import westjetImage from '../assets/WestJet.png';
 import devExpanded from '../assets/expanded.png';
 import skipExpanded from '../assets/skip-expanded.png';
@@ -158,6 +160,7 @@ export default function Home() {
       category: "Engineering",
       tags: ["Design", "Engineering"],
       link: null,
+      visitUrl: "https://platform.forella.app",
       imgClass: "forella-image",
       status: "SHIPPED",
       statValue: "150",
@@ -176,15 +179,35 @@ export default function Home() {
       category: "Engineering",
       tags: ["Design", "Engineering"],
       link: null,
+      visitUrl: "https://app.ophir.sh/login",
       imgClass: "ophir-image",
       status: "NOT SHIPPED",
       statValue: "1",
       statLabel: "organizational pilot"
+    },
+    {
+      id: "mossy",
+      title: "Mossy",
+      company: "AI Bookkeeping for Solopreneurs",
+      description: "An AI bookkeeping platform for solopreneurs and small business owners — automatically categorizing transactions, surfacing income and expense insights, and answering plain-language questions about your finances. I design and build the product end to end.",
+      image: mossyImage,
+      showImage: true,
+      mediaBg: '#d3e3d6',
+      logo: mossyLogo,
+      logoLabel: "Mossy",
+      category: "Engineering",
+      tags: ["Design", "Engineering"],
+      link: null,
+      visitUrl: "https://app.usemossy.co/login",
+      imgClass: "mossy-image",
+      status: "SHIPPED",
+      statValue: "15",
+      statLabel: "beta users"
     }
   ];
 
   // Projects shown in the case-study section, in this exact order.
-  const featuredOrder = ['development-pathways', 'skip-westjet', 'forella', 'ophir-labs'];
+  const featuredOrder = ['development-pathways', 'skip-westjet', 'forella', 'mossy'];
   const featuredProjects = featuredOrder
     .map(id => allProjects.find(p => p.id === id))
     .filter(Boolean);
@@ -311,23 +334,38 @@ export default function Home() {
                     <span className="case-study-stat-label">{project.statLabel}</span>
                   </div>
 
-                  {project.link ? (
-                    <Link to={project.link} className="case-study-btn">
-                      <span>Open case study</span>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="7" y1="17" x2="17" y2="7" />
-                        <polyline points="7 7 17 7 17 17" />
-                      </svg>
-                    </Link>
-                  ) : (
-                    <span className="case-study-btn is-disabled">
-                      <span>Coming soon</span>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="5" y="11" width="14" height="10" rx="2" />
-                        <path d="M8 11V7a4 4 0 0 1 8 0v4" />
-                      </svg>
-                    </span>
-                  )}
+                  <div className="case-study-actions">
+                    {project.link ? (
+                      <Link to={project.link} className="case-study-btn">
+                        <span>Open case study</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <line x1="7" y1="17" x2="17" y2="7" />
+                          <polyline points="7 7 17 7 17 17" />
+                        </svg>
+                      </Link>
+                    ) : (
+                      <span className="case-study-btn is-disabled">
+                        <span>Coming soon</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <rect x="5" y="11" width="14" height="10" rx="2" />
+                          <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+                        </svg>
+                      </span>
+                    )}
+                    {project.visitUrl && (
+                      <a
+                        href={project.visitUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="case-study-visit-link"
+                      >
+                        <span>Visit site</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.5 -0.5 16 16" strokeLinecap="round" strokeLinejoin="round" stroke="currentColor" height="16" width="16">
+                          <path d="m4.0625 10.9375 6.875 -6.875m0 0h-5.625m5.625 0v5.625" strokeWidth="1" />
+                        </svg>
+                      </a>
+                    )}
+                  </div>
                 </div>
 
                 <div className="case-study-media-wrap">
@@ -336,7 +374,7 @@ export default function Home() {
                     style={project.mediaBg ? { background: project.mediaBg } : undefined}
                   >
                     {project.showImage && project.image && (
-                      <img src={project.image} alt={project.title} className={`case-study-media-img ${project.id === 'forella' ? 'forella-media-img' : ''} ${project.id === 'ophir-labs' ? 'ophir-media-img' : ''}`} />
+                      <img src={project.image} alt={project.title} className={`case-study-media-img ${project.id === 'forella' ? 'forella-media-img' : ''} ${project.id === 'ophir-labs' ? 'ophir-media-img' : ''} ${project.id === 'mossy' ? 'mossy-media-img' : ''}`} />
                     )}
                     {project.id === 'forella' && (
                       <img src={forellaMobile} alt="Forella mobile app" className="forella-mobile-img" />
