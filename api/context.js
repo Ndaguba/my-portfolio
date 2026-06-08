@@ -2,28 +2,30 @@ const dataContext = {
   profile: {
     name: "Emeka Ndaguba",
     title: "Senior Product Designer & Design Engineer",
-    location: "Winnipeg, Canada",
-    summary: "A Senior Product Designer and Design Engineer specializing in building digital products at the intersection of design, engineering, and product strategy. Bridges the gap between design and code by thinking deeply about system behavior and implementation quality. Often works directly in the code using tools like Cursor, Claude Code, and React to ensure the final product matches the vision. Expert in building scalable design systems and AI-native workflows.",
+    location: "Manitoba, Canada",
+    summary: "A Product Designer and Design Engineer with 5+ years of experience across healthcare, fintech, and marketplace products, with a background in software engineering and frontend development. Currently the first in-house Product Designer at Bobo Health, leading mobile and web experiences, design systems, and operational workflows. Specializes in designing intuitive products and shipping code that simplify complex workflows and drive business impact.",
     philosophy: "I believe the best products come from the space where design precision meets engineering execution. I care about building reliable, human-centered interfaces that make complex systems feel clear and trustworthy. I focus on reducing cognitive load and designing trust as a first-class feature.",
+    education: "BSc in Computer Science from the University of Winnipeg (2018–2022), graduated with a 3.5 GPA.",
+    background: "Originally from Nigeria. Migrated to Canada as a student and is now a permanent resident of Canada.",
   },
   experience: [
     {
       company: "Bobo Health",
       role: "Senior Product Designer / Design Engineer",
       period: "Aug 2025 - Present",
-      description: "First in-house designer owning product design, brand, and UX. Leads design across mobile, web, and core product. Built and launched Echo, the company's first design system. Responsible for shaping product from strategy to shipped experience including Poppy AI, Development Pathways, and Doctor's Reports."
+      description: "First in-house designer leading product design across the company's AI-powered healthcare platform, shaping mobile and web experiences. Designed and implemented Echo, the company's first design system, with reusable components and standardized experiences. Used AI-native tools like Claude Code and Cursor to resolve UI inconsistencies across mobile and web, reducing UI/UX debt by 35% and improving design-to-development alignment without diverting engineering resources. Designed and developed the corporate website in TypeScript with Sanity CMS for articles and content, and built transactional and marketing email templates in HTML/CSS with heatmapping to analyze user behavior and improve campaign performance. Also shaped Poppy AI, Development Pathways, and Doctor's Reports."
     },
     {
       company: "SkipTheDishes",
       role: "Product Designer",
       period: "Mar 2023 - Aug 2025",
-      description: "Owned design across the Partnerships portfolio and post-order experience. Led the design for the Skip x WestJet partnership, creating a framework that was later adopted across Just Eat Takeaway markets globally. Redesigned the Order Tracker with a scalable bottom-sheet architecture that unlocked features like PIN verification and multi-partner logistics. Regularly contributed to the PIE design system."
+      description: "Built advertising and revenue-growth experiences and owned the post-order experience. Led advertising integration in partnership with ROKT across the customer journey, contributing to a projected $19M in additional advertising revenue in 2025. Led product design for the Skip x WestJet loyalty partnership across web and mobile, supporting loyalty rewards across 3M+ WestJet Rewards members; the framework was later adopted across Just Eat Takeaway markets globally. Designed and launched Delivery Codes, reducing undelivered orders (UDO) by ~65% across Canada. Led the Order Tracker redesign with a scalable bottom-sheet architecture, unlocking cross-selling and advertising opportunities that contributed to a 16% increase in average order value (AOV) across post-order experiences."
     },
     {
-      company: "InTuitionPay",
-      role: "Founding Product Designer & Frontend Developer",
-      period: "Feb 2021 - Aug 2023",
-      description: "First in-house designer leading product design and frontend engineering. Built and launched Cookies, the company's first design system. Led design and engineering workflows from concept to launch. Played a key role in growth leading to a 2024 appearance on Dragons' Den."
+      company: "IntuitionPay",
+      role: "Product Designer",
+      period: "Feb 2020 - Mar 2023",
+      description: "Led product strategy and design for an early-stage fintech payments platform. Designed onboarding, payments, transaction management, and operational workflows that helped scale the platform to 1,000+ monthly active users."
     }
   ],
   projects: [
@@ -193,12 +195,33 @@ const dataContext = {
         "Automates compliance review that was previously fully manual."
       ],
       skills: ["Product Design", "Frontend Development", "AI Agents", "Interaction Design"]
+    },
+    {
+      id: "mossy",
+      title: "Mossy Finance Co-pilot",
+      company: "Mossy (personal venture)",
+      tagline: "An AI bookkeeping platform for solopreneurs and small business owners — designed and built end to end.",
+      role: "End-to-end: product design plus shipping the React / React Native frontend and Supabase backend.",
+      timeline: "Ongoing",
+      status: "In beta (~15 users)",
+      problem: "Solopreneurs and small business owners struggle to stay on top of bookkeeping, reporting, and financial operations — the tools are either too complex or too generic for how they actually work.",
+      solution: "An AI-powered financial platform that streamlines bookkeeping, reporting, and financial operations: automatically categorizing transactions, surfacing income and expense insights, and answering plain-language questions about a business's finances.",
+      decisions: [
+        "AI-First Bookkeeping: automate transaction categorization instead of manual tagging.",
+        "Plain-Language Insights: let users ask questions about their finances in natural language.",
+        "Built for Solopreneurs: optimize for the realities of small business owners, not enterprise finance teams."
+      ],
+      impact: [
+        "Now in beta with ~15 users.",
+        "Streamlines bookkeeping, reporting, and financial operations for small businesses."
+      ],
+      skills: ["Product Design", "Frontend Development", "AI Agents", "React", "React Native", "Supabase", "SQL"]
     }
   ],
   skills: {
-    design: ["UX Strategy", "Conversational UX", "Design Systems", "Interaction Design", "User Research", "Information Architecture"],
-    engineering: ["React", "JavaScript", "Design Tokens", "Frontend Development", "AI Prompting", "System Architecture"],
-    tools: ["Cursor", "Claude Code", "Figma", "OpenAI API", "React Native"]
+    design: ["Design Systems", "Product Strategy", "User Research", "Prototyping", "Information Architecture", "Mobile Design (iOS & Android)", "Responsive Web Design", "Conversational UX", "Interaction Design", "Motion Design"],
+    engineering: ["HTML", "CSS", "JavaScript", "React", "React Native", "Swift", "Kotlin", "SQL", "API Integrations", "Design Tokens", "Frontend Development", "AI Prompting"],
+    tools: ["Figma", "Cursor", "Claude Code", "OpenAI Codex", "Jira", "Miro", "VS Code", "UserTesting.com", "Adobe Photoshop", "Lightroom", "After Effects", "DatoCMS and headless CMS", "Supabase"]
   },
   process: {
     discovery: "I start by identifying the emotional friction point — like the 3 AM exhaustion window for parents — rather than just the technical requirement.",
@@ -242,13 +265,25 @@ const dataContext = {
     },
     {
       q: "How can I contact you or see more?",
-      a: "You can book a chat, grab my resume, or find me on LinkedIn and GitHub — the buttons for all of those are right here in the chat. You can also scroll the page to see my featured work."
+      a: "The best way to reach me is to book a chat — there's a button for it right here. You can also grab my resume or find me on LinkedIn and GitHub, and scroll the page to see my featured work."
+    },
+    {
+      q: "What's your educational background?",
+      a: "I studied Computer Science at the University of Winnipeg from 2018 to 2022 and graduated with a 3.5 GPA. That engineering foundation is a big part of why I work as a design engineer today."
+    },
+    {
+      q: "Where are you from?",
+      a: "I'm originally from Nigeria. I came to Canada as a student, studied Computer Science at the University of Winnipeg, and I'm now a permanent resident based in Manitoba."
     }
   ],
+  // Only these shareable links are ever surfaced in chat. Personal email and
+  // phone number are intentionally NOT included — the public bot must not hand
+  // out direct contact info; it points people to the booking link instead.
   links: {
     resume: "https://docs.google.com/document/d/1iJj-DzZBh493NrEzz_oyp5eKeDDIDJy65WbonwRHjpI/edit?usp=sharing",
-    booking: "https://cal.com/",
-    linkedin: "https://www.linkedin.com/",
+    portfolio: "https://endaguba.space",
+    booking: "https://cal.com/ndaguba-nnaemeka-s5lfaw/30min",
+    linkedin: "https://www.linkedin.com/in/emeka-ndaguba",
     github: "https://github.com/"
   }
 };

@@ -9,19 +9,25 @@ const MAX_TOTAL_CHARS = 12000; // combined conversation length cap
 // instructions / jailbreak / exfiltrate the system prompt. Used as a heuristic
 // pre-filter; the hardened system prompt is the real defense.
 const INJECTION_PATTERNS = [
-  /ignore\s+(all\s+|the\s+|your\s+|previous\s+|above\s+)*(instructions|prompts?|rules|context)/i,
-  /disregard\s+(all\s+|the\s+|your\s+|previous\s+|above\s+)*(instructions|prompts?|rules)/i,
-  /forget\s+(everything|all|your|the|previous|above)/i,
-  /(system|developer)\s*(prompt|message|instructions?)/i,
+  /ignore\s+(all\s+|the\s+|your\s+|previous\s+|above\s+|prior\s+|earlier\s+)*(instructions|prompts?|rules|context|directives?|guidelines)/i,
+  /disregard\s+(all\s+|the\s+|your\s+|previous\s+|above\s+|prior\s+)*(instructions|prompts?|rules|directives?)/i,
+  /forget\s+(everything|all|your|the|previous|above|prior|what)/i,
+  /(system|developer|admin|root)\s*(prompt|message|instructions?|mode|access|override)/i,
   /you\s+are\s+(now|no\s+longer)\b/i,
+  /from\s+now\s+on[,\s]+(you|act|respond|ignore|pretend)/i,
   /\bact\s+as\b/i,
-  /\bpretend\s+(to\s+be|you('re|\s+are))/i,
-  /\bdeveloper\s+mode\b/i,
-  /\b(dan|jailbreak)\b/i,
-  /reveal\s+(your|the)\s+(prompt|instructions|system)/i,
-  /(print|show|repeat|output)\s+(your|the)\s+(prompt|instructions|system\s+message)/i,
-  /new\s+(system\s+)?(prompt|instructions|persona|role)\s*:/i,
-  /override\s+(your|the)\s+(instructions|rules|settings)/i,
+  /\bpretend\s+(to\s+be|you('re|\s+are)|that)/i,
+  /\broleplay(ing)?\s+as\b/i,
+  /\b(developer|debug|god|admin|sudo|unrestricted|uncensored)\s+mode\b/i,
+  /\b(dan|jailbreak|do\s+anything\s+now)\b/i,
+  /reveal\s+(your|the)\s+(prompt|instructions|system|rules|context)/i,
+  /(print|show|repeat|output|display|reveal|echo|dump)\s+(your|the|all|verbatim)?\s*(prompt|instructions|system\s+message|context|rules|configuration)/i,
+  /(what|repeat)\s+(are|were|was)\s+(your|the)\s+(\w+\s+)?(instructions|rules|system\s+prompt|directives?|guidelines)/i,
+  /new\s+(system\s+)?(prompt|instructions|persona|role|rules)\s*:/i,
+  /override\s+(your|the)\s+(instructions|rules|settings|scope|restrictions)/i,
+  /\b(bypass|disable|turn\s+off|remove)\s+(your|the|all)?\s*(filter|safety|restriction|guardrail|rule|scope|limit)/i,
+  /(this\s+is|i\s+am)\s+(your|the)\s+(developer|creator|owner|admin)/i,
+  /\b(begin|start)\s+(new\s+)?(session|conversation|context)\b.*\b(ignore|forget|reset)/i,
 ];
 
 function looksLikeInjection(text) {

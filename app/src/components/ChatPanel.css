@@ -270,7 +270,7 @@
 }
 
 .chat-input {
-  padding: 16px 17px;
+  padding: 16px 17px 0;
   display: flex;
   align-items: flex-end;
   gap: 8px;
@@ -317,6 +317,19 @@
 
 .theme-dark .chat-input button:hover {
   background: rgba(255, 255, 255, 0.05);
+}
+
+.chat-disclaimer {
+  margin: 8px 0 0;
+  padding: 0 20px 14px;
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--text-muted, rgba(0, 0, 0, 0.45));
+}
+
+.theme-dark .chat-disclaimer {
+  color: rgba(255, 255, 255, 0.45);
 }
 
 @media (max-width: 768px) {
@@ -397,10 +410,18 @@
 /* --- Event details strip --- */
 .booking-details {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
   padding-bottom: 14px;
   border-bottom: 1px solid var(--divider-default);
+  /* Keep the event header pinned while the calendar/slots scroll.
+     Negative top margin + matching padding covers the card's top padding. */
+  position: sticky;
+  top: -16px;
+  margin: -16px -16px 0;
+  padding: 16px 16px 14px;
+  background: var(--panel-bg);
+  z-index: 2;
 }
 
 .booking-details-avatar {
@@ -430,19 +451,37 @@
   color: var(--muted);
 }
 
-.booking-details-row {
+.booking-details-aside {
   display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--text);
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
   flex: 0 0 auto;
 }
 
-.booking-details-row svg {
-  color: var(--muted);
+.booking-details-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.15s ease;
 }
+
+.booking-details-close:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.theme-dark .booking-details-close:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
 
 /* --- Calendar + times side by side --- */
 .booking-row {
@@ -557,8 +596,10 @@
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #7c3aed;
+  background: #16191c;
 }
+
+.theme-dark .booking-cal-dot { background: #fff; }
 
 .booking-cal-day.is-selected,
 .booking-cal-day.is-selected:hover {
@@ -613,14 +654,26 @@
 }
 
 .booking-slot:hover {
-  border-color: #7c3aed;
-  color: #7c3aed;
+  border-color: #16191c;
+  color: #16191c;
 }
 
 .booking-slot.is-selected {
-  background: #7c3aed;
-  border-color: #7c3aed;
+  background: #16191c;
+  border-color: #16191c;
   color: #fff;
+}
+
+/* Dark mode: invert the black accents to white so they stay visible */
+.theme-dark .booking-slot:hover {
+  border-color: #fff;
+  color: #fff;
+}
+
+.theme-dark .booking-slot.is-selected {
+  background: #fff;
+  border-color: #fff;
+  color: #16191c;
 }
 
 .booking-form {
@@ -641,7 +694,7 @@
 .booking-change {
   font-size: 12px;
   font-weight: 500;
-  color: #7c3aed;
+  color: var(--text);
   background: transparent;
   border: none;
   cursor: pointer;
@@ -666,15 +719,15 @@
 .booking-form input:focus,
 .booking-form textarea:focus {
   outline: none;
-  border-color: #7c3aed;
+  border-color: var(--text);
 }
 
 .booking-submit {
   margin-top: 2px;
   font-size: 13px;
   font-weight: 600;
-  color: #fff;
-  background: #7c3aed;
+  color: var(--bg);
+  background: var(--text);
   border: none;
   border-radius: 999px;
   padding: 10px 14px;
@@ -695,8 +748,8 @@
 .booking-meeting-link {
   font-size: 13px;
   font-weight: 600;
-  color: #7c3aed;
-  text-decoration: none;
+  color: var(--text);
+  text-decoration: underline;
 }
 
 .booking-retry {
@@ -909,7 +962,7 @@
   width: 100%;
   max-width: 760px;
   margin: 0 auto;
-  padding: 16px 24px 28px;
+  padding: 16px 24px 0;
   box-sizing: border-box;
 }
 
@@ -928,7 +981,8 @@
 
 .chat-panel--fullscreen .chat-input button {
   right: 36px;
-  bottom: 40px;
+  top: 25px;
+  bottom: auto;
   width: 34px;
   height: 34px;
   border-radius: 50%;
@@ -990,7 +1044,7 @@
 
   .chat-panel--fullscreen .chat-input {
     padding-top: 12px;
-    padding-bottom: 20px;
+    padding-bottom: 0;
   }
 
   .chat-panel--fullscreen .chat-input input {
@@ -1001,7 +1055,8 @@
 
   .chat-panel--fullscreen .chat-input button {
     right: 30px;
-    bottom: 30px;
+    top: 20px;
+    bottom: auto;
     width: 32px;
     height: 32px;
   }

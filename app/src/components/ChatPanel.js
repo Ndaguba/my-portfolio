@@ -250,6 +250,9 @@ export default function ChatPanel({ isOpen, onClose, initialMessage, onInitialMe
           <BsArrowUp />
         </button>
       </div>
+      <p className="chat-disclaimer">
+        My Digital brain is powered by AI and unfortunately could make mistakes. Also don&apos;t burn my tokens too much lol 🔥
+      </p>
     </div>
   );
 }
@@ -394,13 +397,18 @@ export function BookingFlow({ onClose }) {
                 <span className="booking-details-title">30 min chat</span>
                 <span className="booking-details-sub">with Emeka</span>
               </div>
-              <span className="booking-details-row" title="30 minutes">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <circle cx="12" cy="12" r="9" />
-                  <polyline points="12 7 12 12 15 14" />
-                </svg>
-                30m
-              </span>
+              <div className="booking-details-aside">
+                <button
+                  type="button"
+                  className="booking-details-close"
+                  onClick={onClose}
+                  aria-label="Close booking"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="20" width="20" aria-hidden="true">
+                    <path fill="currentColor" d="m12 13.0499 -3.975 3.975c-0.15 0.15 -0.325 0.225 -0.525 0.225s-0.375 -0.075 -0.525 -0.225c-0.15 -0.15 -0.225 -0.325 -0.225 -0.525s0.075 -0.375 0.225 -0.525l3.975 -3.975 -3.975 -3.95c-0.15 -0.15 -0.225 -0.325 -0.225 -0.525s0.075 -0.375 0.225 -0.525c0.15 -0.15 0.325 -0.225 0.525 -0.225s0.375 0.075 0.525 0.225l3.975 3.975 3.95 -3.975c0.13335 -0.15 0.30415 -0.225 0.5125 -0.225 0.20835 0 0.3875 0.075 0.5375 0.225 0.15 0.15 0.225 0.325 0.225 0.525s-0.075 0.375 -0.225 0.525l-3.975 3.95 3.975 3.975c0.15 0.15 0.225 0.325 0.225 0.525s-0.075 0.375 -0.225 0.525c-0.15 0.15 -0.325 0.225 -0.525 0.225s-0.375 -0.075 -0.525 -0.225l-3.95 -3.975Z" strokeWidth="0.5" />
+                  </svg>
+                </button>
+              </div>
             </div>
 
             {/* Calendar + time slots side by side */}
