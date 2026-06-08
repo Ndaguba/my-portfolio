@@ -816,15 +816,15 @@ export const light = {
                         </div>
                         <div className="impact-grid">
                             <div className="impact-card">
-                                <span className="impact-value">75+</span>
-                                <p>Beta users on the platform.</p>
+                                <span className="impact-value">50+</span>
+                                <p>Beta testers on the platform.</p>
                             </div>
                             <div className="impact-card">
                                 <span className="impact-value">500+</span>
                                 <p>Calendar events ingested.</p>
                             </div>
                             <div className="impact-card">
-                                <span className="impact-value">800+</span>
+                                <span className="impact-value">250+</span>
                                 <p>Voice agent sessions with Regina.</p>
                             </div>
                         </div>

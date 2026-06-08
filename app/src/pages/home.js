@@ -151,7 +151,7 @@ export default function Home() {
       id: "forella",
       title: "Forella",
       company: "AI-Powered Calendar",
-      description: "An AI-native calendar I designed and built end to end. An Expo / React Native iOS app where a streaming agent operates the app through interactive cards. Now in beta with 150+ users.",
+      description: "An AI-native calendar I designed and built end to end. An Expo / React Native iOS app where a streaming agent operates the app through interactive cards. Now in beta with 50+ users.",
       image: forellaWeb,
       showImage: true,
       mediaBg: '#f1ede4',
@@ -159,11 +159,11 @@ export default function Home() {
       logoLabel: "Forella",
       category: "Engineering",
       tags: ["Design", "Engineering"],
-      link: null,
+      link: "/forella",
       visitUrl: "https://platform.forella.app",
       imgClass: "forella-image",
       status: "SHIPPED",
-      statValue: "150",
+      statValue: "50",
       statLabel: "beta users"
     },
     {
@@ -337,7 +337,7 @@ export default function Home() {
                   <div className="case-study-actions">
                     {project.link ? (
                       <Link to={project.link} className="case-study-btn">
-                        <span>Open case study</span>
+                        <span>View case study</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                           <line x1="7" y1="17" x2="17" y2="7" />
                           <polyline points="7 7 17 7 17 17" />

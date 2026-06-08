@@ -157,7 +157,7 @@ const dataContext = {
       tagline: "An AI-native calendar for intelligent time management. Its centerpiece is Regina, a streaming AI agent that books events, drafts emails, plans transit, and reads images, surfacing interactive UI cards inside the chat. Designed and built end to end.",
       role: "End to end: product design plus shipping the Expo / React Native iOS app and the backend (a dual setup using Supabase plus a dedicated platform API that runs the AI agent and its tools on the OpenAI APIs, with voice powered by ElevenLabs).",
       timeline: "4 weeks",
-      status: "In beta (150+ users, 500+ calendar events ingested). iOS-first, built on Expo / React Native with web and Android reach.",
+      status: "In beta (50+ users, 500+ calendar events ingested). iOS-first, built on Expo / React Native with web and Android reach.",
       problem: "Modern calendars are great at storing events but ineffective at helping people manage their time. Users struggle to prioritize tasks, plan their day, manage conflicting schedules, and stay organized, and most tools require heavy manual effort with little proactive assistance.",
       solution: "An AI-native calendar where a server-orchestrated agent called Regina operates the app rather than just chatting. Tools run on the backend (transit, email drafting, calendar ops, place lookup) and return structured data that hydrates real, interactive native cards. It sits on a real-time, offline-capable, subscription-gated data layer.",
       decisions: [
@@ -168,7 +168,7 @@ const dataContext = {
         "Offline-first writes with a replay queue, so edits are never lost on intermittent mobile networks."
       ],
       impact: [
-        "In beta with 150+ users and 500+ calendar events ingested.",
+        "In beta with 50+ users and 500+ calendar events ingested.",
         "Built on Expo / React Native with native iOS depth: Live Activities, Vision Camera, Voice, background fetch, and push.",
         "A server-orchestrated agent (Regina) that operates the app through interactive cards rather than describing it.",
         "A real-time, offline-capable, subscription-gated data layer (~22 single-responsibility service modules)."
