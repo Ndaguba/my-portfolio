@@ -33,8 +33,8 @@ const dataContext = {
       id: "skip-westjet",
       title: "Skip x WestJet Partnership",
       company: "SkipTheDishes",
-      tagline: "Canada's largest food delivery partnership — a trust-first loyalty integration that became a global standard.",
-      role: "Senior Product Designer — led UX for discovery, account linking, and rewards earn-and-redeem.",
+      tagline: "Canada's largest food delivery partnership. A trust-first loyalty integration that became a global standard.",
+      role: "Senior Product Designer. I led UX for discovery, account linking, and rewards earn-and-redeem.",
       timeline: "6 weeks",
       status: "Shipped",
       problem: "WestJet and Skip formed a strategic partnership to let users earn WestJet Dollars on Skip orders. The challenge was account linking, permission anxiety, and real-time reward tracking across two separate secure brand environments.",
@@ -59,11 +59,11 @@ const dataContext = {
       title: "Development Pathways",
       company: "Bobo Health",
       tagline: "Digitizing CDC clinical milestones into a reassurance-first tracking platform.",
-      role: "Senior Product Designer — led UX from the ground up: product UX strategy, IA, interaction design, and clinical alignment.",
+      role: "Senior Product Designer. I led UX from the ground up: product UX strategy, IA, interaction design, and clinical alignment.",
       timeline: "3 weeks",
       status: "Shipped",
       problem: "Developmental frameworks are clinically accurate but emotionally intimidating. Presented as rigid pass/fail checklists, they leave parents feeling judged. 72% of parents report 'milestone anxiety' with traditional checklists, and only 1 in 5 find raw CDC milestone data easy to navigate without professional translation.",
-      solution: "Turn the CDC's clinical credibility into a supportive daily companion — translating clinical guidance into parent-friendly language and designing for reassurance through a progression model rather than success/failure evaluation, scaling cleanly across age ranges and milestone groups.",
+      solution: "Turn the CDC's clinical credibility into a supportive daily companion. It translates clinical guidance into parent-friendly language and designs for reassurance through a progression model rather than success/failure evaluation, scaling cleanly across age ranges and milestone groups.",
       decisions: [
         "Avoiding Pass/Fail: designed for progress and reassurance instead of rigid completion scoring.",
         "Age-Based Surfacing: showed only age-relevant milestones to reduce cognitive load.",
@@ -84,15 +84,15 @@ const dataContext = {
       title: "Poppy AI",
       company: "Bobo Health",
       tagline: "A 24/7 conversational pediatric assistant that turns messy natural language into clinical data.",
-      role: "Lead Product Designer — product design, conversational UX, user research, and AI prompting.",
+      role: "Lead Product Designer covering product design, conversational UX, user research, and AI prompting.",
       timeline: "3 weeks",
       status: "Shipped",
-      problem: "Parents abandon vital infant tracking during critical development windows because traditional logbooks are cold and high-friction — especially during the '3 AM exhaustion window'. Form-based apps suffer ~60% drop-off, and 78% of parents value personalized, child-specific insight over generic advice.",
+      problem: "Parents abandon vital infant tracking during critical development windows because traditional logbooks are cold and high-friction, especially during the '3 AM exhaustion window'. Form-based apps suffer ~60% drop-off, and 78% of parents value personalized, child-specific insight over generic advice.",
       solution: "A conversational pediatric assistant that transforms natural-language inputs into structured health logs and doctor-verified guidance, using an empathetic 'Nurse Partner' tone and a transparent reasoning engine that surfaces intent and clinical sources.",
       decisions: [
         "Designing Thinking States: surface visible reasoning during latency to maintain trust in sensitive medical moments.",
         "Guided Clarification Over Automation: avoid silently logging vague inputs; ask to protect accuracy and trust.",
-        "Tone as a Safety Feature: an empathetic tone balances clinical authority with reassurance — cold language increased anxiety.",
+        "Tone as a Safety Feature: an empathetic tone balances clinical authority with reassurance, since cold language increased anxiety.",
         "Transparent Interaction Model: a conversational state machine surfaces 'thinking cycles' and tool-call states during database queries.",
         "Proactive Context Gathering: low-friction prompts capture precise data during high-stress moments."
       ],
@@ -108,11 +108,11 @@ const dataContext = {
       title: "Order Tracker Redesign",
       company: "SkipTheDishes",
       tagline: "Turning a static status page into an extensible logistics platform via a bottom-sheet architecture.",
-      role: "Senior Product Designer / UX lead — product UX strategy, bottom-sheet architecture, and monetization design.",
+      role: "Senior Product Designer and UX lead, covering product UX strategy, bottom-sheet architecture, and monetization design.",
       timeline: "5 weeks",
       status: "In progress / not shipped",
-      problem: "Order tracking was one of Skip's most-visited surfaces but too limited for evolving needs — it couldn't support PIN-based handoff, multi-partner delivery logistics, or monetization without becoming cluttered.",
-      solution: "A new bottom-sheet architecture that scales gracefully as new business needs emerge — flexibility for logistics complexity while keeping a calm, simple experience, and room for post-purchase monetization.",
+      problem: "Order tracking was one of Skip's most-visited surfaces but too limited for evolving needs. It couldn't support PIN-based handoff, multi-partner delivery logistics, or monetization without becoming cluttered.",
+      solution: "A new bottom-sheet architecture that scales gracefully as new business needs emerge, giving flexibility for logistics complexity while keeping a calm, simple experience and room for post-purchase monetization.",
       decisions: [
         "Bottom-Sheet Architecture: a new interaction model that scales as requirements grow.",
         "Turning Page into Platform: repositioned tracking from a static status page to a flexible foundation.",
@@ -134,7 +134,7 @@ const dataContext = {
       role: "Design system architecture and documentation; interdisciplinary audits with engineers.",
       timeline: "Ongoing",
       status: "Shipped",
-      problem: "As Bobo Health grew, UI inconsistency became a bottleneck. Designers worked in pixels, engineers in flexible units — a 'translation gap' that caused visual bugs and re-guessed decisions at handoff, with ~60% of CSS work spent on overrides.",
+      problem: "As Bobo Health grew, UI inconsistency became a bottleneck. Designers worked in pixels, engineers in flexible units. That 'translation gap' caused visual bugs and re-guessed decisions at handoff, with ~60% of CSS work spent on overrides.",
       solution: "A unified design language anchored on semantic tokens that create a 1:1 bridge between design tools and code (mapping abstract values like Pink-500 to functional uses like CTA-Background), built on immutable token architecture and a tiered contribution governance model.",
       decisions: [
         "Immutable Tokens: semantic token architecture mapping abstract values to functional uses.",
@@ -154,26 +154,26 @@ const dataContext = {
       id: "forella",
       title: "Forella AI",
       company: "Forella (personal venture)",
-      tagline: "A proactive AI personal assistant that manages daily life through natural conversation and voice — designed and built end to end.",
-      role: "End-to-end: product design plus shipping the React frontend and LLM backend.",
+      tagline: "An AI-native calendar for intelligent time management. Its centerpiece is Regina, a streaming AI agent that books events, drafts emails, plans transit, and reads images, surfacing interactive UI cards inside the chat. Designed and built end to end.",
+      role: "End to end: product design plus shipping the Expo / React Native iOS app and the backend (a dual setup using Supabase plus a dedicated platform API that runs the AI agent and its tools on the OpenAI APIs, with voice powered by ElevenLabs).",
       timeline: "4 weeks",
-      status: "In beta (~150 users)",
-      problem: "Traditional calendar apps are built around manual interaction — users create events, set reminders, and organize priorities themselves. The core insight: 'Users don't want a better calendar; they want fewer things to remember.'",
-      solution: "An AI-native assistant that shifts from reactive schedule management to proactive life coordination, built on three pillars: natural-language interaction, a trust-first architecture with transparent reasoning, and voice-first execution for high-mobility moments.",
+      status: "In beta (150+ users, 500+ calendar events ingested). iOS-first, built on Expo / React Native with web and Android reach.",
+      problem: "Modern calendars are great at storing events but ineffective at helping people manage their time. Users struggle to prioritize tasks, plan their day, manage conflicting schedules, and stay organized, and most tools require heavy manual effort with little proactive assistance.",
+      solution: "An AI-native calendar where a server-orchestrated agent called Regina operates the app rather than just chatting. Tools run on the backend (transit, email drafting, calendar ops, place lookup) and return structured data that hydrates real, interactive native cards. It sits on a real-time, offline-capable, subscription-gated data layer.",
       decisions: [
-        "Natural Language Interactions: conversational and voice parsing of complex intentions into structured events.",
-        "Trust-First Architecture: a transparent reasoning engine with approval loops.",
-        "Cognitive Load Reduction: ~40% reduction in manual entry to build habit formation.",
-        "Proactive vs. Intrusive Boundaries: defining when to surface suggestions vs. stay silent.",
-        "Multi-modal Feedback: clear auditory cues for voice interactions."
+        "Dual backend: direct Supabase for auth, realtime, and RLS-protected reads; a separate platform API for AI and trust-sensitive writes, keeping secrets and business logic off the device.",
+        "SSE for AI token streaming, Socket.IO for bidirectional DB change fan-out. The right transport per job.",
+        "AI returns components, not just text: tool output hydrates native interactive cards, so the agent operates the app.",
+        "Network-aware auth: a failed token refresh distinguishes a bad connection from real expiry, so users aren't logged out on a flaky connection.",
+        "Offline-first writes with a replay queue, so edits are never lost on intermittent mobile networks."
       ],
       impact: [
-        "Now in beta with ~150 users.",
-        "Shifted user behavior from reactive schedule management to proactive coordination.",
-        "Established long-term trust through transparent AI reasoning and visible control loops.",
-        "Reduced the cognitive load of daily planning by replacing manual forms with natural language."
+        "In beta with 150+ users and 500+ calendar events ingested.",
+        "Built on Expo / React Native with native iOS depth: Live Activities, Vision Camera, Voice, background fetch, and push.",
+        "A server-orchestrated agent (Regina) that operates the app through interactive cards rather than describing it.",
+        "A real-time, offline-capable, subscription-gated data layer (~22 single-responsibility service modules)."
       ],
-      skills: ["Conversational UX", "Voice AI", "Interaction Design", "Product Strategy", "React", "LLM Backend"]
+      skills: ["Product Design", "Conversational UX", "AI Agents", "Interaction Design", "React Native", "Expo", "TypeScript", "Supabase", "SSE / WebSockets"]
     },
     {
       id: "ophir-labs",
@@ -182,9 +182,9 @@ const dataContext = {
       tagline: "An AI agent for compliance that automates policy review, Q&A, and evidence flows.",
       role: "Lead design and frontend across the knowledge base, Q&A, and evidence flows.",
       timeline: "In progress",
-      status: "Not shipped — in an organizational pilot",
-      problem: "Compliance review is slow and manual. Teams must read policies and firm standards, then answer and flag questions against them by hand — a high-effort, error-prone process.",
-      solution: "An AI agent that ingests policies and firm standards, then answers and flags questions against them — surfacing a searchable knowledge base, a Q&A interface, and evidence flows that show its reasoning.",
+      status: "Not shipped, in an organizational pilot",
+      problem: "Compliance review is slow and manual. Teams must read policies and firm standards, then answer and flag questions against them by hand, a high-effort, error-prone process.",
+      solution: "An AI agent that ingests policies and firm standards, then answers and flags questions against them. It surfaces a searchable knowledge base, a Q&A interface, and evidence flows that show its reasoning.",
       decisions: [
         "Knowledge Base First: structured ingestion of policies and firm standards as the agent's grounding.",
         "Q&A Interface: natural-language questions answered against the ingested standards.",
@@ -200,11 +200,11 @@ const dataContext = {
       id: "mossy",
       title: "Mossy Finance Co-pilot",
       company: "Mossy (personal venture)",
-      tagline: "An AI bookkeeping platform for solopreneurs and small business owners — designed and built end to end.",
+      tagline: "An AI bookkeeping platform for solopreneurs and small business owners, designed and built end to end.",
       role: "End-to-end: product design plus shipping the React / React Native frontend and Supabase backend.",
       timeline: "Ongoing",
       status: "In beta (~15 users)",
-      problem: "Solopreneurs and small business owners struggle to stay on top of bookkeeping, reporting, and financial operations — the tools are either too complex or too generic for how they actually work.",
+      problem: "Solopreneurs and small business owners struggle to stay on top of bookkeeping, reporting, and financial operations. The tools are either too complex or too generic for how they actually work.",
       solution: "An AI-powered financial platform that streamlines bookkeeping, reporting, and financial operations: automatically categorizing transactions, surfacing income and expense insights, and answering plain-language questions about a business's finances.",
       decisions: [
         "AI-First Bookkeeping: automate transaction categorization instead of manual tagging.",
@@ -224,16 +224,16 @@ const dataContext = {
     tools: ["Figma", "Cursor", "Claude Code", "OpenAI Codex", "Jira", "Miro", "VS Code", "UserTesting.com", "Adobe Photoshop", "Lightroom", "After Effects", "DatoCMS and headless CMS", "Supabase"]
   },
   process: {
-    discovery: "I start by identifying the emotional friction point — like the 3 AM exhaustion window for parents — rather than just the technical requirement.",
+    discovery: "I start by identifying the emotional friction point, like the 3 AM exhaustion window for parents, rather than just the technical requirement.",
     strategy: "I design trust as a core product surface. I believe clarity and control matter more than pure automation.",
     execution: "I bridge the gap between design and code. I don't just stop at mockups; I work in the code to ensure implementation matches the vision.",
     validation: "I test mental models and expectations. If a user expects to find a feature in 'Rewards', that's where it belongs, regardless of the system logic."
   },
-  // Common questions visitors, recruiters, and collaborators ask — answered in Emeka's voice.
+  // Common questions visitors, recruiters, and collaborators ask, answered in Emeka's voice.
   faq: [
     {
       q: "What kind of designer are you?",
-      a: "I'm a Senior Product Designer and Design Engineer — I live at the seam between design and code. I do end-to-end product design (research, IA, interaction, systems) and I also write the frontend (React) so the shipped product matches the intended vision."
+      a: "I'm a Senior Product Designer and Design Engineer. I live at the seam between design and code: I do end-to-end product design (research, IA, interaction, systems) and I also write the frontend (React) so the shipped product matches the intended vision."
     },
     {
       q: "How do you ship products?",
@@ -241,11 +241,11 @@ const dataContext = {
     },
     {
       q: "What's your availability?",
-      a: "I'm currently leading design at Bobo Health. I'm open to talking about interesting product and design-engineering opportunities — the best way to start is to book a chat or reach out directly."
+      a: "I'm currently leading design at Bobo Health. I'm open to talking about interesting product and design-engineering opportunities, and the best way to start is to book a chat or reach out directly."
     },
     {
       q: "What are you working on now?",
-      a: "At Bobo Health I lead design across mobile, web, and core product — including Poppy AI, Development Pathways, Doctor's Reports, and the Echo design system. On the side I build Forella, a proactive AI assistant (in beta), and I work on Ophir Labs, an AI compliance agent."
+      a: "At Bobo Health I lead design across mobile, web, and core product, including Poppy AI, Development Pathways, Doctor's Reports, and the Echo design system. On the side I build Forella, an AI-powered calendar (in beta), Mossy, an AI bookkeeping platform, and Ophir Labs, an AI compliance agent."
     },
     {
       q: "What tools do you use?",
@@ -253,19 +253,19 @@ const dataContext = {
     },
     {
       q: "What's your design philosophy?",
-      a: "The best products come from where design precision meets engineering execution. I reduce cognitive load and treat trust as something you design — not assume. Clarity and control beat pure automation."
+      a: "The best products come from where design precision meets engineering execution. I reduce cognitive load and treat trust as something you design, not assume. Clarity and control beat pure automation."
     },
     {
       q: "Tell me about your most impactful project.",
-      a: "Skip x WestJet — Canada's largest food-delivery loyalty partnership. I led UX for account linking and rewards, hit a 72% link-completion rate, connected 500K+ accounts, and the framework was adopted across Just Eat Takeaway markets globally."
+      a: "Skip x WestJet, Canada's largest food-delivery loyalty partnership. I led UX for account linking and rewards, hit a 72% link-completion rate, connected 500K+ accounts, and the framework was adopted across Just Eat Takeaway markets globally."
     },
     {
       q: "Do you only design, or do you code too?",
-      a: "Both. I'm a design engineer — I ship the React frontend for things I design. For Forella I built both the interface and the LLM backend end to end."
+      a: "Both. I'm a design engineer, so I ship the React frontend for things I design. For Forella I built both the interface and the backend end to end."
     },
     {
       q: "How can I contact you or see more?",
-      a: "The best way to reach me is to book a chat — there's a button for it right here. You can also grab my resume or find me on LinkedIn and GitHub, and scroll the page to see my featured work."
+      a: "The best way to reach me is to book a chat, and there's a button for it right here. You can also grab my resume or find me on LinkedIn and GitHub, and scroll the page to see my featured work."
     },
     {
       q: "What's your educational background?",

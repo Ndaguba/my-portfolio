@@ -71,3 +71,102 @@ body {
 .theme-dark .hero-pill-button:hover {
     background: rgba(255, 255, 255, 0.12);
 }
+
+/* "Summarize with AI" — animated AI-colored gradient border running around the
+   button. A rotating conic-gradient sits behind the pill; the button's own
+   background covers the center, leaving only a thin animated ring visible. */
+.hero-pill-button.summarize-ai {
+    position: relative;
+    background: var(--bg);
+    border: none;
+    z-index: 0;
+}
+
+.hero-pill-button.summarize-ai::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.5px; /* border thickness */
+    background: conic-gradient(
+        from var(--ai-angle, 0deg),
+        #6366f1,
+        #a855f7,
+        #ec4899,
+        #f59e0b,
+        #22d3ee,
+        #6366f1
+    );
+    /* Show the gradient only in the border ring via a mask cutout. */
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    animation: summarizeAiSpin 3s linear infinite;
+    z-index: -1;
+}
+
+/* Subtle matching glow */
+.hero-pill-button.summarize-ai::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: conic-gradient(
+        from var(--ai-angle, 0deg),
+        #6366f1,
+        #a855f7,
+        #ec4899,
+        #f59e0b,
+        #22d3ee,
+        #6366f1
+    );
+    filter: blur(7px);
+    opacity: 0.35;
+    z-index: -2;
+    animation: summarizeAiSpin 3s linear infinite;
+}
+
+.hero-pill-button.summarize-ai:hover {
+    background: var(--bg);
+}
+
+.theme-dark .hero-pill-button.summarize-ai,
+.theme-dark .hero-pill-button.summarize-ai:hover {
+    background: var(--bg);
+}
+
+/* Gradient text on the label to reinforce the "AI" feel */
+.summarize-ai .summarize-ai-label {
+    background: linear-gradient(90deg, #6366f1, #a855f7, #ec4899);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-weight: 600;
+}
+
+/* Animate the conic-gradient angle. @property lets the angle interpolate
+   smoothly; browsers without support fall back to the static start angle. */
+@property --ai-angle {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+}
+
+@keyframes summarizeAiSpin {
+    to {
+        --ai-angle: 360deg;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-pill-button.summarize-ai::before,
+    .hero-pill-button.summarize-ai::after {
+        animation: none;
+    }
+}

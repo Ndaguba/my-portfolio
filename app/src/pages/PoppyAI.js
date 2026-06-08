@@ -4,7 +4,6 @@ import { IoArrowBack } from "react-icons/io5";
 import './PoppyAI.css';
 import Header from '../components/Header';
 import ChatPanel from '../components/ChatPanel';
-import Footer from '../components/Footer';
 import { useAudio } from '../context/AudioContext';
 import { useFlags } from '../context/FlagsContext';
 import SummaryModal from '../components/SummaryModal';
@@ -85,24 +84,14 @@ export default function PoppyAI() {
 
                         {flags.ai_features_enabled && (
                             <div className="hero-actions">
-                                <button 
-                                    className={`hero-pill-button ${isAudioLoading ? 'loading' : ''}`}
-                                    onClick={handleAudio}
-                                    disabled={isAudioLoading}
-                                >
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="Google-Podcast-Logo--Streamline-Logos" height="20" width="20">
-                                        <path fill="currentColor" fillRule="evenodd" d="M12 1a1.5 1.5 0 0 0 -1.5 1.5V4a1.5 1.5 0 0 0 3 0V2.5A1.5 1.5 0 0 0 12 1Zm3.5 5.5a1.5 1.5 0 0 1 3 0V8a1.5 1.5 0 0 1 -3 0V6.5ZM5.5 7a1.5 1.5 0 1 1 3 0v4.5a1.5 1.5 0 0 1 -3 0V7ZM12 7a1.5 1.5 0 0 0 -1.5 1.5v7a1.5 1.5 0 0 0 3 0v-7A1.5 1.5 0 0 0 12 7ZM2.5 9.75a1.5 1.5 0 0 0 -1.5 1.5v1.5a1.5 1.5 0 0 0 3 0v-1.5a1.5 1.5 0 0 0 -1.5 -1.5Zm3 6.25a1.5 1.5 0 0 1 3 0v1.5a1.5 1.5 0 0 1 -3 0V16Zm6.5 2.5a1.5 1.5 0 0 0 -1.5 1.5v1.5a1.5 1.5 0 0 0 3 0V20a1.5 1.5 0 0 0 -1.5 -1.5Zm9.5 -8.75a1.5 1.5 0 0 0 -1.5 1.5v1.5a1.5 1.5 0 0 0 3 0v-1.5a1.5 1.5 0 0 0 -1.5 -1.5Zm-6 2.75a1.5 1.5 0 0 1 3 0V17a1.5 1.5 0 0 1 -3 0v-4.5Z" clipRule="evenodd" strokeWidth="1"></path>
-                                    </svg>
-                                    {isAudioLoading ? 'Generating...' : 'Listen'}
-                                </button>
-                                <button 
-                                    className="hero-pill-button"
+                                <button
+                                    className="hero-pill-button summarize-ai"
                                     onClick={handleSummarize}
                                 >
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="20" width="20">
                                         <path fill="currentColor" d="M19 18c0.5523 0 1 0.4477 1 1s-0.4477 1 -1 1H5c-0.55228 0 -1 -0.4477 -1 -1s0.44772 -1 1 -1zm0 -4c0.5523 0 1 0.4477 1 1s-0.4477 1 -1 1H5c-0.55228 0 -1 -0.4477 -1 -1s0.44772 -1 1 -1zm-7 -4c0.5523 0 1 0.4477 1 1s-0.4477 1 -1 1H5c-0.55228 0 -1 -0.4477 -1 -1s0.44772 -1 1 -1zm6 -8.5c0.5049 0 0.9268 0.32644 1.0801 0.77246l0.0273 0.09082 0.0664 0.22852c0.3705 1.1292 1.3017 2.00646 2.4629 2.30078 0.4917 0.12454 0.8633 0.56893 0.8633 1.10742 0 0.53848 -0.3717 0.9819 -0.8633 1.10645 -1.2386 0.31386 -2.2164 1.29161 -2.5303 2.53027 -0.1245 0.49168 -0.5679 0.86328 -1.1064 0.86328s-0.9819 -0.3716 -1.1064 -0.86328c-0.3139 -1.23866 -1.2917 -2.21641 -2.5303 -2.53027 -0.461 -0.11678 -0.8169 -0.51382 -0.8594 -1.00684L13.5 6l0.0039 -0.09961c0.0425 -0.49305 0.3984 -0.89103 0.8594 -1.00781 1.2384 -0.3139 2.2154 -1.29085 2.5293 -2.5293C17.0171 1.87165 17.4615 1.5 18 1.5M9 6c0.55228 0 1 0.44772 1 1s-0.44772 1 -1 1H5c-0.55228 0 -1 -0.44772 -1 -1s0.44772 -1 1 -1z" strokeWidth="1"></path>
                                     </svg>
-                                    Summarize
+                                    <span className="summarize-ai-label">Summarize with AI</span>
                                 </button>
                             </div>
                         )}
@@ -139,7 +128,7 @@ export default function PoppyAI() {
                             <p className="emotional-hook">"3 AM is the loneliest hour for a new parent."</p>
                             <div className="section-grid">
                                 <div className="text-content">
-                                    <p>To build an effective solution, I needed to understand why parents abandon vital infant tracking during critical development windows. I found that traditional logbooks fail because they are cold, high-friction, and emotionally taxing during the 3 AM "Exhaustion Window"—parents don't need another database; they need a partner that remembers their child's unique history when they can't.</p>
+                                    <p>To build an effective solution, I needed to understand why parents abandon vital infant tracking during critical development windows. I found that traditional logbooks fail because they are cold, high-friction, and emotionally taxing during the 3 AM "Exhaustion Window". Parents don't need another database; they need a partner that remembers their child's unique history when they can't.</p>
                                 </div>
                                 <div className="stats-sidebar">
                                     <div className="stat-item">
@@ -303,7 +292,7 @@ export default function PoppyAI() {
                                     <h2>Seamless Data Synchronization</h2>
                                 </div>
                                 <div className="interaction-right">
-                                    <p>Once a trackable event is identified—such as a feeding or symptom—the assistant confirms the log in real-time. This turns messy natural language into structured records, closing the data-gap between home life and clinical care.</p>
+                                    <p>Once a trackable event is identified, such as a feeding or symptom, the assistant confirms the log in real-time. This turns messy natural language into structured records, closing the data-gap between home life and clinical care.</p>
                                     <div className="interaction-visual-box">
                                         <img src={require('../assets/projects/poppy-interaction/Complete-session.png')} alt="Complete Session State" />
                                     </div>
@@ -317,7 +306,7 @@ export default function PoppyAI() {
                                     <h2>Proactive Context Gathering</h2>
                                 </div>
                                 <div className="interaction-right">
-                                    <p>To ensure accuracy in clinical logging, I designed an interaction model where the AI proactively asks for missing details. By using supportive, low-friction prompts, we capture precise data points—like volume or duration—without overwhelming the parent during high-stress moments.</p>
+                                    <p>To ensure accuracy in clinical logging, I designed an interaction model where the AI proactively asks for missing details. By using supportive, low-friction prompts, we capture precise data points like volume or duration without overwhelming the parent during high-stress moments.</p>
                                     <div className="interaction-visual-box">
                                         <img src={require('../assets/projects/poppy-interaction/Sleeep-modal.png')} alt="Proactive Context Gathering" />
                                     </div>
@@ -391,8 +380,6 @@ export default function PoppyAI() {
 
 
                 </main>
-
-                <Footer />
             </div>
             <SummaryModal 
                 isOpen={isSummaryOpen} 

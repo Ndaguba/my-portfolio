@@ -494,6 +494,30 @@ app.post('/api/cal/book', generateLimiter, async (req, res) => {
   }
 });
 
+// --- TestFlight beta access requests --------------------------------------
+// Public, rate-limited. Stores first name + email in a Supabase table so I can
+// send invites. Uses the generate limiter (tight) since it writes on submit.
+app.post('/api/testflight-request', generateLimiter, async (req, res) => {
+  const { firstName, email } = req.body || {};
+  if (typeof firstName !== 'string' || firstName.trim().length < 1 || firstName.length > 60) {
+    return res.status(400).json({ error: 'Please provide your first name.' });
+  }
+  if (!isValidEmail(email)) {
+    return res.status(400).json({ error: 'Please provide a valid email.' });
+  }
+  try {
+    const { error } = await supabase
+      .from('testflight_requests')
+      .insert({ first_name: firstName.trim(), email: email.trim().toLowerCase() });
+    if (error) throw error;
+    console.log(`[testflight] request from ${maskEmail(email)}`);
+    res.json({ ok: true });
+  } catch (error) {
+    console.error('TestFlight request error:', error.message || error);
+    res.status(502).json({ error: 'Could not submit your request. Please try again.' });
+  }
+});
+
 app.get('/api/hello', (req, res) => {
   res.json({ message: 'Hello from API' });
 });

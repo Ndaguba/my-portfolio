@@ -5,7 +5,6 @@ import './home.css'; // Reusing home styles for consistency
 import Header from '../components/Header';
 import ChatPanel from '../components/ChatPanel';
 import { IoLocationOutline } from "react-icons/io5";
-import Footer from '../components/Footer';
 import Loading from '../components/Loading';
 
 export default function DesignSystems() {
@@ -41,7 +40,6 @@ export default function DesignSystems() {
                         </div>
                     </section>
                 </main>
-                <Footer />
             </div>
             <ChatPanel isOpen={isPanelOpen} onClose={() => setIsPanelOpen(false)} />
         </div>
