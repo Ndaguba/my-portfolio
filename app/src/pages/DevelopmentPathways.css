@@ -28,7 +28,7 @@
 }
 
 .case-study-header {
-    margin-bottom: 110px;
+    margin-bottom: 90px;
     margin-top: 40px;
 }
 
@@ -75,7 +75,6 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 40px;
-    border-top: 1px solid var(--divider-default);
     padding-top: 40px;
 }
 

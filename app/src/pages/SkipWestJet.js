@@ -334,8 +334,8 @@ export default function SkipWestJet() {
                                 <p>Account-link completion rate driven by value-first onboarding.</p>
                             </div>
                             <div className="impact-card">
-                                <span className="impact-value">Global</span>
-                                <p>Adopted as the standard partnership framework across Just Eat Takeaway markets.</p>
+                                <span className="impact-value">500K+</span>
+                                <p>Accounts connected through the Skip x WestJet partnership.</p>
                             </div>
                             <div className="impact-card">
                                 <span className="impact-value">58%</span>
