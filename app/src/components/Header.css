@@ -7,6 +7,15 @@
   padding: 0 20px;
   display: flex;
   justify-content: center;
+  transition: transform 0.7s cubic-bezier(0.33, 1, 0.68, 1), opacity 0.6s ease;
+  will-change: transform, opacity;
+}
+
+/* Slide the header up out of view on scroll down */
+.site-header--hidden {
+  transform: translateY(-150%);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .header-shell {
@@ -27,6 +36,46 @@
   box-shadow: 0 4px 24px rgba(180, 130, 120, 0.14);
   margin-top: 10px;
 
+}
+
+/* Dark mode: glassy dark pill + light text/icons */
+.theme-dark .header-shell {
+  background: rgba(34, 36, 38, 0.55);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+.theme-dark .nav-link {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.theme-dark .nav-link:hover,
+.theme-dark .nav-link.active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.theme-dark .nav-toggle-bar {
+  background: #e6eef6;
+}
+
+.theme-dark .nav-toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.theme-dark .mobile-menu {
+  background: rgba(28, 30, 32, 0.92);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.theme-dark .mobile-menu-link {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.theme-dark .mobile-menu-link:hover,
+.theme-dark .mobile-menu-link.active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .brand-link {

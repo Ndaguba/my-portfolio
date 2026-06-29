@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useFlags } from '../context/FlagsContext';
+import { useTheme } from '../context/ThemeContext';
 import { Link } from 'react-router-dom';
 import './home.css';
 import Header from '../components/Header';
@@ -48,13 +49,67 @@ const OptimizedImage = ({ src, alt, className, priority = false }) => {
 };
 
 export default function Home() {
+  const { theme } = useTheme();
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const [askInput, setAskInput] = useState('');
   const [initialMessage, setInitialMessage] = useState('');
   const [seedText, setSeedText] = useState('');
   const [activeSection, setActiveSection] = useState('home');
+  const [headerHidden, setHeaderHidden] = useState(false);
   const scrollRef = React.useRef(null);
   const { flags } = useFlags();
+
+  // Auto-hide the header on scroll down, reveal on scroll up / near the top.
+  useEffect(() => {
+    const root = scrollRef.current;
+    if (!root) return;
+
+    let lastY = root.scrollTop;
+    let accum = 0; // accumulated distance in the current scroll direction
+    let ticking = false;
+    // Require a deliberate amount of travel before flipping, so a fast flick
+    // commits once and lets the slide transition play out instead of toggling
+    // mid-animation.
+    const HIDE_TRAVEL = 90;
+    const SHOW_TRAVEL = 50;
+
+    const update = () => {
+      const y = root.scrollTop;
+      const delta = y - lastY;
+
+      // Reset the accumulator whenever the scroll direction reverses.
+      if ((delta > 0 && accum < 0) || (delta < 0 && accum > 0)) accum = 0;
+      accum += delta;
+
+      // Only start hiding once the user has scrolled down into the case-study
+      // area (roughly when the work section reaches the upper-middle of the
+      // viewport). Above that, the header always stays visible.
+      const workEl = document.getElementById('work');
+      const hideThreshold = workEl
+        ? workEl.offsetTop - root.clientHeight * 0.4
+        : 360;
+
+      if (y < hideThreshold) {
+        setHeaderHidden(false);
+      } else if (accum > HIDE_TRAVEL) {
+        setHeaderHidden(true);
+      } else if (accum < -SHOW_TRAVEL) {
+        setHeaderHidden(false);
+      }
+      lastY = y;
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(update);
+      }
+    };
+
+    root.addEventListener('scroll', onScroll, { passive: true });
+    return () => root.removeEventListener('scroll', onScroll);
+  }, []);
 
   // Scroll-spy: highlight Home over the hero, Projects over the case studies.
   useEffect(() => {
@@ -93,6 +148,7 @@ export default function Home() {
       showImage: true,
       overlayImage: skipExpanded,
       mediaBg: '#e4e0f3',
+      mediaBgDark: '#2a2740',
       logo: skipLogo,
       logoLabel: "SkipTheDishes",
       category: "Design",
@@ -112,6 +168,7 @@ export default function Home() {
       showImage: true,
       overlayImage: devExpanded,
       mediaBg: '#dbe7f5',
+      mediaBgDark: '#222b3a',
       logo: boboLogo,
       logoLabel: "Bobo Health",
       category: "Design",
@@ -153,7 +210,8 @@ export default function Home() {
       description: "An AI-native calendar I designed and built end to end. An Expo / React Native iOS app where a streaming agent operates the app through interactive cards. Now in beta with 50+ users.",
       image: forellaWeb,
       showImage: true,
-      mediaBg: '#f1ede4',
+      mediaBg: '#f7e6ec',
+      mediaBgDark: '#2e2228',
       logo: forellaLogo,
       logoLabel: "Forella",
       category: "Engineering",
@@ -173,6 +231,7 @@ export default function Home() {
       image: ophirLabs,
       showImage: true,
       mediaBg: '#dde9e2',
+      mediaBgDark: '#212c27',
       logo: ophirLogo,
       logoLabel: "Ophir Labs",
       category: "Engineering",
@@ -193,6 +252,7 @@ export default function Home() {
       overlayImage: retailMediaOverlay,
       showImage: true,
       mediaBg: '#f1ede4',
+      mediaBgDark: '#2c2820',
       logo: skipLogo,
       logoLabel: "Skip",
       category: "Design",
@@ -215,7 +275,7 @@ export default function Home() {
   return (
     <div className="home-container">
       <div className="main-content" ref={scrollRef}>
-        <Header activeSection={activeSection} />
+        <Header activeSection={activeSection} hidden={headerHidden} />
         <main className="home-page">
           <div id="home" className="hero-section">
             <div className="intro-hero">
@@ -367,7 +427,10 @@ export default function Home() {
                 <div className="case-study-media-wrap">
                   <div
                     className={`case-study-media ${project.id === 'forella' ? 'forella-media' : ''}`}
-                    style={project.mediaBg ? { background: project.mediaBg } : undefined}
+                    style={(() => {
+                      const bg = theme === 'dark' ? (project.mediaBgDark || project.mediaBg) : project.mediaBg;
+                      return bg ? { background: bg } : undefined;
+                    })()}
                   >
                     {project.showImage && project.image && (
                       <img src={project.image} alt={project.title} className={`case-study-media-img ${project.id === 'forella' ? 'forella-media-img' : ''} ${project.id === 'ophir-labs' ? 'ophir-media-img' : ''}`} />

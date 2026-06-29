@@ -8,6 +8,10 @@
   background-color: #f3f3f1;
 }
 
+.theme-dark .home-container {
+  background-color: #161718;
+}
+
 .main-content {
   flex: 1;
   min-width: 0;
@@ -352,6 +356,16 @@ h1 {
   padding: 0 6px;
 }
 
+/* Dark mode: lift the headline off the dark background */
+.theme-dark .intro-line {
+  color: #e6eef6;
+}
+
+.theme-dark .intro-name {
+  background: rgba(140, 150, 250, 0.22);
+  box-shadow: 0 0 0 1px rgba(140, 150, 250, 0.45);
+}
+
 .intro-avatar-wrap {
   position: relative;
   display: inline-flex;
@@ -670,6 +684,60 @@ h1 {
 
 .case-study-visit-link svg {
   stroke: #7c3aed;
+}
+
+/* ---- Dark mode: case-study cards ---- */
+.theme-dark .case-study-title,
+.theme-dark .case-study-stat-value {
+  color: #e6eef6;
+}
+
+.theme-dark .case-study-desc {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.theme-dark .case-study-company-name {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.theme-dark .case-study-stat-label {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Primary "View case study" button — invert to light on dark */
+.theme-dark .case-study-btn {
+  background: #f2f2f2;
+  color: #16191c;
+}
+
+.theme-dark .case-study-btn:hover {
+  background: #ffffff;
+}
+
+.theme-dark .case-study-btn.is-disabled,
+.theme-dark .case-study-btn.is-disabled:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.theme-dark .case-study-btn.is-disabled svg {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.theme-dark .case-study-tag--design {
+  color: #b08cff;
+  background: rgba(123, 63, 228, 0.2);
+}
+
+.theme-dark .case-study-tag--engineering {
+  color: #7aa6ff;
+  background: rgba(37, 99, 235, 0.2);
+}
+
+.theme-dark .case-study-visit-link,
+.theme-dark .case-study-visit-link svg {
+  color: #b08cff;
+  stroke: #b08cff;
 }
 
 .case-study-media-wrap {

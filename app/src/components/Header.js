@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Header.css';
 import heroProfile from '../assets/Emeka.png';
 
-export default function Header({ activeSection = 'home' }) {
+export default function Header({ activeSection = 'home', hidden = false }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const scrollToSection = (e, id) => {
@@ -36,7 +36,7 @@ export default function Header({ activeSection = 'home' }) {
   }, []);
 
   return (
-    <header className="site-header">
+    <header className={`site-header ${hidden && !menuOpen ? 'site-header--hidden' : ''}`}>
       <div className="header-shell">
         <a
           href="/"

@@ -17,6 +17,7 @@ import reportWebVitals from './reportWebVitals';
 import { AudioProvider } from './context/AudioContext';
 import { FlagsProvider } from './context/FlagsContext';
 import FloatingAudioPlayer from './components/FloatingAudioPlayer';
+import ThemeToggle from './components/ThemeToggle';
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
         <Route path="/forella" element={<Forella />} />
       </Routes>
       <FloatingAudioPlayer />
+      <ThemeToggle />
     </>
   );
 };

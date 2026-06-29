@@ -55,9 +55,6 @@
   font-weight: 500;
 }
 
-.theme-dark .ac-headline {
-  color: #f2f2f2;
-}
 
 /* ---- shared card chrome ---- */
 .ac-card {
@@ -190,10 +187,6 @@ body.ac-drag-active * {
 }
 
 
-.theme-dark .ac-card {
-  background: rgba(255, 255, 255, 0.06);
-  color: #f2f2f2;
-}
 
 .ac-eyebrow {
   font-size: 10px;
@@ -441,15 +434,6 @@ body.ac-drag-active * {
   color: #6b6c74;
 }
 
-.theme-dark .ac-learning {
-  background: rgba(255, 255, 255, 0.06);
-  color: #f2f2f2;
-}
-
-.theme-dark .ac-learning-label {
-  color: rgba(255, 255, 255, 0.7);
-}
-
 .ac-learning-value {
   display: flex;
   align-items: center;
@@ -567,10 +551,6 @@ body.ac-drag-active * {
   object-fit: cover;
   flex: 0 0 auto;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
-}
-
-.theme-dark .ac-companies-item {
-  color: #f2f2f2;
 }
 
 /* ---- developer technologies ---- */
@@ -695,11 +675,6 @@ body.ac-drag-active * {
 .ac-education-sub {
   font-size: 12px;
   color: rgba(0, 0, 0, 0.5);
-}
-
-.theme-dark .ac-education-school,
-.theme-dark .ac-education-sub {
-  color: rgba(255, 255, 255, 0.6);
 }
 
 /* ---- figma ---- */
