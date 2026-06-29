@@ -247,7 +247,7 @@ export default function Home() {
       id: "retail-media",
       title: "Retail Media Advertising",
       company: "Retail Media Network",
-      description: "A retail media advertising platform that lets brands surface sponsored placements across the ordering experience. I designed the ad formats, targeting controls, and measurement surfaces that turned the marketplace into a new advertising channel.",
+      description: "I led the design of the ROKT media integration into the Skip platform, creating advertising placements and a new revenue stream across the customer journey — without introducing friction into the order experience.",
       image: retailMediaImage,
       overlayImage: retailMediaOverlay,
       showImage: true,
