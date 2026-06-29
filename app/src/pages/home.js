@@ -5,7 +5,6 @@ import './home.css';
 import Header from '../components/Header';
 import ChatPanel from '../components/ChatPanel';
 import AboutCanvas from '../components/AboutCanvas';
-import heroProfile from '../assets/Emeka.png';
 import claudeLogo from '../assets/Claude_AI_logo.svg.png';
 import cursorLogo from '../assets/Cursor_logo.svg.png';
 import boboLogo from '../assets/bobo.png';
@@ -221,10 +220,6 @@ export default function Home() {
           <div id="home" className="hero-section">
             <div className="intro-hero">
               <h1 className="intro-line intro-line-top">
-                <span className="intro-avatar-wrap">
-                  <img src={heroProfile} alt="Emeka portrait" className="intro-avatar" />
-                  <span className="intro-avatar-dot" />
-                </span>
                 <span>I&apos;m </span>
                 <span className="intro-name">Emeka</span>
                 <span>, Senior Product Designer.</span>

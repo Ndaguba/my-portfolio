@@ -167,11 +167,11 @@ h1 {
   width: fit-content;
   max-width: 900px;
   margin: 0 auto;
-  text-align: left;
+  text-align: center;
   display: flex;
   flex-direction: column;
   gap: 4px;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .intro-line {
@@ -189,7 +189,7 @@ h1 {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 0 8px;
 }
 
@@ -433,8 +433,8 @@ h1 {
   }
 
   .intro-hero {
-    align-items: flex-start;
-    text-align: left;
+    align-items: center;
+    text-align: center;
   }
 
   .intro-line {

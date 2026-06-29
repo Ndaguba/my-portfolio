@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Header.css';
+import heroProfile from '../assets/Emeka.png';
 
 export default function Header({ activeSection = 'home' }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -37,6 +38,17 @@ export default function Header({ activeSection = 'home' }) {
   return (
     <header className="site-header">
       <div className="header-shell">
+        <a
+          href="/"
+          onClick={(e) => scrollToSection(e, 'home')}
+          className="header-avatar-link"
+          aria-label="Home"
+        >
+          <span className="header-avatar-wrap">
+            <img src={heroProfile} alt="Emeka portrait" className="header-avatar" />
+            <span className="header-avatar-dot" />
+          </span>
+        </a>
         <div className="header-right">
           <nav className="header-nav" aria-label="Primary">
             <a

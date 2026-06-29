@@ -21,7 +21,8 @@
   display: flex;
   padding: 0px 4px;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
+  gap: 12px;
   border: 1px solid rgba(255, 255, 255, 0.6);
   box-shadow: 0 4px 24px rgba(180, 130, 120, 0.14);
   margin-top: 10px;
@@ -61,7 +62,41 @@
   display: inline-flex;
   align-items: center;
   gap: 18px;
-  margin-left: auto;
+}
+
+/* Avatar sitting in the header row, left of the nav */
+.header-avatar-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  flex: 0 0 auto;
+  padding-left: 4px;
+}
+
+.header-avatar-wrap {
+  position: relative;
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.header-avatar {
+  width: 34px;
+  height: 34px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  display: block;
+}
+
+.header-avatar-dot {
+  position: absolute;
+  right: 0;
+  bottom: 1px;
+  width: 9px;
+  height: 9px;
+  background: #4ade80;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
 }
 
 .nav-link {
@@ -234,6 +269,10 @@
   }
 
   .header-nav {
+    display: none;
+  }
+
+  .header-avatar-link {
     display: none;
   }
 
