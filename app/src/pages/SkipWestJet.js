@@ -323,22 +323,18 @@ export default function SkipWestJet() {
                             <h3 className="impact-headline">From Local Launch to Global Standard</h3>
                         </div>
                         
-                        <div className="impact-grid" style={{ gridTemplateColumns: 'repeat(4, 1fr)' }}>
+                        <div className="impact-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
                             <div className="impact-card">
                                 <span className="impact-value">72%</span>
                                 <p>Account-link completion rate driven by value-first onboarding.</p>
                             </div>
                             <div className="impact-card">
-                                <span className="impact-value">500K+</span>
-                                <p>Accounts connected through the Skip x WestJet partnership.</p>
+                                <span className="impact-value">5</span>
+                                <p>Canadian brand partners onboarded their own partnership experience using this work as the template.</p>
                             </div>
                             <div className="impact-card">
-                                <span className="impact-value">58%</span>
-                                <p>Return rate to partnership management within 30 days, proving ongoing utility.</p>
-                            </div>
-                            <div className="impact-card">
-                                <span className="impact-value" style={{ fontSize: '1.5rem', marginBottom: '16px' }}>JET Scale</span>
-                                <p>The framework now powers cross-brand rewards for millions of users worldwide.</p>
+                                <span className="impact-value">3M</span>
+                                <p>Paid subscriptions converted through brand partners.</p>
                             </div>
                         </div>
 
