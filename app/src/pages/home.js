@@ -227,14 +227,14 @@ export default function Home() {
                 </span>
                 <span>I&apos;m </span>
                 <span className="intro-name">Emeka</span>
-                <span>, Senior Product Designer/Engineer.</span>
+                <span>, Senior Product Designer.</span>
               </h1>
-              <h2 className="intro-line">
-                <span>I design data-led </span>
-                <span className="intro-accent">interfaces &amp; ship code</span>
-                <span>, </span>
-                <span className="intro-italic">end to end.</span>
-              </h2>
+              <p className="intro-supporting">
+                <span>I design products that solve </span>
+                <span className="intro-accent">complex problems</span>
+                <span>, drive business outcomes, and scale across </span>
+                <span className="intro-italic">millions of customer experiences.</span>
+              </p>
 
               <p className="intro-subtext">
                 Currently leading design <span className="intro-subtext-accent">@ Bobo Health</span>
