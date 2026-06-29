@@ -181,6 +181,17 @@ export default function SkipWestJet() {
                                     </div>
                                 </div>
                             </div>
+
+                            <div className="full-width-visual" style={{ marginTop: '40px', overflow: 'hidden', borderRadius: '12px', border: '1px solid var(--divider-default)', height: '650px' }}>
+                                <iframe
+                                    style={{ border: 'none', background: '#f8fafc', marginTop: '-1px' }}
+                                    width="100%"
+                                    height="710"
+                                    src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fboard%2FQO7yLh4CNh3NIfk2SwZTTR%2FSKIP-X-WJ%3Fnode-id%3D0-1"
+                                    allowFullScreen
+                                    title="Skip x WestJet User Flow"
+                                ></iframe>
+                            </div>
                         </div>
                     </section>
 

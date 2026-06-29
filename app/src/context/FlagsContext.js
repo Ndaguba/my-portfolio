@@ -28,6 +28,9 @@ export const FlagsProvider = ({ children }) => {
   useEffect(() => {
     fetchFlags();
 
+    // Skip realtime when Supabase isn't configured (e.g. local dev without .env).
+    if (!supabase) return;
+
     // Set up Realtime subscription
     const channel = supabase
       .channel('public:feature_flags')

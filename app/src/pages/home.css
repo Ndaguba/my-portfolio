@@ -736,11 +736,11 @@ h1 {
   transform-origin: center center;
 }
 
-/* Mossy: laptop dashboard mockup, larger and centered */
-.case-study-media-img.mossy-media-img {
-  align-self: center;
-  transform: translateY(36px) scale(0.96);
-  transform-origin: center center;
+/* Retail Media: advertising card pops out over the device mockup */
+.case-study-media-overlay.retail-overlay {
+  width: 44%;
+  top: 30%;
+  right: 10%;
 }
 
 /* Forella mobile app screen sitting beside the iPad screen */
@@ -793,9 +793,9 @@ h1 {
     top: calc(40% - 24px);
   }
 
-  /* Mossy: shrink the laptop mockup on mobile so it sits within the panel */
-  .case-study-media-img.mossy-media-img {
-    transform: translateY(36px) scale(0.90);
+  /* Retail Media: keep the advertising card pop-out within the panel on mobile */
+  .case-study-media-overlay.retail-overlay {
+    width: 48%;
   }
 }
 

@@ -15,8 +15,8 @@ import forellaWeb from '../assets/forella-web.png';
 import forellaMobile from '../assets/forella-mobile-app.png';
 import ophirLogo from '../assets/Ophir.png';
 import ophirLabs from '../assets/Ophir-labs.png';
-import mossyImage from '../assets/AI-bookkeeping.png';
-import mossyLogo from '../assets/mossy.jpg';
+import retailMediaImage from '../assets/Order tracker.png';
+import retailMediaOverlay from '../assets/AD.png';
 import westjetImage from '../assets/WestJet.png';
 import devExpanded from '../assets/expanded.png';
 import skipExpanded from '../assets/skip-expanded.png';
@@ -186,28 +186,29 @@ export default function Home() {
       statLabel: "organizational pilot"
     },
     {
-      id: "mossy",
-      title: "Mossy",
-      company: "AI Bookkeeping for Solopreneurs",
-      description: "An AI bookkeeping platform for solopreneurs and small business owners. It automatically categorizes transactions, surfaces income and expense insights, and answers plain-language questions about your finances. I designed and build the product end to end.",
-      image: mossyImage,
+      id: "retail-media",
+      title: "Retail Media Advertising",
+      company: "Retail Media Network",
+      description: "A retail media advertising platform that lets brands surface sponsored placements across the ordering experience. I designed the ad formats, targeting controls, and measurement surfaces that turned the marketplace into a new advertising channel.",
+      image: retailMediaImage,
+      overlayImage: retailMediaOverlay,
       showImage: true,
-      mediaBg: '#d3e3d6',
-      logo: mossyLogo,
-      logoLabel: "Mossy",
-      category: "Engineering",
-      tags: ["Design", "Engineering"],
+      mediaBg: '#f1ede4',
+      logo: skipLogo,
+      logoLabel: "Skip",
+      category: "Design",
+      tags: ["Design"],
       link: null,
-      visitUrl: "https://app.usemossy.co/login",
-      imgClass: "mossy-image",
-      status: "SHIPPED",
-      statValue: "15",
-      statLabel: "beta users"
+      visitUrl: null,
+      imgClass: "retail-media-image",
+      status: "COMING SOON",
+      statValue: "$15M+",
+      statLabel: "in advertising revenue"
     }
   ];
 
   // Projects shown in the case-study section, in this exact order.
-  const featuredOrder = ['development-pathways', 'skip-westjet', 'forella', 'mossy'];
+  const featuredOrder = ['development-pathways', 'skip-westjet', 'retail-media', 'forella'];
   const featuredProjects = featuredOrder
     .map(id => allProjects.find(p => p.id === id))
     .filter(Boolean);
@@ -374,14 +375,14 @@ export default function Home() {
                     style={project.mediaBg ? { background: project.mediaBg } : undefined}
                   >
                     {project.showImage && project.image && (
-                      <img src={project.image} alt={project.title} className={`case-study-media-img ${project.id === 'forella' ? 'forella-media-img' : ''} ${project.id === 'ophir-labs' ? 'ophir-media-img' : ''} ${project.id === 'mossy' ? 'mossy-media-img' : ''}`} />
+                      <img src={project.image} alt={project.title} className={`case-study-media-img ${project.id === 'forella' ? 'forella-media-img' : ''} ${project.id === 'ophir-labs' ? 'ophir-media-img' : ''}`} />
                     )}
                     {project.id === 'forella' && (
                       <img src={forellaMobile} alt="Forella mobile app" className="forella-mobile-img" />
                     )}
                   </div>
                   {project.overlayImage && (
-                    <img src={project.overlayImage} alt="" aria-hidden="true" className={`case-study-media-overlay ${project.id === 'skip-westjet' ? 'skip-overlay' : ''}`} />
+                    <img src={project.overlayImage} alt="" aria-hidden="true" className={`case-study-media-overlay ${project.id === 'skip-westjet' ? 'skip-overlay' : ''} ${project.id === 'retail-media' ? 'retail-overlay' : ''}`} />
                   )}
                 </div>
               </article>
