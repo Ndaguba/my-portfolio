@@ -35,11 +35,18 @@
     -->
     <title>Emeka Ndaguba | Product Designer</title>
     <script>
-      // App locked to light mode.
+      // Apply the device/OS theme synchronously before first paint to avoid a
+      // flash of the wrong theme on navigation. The device preference always
+      // wins on load (a manual toggle is session-only, handled in React).
       (function() {
         try {
-          document.documentElement.classList.remove('theme-dark');
-          localStorage.setItem('theme', 'light');
+          var prefersDark = window.matchMedia &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (prefersDark) {
+            document.documentElement.classList.add('theme-dark');
+          } else {
+            document.documentElement.classList.remove('theme-dark');
+          }
         } catch (e) {}
       })();
     </script>
