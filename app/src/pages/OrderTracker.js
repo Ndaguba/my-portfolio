@@ -79,7 +79,7 @@ export default function OrderTracker() {
                         </div>
 
                         <h1 className="hero-statement">
-                            Led the redesign of Skip’s order tracking experience by introducing a bottom-sheet architecture that created a more flexible foundation for logistics, monetization, and post-purchase growth.
+                            Evolving order tracking from a status screen into a scalable post-order experience.
                         </h1>
 
                         {flags.ai_features_enabled && (
@@ -99,15 +99,15 @@ export default function OrderTracker() {
                         <div className="project-metadata">
                             <div className="meta-col">
                                 <span className="meta-label">Product</span>
-                                <span className="meta-value">SkipTheDishes Order Tracker</span>
+                                <span className="meta-value">Skip — Consumer Mobile Experience</span>
                              </div>
                              <div className="meta-col">
-                                 <span className="meta-label">Skills</span>
-                                 <span className="meta-value">Mobile Product Design, Logistics UX, Platform Thinking, Monetization Design</span>
+                                 <span className="meta-label">Focus</span>
+                                 <span className="meta-value">Delivery Experience, Information Architecture, Platform Scalability</span>
                              </div>
                              <div className="meta-col">
                                  <span className="meta-label">My role</span>
-                                 <span className="meta-value">Senior Product Designer</span>
+                                 <span className="meta-value">Product Designer</span>
                              </div>
                              <div className="meta-col">
                                  <span className="meta-label">Timeline</span>
@@ -117,7 +117,7 @@ export default function OrderTracker() {
                     </header>
 
                     <section className="hero-visual">
-                         <img src={require('../assets/profile/Delivery-tracker.png')} alt="Order Tracker Redesign" />
+                        <div className="placeholder-box large">Hero — redesigned Order Tracker across delivery states</div>
                     </section>
 
                     {/* Section 1: Overview & Problem */}
@@ -125,10 +125,18 @@ export default function OrderTracker() {
                         <div className="section-label">OVERVIEW</div>
                         <div className="section-content">
                             <h2 className="content-title">Overview</h2>
-                            <p className="emotional-hook">Order tracking was one of the most frequently visited surfaces in the Skip experience, but it had become too limited for the evolving needs of the business. What had historically functioned as a status page needed to become a more extensible product surface.</p>
+                            <p className="emotional-hook">As Skip expanded its delivery experience, the Order Tracker was being asked to do significantly more than it was originally designed for.</p>
                             <div className="section-grid">
                                 <div className="text-content">
-                                    <p>I led UX for the redesign of the tracking experience, with the goal of creating a new structural foundation that could support emerging logistics requirements and unlock new business opportunities.</p>
+                                    <p>What had started as a relatively straightforward way for customers to understand the status of their order was becoming an important surface for communication, safety, support, grocery fulfilment and new business opportunities.</p>
+                                    <p>I worked on rethinking the experience so it could accommodate these growing needs while keeping the thing customers cared about most at the centre: <strong>where is my order, and when will it arrive?</strong></p>
+                                </div>
+                                <div className="stats-sidebar">
+                                    <div className="stat-item">
+                                        <span className="stat-icon">📦</span>
+                                        <h3>Objective</h3>
+                                        <p>Evolve a single-purpose status screen into an extensible foundation for Skip's post-order experience.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -137,13 +145,26 @@ export default function OrderTracker() {
                     <div className="section-divider"></div>
 
                     <section className="casestudy-section asymmetric">
-                        <div className="section-label">PROBLEM</div>
+                        <div className="section-label">CHALLENGE</div>
                         <div className="section-content">
-                            <h2 className="content-title">The Problem</h2>
-                            <p className="section-subtitle">The challenge was bigger than improving visibility during delivery. Skip needed the tracking experience to do more.</p>
+                            <h2 className="content-title">The Order Tracker was running out of room</h2>
+                            <p className="section-subtitle">The existing experience worked well when its primary responsibility was communicating order status. But as the delivery ecosystem evolved, new requirements continued to compete for the same limited space.</p>
                             <div className="section-grid">
                                 <div className="text-content">
-                                    <p>The existing model did not create enough flexibility for PIN-based handoff flows, multi-partner delivery, and monetization opportunities. The experience needed a new architecture that could support all of that without becoming cluttered or overwhelming.</p>
+                                    <p>We needed to support courier chat, delivery verification codes, additional delivery instructions, grocery item substitutions, retail media, post-checkout upselling and multi-partner pooled delivery.</p>
+                                    <p>Adding each requirement independently would have gradually turned the tracker into a collection of competing modules. The challenge wasn't simply <strong>where to put the new features</strong> — it was figuring out <strong>what the Order Tracker needed to become.</strong></p>
+                                </div>
+                                <div className="stats-sidebar">
+                                    <div className="stat-item">
+                                        <span className="stat-icon">🧩</span>
+                                        <h3>Competing for space</h3>
+                                        <p>Courier chat, delivery codes, delivery instructions, grocery substitutions, retail media, upselling and multi-partner pooled delivery.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="full-width-visual" style={{ marginTop: '40px' }}>
+                                <div className="interaction-visual-box placeholder">
+                                    <span className="placeholder-text">Existing Order Tracker — annotated with where the scalability problems appeared</span>
                                 </div>
                             </div>
                         </div>
@@ -151,24 +172,22 @@ export default function OrderTracker() {
 
                     <div className="section-divider"></div>
 
-                    {/* Section 2: Role & Approach */}
                     <section className="casestudy-section asymmetric">
-                        <div className="section-label">ROLE</div>
+                        <div className="section-label">WHY IT MATTERED</div>
                         <div className="section-content">
-                            <h2 className="content-title">My Role</h2>
-                            <p className="section-subtitle">As UX lead, I was responsible for rethinking the experience and defining the new interaction model.</p>
+                            <h2 className="content-title">Why this mattered</h2>
                             <div className="constraint-grid">
                                 <div className="constraint-card">
-                                    <h3>Product UX Strategy</h3>
-                                    <p>Rethinking the tracking surface from a status page to a flexible platform surface.</p>
+                                    <h3>01 — Customer confidence</h3>
+                                    <p>Waiting for food is inherently uncertain. Customers want to know whether their order has been confirmed, whether preparation is progressing, where their courier is and whether anything requires their attention. The tracker needed to communicate progress more clearly and reduce the anxiety that comes from not knowing.</p>
                                 </div>
                                 <div className="constraint-card">
-                                    <h3>Bottom-Sheet Architecture</h3>
-                                    <p>Introducing a new interaction model that allows the experience to scale gracefully.</p>
+                                    <h3>02 — Delivery reliability</h3>
+                                    <p>Skip was also introducing delivery verification codes. The feature had already demonstrated a 55% reduction in undelivered orders in other markets, creating an opportunity to improve successful handoffs while giving customers and couriers greater confidence at the point of delivery.</p>
                                 </div>
                                 <div className="constraint-card">
-                                    <h3>Monetization Design</h3>
-                                    <p>Creating space for additional merchandising and upsell opportunities during transit.</p>
+                                    <h3>03 — Business growth</h3>
+                                    <p>The existing architecture limited our ability to introduce new revenue opportunities. Retail media, upselling and multi-partner experiences needed somewhere to live — but they couldn't come at the expense of the customer's primary delivery information.</p>
                                 </div>
                             </div>
                         </div>
@@ -177,24 +196,20 @@ export default function OrderTracker() {
                     <div className="section-divider"></div>
 
                     <section className="casestudy-section asymmetric">
-                        <div className="section-label">APPROACH</div>
+                        <div className="section-label">DESIGN QUESTION</div>
                         <div className="section-content">
-                            <div className="constraints-layout">
-                                <div className="constraints-left">
-                                    <h2 className="constellation-title">The Approach</h2>
+                            <h2 className="content-title">How might we make the Order Tracker significantly more capable without making it feel significantly more complicated?</h2>
+                            <div className="section-grid">
+                                <div className="text-content">
+                                    <p>Instead of treating every new requirement as another component to fit onto the existing screen, I looked at the tracker as a <strong>system of information with different levels of urgency.</strong></p>
+                                    <p>Some information is critical right now. Some requires customer action. Some provides reassurance. And some creates additional value but should never interfere with the core delivery journey.</p>
+                                    <p>That distinction gave us a framework for deciding what should appear, when it should appear and how much attention it should demand.</p>
                                 </div>
-                                <div className="constraints-right">
-                                    <div className="constraint-item">
-                                        <h3>Turning page into platform</h3>
-                                        <p>Introducing a bottom-sheet model that allowed the experience to scale as new business needs were added.</p>
-                                    </div>
-                                    <div className="constraint-item">
-                                        <h3>Operational simplicity</h3>
-                                        <p>Designing for complex logistics (PIN codes, pooled delivery) while keeping the experience simple for the user.</p>
-                                    </div>
-                                    <div className="constraint-item last">
-                                        <h3>Creating room for growth</h3>
-                                        <p>Creating space for merchandising and upsell opportunities while the user is actively engaged with their order.</p>
+                                <div className="stats-sidebar">
+                                    <div className="stat-item">
+                                        <span className="stat-icon">🧠</span>
+                                        <h3>Reframe</h3>
+                                        <p>Not "where do the new features go?" but "what level of urgency does each piece of information carry?"</p>
                                     </div>
                                 </div>
                             </div>
@@ -203,26 +218,191 @@ export default function OrderTracker() {
 
                     <div className="section-divider"></div>
 
-                    {/* Section 5: Outcome */}
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">PRINCIPLES</div>
+                        <div className="section-content">
+                            <h2 className="content-title">Design principles</h2>
+
+                            <div className="constraint-grid">
+                                <div className="constraint-card">
+                                    <h3>Progress should always be obvious</h3>
+                                    <p>A customer should be able to open the tracker and understand the state of their order almost immediately.</p>
+                                </div>
+                                <div className="constraint-card">
+                                    <h3>Surface information when it becomes relevant</h3>
+                                    <p>Delivery codes, substitutions and courier communication shouldn't compete for attention throughout the entire journey. They should become prominent when customers actually need them.</p>
+                                </div>
+                                <div className="constraint-card">
+                                    <h3>Protect the core experience</h3>
+                                    <p>Commercial opportunities such as advertising and upselling needed to coexist with tracking rather than overwhelm it. The customer's order always remained the primary hierarchy.</p>
+                                </div>
+                                <div className="constraint-card">
+                                    <h3>Design for what comes next</h3>
+                                    <p>Rather than solving for one new requirement at a time, the structure needed to accommodate future delivery capabilities without requiring another fundamental redesign.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div className="section-divider"></div>
+
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">ANXIETY</div>
+                        <div className="section-content">
+                            <h2 className="content-title">More information isn't always more reassuring</h2>
+                            <div className="section-grid">
+                                <div className="text-content">
+                                    <p>One of the important tensions in the project was that customers naturally want more information while waiting for an order — but adding more information can also make an interface harder to understand.</p>
+                                    <p>Rather than exposing everything simultaneously, the redesign prioritized <strong>progressive disclosure</strong>. The experience could change alongside the order:</p>
+                                    <p><strong>Order confirmed → Preparing → Courier assigned → On the way → Arriving → Delivered</strong></p>
+                                    <p>At each stage, the tracker could prioritize the information and actions most relevant to that moment. The goal was to make the experience feel less like repeatedly checking a status page and more like being kept informed throughout the delivery.</p>
+                                </div>
+                                <div className="stats-sidebar">
+                                    <div className="stat-item">
+                                        <span className="stat-icon">🌡️</span>
+                                        <h3>Insight</h3>
+                                        <p>Customers want more information while they wait, but more information on screen makes an interface harder to read. Timing resolves the tension.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="full-width-visual" style={{ marginTop: '40px' }}>
+                                <div className="interaction-visual-box placeholder">
+                                    <span className="placeholder-text">Progressive disclosure across the six delivery states</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div className="section-divider"></div>
+
+                    {/* Solution Intro */}
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">SOLUTION</div>
+                        <div className="section-content">
+                            <h2 className="content-title">A more flexible Order Tracker</h2>
+                            <p className="section-subtitle">A clearer hierarchy between order progress, contextual actions and secondary content — not a new UI, but a more extensible foundation for Skip's post-order experience.</p>
+                        </div>
+                    </section>
+
+                    {/* Solution - Interaction Showcase */}
+                    <section className="interaction-showcase">
+                        <div className="interaction-item">
+                            <div className="interaction-header">
+                                <div className="interaction-left">
+                                    <h2>Order Progress</h2>
+                                    <h3 style={{ fontSize: '1.1rem', fontWeight: '500', color: 'var(--muted)', marginTop: '8px' }}>The primary hierarchy</h3>
+                                </div>
+                                <div className="interaction-right">
+                                    <p>The state of the order stays the first thing a customer reads, at every stage of delivery. Everything else in the experience is arranged around it rather than competing with it.</p>
+                                    <div className="interaction-visual-box placeholder">
+                                        <span className="placeholder-text">Redesigned Order Tracker — order progress</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="interaction-item">
+                            <div className="interaction-header">
+                                <div className="interaction-left">
+                                    <h2>Delivery Verification</h2>
+                                    <h3 style={{ fontSize: '1.1rem', fontWeight: '500', color: 'var(--muted)', marginTop: '8px' }}>Making handoffs more reliable</h3>
+                                </div>
+                                <div className="interaction-right">
+                                    <p>Customers receive a code to provide to their courier at handoff, confirming the order reached the right person. The model had already demonstrated a 55% reduction in undelivered orders in other markets, so the design challenge was integrating it naturally: easy to discover when needed, difficult to miss at the moment of delivery, and quiet enough not to distract before it becomes relevant.</p>
+                                    <div className="interaction-visual-box placeholder">
+                                        <span className="placeholder-text">Delivery code — discovery, states and handoff moment</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="interaction-item">
+                            <div className="interaction-header">
+                                <div className="interaction-left">
+                                    <h2>Courier Communication</h2>
+                                </div>
+                                <div className="interaction-right">
+                                    <p>Chat and delivery instructions become prominent once a courier is assigned, rather than occupying space throughout the entire order. The contextual layer lets communication surface at the point it can actually change the outcome.</p>
+                                    <div className="interaction-visual-box placeholder">
+                                        <span className="placeholder-text">Courier chat and delivery instructions</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="interaction-item">
+                            <div className="interaction-header">
+                                <div className="interaction-left">
+                                    <h2>Grocery Substitutions</h2>
+                                </div>
+                                <div className="interaction-right">
+                                    <p>Grocery fulfilment introduced decisions that require customer action while the order is still being assembled. Substitutions are treated as an action-required state, given the attention that demands, and resolved before it reaches the handoff.</p>
+                                    <div className="interaction-visual-box placeholder">
+                                        <span className="placeholder-text">Grocery item substitutions — action required state</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="interaction-item">
+                            <div className="interaction-header">
+                                <div className="interaction-left">
+                                    <h2>Room for Growth</h2>
+                                    <h3 style={{ fontSize: '1.1rem', fontWeight: '500', color: 'var(--muted)', marginTop: '8px' }}>Monetization surfaces</h3>
+                                </div>
+                                <div className="interaction-right">
+                                    <p>Instead of treating advertising, upselling or partner experiences as additions competing with delivery information, the new hierarchy provided defined areas where secondary experiences could appear appropriately — giving the business room to explore retail media, post-checkout upselling and multi-partner pooling without compromising the primary journey.</p>
+                                    <div className="interaction-visual-box placeholder">
+                                        <span className="placeholder-text">Retail media and upsell placements within the new hierarchy</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div className="section-divider"></div>
+
+                    {/* Outcome */}
                     <section className="casestudy-section">
                         <div className="impact-header">
                             <h2 className="section-title">Outcome</h2>
-                            <h3 className="impact-headline">A Calmer Journey</h3>
+                            <h3 className="impact-headline">One redesign, multiple product opportunities</h3>
                         </div>
-                        
+
                         <div className="impact-grid">
                             <div className="impact-card">
-                                <span className="impact-value">Extensible</span>
-                                <p>Repositioned order tracking into a more extensible platform surface inside Skip.</p>
+                                <span className="impact-value">Scalable</span>
+                                <p>Established a foundation capable of supporting a growing delivery ecosystem rather than a single tracking use case.</p>
                             </div>
                             <div className="impact-card">
-                                <span className="impact-value">Flexible</span>
-                                <p>Created a new bottom-sheet architecture that supports evolving logistics requirements.</p>
+                                <span className="impact-value">Capable</span>
+                                <p>Accommodated delivery verification, courier communication, grocery substitutions and richer delivery information.</p>
                             </div>
                             <div className="impact-card">
-                                <span className="impact-value">Strategic</span>
-                                <p>Unlocked room for post-purchase upsell and additional monetization surfaces.</p>
+                                <span className="impact-value">Commercial</span>
+                                <p>Opened defined space for new monetization surfaces without compromising the primary customer journey.</p>
                             </div>
+                        </div>
+
+                        <div className="learnings-block">
+                            <h2 className="section-title">Learnings</h2>
+                            <div className="learnings-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
+                                <div className="learning-item">
+                                    <h3>Structure Outlives Features</h3>
+                                    <p>Solving for one requirement at a time produces a screen that has to be redesigned again. Solving for levels of urgency produces a foundation that absorbs the next requirement.</p>
+                                </div>
+                                <div className="learning-item">
+                                    <h3>Timing Is Hierarchy</h3>
+                                    <p>Deciding when something appears is as much a hierarchy decision as deciding how large it is. Progressive disclosure let the tracker carry more without reading as more.</p>
+                                </div>
+                                <div className="learning-item">
+                                    <h3>Commercial Space Must Be Designed</h3>
+                                    <p>Monetization added defensively will always feel like an intrusion. Given a defined place in the hierarchy, it can coexist with the customer's primary need.</p>
+                                </div>
+                            </div>
+                            <p style={{ marginTop: '40px', fontSize: '1.25rem', fontStyle: 'italic', color: 'var(--muted)' }}>
+                                Most importantly, the experience continued to optimize around the fundamental customer need: “Help me understand what's happening with my order and what I need to do next.”
+                            </p>
                         </div>
                     </section>
 
