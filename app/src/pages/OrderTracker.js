@@ -172,6 +172,93 @@ export default function OrderTracker() {
 
                     <div className="section-divider"></div>
 
+                    {/* Research */}
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">RESEARCH</div>
+                        <div className="section-content">
+                            <h2 className="content-title">Discovery</h2>
+                            <p className="section-subtitle">Rather than starting from scratch, I drew on existing research from our sister brand and benchmarked how the wider delivery category had solved the same hierarchy problem.</p>
+
+                            <div className="section-grid">
+                                <div className="text-content">
+                                    <div style={{ marginBottom: '40px' }}>
+                                        <h3>Prior research from Just Eat</h3>
+                                        <p>Skip sits within the same group as Just Eat, which had already studied information hierarchy in the order tracking experience. Inheriting that work meant I could start from established evidence about what customers prioritize while waiting, rather than re-running foundational research on a question a sister brand had already answered.</p>
+                                        <p>It also gave the hierarchy decisions a shared basis across markets — useful when the redesign needed to hold up beyond a single region.</p>
+                                    </div>
+                                    <div>
+                                        <h3>Competitive analysis</h3>
+                                        <p>I audited how other food delivery products structured their tracking experiences, looking specifically at how each handled the tension this project was built around: carrying courier communication, delivery states and secondary content without burying the order status itself.</p>
+                                        <p>The pattern worth taking was that the strongest experiences varied what they emphasized by delivery stage instead of presenting every module at once.</p>
+                                    </div>
+                                    <div style={{ marginTop: '40px' }}>
+                                        <h3>What discovery pointed to</h3>
+                                        <p>Both strands converged on the same conclusion: the constraint wasn't space on the screen, it was <strong>timing</strong>. The Just Eat work established which information customers prioritize while waiting; the category audit showed that priority is not fixed but moves as the delivery progresses.</p>
+                                        <p>That gave the redesign its central move. If what matters most changes by stage, the tracker shouldn't present a single fixed layout — it should change with the order. <strong>Progressive disclosure became the design response to what discovery found</strong>, not a pattern applied to it.</p>
+                                    </div>
+                                </div>
+                                <div className="stats-sidebar">
+                                    <div className="stat-item">
+                                        <span className="stat-icon">🤝</span>
+                                        <h3>Advantage</h3>
+                                        <p>Existing Just Eat research on order tracker information hierarchy meant the redesign started from evidence rather than assumption.</p>
+                                    </div>
+                                    <div className="stat-item">
+                                        <span className="stat-icon">🔍</span>
+                                        <h3>Category insight</h3>
+                                        <p>The strongest tracking experiences change what they emphasize by stage, rather than showing everything at once.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div className="section-divider"></div>
+
+                    {/* Usability Testing */}
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">USABILITY TESTING</div>
+                        <div className="section-content">
+                            <h2 className="content-title">Testing the hierarchy</h2>
+                            <p className="section-subtitle">Discovery gave us a hypothesis — that information could be revealed by stage without customers feeling under-informed. Testing was how we checked it held up once every module was competing for the same screen.</p>
+
+                            <div className="section-grid">
+                                <div className="text-content">
+                                    <p>If the hierarchy was right, each module would be findable at the moment it mattered and unobtrusive before then. So testing focused on exactly the modules carrying the most weight in that structure:</p>
+                                    <ul style={{ fontSize: '1.15rem', lineHeight: '1.7', color: 'var(--text)', paddingLeft: '20px', marginBottom: '32px' }}>
+                                        <li><strong>Order status</strong> — could customers read the state of their order immediately?</li>
+                                        <li><strong>Delivery information</strong> — was address and timing detail available without crowding the primary view?</li>
+                                        <li><strong>Delivery code</strong> — was it findable at handoff, and appropriately quiet before then?</li>
+                                        <li><strong>Courier information and contact</strong> — was communication reachable once a courier was assigned?</li>
+                                        <li><strong>Item substitutions</strong> — did customers notice a decision was required of them?</li>
+                                    </ul>
+                                    <p style={{ padding: '20px', border: '1px dashed var(--divider-default)', borderRadius: '4px', color: 'var(--muted)' }}>
+                                        <strong>[TO FILL IN]</strong> — how many participants, and what fidelity of prototype. Then, for the findings, the most useful thing to recall is: <em>did the staged approach hold, or did something customers wanted early turn out to be buried?</em> Substitutions and the delivery code are the likeliest candidates, since both depend on being noticed at a specific moment. Anything that moved in the design as a result is the strongest material here.
+                                    </p>
+                                </div>
+                                <div className="stats-sidebar">
+                                    <div className="stat-item">
+                                        <span className="stat-icon">🧪</span>
+                                        <h3>What was tested</h3>
+                                        <p>Status, delivery information, delivery code, courier information and contact, and item substitutions.</p>
+                                    </div>
+                                    <div className="stat-item">
+                                        <span className="stat-icon">📝</span>
+                                        <h3>[TO FILL IN] Finding</h3>
+                                        <p>Did staging information by delivery stage hold up in testing, or did a module need to surface earlier than the hierarchy assumed?</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="full-width-visual" style={{ marginTop: '40px' }}>
+                                <div className="interaction-visual-box placeholder">
+                                    <span className="placeholder-text">Prototype used in usability testing / findings summary</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div className="section-divider"></div>
+
                     <section className="casestudy-section asymmetric">
                         <div className="section-label">WHY IT MATTERED</div>
                         <div className="section-content">
@@ -201,7 +288,7 @@ export default function OrderTracker() {
                             <h2 className="content-title">How might we make the Order Tracker significantly more capable without making it feel significantly more complicated?</h2>
                             <div className="section-grid">
                                 <div className="text-content">
-                                    <p>Instead of treating every new requirement as another component to fit onto the existing screen, I looked at the tracker as a <strong>system of information with different levels of urgency.</strong></p>
+                                    <p>Discovery had reframed the problem from space to timing. Instead of treating every new requirement as another component to fit onto the existing screen, I looked at the tracker as a <strong>system of information with different levels of urgency.</strong></p>
                                     <p>Some information is critical right now. Some requires customer action. Some provides reassurance. And some creates additional value but should never interfere with the core delivery journey.</p>
                                     <p>That distinction gave us a framework for deciding what should appear, when it should appear and how much attention it should demand.</p>
                                 </div>
@@ -230,7 +317,7 @@ export default function OrderTracker() {
                                 </div>
                                 <div className="constraint-card">
                                     <h3>Surface information when it becomes relevant</h3>
-                                    <p>Delivery codes, substitutions and courier communication shouldn't compete for attention throughout the entire journey. They should become prominent when customers actually need them.</p>
+                                    <p>Drawn directly from discovery: priority moves as the delivery progresses. Delivery codes, substitutions and courier communication shouldn't compete for attention throughout the entire journey — they should become prominent when customers actually need them.</p>
                                 </div>
                                 <div className="constraint-card">
                                     <h3>Protect the core experience</h3>
@@ -253,7 +340,7 @@ export default function OrderTracker() {
                             <div className="section-grid">
                                 <div className="text-content">
                                     <p>One of the important tensions in the project was that customers naturally want more information while waiting for an order — but adding more information can also make an interface harder to understand.</p>
-                                    <p>Rather than exposing everything simultaneously, the redesign prioritized <strong>progressive disclosure</strong>. The experience could change alongside the order:</p>
+                                    <p>Discovery pointed to the way out: because priority shifts as delivery progresses, the tracker didn't need to show everything at once to feel complete. Rather than exposing everything simultaneously, the redesign prioritized <strong>progressive disclosure</strong>, letting the experience change alongside the order:</p>
                                     <p><strong>Order confirmed → Preparing → Courier assigned → On the way → Arriving → Delivered</strong></p>
                                     <p>At each stage, the tracker could prioritize the information and actions most relevant to that moment. The goal was to make the experience feel less like repeatedly checking a status page and more like being kept informed throughout the delivery.</p>
                                 </div>
@@ -393,7 +480,7 @@ export default function OrderTracker() {
                                 </div>
                                 <div className="learning-item">
                                     <h3>Timing Is Hierarchy</h3>
-                                    <p>Deciding when something appears is as much a hierarchy decision as deciding how large it is. Progressive disclosure let the tracker carry more without reading as more.</p>
+                                    <p>Deciding when something appears is as much a hierarchy decision as deciding how large it is. Discovery reframed a space problem as a timing one, and that reframe is what let the tracker carry more without reading as more.</p>
                                 </div>
                                 <div className="learning-item">
                                     <h3>Commercial Space Must Be Designed</h3>
