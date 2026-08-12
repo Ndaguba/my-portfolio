@@ -1,7 +1,7 @@
 :root {
   --bg: #ffffff;
   --text: #111827;
-  --muted: #6b7280;
+  --muted: #4b5563;
   --primary: #e6e6e6;
   --header-bg: #ffffff;
   --panel-bg: #fafafa;
@@ -11,7 +11,7 @@
 .theme-dark {
   --bg: #161718;
   --text: #e6eef6;
-  --muted: #9aa6b2;
+  --muted: #b8c2cc;
   --primary: #375e70;
   --header-bg: #161718;
   --panel-bg: #161718;
