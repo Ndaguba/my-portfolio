@@ -1,3 +1,14 @@
+/* ==========================================================================
+   Order Tracker case study
+
+   Rules are ordered to match the page top to bottom. Several class names here
+   (.hero-visual, .section-divider, .casestudy-section, .section-subtitle) are
+   also declared unscoped in sibling case-study stylesheets. Plain CSS imports
+   are global, so those leak across pages and ties break on bundle order — any
+   rule below that must win is scoped under .order-tracker-page.
+   ========================================================================== */
+
+/* --- Shell --- */
 .case-study-container {
     display: flex;
     flex-direction: row;
@@ -27,6 +38,7 @@
     padding-bottom: 8rem;
 }
 
+/* --- Header --- */
 .case-study-header {
     margin-bottom: 110px;
     margin-top: 40px;
@@ -70,6 +82,14 @@
     margin: 0 0 31px 0;
 }
 
+.hero-supporting {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--muted);
+    max-width: 760px;
+    margin-top: 24px;
+}
+
 .project-metadata {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -95,32 +115,26 @@
     line-height: 1.5;
 }
 
-.hero-visual {
+/* --- Hero image --- */
+.order-tracker-page .hero-visual {
     width: 100%;
+    max-height: 560px;
     margin-bottom: 120px;
-    border-radius: 4px;
+    border-radius: 16px;
     overflow: hidden;
 }
 
-.hero-visual img {
+.order-tracker-page .hero-visual img {
     width: 100%;
-    height: 100%;
+    height: 560px;
     display: block;
     object-fit: cover;
-    object-position: center top;
+    object-position: center;
 }
 
+/* --- Section scaffolding --- */
 .casestudy-section {
-    margin-bottom: 70px;
-}
-
-.section-title {
-    font-size: 3rem;
-    font-weight: 600;
-    margin-bottom: 48px;
-    letter-spacing: -1.5px;
-    margin: 0;
-    padding: 0;
+    margin-bottom: 100px;
 }
 
 .section-grid {
@@ -135,6 +149,13 @@
     color: var(--text);
     margin-bottom: 32px;
     max-width: 800px;
+}
+
+.section-subtitle {
+    font-size: 1.5rem;
+    color: var(--text);
+    max-width: 800px;
+    margin-bottom: 16px;
 }
 
 .stats-sidebar {
@@ -157,406 +178,13 @@
 
 .stat-item p {
     font-size: 0.95rem;
-    color: var(--muted);
+    color: var(--text);
     line-height: 1.5;
 }
 
-.alt-bg {
-    background: #f1f5f9;
-    margin-left: -24px;
-    margin-right: -24px;
-    padding: 40px;
-}
-
-.theme-dark .alt-bg {
-    background: rgba(255, 255, 255, 0.02);
-}
-
-.section-subtitle {
-    font-size: 1.5rem;
-    color: var(--muted);
-    max-width: 800px;
-    margin-bottom: 60px;
-}
-
-.constraint-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-}
-
-.constraint-card h3 {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: 16px;
-}
-
-.constraint-card p {
-    font-size: 1rem;
-    color: var(--muted);
-    line-height: 1.6;
-}
-
-.impact-headline {
-    font-size: 1.75rem;
-    margin-bottom: 60px;
-    color: var(--muted);
-}
-
-.impact-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 9px;
-}
-
-.impact-card {
-    padding: 33px 20px;
-    background: #f8fafc;
-    border-radius: 4px;
-}
-
-.theme-dark .impact-card {
-    background: rgba(255,255,255,0.02);
-}
-
-.impact-value {
-    display: block;
-    font-size: 2rem;
-    font-weight: 400;
-    margin-bottom: 16px;
-    letter-spacing: -1.5px;
-}
-
-.impact-card p {
-    font-size: 1rem;
-    color: var(--muted);
-}
-
-.cta-section {
-    padding-top: 120px;
-    border-top: 1px solid var(--divider-default);
-}
-
-/* Learnings Block Styling */
-.learnings-block {
-    margin-top: 100px;
-    padding-top: 80px;
-    border-top: 1px solid var(--divider-default);
-}
-
-.learnings-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-}
-
-.learning-item h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 16px;
-}
-
-.learning-item p {
-    font-size: 1.1rem;
-    line-height: 1.5;
-    color: var(--muted);
-}
-
-/* Impact Header Styling */
-.impact-header {
-    margin-bottom: 60px;
-}
-
-.impact-headline {
-    font-size: 2.5rem;
-    font-weight: 500;
-    letter-spacing: -1px;
-    margin-top: 12px;
-    color: var(--text);
-}
-
-.next-project-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-decoration: none;
-    padding: 80px 48px;
-    background: #f8fafc;
-    border-radius: 4px;
-    transition: transform 200ms ease;
-}
-
-.theme-dark .next-project-card {
-    background: rgba(255,255,255,0.02);
-}
-
-.next-project-card:hover {
-    transform: translateY(-4px);
-}
-
-.next-meta h3 {
-    font-size: 2.5rem;
-    color: var(--text);
-    margin: 16px 0 8px 0;
-}
-
-.next-meta p {
-    font-size: 1.125rem;
-    color: var(--muted);
-}
-
-.next-badge {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    color: var(--muted);
-}
-
-.next-arrow {
-    font-size: 3rem;
-    color: var(--text);
-}
-
-@media (max-width: 1024px) {
-    .section-grid, .project-metadata, .constraint-grid, .impact-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .stats-sidebar {
-        border-left: none;
-        padding-left: 0;
-        border-top: 1px solid var(--divider-default);
-        padding-top: 40px;
-    }
-    
-    .hero-statement {
-        font-size: 2rem;
-    }
-    
-    .section-title {
-        font-size: 2.25rem;
-    }
-}
-
-/* Placeholder Mockup Styles */
-.placeholder-box {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #f8fafc;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--muted);
-    font-size: 1rem;
-    font-weight: 500;
-    text-align: center;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.theme-dark .placeholder-box {
-    background: rgba(255, 255, 255, 0.03);
-}
-
-.full-width-visual {
-    width: 100%;
-    margin-top: 60px;
-    margin-bottom: 20px;
-}
-
-.placeholder-box.large {
-    aspect-ratio: 21 / 9;
-}
-
-/* Constellation of constraints styling */
-.constraints-layout {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 120px;
-    align-items: flex-start;
-}
-
-.constellation-title {
-    font-size: 4.5rem;
-    font-weight: 400;
-    line-height: 1.1;
-    letter-spacing: -2px;
-    margin: 0;
-}
-
-.constraints-right {
-    display: flex;
-    flex-direction: column;
-}
-
-.constraints-summary {
-    font-size: 1rem;
-    line-height: 1.5;
-    color: var(--muted);
-    margin-bottom: 40px;
-    max-width: 500px;
-}
-
-.constraints-label {
-    display: inline-block;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #4ade80;
-    margin-bottom: 12px;
-    border-bottom: 1px solid var(--divider-default);
-    padding-bottom: 12px;
-    width: 100%;
-}
-
-.constraint-item {
-    border-bottom: 1px solid var(--divider-default);
-    padding: 32px 0;
-}
-
-.constraint-item:last-child {
-    border-bottom: none;
-}
-
-.constraint-item h3 {
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: var(--muted);
-    margin: 0 0 12px 0;
-}
-
-.constraint-item p {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: var(--text);
-    margin: 0;
-}
-
-/* Solution Section Styling */
-.solution-header-layout {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 120px;
-    margin-bottom: 100px;
-    align-items: flex-start;
-}
-
-.solution-tagline {
-    font-size: 3.5rem;
-    color: var(--muted);
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", "Helvetica", Arial, sans-serif;
-    font-style: italic;
-    font-weight: 300;
-    line-height: 1.1;
-    margin-top: 24px;
-    letter-spacing: -1px;
-}
-
-.solution-right {
-    display: flex;
-    flex-direction: column;
-}
-
-.solution-intro {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: var(--muted);
-    margin-bottom: 48px;
-    max-width: 550px;
-}
-
-.solution-feature-list {
-    border-top: 1px solid var(--divider-default);
-}
-
-.feature-item {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 24px 0;
-    border-bottom: 1px solid var(--divider-default);
-}
-
-.feature-icon {
-    font-size: 1.25rem;
-}
-
-.feature-item p {
-    font-size: 1rem;
-    margin: 0;
-    color: var(--text);
-}
-
-.solution-visuals {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    margin-top: 40px;
-}
-
-.main-visual {
-    width: 100%;
-    background: #f8fafc;
-    border-radius: 12px;
-    display: flex;
-    justify-content: center;
-}
-
-.theme-dark .main-visual {
-    background: rgba(255, 255, 255, 0.02);
-}
-
-.visual-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-}
-
-/* Interaction Showcase Styling - Mirroring Poppy AI for consistency */
-.interaction-showcase {
-    padding: 100px 0;
-    padding-bottom: 24px;
-}
-
-.interaction-item {
-    margin-bottom: 240px;
-    max-width: 1400px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.interaction-item:last-child {
-    margin-bottom: 120px;
-}
-
-.interaction-header {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 120px;
-    border-top: 1px solid var(--divider-default);
-    padding-top: 40px;
-    margin-bottom: 60px;
-    align-items: flex-start;
-}
-
-.interaction-left h2 {
-    font-size: 2.5rem;
-    font-weight: 500;
-    line-height: 1.15;
-    margin: 0;
-    letter-spacing: -1.2px;
-    color: var(--text);
-}
-
-.interaction-right p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: var(--muted);
-    margin: 0;
-}
-
+/* --- Visual boxes (sections 03, 04, 06) --- */
 .interaction-visual-box {
-    background: #F8F8F8; /* Light grey backdrop */
+    background: #F8F8F8;
     border-radius: 4px;
     padding: 100px 40px;
     display: flex;
@@ -571,17 +199,12 @@
 
 .interaction-visual-box img {
     width: 100%;
-    max-width: 332px; /* Mobile mockup size matching Poppy AI */
+    max-width: 332px;
     border-radius: 32px;
     height: auto;
     display: block;
 }
 
-.theme-dark .interaction-visual-box img {
-    box-shadow: none;
-}
-
-/* Placeholder for missing assets */
 .interaction-visual-box.placeholder {
     aspect-ratio: 16 / 10;
     align-items: center;
@@ -596,26 +219,260 @@
     letter-spacing: 1px;
 }
 
+.full-width-visual {
+    width: 100%;
+}
+
+/* --- Paired device screenshots (sections 03 and 04) --- */
+.current-tracker-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+    margin-bottom: 56px;
+}
+
+/* Three-up variant (section 08), where the proposal shows a third state.
+   The boxes shrink to fit, so their fixed height comes down to match. */
+.current-tracker-grid.is-three-up {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.current-tracker-grid.is-three-up .interaction-visual-box {
+    height: 620px;
+    padding: 40px 24px;
+}
+
+@media (max-width: 1100px) and (min-width: 769px) {
+    .current-tracker-grid.is-three-up {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Each cell is a column so the caption is laid out inside the grid row.
+   Without this the box's height:100% consumed the whole row and the caption
+   overflowed past it, landing on top of whatever followed the grid. */
+.current-tracker-item {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+/* Fixed height so every box matches, whether it holds a real screenshot or a
+   placeholder. The image scales to fit rather than setting the height. */
+.current-tracker-grid .interaction-visual-box {
+    padding: 56px 32px;
+    height: 800px;
+    align-items: center;
+    background: linear-gradient(160deg, #f7f7f8 0%, #efeff1 55%, #e6e6e9 100%);
+}
+
+.current-tracker-grid .interaction-visual-box img {
+    max-height: 100%;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* Placeholders here match the height of the real screenshots opposite them,
+   so the two sections read as the same kind of visual. */
+.current-tracker-grid .interaction-visual-box.placeholder {
+    aspect-ratio: auto;
+}
+
+.theme-dark .current-tracker-grid .interaction-visual-box {
+    background: linear-gradient(160deg, #232324 0%, #1d1d1e 55%, #18181a 100%);
+}
+
+.current-tracker-caption {
+    margin-top: 16px;
+    margin-bottom: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text);
+}
+
+/* Sibling stylesheets leak a bare .section-divider with inconsistent margins,
+   so this one pins its own top spacing. Stays a 1px line. */
+.current-tracker-section-divider {
+    margin-top: 60px !important;
+}
+
+/* Brand logo sitting above the research copy. The source file is very wide and
+   has a baked in white background, so it is sized by height and given a light
+   chip that keeps it readable in dark mode. */
+.order-tracker-page .research-logo {
+    height: 28px;
+    width: auto;
+    display: block;
+    margin-bottom: 28px;
+    padding: 10px 16px 10px 0;
+    background: #ffffff;
+    border-radius: 8px;
+    box-sizing: content-box;
+}
+
+.theme-dark .order-tracker-page .research-logo {
+    box-shadow: 0 0 0 1px var(--divider-default);
+}
+
+/* --- Pull quote --- */
+.pull-quote {
+    margin: 0;
+    padding: 0 0 0 24px;
+    border-left: 2px solid var(--text);
+    font-size: 1.75rem;
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    max-width: 860px;
+}
+
+/* --- Competitive analysis cards (section 06) --- */
+.order-tracker-page .competitor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.order-tracker-page .competitor-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.order-tracker-page .competitor-visual {
+    height: 560px;
+    padding: 40px 24px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background: linear-gradient(160deg, #f7f7f8 0%, #efeff1 55%, #e6e6e9 100%);
+}
+
+.theme-dark .order-tracker-page .competitor-visual {
+    background: linear-gradient(160deg, #232324 0%, #1d1d1e 55%, #18181a 100%);
+}
+
+.order-tracker-page .competitor-visual.placeholder {
+    border: 1px dashed var(--divider-default);
+}
+
+.order-tracker-page .competitor-visual img {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    border-radius: 24px;
+    object-fit: contain;
+    display: block;
+}
+
+.order-tracker-page .competitor-card h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+}
+
+.order-tracker-page .competitor-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0;
+}
+
+/* --- Themes from testing (section 08) --- */
+.order-tracker-page .theme-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-top: 40px;
+}
+
+.order-tracker-page .theme-card {
+    padding: 32px;
+    border: 1px solid var(--divider-default);
+    border-radius: 6px;
+}
+
+.order-tracker-page .theme-number {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin-bottom: 16px;
+}
+
+.order-tracker-page .theme-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 12px 0;
+    line-height: 1.3;
+}
+
+.order-tracker-page .theme-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0;
+}
+
+/* --- Usability testing list (section 07) --- */
+.validation-list {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--text);
+    padding-left: 20px;
+}
+
+.validation-list li {
+    margin-bottom: 12px;
+}
+
+/* --- Responsive --- */
 @media (max-width: 1024px) {
-    .interaction-header {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-    
-    .interaction-left h2 {
-        font-size: 2rem;
-    }
-    
-    .interaction-right p {
-        font-size: 1.1rem;
-    }
-    
-    
     .interaction-visual-box {
         padding: 60px 24px;
     }
-    
-    .interaction-item {
-        margin-bottom: 120px;
+}
+
+@media (max-width: 900px) {
+    .order-tracker-page .competitor-grid,
+    .order-tracker-page .theme-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .order-tracker-page .competitor-visual {
+        height: 480px;
+    }
+}
+
+@media (max-width: 768px) {
+    .current-tracker-grid,
+    .current-tracker-grid.is-three-up {
+        grid-template-columns: 1fr;
+    }
+
+    .current-tracker-grid .interaction-visual-box,
+    .current-tracker-grid.is-three-up .interaction-visual-box {
+        height: 560px;
+    }
+
+    .hero-supporting {
+        font-size: 1.1rem;
+    }
+
+    .pull-quote {
+        font-size: 1.4rem;
+    }
+
+    .project-metadata {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
     }
 }

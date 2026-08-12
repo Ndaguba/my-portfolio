@@ -195,13 +195,19 @@ export default function Home() {
       id: "order-tracker",
       title: "Order Tracker Redesign",
       company: "Real-time logistics and delivery tracking",
-      image: require('../assets/profile/Delivery-tracker.png'),
+      description: "A redesign of the Skip order tracker, making delivery progress legible at a glance and integrating verification codes to confirm handoff to the right customer.",
+      image: require('../assets/SPLASH.png'),
+      overlayImage: require('../assets/[iOS] Bottom sheet.png'),
+      showImage: true,
+      mediaBg: '#e8eef1',
+      mediaBgDark: '#232c31',
+      logo: skipLogo,
+      logoLabel: "Skip",
       category: "Design",
-      link: null,
+      tags: ["Design"],
+      link: "/order-tracker",
       imgClass: "order-tracker-image",
-      status: "NOT SHIPPED",
-      statValue: "—",
-      statLabel: "in progress"
+      status: "IN DEVELOPMENT"
     },
     {
       id: "forella",
@@ -267,7 +273,7 @@ export default function Home() {
   ];
 
   // Projects shown in the case-study section, in this exact order.
-  const featuredOrder = ['development-pathways', 'skip-westjet', 'retail-media', 'forella'];
+  const featuredOrder = ['development-pathways', 'skip-westjet', 'order-tracker', 'retail-media', 'forella'];
   const featuredProjects = featuredOrder
     .map(id => allProjects.find(p => p.id === id))
     .filter(Boolean);
@@ -385,10 +391,12 @@ export default function Home() {
                     </div>
                   )}
 
-                  <div className="case-study-stat">
-                    <span className="case-study-stat-value">{project.statValue}</span>
-                    <span className="case-study-stat-label">{project.statLabel}</span>
-                  </div>
+                  {project.statValue && (
+                    <div className="case-study-stat">
+                      <span className="case-study-stat-value">{project.statValue}</span>
+                      <span className="case-study-stat-label">{project.statLabel}</span>
+                    </div>
+                  )}
 
                   <div className="case-study-actions">
                     {project.link ? (
@@ -433,14 +441,14 @@ export default function Home() {
                     })()}
                   >
                     {project.showImage && project.image && (
-                      <img src={project.image} alt={project.title} className={`case-study-media-img ${project.id === 'forella' ? 'forella-media-img' : ''} ${project.id === 'ophir-labs' ? 'ophir-media-img' : ''}`} />
+                      <img src={project.image} alt={project.title} className={`case-study-media-img ${project.id === 'forella' ? 'forella-media-img' : ''} ${project.id === 'ophir-labs' ? 'ophir-media-img' : ''} ${project.id === 'order-tracker' ? 'order-tracker-media-img' : ''}`} />
                     )}
                     {project.id === 'forella' && (
                       <img src={forellaMobile} alt="Forella mobile app" className="forella-mobile-img" />
                     )}
                   </div>
                   {project.overlayImage && (
-                    <img src={project.overlayImage} alt="" aria-hidden="true" className={`case-study-media-overlay ${project.id === 'skip-westjet' ? 'skip-overlay' : ''} ${project.id === 'retail-media' ? 'retail-overlay' : ''}`} />
+                    <img src={project.overlayImage} alt="" aria-hidden="true" className={`case-study-media-overlay ${project.id === 'skip-westjet' ? 'skip-overlay' : ''} ${project.id === 'retail-media' ? 'retail-overlay' : ''} ${project.id === 'order-tracker' ? 'order-tracker-overlay' : ''}`} />
                   )}
                 </div>
               </article>

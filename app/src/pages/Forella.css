@@ -207,7 +207,7 @@
 .section-subtitle {
     font-size: 1rem;
     color: var(--muted);
-    margin-bottom: 60px;
+    margin-bottom: 16px;
     line-height: 1.55;
 }
 
