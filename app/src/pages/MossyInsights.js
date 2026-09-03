@@ -94,18 +94,33 @@ export default function MossyInsights() {
           </section>
 
           <section className="casestudy-section asymmetric">
-            <div className="section-label">01 — BUSINESS BRIEF</div>
+            <div className="section-label">01 — THE ASK</div>
             <div className="section-content">
-              <h2 className="content-title">Make connected financial data more valuable</h2>
-              <p className="emotional-hook">The business wanted a reason for customers to return to Mossy after connecting their accounts.</p>
+              <h2 className="content-title">Give customers a reason to come back after connecting their accounts</h2>
+              <p className="emotional-hook">Mossy already collected useful data from connected accounts. Almost none of that value reached the customer.</p>
               <div className="section-grid">
                 <div className="text-content">
-                  <p>Mossy already collected useful information from connected accounts, but most of that value lived in balances and transaction lists. The business requirement was to create an Insights feature that made the data feel more useful and encouraged repeat engagement.</p>
-                  <p>Before designing screens, I translated that requirement into a customer problem: <strong>“I can see what I spent, but I still cannot tell how I am doing, what changed, or where I should focus.”</strong></p>
+                  <p>The business requirement was to build an Insights feature: something that made connected financial data feel more useful and gave people a reason to open Mossy between transactions.</p>
+                  <p>On paper that sounded like a reporting problem. In practice it meant deciding what a person is actually asking when they open a finance app.</p>
                 </div>
                 <div className="stats-sidebar">
                   <div className="stat-item"><span className="stat-icon">💼</span><h3>Business requirement</h3><p>Increase the ongoing value of connected financial data.</p></div>
-                  <div className="stat-item"><span className="stat-icon">👤</span><h3>Customer problem</h3><p>Turn financial activity into an understandable picture of how someone is doing.</p></div>
+                  <div className="stat-item"><span className="stat-icon">👤</span><h3>My job</h3><p>Turn that requirement into something a customer would actually open Mossy for.</p></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div className="section-divider"></div>
+
+          <section className="casestudy-section asymmetric turning-point">
+            <div className="section-label">02 — THE PROBLEM</div>
+            <div className="section-content">
+              <h2 className="content-title">A dashboard would answer the wrong question</h2>
+              <div className="section-grid">
+                <div className="text-content">
+                  <p>The easy version of this feature was a dashboard: balances, a spending chart, some categories. It would have satisfied the requirement as written, and it would have told people nothing they couldn&apos;t already see in their transaction list.</p>
+                  <p>Before designing a single screen, I reframed the requirement as a customer problem: <strong>“I can see what I spent, but I still cannot tell how I am doing, what changed, or where I should focus.”</strong> That sentence, not the dashboard, is what the rest of the project was designed to answer.</p>
                 </div>
               </div>
             </div>
@@ -114,13 +129,14 @@ export default function MossyInsights() {
           <div className="section-divider"></div>
 
           <section className="casestudy-section asymmetric">
-            <div className="section-label">02 — DISCOVERY</div>
+            <div className="section-label">03 — RESEARCH</div>
             <div className="section-content">
-              <h2 className="content-title">Understanding what “financial clarity” meant to customers</h2>
+              <h2 className="content-title">Checking that answer against real people and real products</h2>
+              <p className="section-subtitle">Four sources, each answering a different part of the reframed problem.</p>
               <div className="section-grid">
                 <div className="text-content">
-                  <p>I held five lightweight conversations with people who already used a banking or budgeting app. I asked them to walk me through how they checked their finances, what made them concerned, and what they did when a number looked unusual.</p>
-                  <p>I combined those conversations with a review of the information Mossy could reliably calculate and a competitive analysis of four spending experiences.</p>
+                  <p>I held five lightweight conversations with people who already used a banking or budgeting app, asking how they checked their finances and what they did when a number looked unusual. Alongside that, I audited the financial facts Mossy could reliably calculate, and reviewed four existing finance-product spending experiences to see how competitors turn totals into meaning.</p>
+                  <p>The competitive review answered a specific question: once you know what people want, what does the strongest version of showing it actually look like?</p>
                 </div>
                 <div className="stats-sidebar">
                   <div className="stat-item"><span className="stat-icon">5</span><h3>Customer conversations</h3><p>People who already managed money with a banking or budgeting app.</p></div>
@@ -128,24 +144,8 @@ export default function MossyInsights() {
                   <div className="stat-item"><span className="stat-icon">1</span><h3>Data inventory</h3><p>The financial facts Mossy could calculate reliably enough to show customers.</p></div>
                 </div>
               </div>
-              <h2 className="content-title" style={{ marginTop: '56px' }}>Why these research methods</h2>
-              <p className="section-subtitle">Each source answered a different question before I committed to the page structure.</p>
-              {themes([
-                ['Customer conversations', 'Source: five adults from my extended network who already used mobile banking or budgeting tools. Semi-structured conversations were useful because this was a new feature and I first needed to understand their existing habits, language and concerns.'],
-                ['Product and data review', 'Source: Mossy’s connected-account, transaction, merchant, category and subscription data. This established which insights could be calculated consistently instead of designing promises the product could not support.'],
-                ['Competitive analysis', 'Source: four existing finance-product spending flows. Comparing real interfaces was the fastest way to evaluate established patterns, identify common usability problems and decide which conventions Mossy should reuse or avoid.'],
-                ['Task-based usability testing', 'Source: the five participants using a realistic Mossy concept. Tasks were more useful than asking whether they liked the design because they showed whether people could actually understand the score, comparison and expense breakdown.']
-              ])}
-              <blockquote className="pull-quote" style={{ marginTop: '24px' }}>People did not open a finance app because they wanted more charts. They opened it because they wanted to know whether anything needed their attention.</blockquote>
-            </div>
-          </section>
 
-          <div className="section-divider"></div>
-
-          <section className="casestudy-section asymmetric">
-            <div className="section-label">03 — COMPETITIVE ANALYSIS</div>
-            <div className="section-content">
-              <h2 className="content-title">Four ways of explaining spending</h2>
+              <h2 className="content-title" style={{ marginTop: '56px' }}>Four ways of explaining spending</h2>
               <p className="section-subtitle">I compared how finance products give meaning to category totals, comparisons and limits.</p>
               <div className="current-tracker-grid mossy-competitor-grid">
                 <Screenshot src={competitorBudget} alt="Competitor spending screen organized around category budgets" caption="Budget progress makes overspending visible, but the experience depends on users setting limits before it becomes useful." />
@@ -154,36 +154,44 @@ export default function MossyInsights() {
                 <Screenshot src={competitorLimits} alt="Competitor budgeting screen with spending limit and transaction link" caption="A clear limit and View Transactions action connect the warning to evidence, but the information is split across separate charts." />
               </div>
               <blockquote className="pull-quote">For Mossy, I kept the ranked breakdown and path to evidence, but avoided making budgets or chart interpretation a requirement for understanding the page.</blockquote>
-            </div>
-          </section>
 
-          <div className="section-divider"></div>
-
-          <section className="casestudy-section asymmetric">
-            <div className="section-label">04 — FINDINGS</div>
-            <div className="section-content">
-              <h2 className="content-title">The research reduced the problem to four needs</h2>
-              <p className="section-subtitle">These findings gave each part of the new page a clear job.</p>
+              <h2 className="content-title" style={{ marginTop: '56px' }}>What the research reduced to</h2>
+              <p className="section-subtitle">Four needs came out of the conversations and the competitive review together.</p>
               {themes([
                 ['Tell me how I am doing', 'Customers wanted a quick summary before deciding whether to look deeper. This became Financial Health.'],
                 ['Tell me why', 'A score or profile felt arbitrary without recognizable facts behind it. This became the expandable Money Profile.'],
                 ['Compare me with myself', 'People cared more about whether their own spending had changed than how they compared with strangers. This shaped the weekly average.'],
                 ['Show me where the money went', 'Customers wanted categories in plain language with exact amounts. This became Expense Breakdown.']
               ])}
+              <blockquote className="pull-quote" style={{ marginTop: '24px' }}>People did not open a finance app because they wanted more charts. They opened it because they wanted to know whether anything needed their attention.</blockquote>
+            </div>
+          </section>
+
+          <div className="section-divider"></div>
+
+          <section className="casestudy-section asymmetric turning-point">
+            <div className="section-label">04 — THE DECISION</div>
+            <div className="section-content">
+              <h2 className="content-title">Structure the page as one question leading to the next</h2>
+              <div className="section-grid">
+                <div className="text-content">
+                  <p>The four needs did not describe four separate features. They described an order: <strong>answer, explain, compare, then break down.</strong> Financial Health gives a quick reading of the user&apos;s current position. Money Profile explains the broader pattern behind it. Weekly spending and six-month cash flow compare that position over time. Expense Breakdown shows exactly where the money went.</p>
+                  <p>I used expandable sections for supporting detail so the page could stay scannable without making the score or profile feel like an unexplained judgment.</p>
+                </div>
+              </div>
             </div>
           </section>
 
           <div className="section-divider"></div>
 
           <section className="casestudy-section asymmetric">
-            <div className="section-label">05 — 0→1 DESIGN</div>
+            <div className="section-label">05 — DESIGN</div>
             <div className="section-content">
               <h2 className="content-title">One question led naturally to the next</h2>
-              <p className="section-subtitle">The findings became the order of the page: answer, explain, compare, then break down.</p>
+              <p className="section-subtitle">The decision became the order of the page.</p>
               <div className="section-grid">
                 <div className="text-content">
                   <p><strong>1. Answer:</strong> Financial Health gives a quick reading of the user’s current position. <strong>2. Explain:</strong> Money Profile describes the broader pattern and exposes the facts behind it. <strong>3. Compare:</strong> weekly spending and six-month cash flow show short- and long-term movement. <strong>4. Break down:</strong> expenses show where the money went.</p>
-                  <p>I used expandable sections for supporting information so the page could remain scannable without making the score or profile feel like unexplained judgments.</p>
                 </div>
                 <div className="stats-sidebar">
                   <div className="stat-item"><span className="stat-icon">1</span><h3>Answer</h3><p>Financial Health</p></div>
@@ -258,17 +266,7 @@ export default function MossyInsights() {
                   <div className="stat-item"><span className="stat-icon">→</span><h3>Next measurement</h3><p>Repeat visits, profile expansion and movement from an insight into supporting transactions.</p></div>
                 </div>
               </div>
-            </div>
-          </section>
-
-          <div className="section-divider"></div>
-
-          <section className="casestudy-section asymmetric">
-            <div className="section-label">09 — CUSTOMER FEEDBACK</div>
-            <div className="section-content">
-              <h2 className="content-title">Customers noticed the difference</h2>
-              <p className="section-subtitle">Paraphrased feedback themes from the usability sessions.</p>
-              <div className="mossy-feedback-grid">
+              <div className="mossy-feedback-grid" style={{ marginTop: '40px' }}>
                 <blockquote>
                   <p>“This gives me a clearer picture than the analytics in the finance apps I already use.”</p>
                   <cite>Usability participant · Uses mobile banking and a budgeting app</cite>
@@ -288,7 +286,7 @@ export default function MossyInsights() {
           <div className="section-divider"></div>
 
           <section className="casestudy-section asymmetric">
-            <div className="section-label">10 — LEARNINGS</div>
+            <div className="section-label">09 — LEARNINGS</div>
             <div className="section-content">
               <h2 className="content-title">Clarity depended on more than the interface</h2>
               <div className="section-grid">
