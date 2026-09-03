@@ -20,6 +20,8 @@ import retailMediaOverlay from '../assets/AD.png';
 import westjetImage from '../assets/WestJet.png';
 import devExpanded from '../assets/expanded.png';
 import skipExpanded from '../assets/skip-expanded.png';
+import mossyImage from '../Mossy/Free Transparent iPhone Air Mockup (Mockuuups Studio).png';
+import mossyLogo from '../assets/mossy.jpg';
 
 const OptimizedImage = ({ src, alt, className, priority = false }) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -139,6 +141,23 @@ export default function Home() {
 
 
   const allProjects = [
+    {
+      id: "mossy-insights",
+      title: "Mossy Insights",
+      company: "Financial intelligence for everyday decisions",
+      description: "I designed a financial insights system that turns fragmented account and transaction data into explainable health signals, spending patterns, and actions.",
+      image: mossyImage,
+      showImage: true,
+      mediaBg: '#e8e8ff',
+      mediaBgDark: '#25243c',
+      logo: mossyLogo,
+      logoLabel: "Mossy Finance",
+      category: "Design",
+      tags: ["Design", "Engineering"],
+      link: "/mossy-insights",
+      imgClass: "mossy-image",
+      status: "SHIPPED"
+    },
     {
       id: "skip-westjet",
       title: "Skip x WestJet Partnership",
@@ -273,7 +292,7 @@ export default function Home() {
   ];
 
   // Projects shown in the case-study section, in this exact order.
-  const featuredOrder = ['development-pathways', 'skip-westjet', 'order-tracker', 'retail-media', 'forella'];
+  const featuredOrder = ['mossy-insights', 'development-pathways', 'skip-westjet', 'order-tracker', 'retail-media', 'forella'];
   const featuredProjects = featuredOrder
     .map(id => allProjects.find(p => p.id === id))
     .filter(Boolean);
@@ -441,7 +460,7 @@ export default function Home() {
                     })()}
                   >
                     {project.showImage && project.image && (
-                      <img src={project.image} alt={project.title} className={`case-study-media-img ${project.id === 'forella' ? 'forella-media-img' : ''} ${project.id === 'ophir-labs' ? 'ophir-media-img' : ''} ${project.id === 'order-tracker' ? 'order-tracker-media-img' : ''}`} />
+                      <img src={project.image} alt={project.title} className={`case-study-media-img ${project.id === 'forella' ? 'forella-media-img' : ''} ${project.id === 'ophir-labs' ? 'ophir-media-img' : ''} ${project.id === 'order-tracker' ? 'order-tracker-media-img' : ''} ${project.id === 'mossy-insights' ? 'mossy-media-img' : ''}`} />
                     )}
                     {project.id === 'forella' && (
                       <img src={forellaMobile} alt="Forella mobile app" className="forella-mobile-img" />

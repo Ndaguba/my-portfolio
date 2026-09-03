@@ -825,6 +825,17 @@ h1 {
   border-radius: 0;
 }
 
+.case-study-media-img.mossy-media-img {
+  align-self: flex-end;
+  width: auto;
+  height: 128%;
+  max-width: none;
+  object-fit: contain;
+  transform: translateY(calc(14% + 72px));
+  transform-origin: bottom center;
+  border-radius: 0;
+}
+
 /* Ophir Labs: larger, centered */
 .case-study-media-img.ophir-media-img {
   align-self: center;

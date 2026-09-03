@@ -12,6 +12,7 @@ import PoppyAI from './pages/PoppyAI';
 import SkipWestJet from './pages/SkipWestJet';
 import OrderTracker from './pages/OrderTracker';
 import Forella from './pages/Forella';
+import MossyInsights from './pages/MossyInsights';
 import reportWebVitals from './reportWebVitals';
 
 import { AudioProvider } from './context/AudioContext';
@@ -31,6 +32,7 @@ const App = () => {
         <Route path="/skip-westjet" element={<SkipWestJet />} />
         <Route path="/order-tracker" element={<OrderTracker />} />
         <Route path="/forella" element={<Forella />} />
+        <Route path="/mossy-insights" element={<MossyInsights />} />
       </Routes>
       <FloatingAudioPlayer />
       <ThemeToggle />
