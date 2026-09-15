@@ -286,7 +286,7 @@ export default function Home() {
       visitUrl: null,
       imgClass: "retail-media-image",
       status: "COMING SOON",
-      statValue: "$6M+",
+      statValue: "$19M+",
       statLabel: "in advertising revenue"
     }
   ];
