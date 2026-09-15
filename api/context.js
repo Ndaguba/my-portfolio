@@ -19,7 +19,7 @@ const dataContext = {
       company: "SkipTheDishes",
       role: "Product Designer",
       period: "Mar 2023 - Aug 2025",
-      description: "Built advertising and revenue-growth experiences and owned the post-order experience. Led advertising integration in partnership with ROKT across the customer journey, contributing to a projected $19M in additional advertising revenue in 2025. Led product design for the Skip x WestJet loyalty partnership across web and mobile, supporting loyalty rewards across 3M+ WestJet Rewards members; the framework was later adopted across Just Eat Takeaway markets globally. Designed and launched Delivery Codes, reducing undelivered orders (UDO) by ~65% across Canada. Led the Order Tracker redesign with a scalable bottom-sheet architecture, unlocking cross-selling and advertising opportunities that contributed to a 16% increase in average order value (AOV) across post-order experiences."
+      description: "Built advertising and revenue-growth experiences and owned the post-order experience. Led advertising integration in partnership with ROKT across the customer journey, contributing to a projected $6M in additional advertising revenue in 2025. Led product design for the Skip x WestJet loyalty partnership across web and mobile, supporting loyalty rewards across 3M+ WestJet Rewards members; the framework was later adopted across Just Eat Takeaway markets globally. Designed and launched Delivery Codes, reducing undelivered orders (UDO) by ~65% across Canada. Led the Order Tracker redesign with a scalable bottom-sheet architecture, unlocking cross-selling and advertising opportunities that contributed to a 16% increase in average order value (AOV) across post-order experiences."
     },
     {
       company: "IntuitionPay",
@@ -48,7 +48,7 @@ const dataContext = {
       ],
       impact: [
         "72% account-link completion rate driven by value-first onboarding.",
-        "350K+ accounts connected.",
+        "500K+ accounts connected.",
         "58% return rate to the partnership management surface within 30 days.",
         "Adopted as the standard partnership framework across Just Eat Takeaway markets globally."
       ],
@@ -257,7 +257,7 @@ const dataContext = {
     },
     {
       q: "Tell me about your most impactful project.",
-      a: "Skip x WestJet, Canada's largest food-delivery loyalty partnership. I led UX for account linking and rewards, hit a 72% link-completion rate, connected 350K+ accounts, and the framework was adopted across Just Eat Takeaway markets globally."
+      a: "Skip x WestJet, Canada's largest food-delivery loyalty partnership. I led UX for account linking and rewards, hit a 72% link-completion rate, connected 500K+ accounts, and the framework was adopted across Just Eat Takeaway markets globally."
     },
     {
       q: "Do you only design, or do you code too?",
