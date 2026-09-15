@@ -48,7 +48,7 @@ const dataContext = {
       ],
       impact: [
         "72% account-link completion rate driven by value-first onboarding.",
-        "500K+ accounts connected.",
+        "350K+ accounts connected.",
         "58% return rate to the partnership management surface within 30 days.",
         "Adopted as the standard partnership framework across Just Eat Takeaway markets globally."
       ],
@@ -257,7 +257,7 @@ const dataContext = {
     },
     {
       q: "Tell me about your most impactful project.",
-      a: "Skip x WestJet, Canada's largest food-delivery loyalty partnership. I led UX for account linking and rewards, hit a 72% link-completion rate, connected 500K+ accounts, and the framework was adopted across Just Eat Takeaway markets globally."
+      a: "Skip x WestJet, Canada's largest food-delivery loyalty partnership. I led UX for account linking and rewards, hit a 72% link-completion rate, connected 350K+ accounts, and the framework was adopted across Just Eat Takeaway markets globally."
     },
     {
       q: "Do you only design, or do you code too?",

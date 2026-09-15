@@ -175,7 +175,7 @@ export default function Home() {
       link: "/skip-westjet",
       imgClass: "skip-image",
       status: "SHIPPED",
-      statValue: "500K",
+      statValue: "350K",
       statLabel: "accounts connected"
     },
     {
