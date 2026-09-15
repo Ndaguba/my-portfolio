@@ -140,21 +140,37 @@ export default function SkipWestJet() {
 
                     <div className="section-divider"></div>
 
+                    {/* Team */}
+                    <section className="casestudy-section asymmetric">
+                        <div className="section-label">TEAM</div>
+                        <div className="section-content">
+                            <h2 className="content-title">Working Across Two Organizations</h2>
+                            <div className="section-grid">
+                                <div className="text-content">
+                                    <p>I worked alongside a Senior Project Manager and Senior Product Manager on the partnerships side, a Senior UX Researcher, and a cross-platform engineering team (Android, Web, iOS) to ship this experience end to end.</p>
+                                    <p>As the Product Designer, I led the UX process: facilitating design exploration, creating wireframes and prototypes, validating solutions with research, and partnering closely with engineering throughout implementation.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div className="section-divider"></div>
+
                     {/* Discovery */}
                     <section className="casestudy-section asymmetric">
                         <div className="section-label">DISCOVERY</div>
                         <div className="section-content">
-                            <h2 className="content-title">Benchmarking Loyalty Ecosystems</h2>
+                            <h2 className="content-title">Research and Competitive Analysis</h2>
                             <div className="section-grid">
                                 <div className="text-content">
-                                    <p>I started by auditing established loyalty partnerships across the banking and travel sectors (e.g., Amex x Delta, Starbucks x Aeroplan) to understand the mental models users carry into these experiences.</p>
-                                    <p>I discovered that the most successful integrations shared three traits: they surfaced <strong>immediate value</strong>, used <strong>familiar UI patterns</strong> for account linking, and provided <strong>persistent visibility</strong> of the partnership status.</p>
+                                    <p>I partnered with a Senior UX Researcher to run moderated sessions on UserTesting.com, focused on customer attitudes toward rewards, partnerships, and account linking. The goal was to understand what would make a partner reward feel valuable, what would motivate participation, and what could create hesitation when connecting accounts.</p>
+                                    <p>Alongside that, I reviewed loyalty and partnership experiences on adjacent platforms like <strong>Uber x Aeroplan</strong> and <strong>DashPass x Lyft</strong> to see how other gig and delivery products introduced partner value and moved customers into activation.</p>
                                 </div>
                                 <div className="stats-sidebar">
                                     <div className="stat-item">
                                         <span className="stat-icon">🔍</span>
-                                        <h3>Competitive Analysis</h3>
-                                        <p>Users don't compare Skip to other food apps; they compare the partnership experience to their banking and airline apps.</p>
+                                        <h3>Key Patterns</h3>
+                                        <p><strong>Lead with value</strong> — stronger experiences made the reward obvious before asking customers to act. <strong>Make it feel native</strong> — the best examples felt integrated into the rewards experience, not a standalone promotion.</p>
                                     </div>
                                 </div>
                             </div>
@@ -167,17 +183,17 @@ export default function SkipWestJet() {
                     <section className="casestudy-section asymmetric">
                         <div className="section-label">STRATEGY</div>
                         <div className="section-content">
-                            <h2 className="content-title">Mapping the Multi-Platform Journey</h2>
+                            <h2 className="content-title">Mapping the Discovery Journey</h2>
                             <div className="section-grid">
                                 <div className="text-content">
-                                    <p>The technical architecture required a hand-off between Skip and WestJet’s secure environments. I mapped out the user flows to ensure that the transition felt like a single, unified product experience rather than a series of disjointed web-views.</p>
-                                    <p>By identifying 'High-Friction' zones like the account verification step, I was able to design proactive messaging that explained <em>why</em> certain data was needed, significantly reducing anxiety and potential drop-off.</p>
+                                    <p>With research and competitive patterns in place, I mapped the experience customers would move through before account linking. The journey needed to balance clear value, low friction, and WestJet's requirement for explicit data-sharing consent.</p>
+                                    <p>The core journey moved through four steps: <strong>discover</strong> the partnership, <strong>understand</strong> the six-month Skip+ benefit, <strong>review</strong> data sharing, and <strong>connect</strong> accounts. I explored two entry points for discovery — Settings and Rewards — before testing settled the direction.</p>
                                 </div>
                                 <div className="stats-sidebar">
                                     <div className="stat-item">
                                         <span className="stat-icon">🗺️</span>
-                                        <h3>User Flows</h3>
-                                        <p>Simplifying the OAuth-style handshake into a 3-step value exchange: Discover, Connect, and Confirm.</p>
+                                        <h3>Core Journey</h3>
+                                        <p>Discover → Understand the benefit → Review data sharing → Connect accounts.</p>
                                     </div>
                                 </div>
                             </div>
@@ -201,24 +217,23 @@ export default function SkipWestJet() {
                     <section className="casestudy-section asymmetric">
                         <div className="section-label">VALIDATION</div>
                         <div className="section-content">
-                            <h2 className="content-title">Testing Mental Models</h2>
+                            <h2 className="content-title">Usability Testing</h2>
                             <div className="section-grid">
                                 <div className="text-content">
-                                    <p>I tested the end-to-end flow to validate comprehension, discoverability, and trust. My goal: ensure the partnership felt familiar enough to be safe.</p>
-                                    <h3 style={{ marginTop: '32px', marginBottom: '16px' }}>Aligning with Expectations</h3>
-                                    <p>Users instantly understood the relationship, comparing it to established banking and airline loyalty programs. Instead of questioning the partnership, they immediately asked, <em>"What rewards do I get?"</em>. That validated our native, non-promotional design approach.</p>
-                                    <p>Crucially, testing revealed users naturally hunted for partnerships inside the <strong>Rewards</strong> tab, never <strong>Settings</strong>. This single insight drove a major architectural pivot.</p>
+                                    <p>I conducted moderated usability testing through UserTesting.com to validate the partnership experience before finalizing the direction. The goal was to understand whether customers could find the partnership, understand the benefit, and complete the linking flow without confusion — testing discoverability across Settings versus Rewards, comprehension of the six-month free Skip+ offer, clarity of the account-linking flow, and understanding of the required data-sharing consent.</p>
+                                    <h3 style={{ marginTop: '32px', marginBottom: '16px' }}>What We Learned</h3>
+                                    <p>The core flow was understandable, but discoverability had the biggest impact on whether users engaged with the partnership. Users were more likely to notice and engage when it appeared within Rewards rather than Settings. The six months of free Skip+ gave users a clear reason to continue into the linking flow, and users were comfortable signing in through WestJet without viewing it as a security concern.</p>
                                 </div>
                                 <div className="stats-sidebar">
                                     <div className="stat-item">
                                         <span className="stat-icon">🧠</span>
                                         <h3>Insight</h3>
-                                        <p>Familiar mental models from banking and airline loyalty ecosystems significantly reduced permission anxiety during onboarding.</p>
+                                        <p>Rewards was the stronger entry point — users expect to find partnerships where they already look for value, not where they manage their accounts.</p>
                                     </div>
                                     <div className="stat-item">
-                                        <span className="stat-icon">🗺️</span>
+                                        <span className="stat-icon">🔒</span>
                                         <h3>Insight</h3>
-                                        <p>Users expect to find partnerships where they already look for value (Rewards), not where they manage their accounts (Settings).</p>
+                                        <p>Consent needed to be explicit, but not complicated — users understood the data-sharing requirement when it was clearly explained as part of the linking process.</p>
                                     </div>
                                 </div>
                             </div>
@@ -336,16 +351,16 @@ export default function SkipWestJet() {
                         
                         <div className="impact-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
                             <div className="impact-card">
-                                <span className="impact-value">72%</span>
-                                <p>Account-link completion rate driven by value-first onboarding.</p>
+                                <span className="impact-value">500K</span>
+                                <p>Skip+ activations driven by the WestJet partnership, making it a meaningful acquisition channel.</p>
                             </div>
                             <div className="impact-card">
-                                <span className="impact-value">5</span>
-                                <p>Canadian brand partners onboarded their own partnership experience using this work as the template.</p>
+                                <span className="impact-value">2</span>
+                                <p>Additional strategic partnerships (Live Nation and CIBC) reused this flow as a framework.</p>
                             </div>
                             <div className="impact-card">
-                                <span className="impact-value">3M</span>
-                                <p>Paid subscriptions converted through brand partners.</p>
+                                <span className="impact-value">Global</span>
+                                <p>The approach was later adopted more broadly by Just Eat Takeaway.com, extending the model beyond the Canadian Skip ecosystem.</p>
                             </div>
                         </div>
 
