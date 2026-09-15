@@ -292,7 +292,9 @@ export default function Home() {
   ];
 
   // Projects shown in the case-study section, in this exact order.
-  const featuredOrder = ['mossy-insights', 'development-pathways', 'skip-westjet', 'order-tracker', 'retail-media', 'forella'];
+  // Mossy Insights is intentionally kept out of the homepage for now; retain its
+  // project data and route so it can be restored by adding its id back here.
+  const featuredOrder = ['development-pathways', 'skip-westjet', 'order-tracker', 'retail-media', 'forella'];
   const featuredProjects = featuredOrder
     .map(id => allProjects.find(p => p.id === id))
     .filter(Boolean);
